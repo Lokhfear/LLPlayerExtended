@@ -173,6 +173,19 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
             };
             contextMenu.Items.Add(menuItem);
         }
+
+        // Add separator and "Add to Dictionary" item
+        if (actions.Any())
+        {
+            contextMenu.Items.Add(new Separator());
+        }
+
+        var addToDictItem = new MenuItem { Header = "📖 Add to Dictionary" };
+        addToDictItem.Click += async (o, args) =>
+        {
+            await AddWordToDictionaryAsync(_clickedWords, _clickedText);
+        };
+        contextMenu.Items.Add(addToDictItem);
     }
 
     // Click on video screen to close pop-up
@@ -432,6 +445,122 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
             FileName = url,
             UseShellExecute = true
         });
+    }
+
+    /// <summary>
+    /// Добавить слово в словарь.
+    /// </summary>
+    private async Task AddWordToDictionaryAsync(string rawWord, string sentence)
+    {
+        // 1. Нормализация слова
+        var word = NormalizeWord(rawWord);
+        if (string.IsNullOrWhiteSpace(word)) return;
+
+        // 2. Получить timestamp
+        var timestamp = FL.Player?.CurTime != null
+            ? TimeSpan.FromTicks(FL.Player.CurTime).TotalSeconds
+            : (double?)null;
+
+        // 3. Создать запись (сразу, без перевода)
+        var entry = new Models.WordEntry
+        {
+            Word = word,
+            Sentence = sentence,
+            Timestamp = timestamp,
+            VideoId = FL.Player?.Playlist?.Selected?.Url
+        };
+
+        // 4. Сохранить немедленно (UI не блокируется)
+        var dictService = ((App)Application.Current).Container.Resolve<DictionaryService>();
+        var (savedEntry, isNew) = await dictService.AddAsync(entry);
+        if (!isNew) return; // уже было в словаре
+
+        // 5. Асинхронный перевод — не ждём
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                // Перевод слова (используем существующий механизм)
+                var wordTranslation = await TranslateWordAsync(word);
+
+                // Перевод предложения (если sentence не пустой)
+                string? sentenceTranslation = null;
+                if (!string.IsNullOrWhiteSpace(sentence))
+                    sentenceTranslation = await TranslateSentenceAsync(sentence);
+
+                savedEntry.Translation = wordTranslation;
+                savedEntry.SentenceTranslation = sentenceTranslation;
+
+                await dictService.UpdateAsync(savedEntry);
+            }
+            catch (Exception ex)
+            {
+                // Ошибка перевода — запись остаётся без перевода, не критично
+                System.Diagnostics.Debug.WriteLine($"[Dictionary] Translation failed: {ex.Message}");
+            }
+        });
+    }
+
+    /// <summary>
+    /// Нормализация: lowercase + удалить пунктуацию по краям.
+    /// </summary>
+    private static string NormalizeWord(string word)
+    {
+        var chars = word.Trim().ToLowerInvariant();
+        return chars.Trim('.', ',', '!', '?', ';', ':', '"', '\'', '(', ')', '[', ']', '`', '«', '»');
+    }
+
+    /// <summary>
+    /// Перевод слова — вызов существующего механизма перевода проекта.
+    /// </summary>
+    private async Task<string?> TranslateWordAsync(string word)
+    {
+        try
+        {
+            var srcLang = FL.Player.SubtitlesManager[0].Language;
+            var targetLang = FL.PlayerConfig.Subtitles.TranslateTargetLanguage;
+
+            if (srcLang == null || srcLang.ISO6391 == targetLang.ToISO6391())
+                return null;
+
+            if (_translateService == null)
+            {
+                var service = _translateServiceFactory.GetService(FL.PlayerConfig.Subtitles.TranslateWordServiceType, true);
+                service.Initialize(srcLang, targetLang);
+                _translateService = service;
+            }
+
+            return await _translateService.TranslateAsync(word, CancellationToken.None);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    private async Task<string?> TranslateSentenceAsync(string sentence)
+    {
+        try
+        {
+            var srcLang = FL.Player.SubtitlesManager[0].Language;
+            var targetLang = FL.PlayerConfig.Subtitles.TranslateTargetLanguage;
+
+            if (srcLang == null || srcLang.ISO6391 == targetLang.ToISO6391())
+                return null;
+
+            if (_translateService == null)
+            {
+                var service = _translateServiceFactory.GetService(FL.PlayerConfig.Subtitles.TranslateWordServiceType, true);
+                service.Initialize(srcLang, targetLang);
+                _translateService = service;
+            }
+
+            return await _translateService.TranslateAsync(sentence, CancellationToken.None);
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     #region INotifyPropertyChanged
