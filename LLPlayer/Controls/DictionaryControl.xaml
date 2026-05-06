@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:vm="clr-namespace:LLPlayer.ViewModels"
+             xmlns:converters="clr-namespace:LLPlayer.Converters"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:DictionaryViewModel}"
              d:Foreground="White"
@@ -13,6 +14,13 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+            
+            <!-- null → Collapsed, иначе → Visible -->
+            <converters:NullToVisibilityConverter x:Key="NullToCollapsedConv" NullValue="Collapsed"/>
+            <!-- null → Visible, иначе → Collapsed -->
+            <converters:NullToVisibilityConverter x:Key="NullToVisibleConv" NullValue="Visible"/>
+            <!-- 0 → Visible, иначе → Collapsed -->
+            <converters:ZeroToVisibilityConverter x:Key="ZeroToVisibilityConv"/>
             
             <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignIconButton}">
                 <Setter Property="Width" Value="32"/>

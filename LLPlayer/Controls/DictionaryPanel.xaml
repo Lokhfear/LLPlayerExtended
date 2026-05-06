@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:vm="clr-namespace:LLPlayer.ViewModels"
-                xmlns:local="clr-namespace:LLPlayer.Controls"
+             xmlns:converters="clr-namespace:LLPlayer.Converters"
+             xmlns:local="clr-namespace:LLPlayer.Controls"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:DictionaryViewModel}"
              d:Foreground="White"
@@ -16,11 +17,11 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         
         <!-- null → Collapsed, иначе → Visible -->
-        <local:NullToVisibilityConverter x:Key="NullToCollapsedConv" NullValue="Collapsed"/>
+        <converters:NullToVisibilityConverter x:Key="NullToCollapsedConv" NullValue="Collapsed"/>
         <!-- null → Visible, иначе → Collapsed -->
-        <local:NullToVisibilityConverter x:Key="NullToVisibleConv" NullValue="Visible"/>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibleConv" NullValue="Visible"/>
         <!-- 0 → Visible, иначе → Collapsed -->
-        <local:ZeroToVisibilityConverter x:Key="ZeroToVis"/>
+        <converters:ZeroToVisibilityConverter x:Key="ZeroToVis"/>
     </UserControl.Resources>
 
     <Grid Margin="8">
