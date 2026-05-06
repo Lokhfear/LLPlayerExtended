@@ -112,6 +112,11 @@ public class SubtitlesSidebarVM : Bindable, IDisposable
         FL.Config.SidebarLeft = !FL.Config.SidebarLeft;
     });
 
+    public DelegateCommand CmdOpenDictionary => field ??= new(() =>
+    {
+        App.ShowDictionaryWindow();
+    });
+
     public DelegateCommand<int?> CmdSubPlay => field ??= new((index) =>
     {
         if (!index.HasValue)
