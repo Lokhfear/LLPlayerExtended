@@ -1,0 +1,3278 @@
+{
+  "version": 3,
+  "targets": {
+    "net10.0-windows10.0.18362": {
+      "AwesomeAssertions/8.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/FluentAssertions.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/FluentAssertions.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "CliWrap/3.8.2": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/CliWrap.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/CliWrap.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DeepL.net/1.15.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Http.Polly": "5.0.1"
+        },
+        "compile": {
+          "lib/net5.0/DeepL.net.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/DeepL.net.dll": {}
+        }
+      },
+      "Flyleaf.FFmpeg.Bindings/7.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.CodeCoverage/17.13.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {}
+        },
+        "build": {
+          "build/netstandard2.0/Microsoft.CodeCoverage.props": {},
+          "build/netstandard2.0/Microsoft.CodeCoverage.targets": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Http/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Logging": "5.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Options": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Http.Polly/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Http": "5.0.0",
+          "Polly": "7.1.0",
+          "Polly.Extensions.Http": "3.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "5.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Options": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+        },
+        "compile": {
+          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
+        }
+      },
+      "Microsoft.Extensions.Options/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Primitives": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.NET.Test.Sdk/17.13.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeCoverage": "17.13.0",
+          "Microsoft.TestPlatform.TestHost": "17.13.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/_._": {}
+        },
+        "build": {
+          "build/netcoreapp3.1/Microsoft.NET.Test.Sdk.props": {},
+          "build/netcoreapp3.1/Microsoft.NET.Test.Sdk.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.NET.Test.Sdk.props": {}
+        }
+      },
+      "Microsoft.Testing.Extensions.TrxReport.Abstractions/1.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Testing.Platform": "1.6.3"
+        },
+        "compile": {
+          "lib/net9.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Testing.Platform/1.6.3": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Microsoft.Testing.Platform.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Testing.Platform.dll": {
+            "related": ".xml"
+          }
+        },
+        "resource": {
+          "lib/net9.0/cs/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net9.0/de/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net9.0/es/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net9.0/fr/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net9.0/it/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net9.0/ja/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net9.0/ko/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net9.0/pl/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net9.0/pt-BR/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net9.0/ru/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net9.0/tr/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net9.0/zh-Hans/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/net9.0/zh-Hant/Microsoft.Testing.Platform.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        },
+        "build": {
+          "buildTransitive/net9.0/Microsoft.Testing.Platform.props": {},
+          "buildTransitive/net9.0/Microsoft.Testing.Platform.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.Testing.Platform.props": {},
+          "buildMultiTargeting/Microsoft.Testing.Platform.targets": {}
+        }
+      },
+      "Microsoft.Testing.Platform.MSBuild/1.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Testing.Platform": "1.6.3"
+        },
+        "compile": {
+          "lib/net9.0/Microsoft.Testing.Extensions.MSBuild.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Testing.Extensions.MSBuild.dll": {
+            "related": ".xml"
+          }
+        },
+        "resource": {
+          "lib/net9.0/cs/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net9.0/de/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net9.0/es/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net9.0/fr/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net9.0/it/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net9.0/ja/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net9.0/ko/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net9.0/pl/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net9.0/pt-BR/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net9.0/ru/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net9.0/tr/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net9.0/zh-Hans/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/net9.0/zh-Hant/Microsoft.Testing.Extensions.MSBuild.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        },
+        "build": {
+          "buildTransitive/Microsoft.Testing.Platform.MSBuild.props": {},
+          "buildTransitive/Microsoft.Testing.Platform.MSBuild.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.Testing.Platform.MSBuild.props": {},
+          "buildMultiTargeting/Microsoft.Testing.Platform.MSBuild.targets": {}
+        }
+      },
+      "Microsoft.TestPlatform.ObjectModel/17.13.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.PlatformAbstractions.dll": {},
+          "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.PlatformAbstractions.dll": {},
+          "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {}
+        },
+        "resource": {
+          "lib/netcoreapp3.1/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/de/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/es/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/it/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netcoreapp3.1/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netcoreapp3.1/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netcoreapp3.1/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netcoreapp3.1/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netcoreapp3.1/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netcoreapp3.1/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netcoreapp3.1/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netcoreapp3.1/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+            "locale": "zh-Hant"
+          },
+          "lib/netcoreapp3.1/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "Microsoft.TestPlatform.TestHost/17.13.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.TestPlatform.ObjectModel": "17.13.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.CommunicationUtilities.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.CrossPlatEngine.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.PlatformAbstractions.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.Utilities.dll": {},
+          "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.Common.dll": {},
+          "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {},
+          "lib/netcoreapp3.1/testhost.dll": {
+            "related": ".deps.json"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.CommunicationUtilities.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.CrossPlatEngine.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.PlatformAbstractions.dll": {},
+          "lib/netcoreapp3.1/Microsoft.TestPlatform.Utilities.dll": {},
+          "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.Common.dll": {},
+          "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {},
+          "lib/netcoreapp3.1/testhost.dll": {
+            "related": ".deps.json"
+          }
+        },
+        "resource": {
+          "lib/netcoreapp3.1/cs/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/cs/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/cs/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/de/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/de/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/de/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/es/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/es/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/es/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/fr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/fr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/fr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/it/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/it/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/it/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/ja/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netcoreapp3.1/ja/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netcoreapp3.1/ja/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netcoreapp3.1/ko/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netcoreapp3.1/ko/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netcoreapp3.1/ko/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netcoreapp3.1/pl/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/pl/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/pl/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/pt-BR/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/pt-BR/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/pt-BR/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/ru/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/ru/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/ru/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/tr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netcoreapp3.1/tr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netcoreapp3.1/tr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netcoreapp3.1/zh-Hans/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netcoreapp3.1/zh-Hans/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netcoreapp3.1/zh-Hans/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netcoreapp3.1/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll": {
+            "locale": "zh-Hant"
+          },
+          "lib/netcoreapp3.1/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll": {
+            "locale": "zh-Hant"
+          },
+          "lib/netcoreapp3.1/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        },
+        "build": {
+          "build/netcoreapp3.1/Microsoft.TestPlatform.TestHost.props": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Polly/7.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Polly.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Polly.Extensions.Http/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Polly": "7.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SearchPioneer.Lingua/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Lingua.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Lingua.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/any/_._": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        },
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "SharpGen.Runtime/2.4.2-beta": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/SharpGen.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net9.0/SharpGen.Runtime.dll": {}
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "SharpGen.Runtime.COM/2.4.2-beta": {
+        "type": "package",
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta"
+        },
+        "compile": {
+          "lib/net9.0/SharpGen.Runtime.COM.dll": {}
+        },
+        "runtime": {
+          "lib/net9.0/SharpGen.Runtime.COM.dll": {}
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "TesseractOCR/5.5.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.4"
+        },
+        "compile": {
+          "lib/net9.0/TesseractOCR.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/TesseractOCR.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "UTF.Unknown/2.5.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/UtfUnknown.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/UtfUnknown.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Vortice.D3DCompiler/3.7.6-beta": {
+        "type": "package",
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "compile": {
+          "lib/net9.0/Vortice.D3DCompiler.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.D3DCompiler.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "Vortice.Direct2D1/3.7.6-beta": {
+        "type": "package",
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DXGI": "3.7.6-beta"
+        },
+        "compile": {
+          "lib/net9.0/Vortice.Direct2D1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.Direct2D1.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "Vortice.Direct3D11/3.7.6-beta": {
+        "type": "package",
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DXGI": "3.7.6-beta"
+        },
+        "compile": {
+          "lib/net9.0/Vortice.Direct3D11.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.Direct3D11.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "Vortice.DirectComposition/3.7.6-beta": {
+        "type": "package",
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DXGI": "3.7.6-beta",
+          "Vortice.Direct2D1": "3.7.6-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "compile": {
+          "lib/net9.0/Vortice.DirectComposition.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.DirectComposition.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "Vortice.DirectX/3.7.6-beta": {
+        "type": "package",
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "SharpGen.Runtime.COM": "2.4.2-beta",
+          "Vortice.Mathematics": "1.9.3"
+        },
+        "compile": {
+          "lib/net9.0/Vortice.DirectX.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.DirectX.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "Vortice.DXGI/3.7.6-beta": {
+        "type": "package",
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "compile": {
+          "lib/net9.0/Vortice.DXGI.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.DXGI.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "Vortice.Mathematics/1.9.3": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Vortice.Mathematics.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.Mathematics.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Vortice.MediaFoundation/3.7.6-beta": {
+        "type": "package",
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "compile": {
+          "lib/net9.0/Vortice.MediaFoundation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.MediaFoundation.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "Vortice.XAudio2/3.7.6-beta": {
+        "type": "package",
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "compile": {
+          "lib/net9.0/Vortice.XAudio2.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.XAudio2.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        }
+      },
+      "Whisper.net/1.8.1": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Whisper.net.dll": {}
+        },
+        "runtime": {
+          "lib/net9.0/Whisper.net.dll": {}
+        }
+      },
+      "xunit.analyzers/1.21.0": {
+        "type": "package"
+      },
+      "xunit.runner.visualstudio/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "build": {
+          "build/net8.0/xunit.runner.visualstudio.props": {}
+        }
+      },
+      "xunit.v3/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.analyzers": "1.21.0",
+          "xunit.v3.assert": "[2.0.2]",
+          "xunit.v3.core": "[2.0.2]"
+        },
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        }
+      },
+      "xunit.v3.assert/2.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/xunit.v3.assert.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/xunit.v3.assert.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.v3.common/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/xunit.v3.common.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/xunit.v3.common.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.v3.core/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Testing.Platform.MSBuild": "1.6.3",
+          "xunit.v3.extensibility.core": "[2.0.2]",
+          "xunit.v3.runner.inproc.console": "[2.0.2]"
+        },
+        "compile": {
+          "lib/net8.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/xunit.v3.core.props": {},
+          "buildTransitive/xunit.v3.core.targets": {}
+        }
+      },
+      "xunit.v3.extensibility.core/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.v3.common": "[2.0.2]"
+        },
+        "compile": {
+          "lib/netstandard2.0/xunit.v3.core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/xunit.v3.core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.v3.runner.common/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.v3.common": "[2.0.2]"
+        },
+        "compile": {
+          "lib/netstandard2.0/xunit.v3.runner.common.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/xunit.v3.runner.common.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.v3.runner.inproc.console/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Testing.Extensions.TrxReport.Abstractions": "1.6.3",
+          "Microsoft.Testing.Platform": "1.6.3",
+          "xunit.v3.extensibility.core": "[2.0.2]",
+          "xunit.v3.runner.common": "[2.0.2]"
+        },
+        "compile": {
+          "lib/net8.0/xunit.v3.runner.inproc.console.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/xunit.v3.runner.inproc.console.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "FlyleafLib/3.9.4": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "CliWrap": "3.8.2",
+          "DeepL.net": "1.15.0",
+          "Flyleaf.FFmpeg.Bindings": "7.1.1",
+          "SearchPioneer.Lingua": "1.0.4",
+          "TesseractOCR": "5.5.1",
+          "UTF.Unknown": "2.5.1",
+          "Vortice.D3DCompiler": "3.7.6-beta",
+          "Vortice.Direct3D11": "3.7.6-beta",
+          "Vortice.DirectComposition": "3.7.6-beta",
+          "Vortice.Mathematics": "1.9.3",
+          "Vortice.MediaFoundation": "3.7.6-beta",
+          "Vortice.XAudio2": "3.7.6-beta",
+          "Whisper.net": "1.8.1"
+        },
+        "compile": {
+          "bin/placeholder/FlyleafLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FlyleafLib.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "AwesomeAssertions/8.2.0": {
+      "sha512": "L7TH34LqLwc5IGOGvhA8j04RoJRSyL8JuqJDxzFZ8iCyIG5Qy8kjsSdbEFejZPJ5WlUv2XH0z8nG7Y5ueBfMxQ==",
+      "type": "package",
+      "path": "awesomeassertions/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AwesomeAssertions.png",
+        "README.md",
+        "awesomeassertions.8.2.0.nupkg.sha512",
+        "awesomeassertions.nuspec",
+        "lib/net47/FluentAssertions.dll",
+        "lib/net47/FluentAssertions.pdb",
+        "lib/net47/FluentAssertions.xml",
+        "lib/net6.0/FluentAssertions.dll",
+        "lib/net6.0/FluentAssertions.pdb",
+        "lib/net6.0/FluentAssertions.xml",
+        "lib/netstandard2.0/FluentAssertions.dll",
+        "lib/netstandard2.0/FluentAssertions.pdb",
+        "lib/netstandard2.0/FluentAssertions.xml",
+        "lib/netstandard2.1/FluentAssertions.dll",
+        "lib/netstandard2.1/FluentAssertions.pdb",
+        "lib/netstandard2.1/FluentAssertions.xml"
+      ]
+    },
+    "CliWrap/3.8.2": {
+      "sha512": "FTfHUYVt69M0wzcCfQQok3JnmaPQzrqKIB8xBiyTwzocGmG7N3MpDbMC9+qeeAvPclRgUDj3EpMvXwJBwY4/mw==",
+      "type": "package",
+      "path": "cliwrap/3.8.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "cliwrap.3.8.2.nupkg.sha512",
+        "cliwrap.nuspec",
+        "favicon.png",
+        "lib/net8.0/CliWrap.dll",
+        "lib/net8.0/CliWrap.xml",
+        "lib/net9.0/CliWrap.dll",
+        "lib/net9.0/CliWrap.xml",
+        "lib/netstandard2.0/CliWrap.dll",
+        "lib/netstandard2.0/CliWrap.xml",
+        "lib/netstandard2.1/CliWrap.dll",
+        "lib/netstandard2.1/CliWrap.xml"
+      ]
+    },
+    "DeepL.net/1.15.0": {
+      "sha512": "MCRiamT1zl3QsjT33J69ajI7TiUOHxdyjfhxDtcHXszvVgyG3LMCw84p6pop3IiSHSMxCDSK1ntLGhUAeMyMPA==",
+      "type": "package",
+      "path": "deepl.net/1.15.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "deepl.net.1.15.0.nupkg.sha512",
+        "deepl.net.nuspec",
+        "icon.png",
+        "lib/net5.0/DeepL.net.dll",
+        "lib/netstandard2.0/DeepL.net.dll"
+      ]
+    },
+    "Flyleaf.FFmpeg.Bindings/7.1.1": {
+      "sha512": "EU4JLzurif8pkcxq03aARp2fYRAlQVU+Gpn30cjvTXc95NLmag1BbMMkHmiCBegOgnZOPZKt/WIEj8aery8uPA==",
+      "type": "package",
+      "path": "flyleaf.ffmpeg.bindings/7.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "flyleaf.ffmpeg.bindings.7.1.1.nupkg.sha512",
+        "flyleaf.ffmpeg.bindings.nuspec",
+        "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll",
+        "lib/net8.0/Flyleaf.FFmpeg.Bindings.xml"
+      ]
+    },
+    "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "sha512": "UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
+      "type": "package",
+      "path": "microsoft.bcl.asyncinterfaces/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/net461/Microsoft.Bcl.AsyncInterfaces.xml",
+        "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml",
+        "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml",
+        "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
+        "microsoft.bcl.asyncinterfaces.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.CodeCoverage/17.13.0": {
+      "sha512": "9LIUy0y+DvUmEPtbRDw6Bay3rzwqFV8P4efTrK4CZhQle3M/QwLPjISghfcolmEGAPWxuJi6m98ZEfk4VR4Lfg==",
+      "type": "package",
+      "path": "microsoft.codecoverage/17.13.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "ThirdPartyNotices.txt",
+        "build/netstandard2.0/CodeCoverage/CodeCoverage.config",
+        "build/netstandard2.0/CodeCoverage/CodeCoverage.exe",
+        "build/netstandard2.0/CodeCoverage/Cov_x86.config",
+        "build/netstandard2.0/CodeCoverage/amd64/CodeCoverage.exe",
+        "build/netstandard2.0/CodeCoverage/amd64/Cov_x64.config",
+        "build/netstandard2.0/CodeCoverage/amd64/covrun64.dll",
+        "build/netstandard2.0/CodeCoverage/amd64/msdia140.dll",
+        "build/netstandard2.0/CodeCoverage/arm64/Cov_arm64.config",
+        "build/netstandard2.0/CodeCoverage/arm64/covrunarm64.dll",
+        "build/netstandard2.0/CodeCoverage/arm64/msdia140.dll",
+        "build/netstandard2.0/CodeCoverage/codecoveragemessages.dll",
+        "build/netstandard2.0/CodeCoverage/coreclr/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+        "build/netstandard2.0/CodeCoverage/covrun32.dll",
+        "build/netstandard2.0/CodeCoverage/msdia140.dll",
+        "build/netstandard2.0/Microsoft.CodeCoverage.Core.dll",
+        "build/netstandard2.0/Microsoft.CodeCoverage.Instrumentation.Core.dll",
+        "build/netstandard2.0/Microsoft.CodeCoverage.Instrumentation.dll",
+        "build/netstandard2.0/Microsoft.CodeCoverage.Interprocess.dll",
+        "build/netstandard2.0/Microsoft.CodeCoverage.props",
+        "build/netstandard2.0/Microsoft.CodeCoverage.targets",
+        "build/netstandard2.0/Microsoft.DiaSymReader.dll",
+        "build/netstandard2.0/Microsoft.VisualStudio.TraceDataCollector.dll",
+        "build/netstandard2.0/Mono.Cecil.Pdb.dll",
+        "build/netstandard2.0/Mono.Cecil.Rocks.dll",
+        "build/netstandard2.0/Mono.Cecil.dll",
+        "build/netstandard2.0/ThirdPartyNotices.txt",
+        "build/netstandard2.0/alpine/x64/Cov_x64.config",
+        "build/netstandard2.0/alpine/x64/libCoverageInstrumentationMethod.so",
+        "build/netstandard2.0/alpine/x64/libInstrumentationEngine.so",
+        "build/netstandard2.0/arm64/MicrosoftInstrumentationEngine_arm64.dll",
+        "build/netstandard2.0/cs/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/de/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/es/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/fr/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/it/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/ja/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/ko/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/macos/x64/Cov_x64.config",
+        "build/netstandard2.0/macos/x64/libCoverageInstrumentationMethod.dylib",
+        "build/netstandard2.0/macos/x64/libInstrumentationEngine.dylib",
+        "build/netstandard2.0/pl/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/pt-BR/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/ru/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/tr/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/ubuntu/x64/Cov_x64.config",
+        "build/netstandard2.0/ubuntu/x64/libCoverageInstrumentationMethod.so",
+        "build/netstandard2.0/ubuntu/x64/libInstrumentationEngine.so",
+        "build/netstandard2.0/x64/MicrosoftInstrumentationEngine_x64.dll",
+        "build/netstandard2.0/x86/MicrosoftInstrumentationEngine_x86.dll",
+        "build/netstandard2.0/zh-Hans/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "build/netstandard2.0/zh-Hant/Microsoft.VisualStudio.TraceDataCollector.resources.dll",
+        "lib/net462/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+        "lib/netcoreapp3.1/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+        "microsoft.codecoverage.17.13.0.nupkg.sha512",
+        "microsoft.codecoverage.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection/5.0.0": {
+      "sha512": "Rc2kb/p3Ze6cP6rhFC3PJRdWGbLvSHZc0ev7YlyeU6FmHciDMLrhoVoTUEzKPhN5ZjFgKF1Cf5fOz8mCMIkvpA==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/net5.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net5.0/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.xml",
+        "microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+      "sha512": "UI0TQPVkS78bFdjkTodmkH0Fe8lXv9LnhGFKgKrsgUJ5a5FVdFRcgjIkBVLbGgdRhxWirxH/8IXUtEyYJx6GQg==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Http/5.0.0": {
+      "sha512": "kT1ijDKZuSUhBtYoC1sXrmVKP7mA08h9Xrsr4VrS/QOtiKCEtUTTd7dd3XI9dwAb46tZSak13q/zdIcr4jqbyg==",
+      "type": "package",
+      "path": "microsoft.extensions.http/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Http.dll",
+        "lib/net461/Microsoft.Extensions.Http.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Http.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Http.xml",
+        "microsoft.extensions.http.5.0.0.nupkg.sha512",
+        "microsoft.extensions.http.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.Http.Polly/5.0.1": {
+      "sha512": "Tzf+x8HVDhri9dkIGCGOP5RVjgXnTZuBcwZHr0sW6KAtVGPDU0xEDXPDpoW5vwq/K12dMI75vuapUtMw0d/pIw==",
+      "type": "package",
+      "path": "microsoft.extensions.http.polly/5.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.xml",
+        "microsoft.extensions.http.polly.5.0.1.nupkg.sha512",
+        "microsoft.extensions.http.polly.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Logging/5.0.0": {
+      "sha512": "MgOwK6tPzB6YNH21wssJcw/2MKwee8b2gI7SllYfn6rvTpIrVvVS5HAjSU2vqSku1fwqRvWP0MdIi14qjd93Aw==",
+      "type": "package",
+      "path": "microsoft.extensions.logging/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Logging.dll",
+        "lib/net461/Microsoft.Extensions.Logging.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Logging.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Logging.xml",
+        "microsoft.extensions.logging.5.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "sha512": "0MXlimU4Dud6t+iNi5NEz3dO2w1HXdhoOLaYFuLPCjAsvlPQGwOT6V2KZRMLEhCAm/stSZt1AUv0XmDdkjvtbw==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.abstractions/9.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn3.11/cs/Microsoft.Extensions.Logging.Generators.dll",
+        "analyzers/dotnet/roslyn3.11/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/Microsoft.Extensions.Logging.Generators.dll",
+        "analyzers/dotnet/roslyn4.0/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Logging.Generators.dll",
+        "analyzers/dotnet/roslyn4.4/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
+        "buildTransitive/net461/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/net462/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/net8.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Options/5.0.0": {
+      "sha512": "CBvR92TCJ5uBIdd9/HzDSrxYak+0W/3+yxrNg8Qm6Bmrkh5L+nu6m3WeazQehcZ5q1/6dDA7J5YdQjim0165zg==",
+      "type": "package",
+      "path": "microsoft.extensions.options/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Options.dll",
+        "lib/net461/Microsoft.Extensions.Options.xml",
+        "lib/net5.0/Microsoft.Extensions.Options.dll",
+        "lib/net5.0/Microsoft.Extensions.Options.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
+        "microsoft.extensions.options.5.0.0.nupkg.sha512",
+        "microsoft.extensions.options.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.Primitives/5.0.0": {
+      "sha512": "cI/VWn9G1fghXrNDagX9nYaaB/nokkZn0HYAawGaELQrl8InSezfe9OnfPZLcJq3esXxygh3hkq2c3qoV3SDyQ==",
+      "type": "package",
+      "path": "microsoft.extensions.primitives/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Primitives.dll",
+        "lib/net461/Microsoft.Extensions.Primitives.xml",
+        "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
+        "microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+        "microsoft.extensions.primitives.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.NET.Test.Sdk/17.13.0": {
+      "sha512": "W19wCPizaIC9Zh47w8wWI/yxuqR7/dtABwOrc8r2jX/8mUNxM2vw4fXDh+DJTeogxV+KzKwg5jNNGQVwf3LXyA==",
+      "type": "package",
+      "path": "microsoft.net.test.sdk/17.13.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "build/net462/Microsoft.NET.Test.Sdk.props",
+        "build/net462/Microsoft.NET.Test.Sdk.targets",
+        "build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.cs",
+        "build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.fs",
+        "build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.vb",
+        "build/netcoreapp3.1/Microsoft.NET.Test.Sdk.props",
+        "build/netcoreapp3.1/Microsoft.NET.Test.Sdk.targets",
+        "buildMultiTargeting/Microsoft.NET.Test.Sdk.props",
+        "lib/net462/_._",
+        "lib/netcoreapp3.1/_._",
+        "microsoft.net.test.sdk.17.13.0.nupkg.sha512",
+        "microsoft.net.test.sdk.nuspec"
+      ]
+    },
+    "Microsoft.Testing.Extensions.TrxReport.Abstractions/1.6.3": {
+      "sha512": "0MdowM+3IDVWE5VBzVe9NvxsE4caSbM3fO+jlWVzEBr/Vnc3BWx+uV/Ex0dLLpkxkeUKH2gGWTNLb39rw3DDqw==",
+      "type": "package",
+      "path": "microsoft.testing.extensions.trxreport.abstractions/1.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "lib/net6.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll",
+        "lib/net6.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.xml",
+        "lib/net7.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll",
+        "lib/net7.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.xml",
+        "lib/net8.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll",
+        "lib/net8.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.xml",
+        "lib/net9.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll",
+        "lib/net9.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.xml",
+        "microsoft.testing.extensions.trxreport.abstractions.1.6.3.nupkg.sha512",
+        "microsoft.testing.extensions.trxreport.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Testing.Platform/1.6.3": {
+      "sha512": "DqMZukaPo+vKzColfqd1I5qZebfISZT6ND70AOem/dYQmHsaMN0xg/JG7E0e80rwfxL7wAA4ylSg8j6KJf1Tuw==",
+      "type": "package",
+      "path": "microsoft.testing.platform/1.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "build/net6.0/Microsoft.Testing.Platform.props",
+        "build/net6.0/Microsoft.Testing.Platform.targets",
+        "build/net7.0/Microsoft.Testing.Platform.props",
+        "build/net7.0/Microsoft.Testing.Platform.targets",
+        "build/net8.0/Microsoft.Testing.Platform.props",
+        "build/net8.0/Microsoft.Testing.Platform.targets",
+        "build/net9.0/Microsoft.Testing.Platform.props",
+        "build/net9.0/Microsoft.Testing.Platform.targets",
+        "build/netstandard2.0/Microsoft.Testing.Platform.props",
+        "build/netstandard2.0/Microsoft.Testing.Platform.targets",
+        "buildMultiTargeting/Microsoft.Testing.Platform.props",
+        "buildMultiTargeting/Microsoft.Testing.Platform.targets",
+        "buildTransitive/net6.0/Microsoft.Testing.Platform.props",
+        "buildTransitive/net6.0/Microsoft.Testing.Platform.targets",
+        "buildTransitive/net7.0/Microsoft.Testing.Platform.props",
+        "buildTransitive/net7.0/Microsoft.Testing.Platform.targets",
+        "buildTransitive/net8.0/Microsoft.Testing.Platform.props",
+        "buildTransitive/net8.0/Microsoft.Testing.Platform.targets",
+        "buildTransitive/net9.0/Microsoft.Testing.Platform.props",
+        "buildTransitive/net9.0/Microsoft.Testing.Platform.targets",
+        "buildTransitive/netstandard2.0/Microsoft.Testing.Platform.props",
+        "buildTransitive/netstandard2.0/Microsoft.Testing.Platform.targets",
+        "lib/net6.0/Microsoft.Testing.Platform.dll",
+        "lib/net6.0/Microsoft.Testing.Platform.xml",
+        "lib/net6.0/cs/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/de/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/es/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/fr/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/it/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/ja/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/ko/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/pl/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/pt-BR/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/ru/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/tr/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/zh-Hans/Microsoft.Testing.Platform.resources.dll",
+        "lib/net6.0/zh-Hant/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/Microsoft.Testing.Platform.dll",
+        "lib/net7.0/Microsoft.Testing.Platform.xml",
+        "lib/net7.0/cs/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/de/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/es/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/fr/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/it/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/ja/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/ko/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/pl/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/pt-BR/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/ru/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/tr/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/zh-Hans/Microsoft.Testing.Platform.resources.dll",
+        "lib/net7.0/zh-Hant/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/Microsoft.Testing.Platform.dll",
+        "lib/net8.0/Microsoft.Testing.Platform.xml",
+        "lib/net8.0/cs/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/de/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/es/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/fr/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/it/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/ja/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/ko/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/pl/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/pt-BR/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/ru/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/tr/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/zh-Hans/Microsoft.Testing.Platform.resources.dll",
+        "lib/net8.0/zh-Hant/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/Microsoft.Testing.Platform.dll",
+        "lib/net9.0/Microsoft.Testing.Platform.xml",
+        "lib/net9.0/cs/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/de/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/es/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/fr/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/it/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/ja/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/ko/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/pl/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/pt-BR/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/ru/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/tr/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/zh-Hans/Microsoft.Testing.Platform.resources.dll",
+        "lib/net9.0/zh-Hant/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/Microsoft.Testing.Platform.dll",
+        "lib/netstandard2.0/Microsoft.Testing.Platform.xml",
+        "lib/netstandard2.0/cs/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/de/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/es/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/fr/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/it/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/ja/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/ko/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/pl/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/pt-BR/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/ru/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/tr/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/zh-Hans/Microsoft.Testing.Platform.resources.dll",
+        "lib/netstandard2.0/zh-Hant/Microsoft.Testing.Platform.resources.dll",
+        "microsoft.testing.platform.1.6.3.nupkg.sha512",
+        "microsoft.testing.platform.nuspec"
+      ]
+    },
+    "Microsoft.Testing.Platform.MSBuild/1.6.3": {
+      "sha512": "PXSYI5Iae29GM5636zOL8PlQD1YyOa9cfzfYLR43hrLjjK7RDJgMTvgAet3oZLgDTvz6pbzABZvhx+S/W5m8YA==",
+      "type": "package",
+      "path": "microsoft.testing.platform.msbuild/1.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "_MSBuildTasks/netstandard2.0/Microsoft.Testing.Platform.MSBuild.dll",
+        "_MSBuildTasks/netstandard2.0/Microsoft.Testing.Platform.MSBuild.xml",
+        "_MSBuildTasks/netstandard2.0/Microsoft.Testing.Platform.dll",
+        "_MSBuildTasks/netstandard2.0/Microsoft.Testing.Platform.xml",
+        "_MSBuildTasks/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "_MSBuildTasks/netstandard2.0/System.Security.AccessControl.dll",
+        "_MSBuildTasks/netstandard2.0/System.Security.Principal.Windows.dll",
+        "_MSBuildTasks/netstandard2.0/cs/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/cs/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/de/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/de/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/es/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/es/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/fr/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/fr/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/it/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/it/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/ja/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/ja/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/ko/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/ko/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/pl/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/pl/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/pt-BR/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/pt-BR/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/ru/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/ru/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/tr/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/tr/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/zh-Hans/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/zh-Hans/Microsoft.Testing.Platform.resources.dll",
+        "_MSBuildTasks/netstandard2.0/zh-Hant/Microsoft.Testing.Platform.MSBuild.resources.dll",
+        "_MSBuildTasks/netstandard2.0/zh-Hant/Microsoft.Testing.Platform.resources.dll",
+        "build/Microsoft.Testing.Platform.MSBuild.props",
+        "build/Microsoft.Testing.Platform.MSBuild.targets",
+        "buildMultiTargeting/Microsoft.Testing.Platform.MSBuild.CustomTestTarget.targets",
+        "buildMultiTargeting/Microsoft.Testing.Platform.MSBuild.VSTest.targets",
+        "buildMultiTargeting/Microsoft.Testing.Platform.MSBuild.props",
+        "buildMultiTargeting/Microsoft.Testing.Platform.MSBuild.targets",
+        "buildTransitive/Microsoft.Testing.Platform.MSBuild.props",
+        "buildTransitive/Microsoft.Testing.Platform.MSBuild.targets",
+        "lib/net6.0/Microsoft.Testing.Extensions.MSBuild.dll",
+        "lib/net6.0/Microsoft.Testing.Extensions.MSBuild.xml",
+        "lib/net6.0/cs/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/de/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/es/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/fr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/it/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/ja/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/ko/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/pl/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/pt-BR/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/ru/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/tr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/zh-Hans/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net6.0/zh-Hant/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/Microsoft.Testing.Extensions.MSBuild.dll",
+        "lib/net7.0/Microsoft.Testing.Extensions.MSBuild.xml",
+        "lib/net7.0/cs/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/de/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/es/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/fr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/it/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/ja/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/ko/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/pl/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/pt-BR/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/ru/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/tr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/zh-Hans/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net7.0/zh-Hant/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/Microsoft.Testing.Extensions.MSBuild.dll",
+        "lib/net8.0/Microsoft.Testing.Extensions.MSBuild.xml",
+        "lib/net8.0/cs/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/de/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/es/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/fr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/it/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/ja/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/ko/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/pl/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/pt-BR/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/ru/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/tr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/zh-Hans/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net8.0/zh-Hant/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/Microsoft.Testing.Extensions.MSBuild.dll",
+        "lib/net9.0/Microsoft.Testing.Extensions.MSBuild.xml",
+        "lib/net9.0/cs/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/de/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/es/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/fr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/it/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/ja/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/ko/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/pl/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/pt-BR/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/ru/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/tr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/zh-Hans/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/net9.0/zh-Hant/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/Microsoft.Testing.Extensions.MSBuild.dll",
+        "lib/netstandard2.0/Microsoft.Testing.Extensions.MSBuild.xml",
+        "lib/netstandard2.0/cs/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/de/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/es/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/fr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/it/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/ja/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/ko/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/pl/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/pt-BR/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/ru/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/tr/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/zh-Hans/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "lib/netstandard2.0/zh-Hant/Microsoft.Testing.Extensions.MSBuild.resources.dll",
+        "microsoft.testing.platform.msbuild.1.6.3.nupkg.sha512",
+        "microsoft.testing.platform.msbuild.nuspec"
+      ]
+    },
+    "Microsoft.TestPlatform.ObjectModel/17.13.0": {
+      "sha512": "bt0E0Dx+iqW97o4A59RCmUmz/5NarJ7LRL+jXbSHod72ibL5XdNm1Ke+UO5tFhBG4VwHLcSjqq9BUSblGNWamw==",
+      "type": "package",
+      "path": "microsoft.testplatform.objectmodel/17.13.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/net462/Microsoft.TestPlatform.CoreUtilities.dll",
+        "lib/net462/Microsoft.TestPlatform.PlatformAbstractions.dll",
+        "lib/net462/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+        "lib/net462/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/de/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/es/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/it/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/net462/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/net462/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll",
+        "lib/netcoreapp3.1/Microsoft.TestPlatform.PlatformAbstractions.dll",
+        "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+        "lib/netcoreapp3.1/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/de/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/es/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/it/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netcoreapp3.1/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netcoreapp3.1/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/Microsoft.TestPlatform.CoreUtilities.dll",
+        "lib/netstandard2.0/Microsoft.TestPlatform.PlatformAbstractions.dll",
+        "lib/netstandard2.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+        "lib/netstandard2.0/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/de/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/es/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/it/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "lib/netstandard2.0/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll",
+        "lib/netstandard2.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll",
+        "microsoft.testplatform.objectmodel.17.13.0.nupkg.sha512",
+        "microsoft.testplatform.objectmodel.nuspec"
+      ]
+    },
+    "Microsoft.TestPlatform.TestHost/17.13.0": {
+      "sha512": "9GGw08Dc3AXspjekdyTdZ/wYWFlxbgcF0s7BKxzVX+hzAwpifDOdxM+ceVaaJSQOwqt3jtuNlHn3XTpKUS9x9Q==",
+      "type": "package",
+      "path": "microsoft.testplatform.testhost/17.13.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "ThirdPartyNotices.txt",
+        "build/netcoreapp3.1/Microsoft.TestPlatform.TestHost.props",
+        "build/netcoreapp3.1/x64/testhost.dll",
+        "build/netcoreapp3.1/x64/testhost.exe",
+        "build/netcoreapp3.1/x86/testhost.x86.dll",
+        "build/netcoreapp3.1/x86/testhost.x86.exe",
+        "lib/net462/_._",
+        "lib/netcoreapp3.1/Microsoft.TestPlatform.CommunicationUtilities.dll",
+        "lib/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll",
+        "lib/netcoreapp3.1/Microsoft.TestPlatform.CrossPlatEngine.dll",
+        "lib/netcoreapp3.1/Microsoft.TestPlatform.PlatformAbstractions.dll",
+        "lib/netcoreapp3.1/Microsoft.TestPlatform.Utilities.dll",
+        "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.Common.dll",
+        "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+        "lib/netcoreapp3.1/cs/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/cs/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/cs/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/de/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/de/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/de/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/es/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/es/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/es/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/fr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/fr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/fr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/it/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/it/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/it/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/ja/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/ja/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/ja/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/ko/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/ko/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/ko/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/pl/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/pl/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/pl/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/pt-BR/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/pt-BR/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/pt-BR/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/ru/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/ru/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/ru/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/testhost.deps.json",
+        "lib/netcoreapp3.1/testhost.dll",
+        "lib/netcoreapp3.1/tr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/tr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/tr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/x64/msdia140.dll",
+        "lib/netcoreapp3.1/x86/msdia140.dll",
+        "lib/netcoreapp3.1/zh-Hans/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/zh-Hans/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/zh-Hans/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "lib/netcoreapp3.1/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll",
+        "lib/netcoreapp3.1/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll",
+        "lib/netcoreapp3.1/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll",
+        "microsoft.testplatform.testhost.17.13.0.nupkg.sha512",
+        "microsoft.testplatform.testhost.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "Polly/7.1.0": {
+      "sha512": "mpQsvlEn4ipgICh5CGyVLPV93RFVzOrBG7wPZfzY8gExh7XgWQn0GCDY9nudbUEJ12UiGPP9i4+CohghBvzhmg==",
+      "type": "package",
+      "path": "polly/7.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.1/Polly.dll",
+        "lib/netstandard1.1/Polly.xml",
+        "lib/netstandard2.0/Polly.dll",
+        "lib/netstandard2.0/Polly.xml",
+        "polly.7.1.0.nupkg.sha512",
+        "polly.nuspec"
+      ]
+    },
+    "Polly.Extensions.Http/3.0.0": {
+      "sha512": "drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
+      "type": "package",
+      "path": "polly.extensions.http/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.1/Polly.Extensions.Http.dll",
+        "lib/netstandard1.1/Polly.Extensions.Http.xml",
+        "lib/netstandard2.0/Polly.Extensions.Http.dll",
+        "lib/netstandard2.0/Polly.Extensions.Http.xml",
+        "polly.extensions.http.3.0.0.nupkg.sha512",
+        "polly.extensions.http.nuspec"
+      ]
+    },
+    "SearchPioneer.Lingua/1.0.4": {
+      "sha512": "o53CQDh+A8W2NDbfcKVvhLdkl7drn8pxmWkkZvAPbx5bLJ2XHGIVCxjkC2WJweKWwI2hNLM8Ekla9beFYSWBxA==",
+      "type": "package",
+      "path": "searchpioneer.lingua/1.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "build/SearchPioneer.Lingua.props",
+        "build/SearchPioneer.Lingua.targets",
+        "contentFiles/any/any/Lingua/LanguageModels/af/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/af/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/af/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/af/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/af/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/am/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/am/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/am/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/am/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/am/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ar/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ar/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ar/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ar/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ar/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/az/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/az/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/az/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/az/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/az/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/be/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/be/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/be/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/be/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/be/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bg/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bg/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bg/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bg/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bg/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bn/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bn/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bn/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bn/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bn/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bs/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bs/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bs/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bs/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/bs/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ca/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ca/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ca/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ca/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ca/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cs/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cs/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cs/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cs/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cs/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cy/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cy/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cy/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cy/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/cy/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/da/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/da/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/da/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/da/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/da/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/de/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/de/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/de/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/de/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/de/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/el/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/el/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/el/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/el/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/el/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/en/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/en/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/en/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/en/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/en/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eo/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eo/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eo/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eo/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eo/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/es/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/es/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/es/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/es/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/es/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/et/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/et/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/et/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/et/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/et/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eu/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eu/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eu/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eu/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/eu/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fa/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fa/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fa/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fa/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fa/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fi/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fi/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fi/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fi/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fi/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fr/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fr/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fr/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fr/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/fr/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ga/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ga/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ga/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ga/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ga/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/gu/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/gu/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/gu/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/gu/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/gu/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/he/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/he/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/he/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/he/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/he/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hi/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hi/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hi/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hi/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hi/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hr/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hr/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hr/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hr/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hr/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hu/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hu/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hu/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hu/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hu/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hy/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hy/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hy/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hy/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/hy/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/id/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/id/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/id/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/id/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/id/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/is/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/is/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/is/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/is/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/is/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/it/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/it/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/it/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/it/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/it/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ja/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ka/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ka/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ka/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ka/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ka/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/kk/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/kk/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/kk/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/kk/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/kk/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ko/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/la/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/la/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/la/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/la/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/la/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lg/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lg/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lg/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lg/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lg/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lt/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lt/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lt/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lt/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lt/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lv/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lv/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lv/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lv/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/lv/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mi/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mi/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mi/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mi/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mi/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mk/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mk/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mk/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mk/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mk/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mn/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mn/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mn/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mn/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mn/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mr/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mr/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mr/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mr/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/mr/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ms/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ms/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ms/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ms/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ms/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nb/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nb/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nb/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nb/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nb/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nl/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nl/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nl/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nl/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nl/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nn/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nn/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nn/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nn/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/nn/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/om/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/om/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/om/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/om/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/om/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pa/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pa/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pa/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pa/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pa/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pl/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pl/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pl/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pl/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pl/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pt/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pt/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pt/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pt/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/pt/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ro/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ro/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ro/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ro/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ro/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ru/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ru/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ru/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ru/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ru/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/si/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/si/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/si/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/si/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/si/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sk/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sk/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sk/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sk/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sk/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sl/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sl/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sl/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sl/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sl/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sn/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sn/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sn/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sn/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sn/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/so/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/so/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/so/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/so/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/so/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sq/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sq/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sq/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sq/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sq/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sr/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sr/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sr/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sr/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sr/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/st/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/st/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/st/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/st/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/st/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sv/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sv/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sv/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sv/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sv/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sw/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sw/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sw/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sw/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/sw/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ta/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ta/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ta/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ta/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ta/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/te/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/te/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/te/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/te/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/te/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/th/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/th/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/th/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/th/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/th/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ti/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ti/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ti/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ti/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ti/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tl/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tl/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tl/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tl/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tl/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tn/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tn/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tn/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tn/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tn/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tr/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tr/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tr/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tr/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/tr/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ts/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ts/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ts/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ts/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ts/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/uk/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/uk/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/uk/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/uk/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/uk/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ur/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ur/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ur/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ur/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/ur/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/vi/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/vi/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/vi/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/vi/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/vi/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/xh/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/xh/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/xh/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/xh/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/xh/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/yo/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/yo/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/yo/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/yo/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/yo/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/zh/unigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/zu/bigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/zu/fivegrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/zu/quadrigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/zu/trigrams.json.br",
+        "contentFiles/any/any/Lingua/LanguageModels/zu/unigrams.json.br",
+        "lib/net8.0/Lingua.dll",
+        "lib/net8.0/Lingua.pdb",
+        "lib/net8.0/Lingua.xml",
+        "lib/net9.0/Lingua.dll",
+        "lib/net9.0/Lingua.pdb",
+        "lib/net9.0/Lingua.xml",
+        "nuget-icon.png",
+        "searchpioneer.lingua.1.0.4.nupkg.sha512",
+        "searchpioneer.lingua.nuspec"
+      ]
+    },
+    "SharpGen.Runtime/2.4.2-beta": {
+      "sha512": "niTtWAUov1F7wZGAlVeEvW+Tnqvg5yTmhI7rxmYu2Utoyu2TbC9tWWpUpMs0PQg5lu5svoYpCAztNjxCqMFP/w==",
+      "type": "package",
+      "path": "sharpgen.runtime/2.4.2-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Mapping.xml",
+        "build/SharpGen.Runtime.props",
+        "buildMultiTargeting/SharpGen.Runtime.props",
+        "lib/net8.0/SharpGen.Runtime.dll",
+        "lib/net9.0/SharpGen.Runtime.dll",
+        "lib/netstandard2.0/SharpGen.Runtime.dll",
+        "lib/netstandard2.1/SharpGen.Runtime.dll",
+        "sharpgen.runtime.2.4.2-beta.nupkg.sha512",
+        "sharpgen.runtime.nuspec"
+      ]
+    },
+    "SharpGen.Runtime.COM/2.4.2-beta": {
+      "sha512": "9lxDFMiepqo3lJQzMSjECCIONeCc2f3Drokgj6HtrTLZcJSftNgcLbD6/iXYj2iphkwgrZb1oLsDOZxoFZkawQ==",
+      "type": "package",
+      "path": "sharpgen.runtime.com/2.4.2-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/SharpGen.Runtime.COM.BindMapping.xml",
+        "build/SharpGen.Runtime.COM.props",
+        "buildMultiTargeting/SharpGen.Runtime.COM.props",
+        "lib/net462/SharpGen.Runtime.COM.dll",
+        "lib/net471/SharpGen.Runtime.COM.dll",
+        "lib/net8.0/SharpGen.Runtime.COM.dll",
+        "lib/net9.0/SharpGen.Runtime.COM.dll",
+        "lib/netstandard2.0/SharpGen.Runtime.COM.dll",
+        "lib/netstandard2.1/SharpGen.Runtime.COM.dll",
+        "sharpgen.runtime.com.2.4.2-beta.nupkg.sha512",
+        "sharpgen.runtime.com.nuspec"
+      ]
+    },
+    "TesseractOCR/5.5.1": {
+      "sha512": "C/o5EAEqHv/77OVOF4BECACrbo0YcZBMR5AsaowYHPdch71p0w+K8qWXmWbJYSeA1jIJFXT/k9jO9ER7/6pYtQ==",
+      "type": "package",
+      "path": "tesseractocr/5.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/TesseractOCR.targets",
+        "lib/leptonica-1.85.0.dll",
+        "lib/net461/TesseractOCR.dll",
+        "lib/net461/TesseractOCR.xml",
+        "lib/net48/TesseractOCR.dll",
+        "lib/net48/TesseractOCR.xml",
+        "lib/net6.0/TesseractOCR.dll",
+        "lib/net6.0/TesseractOCR.xml",
+        "lib/net8.0/TesseractOCR.dll",
+        "lib/net8.0/TesseractOCR.xml",
+        "lib/net9.0/TesseractOCR.dll",
+        "lib/net9.0/TesseractOCR.xml",
+        "lib/netstandard2.1/TesseractOCR.dll",
+        "lib/netstandard2.1/TesseractOCR.xml",
+        "lib/tesseract.exe",
+        "lib/tesseract55.dll",
+        "ocr.png",
+        "tesseractocr.5.5.1.nupkg.sha512",
+        "tesseractocr.nuspec",
+        "x64/leptonica-1.85.0.dll",
+        "x64/tesseract.exe",
+        "x64/tesseract55.dll",
+        "x86/leptonica-1.85.0.dll",
+        "x86/tesseract.exe",
+        "x86/tesseract55.dll"
+      ]
+    },
+    "UTF.Unknown/2.5.1": {
+      "sha512": "KhZuBaO55PIu6m4bkij3ZQL8qwVyofwFpNnyguXFjwxJlbfYX+dRn8tGy/PjTK6I4UJm8ujkJFvBLaV7MKltTA==",
+      "type": "package",
+      "path": "utf.unknown/2.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/UtfUnknown.dll",
+        "lib/net40/UtfUnknown.xml",
+        "lib/netcoreapp3.0/UtfUnknown.dll",
+        "lib/netcoreapp3.0/UtfUnknown.xml",
+        "lib/netstandard1.0/UtfUnknown.dll",
+        "lib/netstandard1.0/UtfUnknown.xml",
+        "lib/netstandard1.3/UtfUnknown.dll",
+        "lib/netstandard1.3/UtfUnknown.xml",
+        "lib/netstandard2.0/UtfUnknown.dll",
+        "lib/netstandard2.0/UtfUnknown.xml",
+        "utf.unknown.2.5.1.nupkg.sha512",
+        "utf.unknown.nuspec"
+      ]
+    },
+    "Vortice.D3DCompiler/3.7.6-beta": {
+      "sha512": "4xrtZx+5OoE0DcVMbRsRS9HrhgjNVb0A+2xopwgbuXofogNkJ0uPTFGIeovvchnEDMvCvfckp6qy1EZcM/1OyA==",
+      "type": "package",
+      "path": "vortice.d3dcompiler/3.7.6-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Vortice.D3DCompiler.BindMapping.xml",
+        "build/Vortice.D3DCompiler.props",
+        "buildMultiTargeting/Vortice.D3DCompiler.props",
+        "lib/net8.0/Vortice.D3DCompiler.dll",
+        "lib/net8.0/Vortice.D3DCompiler.xml",
+        "lib/net9.0/Vortice.D3DCompiler.dll",
+        "lib/net9.0/Vortice.D3DCompiler.xml",
+        "vortice.d3dcompiler.3.7.6-beta.nupkg.sha512",
+        "vortice.d3dcompiler.nuspec"
+      ]
+    },
+    "Vortice.Direct2D1/3.7.6-beta": {
+      "sha512": "/TM4VfY0hx0MZWmTT9LiJ6WRwwz/qUsluTkBWUFFJfzTs4mUdawnxkWyGHzspVOwInetCFSUCR2ZCBfT90Jf1g==",
+      "type": "package",
+      "path": "vortice.direct2d1/3.7.6-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Vortice.Direct2D1.BindMapping.xml",
+        "build/Vortice.Direct2D1.props",
+        "buildMultiTargeting/Vortice.Direct2D1.props",
+        "lib/net8.0/Vortice.Direct2D1.dll",
+        "lib/net8.0/Vortice.Direct2D1.xml",
+        "lib/net9.0/Vortice.Direct2D1.dll",
+        "lib/net9.0/Vortice.Direct2D1.xml",
+        "vortice.direct2d1.3.7.6-beta.nupkg.sha512",
+        "vortice.direct2d1.nuspec"
+      ]
+    },
+    "Vortice.Direct3D11/3.7.6-beta": {
+      "sha512": "lQwLfslpLsSyIKsrXJkDq+06Evlz1oSQMe+jvidsDl1HxiX8OZqR92ncs+TY9PYBOStE30LYP9A/+auV10ggwg==",
+      "type": "package",
+      "path": "vortice.direct3d11/3.7.6-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Vortice.Direct3D11.BindMapping.xml",
+        "build/Vortice.Direct3D11.props",
+        "buildMultiTargeting/Vortice.Direct3D11.props",
+        "lib/net8.0/Vortice.Direct3D11.dll",
+        "lib/net8.0/Vortice.Direct3D11.xml",
+        "lib/net9.0/Vortice.Direct3D11.dll",
+        "lib/net9.0/Vortice.Direct3D11.xml",
+        "vortice.direct3d11.3.7.6-beta.nupkg.sha512",
+        "vortice.direct3d11.nuspec"
+      ]
+    },
+    "Vortice.DirectComposition/3.7.6-beta": {
+      "sha512": "wU0pbXAsGVQd8XPUbMBchhEvuY6sa/uOidvb8pZ7C4QHXznxdUDV24m/OMgTCjJwN+OCWmEb5sJc2/Dy7i12RQ==",
+      "type": "package",
+      "path": "vortice.directcomposition/3.7.6-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Vortice.DirectComposition.BindMapping.xml",
+        "build/Vortice.DirectComposition.props",
+        "buildMultiTargeting/Vortice.DirectComposition.props",
+        "lib/net8.0/Vortice.DirectComposition.dll",
+        "lib/net8.0/Vortice.DirectComposition.xml",
+        "lib/net9.0/Vortice.DirectComposition.dll",
+        "lib/net9.0/Vortice.DirectComposition.xml",
+        "vortice.directcomposition.3.7.6-beta.nupkg.sha512",
+        "vortice.directcomposition.nuspec"
+      ]
+    },
+    "Vortice.DirectX/3.7.6-beta": {
+      "sha512": "59M9RYb6aQCRRrWBkxYZZcxtj2F54Ig+/gsMolz4G/NJ0kATB9T4cgm4Afu50X7lsoH6KbpLSUSbf2o81NUGXw==",
+      "type": "package",
+      "path": "vortice.directx/3.7.6-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Vortice.DirectX.BindMapping.xml",
+        "build/Vortice.DirectX.props",
+        "buildMultiTargeting/Vortice.DirectX.props",
+        "lib/net8.0-windows10.0.22621/Vortice.DirectX.dll",
+        "lib/net8.0-windows10.0.22621/Vortice.DirectX.xml",
+        "lib/net8.0/Vortice.DirectX.dll",
+        "lib/net8.0/Vortice.DirectX.xml",
+        "lib/net9.0-windows10.0.22621/Vortice.DirectX.dll",
+        "lib/net9.0-windows10.0.22621/Vortice.DirectX.xml",
+        "lib/net9.0/Vortice.DirectX.dll",
+        "lib/net9.0/Vortice.DirectX.xml",
+        "vortice.directx.3.7.6-beta.nupkg.sha512",
+        "vortice.directx.nuspec"
+      ]
+    },
+    "Vortice.DXGI/3.7.6-beta": {
+      "sha512": "EmO4F+F9rqH3yWpkkBOK4oBI1lL6j8fdMKNXh24GzgTa7Ud8COFQ1GifZTnwK/n5Km1RnK1olxlGM378V4kZkw==",
+      "type": "package",
+      "path": "vortice.dxgi/3.7.6-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Vortice.DXGI.BindMapping.xml",
+        "build/Vortice.DXGI.props",
+        "buildMultiTargeting/Vortice.DXGI.props",
+        "lib/net8.0-windows10.0.22621/Vortice.DXGI.dll",
+        "lib/net8.0-windows10.0.22621/Vortice.DXGI.xml",
+        "lib/net8.0/Vortice.DXGI.dll",
+        "lib/net8.0/Vortice.DXGI.xml",
+        "lib/net9.0/Vortice.DXGI.dll",
+        "lib/net9.0/Vortice.DXGI.xml",
+        "vortice.dxgi.3.7.6-beta.nupkg.sha512",
+        "vortice.dxgi.nuspec"
+      ]
+    },
+    "Vortice.Mathematics/1.9.3": {
+      "sha512": "VzXWjzM4F5pK3gP3m0wv9LqhRrcmQebf+lK/gIPLZ+TPXTptMal74iGkQbivIJm9OwdMZdGOuk1dvwc2iJHUGQ==",
+      "type": "package",
+      "path": "vortice.mathematics/1.9.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net8.0-windows10.0.19041/Vortice.Mathematics.dll",
+        "lib/net8.0-windows10.0.19041/Vortice.Mathematics.pdb",
+        "lib/net8.0-windows10.0.19041/Vortice.Mathematics.xml",
+        "lib/net8.0/Vortice.Mathematics.dll",
+        "lib/net8.0/Vortice.Mathematics.pdb",
+        "lib/net8.0/Vortice.Mathematics.xml",
+        "lib/net9.0-windows10.0.19041/Vortice.Mathematics.dll",
+        "lib/net9.0-windows10.0.19041/Vortice.Mathematics.pdb",
+        "lib/net9.0-windows10.0.19041/Vortice.Mathematics.xml",
+        "lib/net9.0/Vortice.Mathematics.dll",
+        "lib/net9.0/Vortice.Mathematics.pdb",
+        "lib/net9.0/Vortice.Mathematics.xml",
+        "vortice.mathematics.1.9.3.nupkg.sha512",
+        "vortice.mathematics.nuspec"
+      ]
+    },
+    "Vortice.MediaFoundation/3.7.6-beta": {
+      "sha512": "Lm75QZ9ePKfJ0JV9OOA+gOzMbCylP3bsY4OTAR/YO4Y+HNqaQdLwUuL+aQZpA+uzwbtxpHqRsjlKY7DXbLnp+A==",
+      "type": "package",
+      "path": "vortice.mediafoundation/3.7.6-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Vortice.MediaFoundation.BindMapping.xml",
+        "build/Vortice.MediaFoundation.props",
+        "buildMultiTargeting/Vortice.MediaFoundation.props",
+        "lib/net8.0/Vortice.MediaFoundation.dll",
+        "lib/net8.0/Vortice.MediaFoundation.xml",
+        "lib/net9.0/Vortice.MediaFoundation.dll",
+        "lib/net9.0/Vortice.MediaFoundation.xml",
+        "vortice.mediafoundation.3.7.6-beta.nupkg.sha512",
+        "vortice.mediafoundation.nuspec"
+      ]
+    },
+    "Vortice.XAudio2/3.7.6-beta": {
+      "sha512": "g8JddMksoaR+SAnPyhgHQzAsP5zRcKhFLs2Zbf24EvNmHKDMmijgwEzHc9w+eUr+0ZdpoUnJwtE1euwHg9Qwcg==",
+      "type": "package",
+      "path": "vortice.xaudio2/3.7.6-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Vortice.XAudio2.BindMapping.xml",
+        "build/Vortice.XAudio2.props",
+        "buildMultiTargeting/Vortice.XAudio2.props",
+        "lib/net8.0/Vortice.XAudio2.dll",
+        "lib/net8.0/Vortice.XAudio2.xml",
+        "lib/net9.0/Vortice.XAudio2.dll",
+        "lib/net9.0/Vortice.XAudio2.xml",
+        "vortice.xaudio2.3.7.6-beta.nupkg.sha512",
+        "vortice.xaudio2.nuspec"
+      ]
+    },
+    "Whisper.net/1.8.1": {
+      "sha512": "NOcPlajorIQ5bIaf21PESirTvhCSb/T4qbUZreoU31jOu2W6kGJRgy+1f/M7PK/atcWXLF5FsXIj2lHi5sym1w==",
+      "type": "package",
+      "path": "whisper.net/1.8.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net8.0-android34.0/Whisper.net.dll",
+        "lib/net8.0-android34.0/Whisper.net.xml",
+        "lib/net8.0-ios18.0/Whisper.net.dll",
+        "lib/net8.0-maccatalyst18.0/Whisper.net.dll",
+        "lib/net8.0-tvos18.0/Whisper.net.dll",
+        "lib/net8.0/Whisper.net.dll",
+        "lib/net9.0-android35.0/Whisper.net.dll",
+        "lib/net9.0-android35.0/Whisper.net.xml",
+        "lib/net9.0-ios18.0/Whisper.net.dll",
+        "lib/net9.0-maccatalyst18.0/Whisper.net.dll",
+        "lib/net9.0-tvos18.0/Whisper.net.dll",
+        "lib/net9.0/Whisper.net.dll",
+        "lib/netstandard2.0/Whisper.net.dll",
+        "readme.md",
+        "whisper.net.1.8.1.nupkg.sha512",
+        "whisper.net.nuspec"
+      ]
+    },
+    "xunit.analyzers/1.21.0": {
+      "sha512": "2KvcXvsqZQnwQmdEJC4BGXCsllgMtfbhlnY7MlDu5ZsKLWDEnYT5PNqGLiQQnxQYqwkOyTPAbrCwUyI9ZfJ2fg==",
+      "type": "package",
+      "path": "xunit.analyzers/1.21.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "analyzers/dotnet/cs/xunit.analyzers.dll",
+        "analyzers/dotnet/cs/xunit.analyzers.fixes.dll",
+        "tools/install.ps1",
+        "tools/uninstall.ps1",
+        "xunit.analyzers.1.21.0.nupkg.sha512",
+        "xunit.analyzers.nuspec"
+      ]
+    },
+    "xunit.runner.visualstudio/3.1.0": {
+      "sha512": "K9O9TOzugqOo4LJ87uuq1VG8RAqGp20Ng85Wx932oT5LNBkIgeeGYubVW5UMnOOTanFNbGavmbuYrJr4INzSwg==",
+      "type": "package",
+      "path": "xunit.runner.visualstudio/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "build/net472/xunit.abstractions.dll",
+        "build/net472/xunit.runner.visualstudio.props",
+        "build/net472/xunit.runner.visualstudio.testadapter.dll",
+        "build/net8.0/xunit.abstractions.dll",
+        "build/net8.0/xunit.runner.visualstudio.props",
+        "build/net8.0/xunit.runner.visualstudio.testadapter.dll",
+        "lib/net472/_._",
+        "lib/net8.0/_._",
+        "xunit.runner.visualstudio.3.1.0.nupkg.sha512",
+        "xunit.runner.visualstudio.nuspec"
+      ]
+    },
+    "xunit.v3/2.0.2": {
+      "sha512": "gCI3M0/6L5RUiZMC/XYzYf9nhWkefekO2PfCrTsy7Cw+Iua005sFIvLzVywUoGlzQLP3Bb1c+5Jdd83ZB0xpIg==",
+      "type": "package",
+      "path": "xunit.v3/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "lib/net472/_._",
+        "lib/net8.0/_._",
+        "xunit.v3.2.0.2.nupkg.sha512",
+        "xunit.v3.nuspec"
+      ]
+    },
+    "xunit.v3.assert/2.0.2": {
+      "sha512": "ucjN0o7k1YWDM/RPSV81UEb1ngNVnVTfSlVVGSjJ67YlvGSLarWWJJVNDEsaUdl7TUReJO8+Y2Bajv9NKsvRLA==",
+      "type": "package",
+      "path": "xunit.v3.assert/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "lib/net8.0/xunit.v3.assert.dll",
+        "lib/net8.0/xunit.v3.assert.xml",
+        "lib/netstandard2.0/xunit.v3.assert.dll",
+        "lib/netstandard2.0/xunit.v3.assert.xml",
+        "xunit.v3.assert.2.0.2.nupkg.sha512",
+        "xunit.v3.assert.nuspec"
+      ]
+    },
+    "xunit.v3.common/2.0.2": {
+      "sha512": "ZngN3yHk/U4Od+1KEjLDqX7ubxA4xuAUdBeZMasWgkR1fByyLjRevKxWzhp5mgl35n6eYz/Lcl7FV1PGV2d0Ew==",
+      "type": "package",
+      "path": "xunit.v3.common/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "lib/netstandard2.0/xunit.v3.common.dll",
+        "lib/netstandard2.0/xunit.v3.common.xml",
+        "xunit.v3.common.2.0.2.nupkg.sha512",
+        "xunit.v3.common.nuspec"
+      ]
+    },
+    "xunit.v3.core/2.0.2": {
+      "sha512": "A+DNC/W9xaEB0AHkGwq7fSLSS4pnfKkg+OtdwaYYoZv+jowFVya4Bv26MZOCgmqfwszvQEExgaBNA9kBYQRLRg==",
+      "type": "package",
+      "path": "xunit.v3.core/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/DefaultRunnerReporters.cs",
+        "_content/DefaultRunnerReporters.fs",
+        "_content/DefaultRunnerReporters.vb",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "_content/runners/netcore/Mono.Cecil.Rocks.dll",
+        "_content/runners/netcore/Mono.Cecil.dll",
+        "_content/runners/netcore/xunit.abstractions.dll",
+        "_content/runners/netcore/xunit.v3.runner.utility.netcore.dll",
+        "_content/runners/netfx/Mono.Cecil.Rocks.dll",
+        "_content/runners/netfx/Mono.Cecil.dll",
+        "_content/runners/netfx/xunit.abstractions.dll",
+        "_content/runners/netfx/xunit.v3.runner.utility.netfx.dll",
+        "_content/tasks/netcore/xunit.v3.msbuildtasks.dll",
+        "_content/tasks/netfx/xunit.v3.msbuildtasks.dll",
+        "buildTransitive/xunit.v3.core.props",
+        "buildTransitive/xunit.v3.core.targets",
+        "lib/net472/_._",
+        "lib/net8.0/_._",
+        "xunit.v3.core.2.0.2.nupkg.sha512",
+        "xunit.v3.core.nuspec"
+      ]
+    },
+    "xunit.v3.extensibility.core/2.0.2": {
+      "sha512": "4YPSALWtAafrrMr3O+6w/KI0FubKdY2ShigzUWIEgmdXJkU73v9H192dCpvDkIWRPa7OxBrGZ6mjS+A6poexSQ==",
+      "type": "package",
+      "path": "xunit.v3.extensibility.core/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "lib/netstandard2.0/xunit.v3.core.dll",
+        "lib/netstandard2.0/xunit.v3.core.xml",
+        "xunit.v3.extensibility.core.2.0.2.nupkg.sha512",
+        "xunit.v3.extensibility.core.nuspec"
+      ]
+    },
+    "xunit.v3.runner.common/2.0.2": {
+      "sha512": "W+5loZKHfw5aWDCwSa2s4/ExqRXcytpvr7+/cA488zsmVpvYInvmLxsBNrH8qQCPwK8Wb0mvc4xOmzYXsvEB9A==",
+      "type": "package",
+      "path": "xunit.v3.runner.common/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "lib/netstandard2.0/xunit.v3.runner.common.dll",
+        "lib/netstandard2.0/xunit.v3.runner.common.xml",
+        "xunit.v3.runner.common.2.0.2.nupkg.sha512",
+        "xunit.v3.runner.common.nuspec"
+      ]
+    },
+    "xunit.v3.runner.inproc.console/2.0.2": {
+      "sha512": "2cVHXMv5bJQbuCDU6G+GzafMGvardavvXFnnIGP0QT5ArgMCi91w3owLaFkdGD+1O5CCw5+3gY/9280BPQmnGg==",
+      "type": "package",
+      "path": "xunit.v3.runner.inproc.console/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "lib/net472/xunit.v3.runner.inproc.console.dll",
+        "lib/net472/xunit.v3.runner.inproc.console.xml",
+        "lib/net8.0/xunit.v3.runner.inproc.console.dll",
+        "lib/net8.0/xunit.v3.runner.inproc.console.xml",
+        "xunit.v3.runner.inproc.console.2.0.2.nupkg.sha512",
+        "xunit.v3.runner.inproc.console.nuspec"
+      ]
+    },
+    "FlyleafLib/3.9.4": {
+      "type": "project",
+      "path": "../FlyleafLib/FlyleafLib.csproj",
+      "msbuildProject": "../FlyleafLib/FlyleafLib.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net10.0-windows10.0.18362": [
+      "AwesomeAssertions >= 8.2.0",
+      "FlyleafLib >= 3.9.4",
+      "Microsoft.NET.Test.Sdk >= 17.13.0",
+      "xunit.runner.visualstudio >= 3.1.0",
+      "xunit.v3 >= 2.0.2"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Mikhail\\.nuget\\packages\\": {},
+    "D:\\Programs\\VisualStudio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Other\\Projects\\LLPlayer\\FlyleafLibTests\\FlyleafLibTests.csproj",
+      "projectName": "FlyleafLibTests",
+      "projectPath": "D:\\Other\\Projects\\LLPlayer\\FlyleafLibTests\\FlyleafLibTests.csproj",
+      "packagesPath": "C:\\Users\\Mikhail\\.nuget\\packages\\",
+      "outputPath": "D:\\Other\\Projects\\LLPlayer\\FlyleafLibTests\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\Programs\\VisualStudio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Mikhail\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net10.0-windows10.0.18362.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net10.0-windows10.0.18362": {
+          "targetAlias": "net10.0-windows10.0.18362.0",
+          "projectReferences": {
+            "D:\\Other\\Projects\\LLPlayer\\FlyleafLib\\FlyleafLib.csproj": {
+              "projectPath": "D:\\Other\\Projects\\LLPlayer\\FlyleafLib\\FlyleafLib.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "10.0.200"
+    },
+    "frameworks": {
+      "net10.0-windows10.0.18362": {
+        "targetAlias": "net10.0-windows10.0.18362.0",
+        "dependencies": {
+          "AwesomeAssertions": {
+            "target": "Package",
+            "version": "[8.2.0, )"
+          },
+          "Microsoft.NET.Test.Sdk": {
+            "target": "Package",
+            "version": "[17.13.0, )"
+          },
+          "xunit.runner.visualstudio": {
+            "target": "Package",
+            "version": "[3.1.0, )"
+          },
+          "xunit.v3": {
+            "target": "Package",
+            "version": "[2.0.2, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.Windows.SDK.NET.Ref",
+            "version": "[10.0.18362.57, 10.0.18362.57]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.Windows.SDK.NET.Ref.Windows": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+        "packagesToPrune": {
+          "Microsoft.CSharp": "(,4.7.32767]",
+          "Microsoft.VisualBasic": "(,10.4.32767]",
+          "Microsoft.Win32.Primitives": "(,4.3.32767]",
+          "Microsoft.Win32.Registry": "(,5.0.32767]",
+          "runtime.any.System.Collections": "(,4.3.32767]",
+          "runtime.any.System.Diagnostics.Tools": "(,4.3.32767]",
+          "runtime.any.System.Diagnostics.Tracing": "(,4.3.32767]",
+          "runtime.any.System.Globalization": "(,4.3.32767]",
+          "runtime.any.System.Globalization.Calendars": "(,4.3.32767]",
+          "runtime.any.System.IO": "(,4.3.32767]",
+          "runtime.any.System.Reflection": "(,4.3.32767]",
+          "runtime.any.System.Reflection.Extensions": "(,4.3.32767]",
+          "runtime.any.System.Reflection.Primitives": "(,4.3.32767]",
+          "runtime.any.System.Resources.ResourceManager": "(,4.3.32767]",
+          "runtime.any.System.Runtime": "(,4.3.32767]",
+          "runtime.any.System.Runtime.Handles": "(,4.3.32767]",
+          "runtime.any.System.Runtime.InteropServices": "(,4.3.32767]",
+          "runtime.any.System.Text.Encoding": "(,4.3.32767]",
+          "runtime.any.System.Text.Encoding.Extensions": "(,4.3.32767]",
+          "runtime.any.System.Threading.Tasks": "(,4.3.32767]",
+          "runtime.any.System.Threading.Timer": "(,4.3.32767]",
+          "runtime.aot.System.Collections": "(,4.3.32767]",
+          "runtime.aot.System.Diagnostics.Tools": "(,4.3.32767]",
+          "runtime.aot.System.Diagnostics.Tracing": "(,4.3.32767]",
+          "runtime.aot.System.Globalization": "(,4.3.32767]",
+          "runtime.aot.System.Globalization.Calendars": "(,4.3.32767]",
+          "runtime.aot.System.IO": "(,4.3.32767]",
+          "runtime.aot.System.Reflection": "(,4.3.32767]",
+          "runtime.aot.System.Reflection.Extensions": "(,4.3.32767]",
+          "runtime.aot.System.Reflection.Primitives": "(,4.3.32767]",
+          "runtime.aot.System.Resources.ResourceManager": "(,4.3.32767]",
+          "runtime.aot.System.Runtime": "(,4.3.32767]",
+          "runtime.aot.System.Runtime.Handles": "(,4.3.32767]",
+          "runtime.aot.System.Runtime.InteropServices": "(,4.3.32767]",
+          "runtime.aot.System.Text.Encoding": "(,4.3.32767]",
+          "runtime.aot.System.Text.Encoding.Extensions": "(,4.3.32767]",
+          "runtime.aot.System.Threading.Tasks": "(,4.3.32767]",
+          "runtime.aot.System.Threading.Timer": "(,4.3.32767]",
+          "runtime.debian.8-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.debian.8-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.debian.8-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.debian.8-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.debian.8-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.debian.9-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.debian.9-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.debian.9-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.debian.9-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.fedora.23-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.fedora.23-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.fedora.23-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.fedora.23-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.fedora.24-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.fedora.24-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.fedora.24-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.fedora.24-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.fedora.27-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.fedora.27-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.fedora.27-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.fedora.27-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.fedora.28-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.fedora.28-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.fedora.28-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.fedora.28-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.opensuse.13.2-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.opensuse.13.2-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.opensuse.13.2-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.opensuse.13.2-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.opensuse.42.1-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.opensuse.42.1-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.opensuse.42.1-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.opensuse.42.1-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.opensuse.42.3-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.opensuse.42.3-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.opensuse.42.3-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.opensuse.42.3-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.osx.10.10-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.osx.10.10-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.osx.10.10-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.osx.10.10-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple": "(,4.3.32767]",
+          "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.rhel.7-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.rhel.7-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.rhel.7-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.rhel.7-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.ubuntu.14.04-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.ubuntu.14.04-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.ubuntu.14.04-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.ubuntu.14.04-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.ubuntu.16.04-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.ubuntu.16.04-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.ubuntu.16.04-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.ubuntu.16.04-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.ubuntu.16.10-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.ubuntu.16.10-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.ubuntu.16.10-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.ubuntu.16.10-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography": "(,4.3.32767]",
+          "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl": "(,4.3.32767]",
+          "runtime.ubuntu.18.04-x64.runtime.native.System": "(,4.3.32767]",
+          "runtime.ubuntu.18.04-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.ubuntu.18.04-x64.runtime.native.System.Net.Http": "(,4.3.32767]",
+          "runtime.ubuntu.18.04-x64.runtime.native.System.Net.Security": "(,4.3.32767]",
+          "runtime.unix.Microsoft.Win32.Primitives": "(,4.3.32767]",
+          "runtime.unix.System.Console": "(,4.3.32767]",
+          "runtime.unix.System.Diagnostics.Debug": "(,4.3.32767]",
+          "runtime.unix.System.IO.FileSystem": "(,4.3.32767]",
+          "runtime.unix.System.Net.Primitives": "(,4.3.32767]",
+          "runtime.unix.System.Net.Sockets": "(,4.3.32767]",
+          "runtime.unix.System.Private.Uri": "(,4.3.32767]",
+          "runtime.unix.System.Runtime.Extensions": "(,4.3.32767]",
+          "runtime.win.Microsoft.Win32.Primitives": "(,4.3.32767]",
+          "runtime.win.System.Console": "(,4.3.32767]",
+          "runtime.win.System.Diagnostics.Debug": "(,4.3.32767]",
+          "runtime.win.System.IO.FileSystem": "(,4.3.32767]",
+          "runtime.win.System.Net.Primitives": "(,4.3.32767]",
+          "runtime.win.System.Net.Sockets": "(,4.3.32767]",
+          "runtime.win.System.Runtime.Extensions": "(,4.3.32767]",
+          "runtime.win10-arm-aot.runtime.native.System.IO.Compression": "(,4.0.32767]",
+          "runtime.win10-arm64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.win10-x64-aot.runtime.native.System.IO.Compression": "(,4.0.32767]",
+          "runtime.win10-x86-aot.runtime.native.System.IO.Compression": "(,4.0.32767]",
+          "runtime.win7-x64.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.win7-x86.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "runtime.win7.System.Private.Uri": "(,4.3.32767]",
+          "runtime.win8-arm.runtime.native.System.IO.Compression": "(,4.3.32767]",
+          "System.AppContext": "(,4.3.32767]",
+          "System.Buffers": "(,5.0.32767]",
+          "System.Collections": "(,4.3.32767]",
+          "System.Collections.Concurrent": "(,4.3.32767]",
+          "System.Collections.Immutable": "(,10.0.32767]",
+          "System.Collections.NonGeneric": "(,4.3.32767]",
+          "System.Collections.Specialized": "(,4.3.32767]",
+          "System.ComponentModel": "(,4.3.32767]",
+          "System.ComponentModel.Annotations": "(,4.3.32767]",
+          "System.ComponentModel.EventBasedAsync": "(,4.3.32767]",
+          "System.ComponentModel.Primitives": "(,4.3.32767]",
+          "System.ComponentModel.TypeConverter": "(,4.3.32767]",
+          "System.Console": "(,4.3.32767]",
+          "System.Data.Common": "(,4.3.32767]",
+          "System.Data.DataSetExtensions": "(,4.4.32767]",
+          "System.Diagnostics.Contracts": "(,4.3.32767]",
+          "System.Diagnostics.Debug": "(,4.3.32767]",
+          "System.Diagnostics.DiagnosticSource": "(,10.0.32767]",
+          "System.Diagnostics.FileVersionInfo": "(,4.3.32767]",
+          "System.Diagnostics.Process": "(,4.3.32767]",
+          "System.Diagnostics.StackTrace": "(,4.3.32767]",
+          "System.Diagnostics.TextWriterTraceListener": "(,4.3.32767]",
+          "System.Diagnostics.Tools": "(,4.3.32767]",
+          "System.Diagnostics.TraceSource": "(,4.3.32767]",
+          "System.Diagnostics.Tracing": "(,4.3.32767]",
+          "System.Drawing.Primitives": "(,4.3.32767]",
+          "System.Dynamic.Runtime": "(,4.3.32767]",
+          "System.Formats.Asn1": "(,10.0.32767]",
+          "System.Formats.Tar": "(,10.0.32767]",
+          "System.Globalization": "(,4.3.32767]",
+          "System.Globalization.Calendars": "(,4.3.32767]",
+          "System.Globalization.Extensions": "(,4.3.32767]",
+          "System.IO": "(,4.3.32767]",
+          "System.IO.Compression": "(,4.3.32767]",
+          "System.IO.Compression.ZipFile": "(,4.3.32767]",
+          "System.IO.FileSystem": "(,4.3.32767]",
+          "System.IO.FileSystem.AccessControl": "(,4.4.32767]",
+          "System.IO.FileSystem.DriveInfo": "(,4.3.32767]",
+          "System.IO.FileSystem.Primitives": "(,4.3.32767]",
+          "System.IO.FileSystem.Watcher": "(,4.3.32767]",
+          "System.IO.IsolatedStorage": "(,4.3.32767]",
+          "System.IO.MemoryMappedFiles": "(,4.3.32767]",
+          "System.IO.Pipelines": "(,10.0.32767]",
+          "System.IO.Pipes": "(,4.3.32767]",
+          "System.IO.Pipes.AccessControl": "(,5.0.32767]",
+          "System.IO.UnmanagedMemoryStream": "(,4.3.32767]",
+          "System.Linq": "(,4.3.32767]",
+          "System.Linq.AsyncEnumerable": "(,10.0.32767]",
+          "System.Linq.Expressions": "(,4.3.32767]",
+          "System.Linq.Parallel": "(,4.3.32767]",
+          "System.Linq.Queryable": "(,4.3.32767]",
+          "System.Memory": "(,5.0.32767]",
+          "System.Net.Http": "(,4.3.32767]",
+          "System.Net.Http.Json": "(,10.0.32767]",
+          "System.Net.NameResolution": "(,4.3.32767]",
+          "System.Net.NetworkInformation": "(,4.3.32767]",
+          "System.Net.Ping": "(,4.3.32767]",
+          "System.Net.Primitives": "(,4.3.32767]",
+          "System.Net.Requests": "(,4.3.32767]",
+          "System.Net.Security": "(,4.3.32767]",
+          "System.Net.ServerSentEvents": "(,10.0.32767]",
+          "System.Net.Sockets": "(,4.3.32767]",
+          "System.Net.WebHeaderCollection": "(,4.3.32767]",
+          "System.Net.WebSockets": "(,4.3.32767]",
+          "System.Net.WebSockets.Client": "(,4.3.32767]",
+          "System.Numerics.Vectors": "(,5.0.32767]",
+          "System.ObjectModel": "(,4.3.32767]",
+          "System.Private.DataContractSerialization": "(,4.3.32767]",
+          "System.Private.Uri": "(,4.3.32767]",
+          "System.Reflection": "(,4.3.32767]",
+          "System.Reflection.DispatchProxy": "(,6.0.32767]",
+          "System.Reflection.Emit": "(,4.7.32767]",
+          "System.Reflection.Emit.ILGeneration": "(,4.7.32767]",
+          "System.Reflection.Emit.Lightweight": "(,4.7.32767]",
+          "System.Reflection.Extensions": "(,4.3.32767]",
+          "System.Reflection.Metadata": "(,10.0.32767]",
+          "System.Reflection.Primitives": "(,4.3.32767]",
+          "System.Reflection.TypeExtensions": "(,4.3.32767]",
+          "System.Resources.Reader": "(,4.3.32767]",
+          "System.Resources.ResourceManager": "(,4.3.32767]",
+          "System.Resources.Writer": "(,4.3.32767]",
+          "System.Runtime": "(,4.3.32767]",
+          "System.Runtime.CompilerServices.Unsafe": "(,7.0.32767]",
+          "System.Runtime.CompilerServices.VisualC": "(,4.3.32767]",
+          "System.Runtime.Extensions": "(,4.3.32767]",
+          "System.Runtime.Handles": "(,4.3.32767]",
+          "System.Runtime.InteropServices": "(,4.3.32767]",
+          "System.Runtime.InteropServices.RuntimeInformation": "(,4.3.32767]",
+          "System.Runtime.Loader": "(,4.3.32767]",
+          "System.Runtime.Numerics": "(,4.3.32767]",
+          "System.Runtime.Serialization.Formatters": "(,4.3.32767]",
+          "System.Runtime.Serialization.Json": "(,4.3.32767]",
+          "System.Runtime.Serialization.Primitives": "(,4.3.32767]",
+          "System.Runtime.Serialization.Xml": "(,4.3.32767]",
+          "System.Security.AccessControl": "(,6.0.32767]",
+          "System.Security.Claims": "(,4.3.32767]",
+          "System.Security.Cryptography.Algorithms": "(,4.3.32767]",
+          "System.Security.Cryptography.Cng": "(,5.0.32767]",
+          "System.Security.Cryptography.Csp": "(,4.3.32767]",
+          "System.Security.Cryptography.Encoding": "(,4.3.32767]",
+          "System.Security.Cryptography.OpenSsl": "(,5.0.32767]",
+          "System.Security.Cryptography.Primitives": "(,4.3.32767]",
+          "System.Security.Cryptography.X509Certificates": "(,4.3.32767]",
+          "System.Security.Principal": "(,4.3.32767]",
+          "System.Security.Principal.Windows": "(,5.0.32767]",
+          "System.Security.SecureString": "(,4.3.32767]",
+          "System.Text.Encoding": "(,4.3.32767]",
+          "System.Text.Encoding.CodePages": "(,10.0.32767]",
+          "System.Text.Encoding.Extensions": "(,4.3.32767]",
+          "System.Text.Encodings.Web": "(,10.0.32767]",
+          "System.Text.Json": "(,10.0.32767]",
+          "System.Text.RegularExpressions": "(,4.3.32767]",
+          "System.Threading": "(,4.3.32767]",
+          "System.Threading.AccessControl": "(,10.0.32767]",
+          "System.Threading.Channels": "(,10.0.32767]",
+          "System.Threading.Overlapped": "(,4.3.32767]",
+          "System.Threading.Tasks": "(,4.3.32767]",
+          "System.Threading.Tasks.Dataflow": "(,10.0.32767]",
+          "System.Threading.Tasks.Extensions": "(,5.0.32767]",
+          "System.Threading.Tasks.Parallel": "(,4.3.32767]",
+          "System.Threading.Thread": "(,4.3.32767]",
+          "System.Threading.ThreadPool": "(,4.3.32767]",
+          "System.Threading.Timer": "(,4.3.32767]",
+          "System.ValueTuple": "(,4.5.32767]",
+          "System.Xml.ReaderWriter": "(,4.3.32767]",
+          "System.Xml.XDocument": "(,4.3.32767]",
+          "System.Xml.XmlDocument": "(,4.3.32767]",
+          "System.Xml.XmlSerializer": "(,4.3.32767]",
+          "System.Xml.XPath": "(,4.3.32767]",
+          "System.Xml.XPath.XDocument": "(,5.0.32767]"
+        }
+      }
+    }
+  }
+}

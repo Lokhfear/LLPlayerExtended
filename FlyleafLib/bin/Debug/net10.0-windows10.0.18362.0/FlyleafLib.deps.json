@@ -1,0 +1,550 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "FlyleafLib/3.9.4": {
+        "dependencies": {
+          "CliWrap": "3.8.2",
+          "DeepL.net": "1.15.0",
+          "Flyleaf.FFmpeg.Bindings": "7.1.1",
+          "SearchPioneer.Lingua": "1.0.4",
+          "TesseractOCR": "5.5.1",
+          "UTF.Unknown": "2.5.1",
+          "Vortice.D3DCompiler": "3.7.6-beta",
+          "Vortice.Direct3D11": "3.7.6-beta",
+          "Vortice.DirectComposition": "3.7.6-beta",
+          "Vortice.Mathematics": "1.9.3",
+          "Vortice.MediaFoundation": "3.7.6-beta",
+          "Vortice.XAudio2": "3.7.6-beta",
+          "Whisper.net": "1.8.1",
+          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.18362.57"
+        },
+        "runtime": {
+          "FlyleafLib.dll": {}
+        }
+      },
+      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.18362.57": {
+        "runtime": {
+          "Microsoft.Windows.SDK.NET.dll": {
+            "assemblyVersion": "10.0.18362.38",
+            "fileVersion": "10.0.18362.55"
+          },
+          "WinRT.Runtime.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.48161"
+          }
+        }
+      },
+      "CliWrap/3.8.2": {
+        "runtime": {
+          "lib/net9.0/CliWrap.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.0"
+          }
+        }
+      },
+      "DeepL.net/1.15.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Http.Polly": "5.0.1"
+        },
+        "runtime": {
+          "lib/net5.0/DeepL.net.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.15.0.0"
+          }
+        }
+      },
+      "Flyleaf.FFmpeg.Bindings/7.1.1": {
+        "runtime": {
+          "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll": {
+            "assemblyVersion": "7.1.1.0",
+            "fileVersion": "7.1.1.0"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/5.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.425.16305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Http/5.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4",
+          "Microsoft.Extensions.Logging": "5.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.4",
+          "Microsoft.Extensions.Options": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "Microsoft.Extensions.Http.Polly/5.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Http": "5.0.0",
+          "Polly": "7.1.0",
+          "Polly.Extensions.Http": "3.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.dll": {
+            "assemblyVersion": "5.0.1.0",
+            "fileVersion": "5.0.120.58002"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging/5.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "5.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.4",
+          "Microsoft.Extensions.Options": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.425.16305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options/5.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4",
+          "Microsoft.Extensions.Primitives": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.Extensions.Options.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/5.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "Polly/7.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.1.0.0"
+          }
+        }
+      },
+      "Polly.Extensions.Http/3.0.0": {
+        "dependencies": {
+          "Polly": "7.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "SearchPioneer.Lingua/1.0.4": {
+        "runtime": {
+          "lib/net9.0/Lingua.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.4.0"
+          }
+        }
+      },
+      "SharpGen.Runtime/2.4.2-beta": {
+        "runtime": {
+          "lib/net9.0/SharpGen.Runtime.dll": {
+            "assemblyVersion": "2.4.2.0",
+            "fileVersion": "2.4.2.0"
+          }
+        }
+      },
+      "SharpGen.Runtime.COM/2.4.2-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta"
+        },
+        "runtime": {
+          "lib/net9.0/SharpGen.Runtime.COM.dll": {
+            "assemblyVersion": "2.4.2.0",
+            "fileVersion": "2.4.2.0"
+          }
+        }
+      },
+      "TesseractOCR/5.5.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.4"
+        },
+        "runtime": {
+          "lib/net9.0/TesseractOCR.dll": {
+            "assemblyVersion": "5.5.1.0",
+            "fileVersion": "5.5.1.0"
+          }
+        }
+      },
+      "UTF.Unknown/2.5.1": {
+        "runtime": {
+          "lib/netcoreapp3.0/UtfUnknown.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.664.0"
+          }
+        }
+      },
+      "Vortice.D3DCompiler/3.7.6-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.D3DCompiler.dll": {
+            "assemblyVersion": "3.7.6.0",
+            "fileVersion": "3.7.6.0"
+          }
+        }
+      },
+      "Vortice.Direct2D1/3.7.6-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DXGI": "3.7.6-beta"
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.Direct2D1.dll": {
+            "assemblyVersion": "3.7.6.0",
+            "fileVersion": "3.7.6.0"
+          }
+        }
+      },
+      "Vortice.Direct3D11/3.7.6-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DXGI": "3.7.6-beta"
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.Direct3D11.dll": {
+            "assemblyVersion": "3.7.6.0",
+            "fileVersion": "3.7.6.0"
+          }
+        }
+      },
+      "Vortice.DirectComposition/3.7.6-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DXGI": "3.7.6-beta",
+          "Vortice.Direct2D1": "3.7.6-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.DirectComposition.dll": {
+            "assemblyVersion": "3.7.6.0",
+            "fileVersion": "3.7.6.0"
+          }
+        }
+      },
+      "Vortice.DirectX/3.7.6-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "SharpGen.Runtime.COM": "2.4.2-beta",
+          "Vortice.Mathematics": "1.9.3"
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.DirectX.dll": {
+            "assemblyVersion": "3.7.6.0",
+            "fileVersion": "3.7.6.0"
+          }
+        }
+      },
+      "Vortice.DXGI/3.7.6-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.DXGI.dll": {
+            "assemblyVersion": "3.7.6.0",
+            "fileVersion": "3.7.6.0"
+          }
+        }
+      },
+      "Vortice.Mathematics/1.9.3": {
+        "runtime": {
+          "lib/net9.0/Vortice.Mathematics.dll": {
+            "assemblyVersion": "1.9.3.0",
+            "fileVersion": "1.9.3.0"
+          }
+        }
+      },
+      "Vortice.MediaFoundation/3.7.6-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.MediaFoundation.dll": {
+            "assemblyVersion": "3.7.6.0",
+            "fileVersion": "3.7.6.0"
+          }
+        }
+      },
+      "Vortice.XAudio2/3.7.6-beta": {
+        "dependencies": {
+          "SharpGen.Runtime": "2.4.2-beta",
+          "Vortice.DirectX": "3.7.6-beta"
+        },
+        "runtime": {
+          "lib/net9.0/Vortice.XAudio2.dll": {
+            "assemblyVersion": "3.7.6.0",
+            "fileVersion": "3.7.6.0"
+          }
+        }
+      },
+      "Whisper.net/1.8.1": {
+        "runtime": {
+          "lib/net9.0/Whisper.net.dll": {
+            "assemblyVersion": "1.8.1.0",
+            "fileVersion": "1.8.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FlyleafLib/3.9.4": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.18362.57": {
+      "type": "runtimepack",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CliWrap/3.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FTfHUYVt69M0wzcCfQQok3JnmaPQzrqKIB8xBiyTwzocGmG7N3MpDbMC9+qeeAvPclRgUDj3EpMvXwJBwY4/mw==",
+      "path": "cliwrap/3.8.2",
+      "hashPath": "cliwrap.3.8.2.nupkg.sha512"
+    },
+    "DeepL.net/1.15.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MCRiamT1zl3QsjT33J69ajI7TiUOHxdyjfhxDtcHXszvVgyG3LMCw84p6pop3IiSHSMxCDSK1ntLGhUAeMyMPA==",
+      "path": "deepl.net/1.15.0",
+      "hashPath": "deepl.net.1.15.0.nupkg.sha512"
+    },
+    "Flyleaf.FFmpeg.Bindings/7.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EU4JLzurif8pkcxq03aARp2fYRAlQVU+Gpn30cjvTXc95NLmag1BbMMkHmiCBegOgnZOPZKt/WIEj8aery8uPA==",
+      "path": "flyleaf.ffmpeg.bindings/7.1.1",
+      "hashPath": "flyleaf.ffmpeg.bindings.7.1.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rc2kb/p3Ze6cP6rhFC3PJRdWGbLvSHZc0ev7YlyeU6FmHciDMLrhoVoTUEzKPhN5ZjFgKF1Cf5fOz8mCMIkvpA==",
+      "path": "microsoft.extensions.dependencyinjection/5.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UI0TQPVkS78bFdjkTodmkH0Fe8lXv9LnhGFKgKrsgUJ5a5FVdFRcgjIkBVLbGgdRhxWirxH/8IXUtEyYJx6GQg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.4",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Http/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kT1ijDKZuSUhBtYoC1sXrmVKP7mA08h9Xrsr4VrS/QOtiKCEtUTTd7dd3XI9dwAb46tZSak13q/zdIcr4jqbyg==",
+      "path": "microsoft.extensions.http/5.0.0",
+      "hashPath": "microsoft.extensions.http.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Http.Polly/5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Tzf+x8HVDhri9dkIGCGOP5RVjgXnTZuBcwZHr0sW6KAtVGPDU0xEDXPDpoW5vwq/K12dMI75vuapUtMw0d/pIw==",
+      "path": "microsoft.extensions.http.polly/5.0.1",
+      "hashPath": "microsoft.extensions.http.polly.5.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MgOwK6tPzB6YNH21wssJcw/2MKwee8b2gI7SllYfn6rvTpIrVvVS5HAjSU2vqSku1fwqRvWP0MdIi14qjd93Aw==",
+      "path": "microsoft.extensions.logging/5.0.0",
+      "hashPath": "microsoft.extensions.logging.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0MXlimU4Dud6t+iNi5NEz3dO2w1HXdhoOLaYFuLPCjAsvlPQGwOT6V2KZRMLEhCAm/stSZt1AUv0XmDdkjvtbw==",
+      "path": "microsoft.extensions.logging.abstractions/9.0.4",
+      "hashPath": "microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CBvR92TCJ5uBIdd9/HzDSrxYak+0W/3+yxrNg8Qm6Bmrkh5L+nu6m3WeazQehcZ5q1/6dDA7J5YdQjim0165zg==",
+      "path": "microsoft.extensions.options/5.0.0",
+      "hashPath": "microsoft.extensions.options.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cI/VWn9G1fghXrNDagX9nYaaB/nokkZn0HYAawGaELQrl8InSezfe9OnfPZLcJq3esXxygh3hkq2c3qoV3SDyQ==",
+      "path": "microsoft.extensions.primitives/5.0.0",
+      "hashPath": "microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+    },
+    "Polly/7.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mpQsvlEn4ipgICh5CGyVLPV93RFVzOrBG7wPZfzY8gExh7XgWQn0GCDY9nudbUEJ12UiGPP9i4+CohghBvzhmg==",
+      "path": "polly/7.1.0",
+      "hashPath": "polly.7.1.0.nupkg.sha512"
+    },
+    "Polly.Extensions.Http/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
+      "path": "polly.extensions.http/3.0.0",
+      "hashPath": "polly.extensions.http.3.0.0.nupkg.sha512"
+    },
+    "SearchPioneer.Lingua/1.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o53CQDh+A8W2NDbfcKVvhLdkl7drn8pxmWkkZvAPbx5bLJ2XHGIVCxjkC2WJweKWwI2hNLM8Ekla9beFYSWBxA==",
+      "path": "searchpioneer.lingua/1.0.4",
+      "hashPath": "searchpioneer.lingua.1.0.4.nupkg.sha512"
+    },
+    "SharpGen.Runtime/2.4.2-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-niTtWAUov1F7wZGAlVeEvW+Tnqvg5yTmhI7rxmYu2Utoyu2TbC9tWWpUpMs0PQg5lu5svoYpCAztNjxCqMFP/w==",
+      "path": "sharpgen.runtime/2.4.2-beta",
+      "hashPath": "sharpgen.runtime.2.4.2-beta.nupkg.sha512"
+    },
+    "SharpGen.Runtime.COM/2.4.2-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9lxDFMiepqo3lJQzMSjECCIONeCc2f3Drokgj6HtrTLZcJSftNgcLbD6/iXYj2iphkwgrZb1oLsDOZxoFZkawQ==",
+      "path": "sharpgen.runtime.com/2.4.2-beta",
+      "hashPath": "sharpgen.runtime.com.2.4.2-beta.nupkg.sha512"
+    },
+    "TesseractOCR/5.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C/o5EAEqHv/77OVOF4BECACrbo0YcZBMR5AsaowYHPdch71p0w+K8qWXmWbJYSeA1jIJFXT/k9jO9ER7/6pYtQ==",
+      "path": "tesseractocr/5.5.1",
+      "hashPath": "tesseractocr.5.5.1.nupkg.sha512"
+    },
+    "UTF.Unknown/2.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KhZuBaO55PIu6m4bkij3ZQL8qwVyofwFpNnyguXFjwxJlbfYX+dRn8tGy/PjTK6I4UJm8ujkJFvBLaV7MKltTA==",
+      "path": "utf.unknown/2.5.1",
+      "hashPath": "utf.unknown.2.5.1.nupkg.sha512"
+    },
+    "Vortice.D3DCompiler/3.7.6-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4xrtZx+5OoE0DcVMbRsRS9HrhgjNVb0A+2xopwgbuXofogNkJ0uPTFGIeovvchnEDMvCvfckp6qy1EZcM/1OyA==",
+      "path": "vortice.d3dcompiler/3.7.6-beta",
+      "hashPath": "vortice.d3dcompiler.3.7.6-beta.nupkg.sha512"
+    },
+    "Vortice.Direct2D1/3.7.6-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/TM4VfY0hx0MZWmTT9LiJ6WRwwz/qUsluTkBWUFFJfzTs4mUdawnxkWyGHzspVOwInetCFSUCR2ZCBfT90Jf1g==",
+      "path": "vortice.direct2d1/3.7.6-beta",
+      "hashPath": "vortice.direct2d1.3.7.6-beta.nupkg.sha512"
+    },
+    "Vortice.Direct3D11/3.7.6-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lQwLfslpLsSyIKsrXJkDq+06Evlz1oSQMe+jvidsDl1HxiX8OZqR92ncs+TY9PYBOStE30LYP9A/+auV10ggwg==",
+      "path": "vortice.direct3d11/3.7.6-beta",
+      "hashPath": "vortice.direct3d11.3.7.6-beta.nupkg.sha512"
+    },
+    "Vortice.DirectComposition/3.7.6-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wU0pbXAsGVQd8XPUbMBchhEvuY6sa/uOidvb8pZ7C4QHXznxdUDV24m/OMgTCjJwN+OCWmEb5sJc2/Dy7i12RQ==",
+      "path": "vortice.directcomposition/3.7.6-beta",
+      "hashPath": "vortice.directcomposition.3.7.6-beta.nupkg.sha512"
+    },
+    "Vortice.DirectX/3.7.6-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-59M9RYb6aQCRRrWBkxYZZcxtj2F54Ig+/gsMolz4G/NJ0kATB9T4cgm4Afu50X7lsoH6KbpLSUSbf2o81NUGXw==",
+      "path": "vortice.directx/3.7.6-beta",
+      "hashPath": "vortice.directx.3.7.6-beta.nupkg.sha512"
+    },
+    "Vortice.DXGI/3.7.6-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EmO4F+F9rqH3yWpkkBOK4oBI1lL6j8fdMKNXh24GzgTa7Ud8COFQ1GifZTnwK/n5Km1RnK1olxlGM378V4kZkw==",
+      "path": "vortice.dxgi/3.7.6-beta",
+      "hashPath": "vortice.dxgi.3.7.6-beta.nupkg.sha512"
+    },
+    "Vortice.Mathematics/1.9.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VzXWjzM4F5pK3gP3m0wv9LqhRrcmQebf+lK/gIPLZ+TPXTptMal74iGkQbivIJm9OwdMZdGOuk1dvwc2iJHUGQ==",
+      "path": "vortice.mathematics/1.9.3",
+      "hashPath": "vortice.mathematics.1.9.3.nupkg.sha512"
+    },
+    "Vortice.MediaFoundation/3.7.6-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Lm75QZ9ePKfJ0JV9OOA+gOzMbCylP3bsY4OTAR/YO4Y+HNqaQdLwUuL+aQZpA+uzwbtxpHqRsjlKY7DXbLnp+A==",
+      "path": "vortice.mediafoundation/3.7.6-beta",
+      "hashPath": "vortice.mediafoundation.3.7.6-beta.nupkg.sha512"
+    },
+    "Vortice.XAudio2/3.7.6-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g8JddMksoaR+SAnPyhgHQzAsP5zRcKhFLs2Zbf24EvNmHKDMmijgwEzHc9w+eUr+0ZdpoUnJwtE1euwHg9Qwcg==",
+      "path": "vortice.xaudio2/3.7.6-beta",
+      "hashPath": "vortice.xaudio2.3.7.6-beta.nupkg.sha512"
+    },
+    "Whisper.net/1.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NOcPlajorIQ5bIaf21PESirTvhCSb/T4qbUZreoU31jOu2W6kGJRgy+1f/M7PK/atcWXLF5FsXIj2lHi5sym1w==",
+      "path": "whisper.net/1.8.1",
+      "hashPath": "whisper.net.1.8.1.nupkg.sha512"
+    }
+  }
+}

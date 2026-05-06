@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zEjIP31oZ7o=",
+  "success": true,
+  "projectFilePath": "D:\\Other\\Projects\\LLPlayer\\WpfColorFontDialog\\WpfColorFontDialog.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.18362.57\\microsoft.windows.sdk.net.ref.10.0.18362.57.nupkg.sha512"
+  ],
+  "logs": []
+}

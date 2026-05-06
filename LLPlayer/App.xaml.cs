@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Threading;
 using FlyleafLib;
 using FlyleafLib.MediaPlayer;
@@ -49,8 +50,8 @@ public partial class App : PrismApplication
                 MinWidth = 500,
                 MinHeight = 350,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                Background = (Brush?)Application.Current.FindResource("MaterialDesignPaper"),
-                Foreground = (Brush?)Application.Current.FindResource("MaterialDesignBody"),
+                Background = Application.Current.TryFindResource("MaterialDesignPaper") as Brush,
+                Foreground = Application.Current.TryFindResource("MaterialDesignBody") as Brush,
                 ResizeMode = ResizeMode.CanResize,
                 ShowInTaskbar = false,
                 Content = new Controls.DictionaryControl { DataContext = vm }
