@@ -36,6 +36,11 @@
     <conv:KeyToStringConverter x:Key="KeyToStringConv"/>
     <conv:FileSizeHumanConverter x:Key="FileSizeHumanConv"/>
     <conv:NullableIntConverter x:Key="NullableIntConv" />
+    
+    <!-- Dictionary Converters -->
+    <conv:NullToVisibilityConverter NullValue="Collapsed" x:Key="NullToCollapsedConv"/>
+    <conv:NullToVisibilityConverter NullValue="Visible" x:Key="NullToVisibleConv"/>
+    <conv:ZeroToVisibilityConverter x:Key="ZeroToVisibilityConv"/>
 
     <!--Subtitle Converters-->
     <conv:WidthPercentageMultiConverter x:Key="WidthPercentageMultiConv"/>
