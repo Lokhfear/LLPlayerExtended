@@ -57,7 +57,7 @@ namespace LLPlayer.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LLPlayer;V0.2.2.0;component/controls/dictionarycontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LLPlayer;component/controls/dictionarycontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\DictionaryControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
