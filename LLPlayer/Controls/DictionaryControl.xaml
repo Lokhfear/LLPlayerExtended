@@ -12,7 +12,6 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary>
-            <!-- Конвертер: null → Visible, иначе → Collapsed -->
             <BooleanToVisibilityConverter x:Key="BoolToVis"/>
             
             <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignIconButton}">
