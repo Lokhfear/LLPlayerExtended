@@ -281,3 +281,35 @@ public class NullableIntConverter : IValueConverter
         return null;
     }
 }
+
+/// <summary>
+/// Конвертер для проверки null → Visibility
+/// </summary>
+[ValueConversion(typeof(object), typeof(Visibility))]
+public class NullToVisibilityConverter : IValueConverter
+{
+    public Visibility NullValue { get; set; } = Visibility.Collapsed;
+
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return value == null ? NullValue : (NullValue == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed);
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => throw new NotImplementedException();
+}
+
+/// <summary>
+/// Конвертер: 0 → Visible, иначе → Collapsed
+/// </summary>
+[ValueConversion(typeof(int), typeof(Visibility))]
+public class ZeroToVisibilityConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return value is int i && i == 0 ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => throw new NotImplementedException();
+}

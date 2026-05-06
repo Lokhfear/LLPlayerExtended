@@ -23,9 +23,50 @@ public partial class App : PrismApplication
 
     private readonly LogHandler Log;
 
+    // Dictionary window singleton
+    private static Window? _dictionaryWindow;
+
     public App()
     {
         Log = new LogHandler("[App] [MainApp       ] ");
+    }
+
+    /// <summary>
+    /// Открыть/показать окно словаря (синглтон).
+    /// </summary>
+    public static void ShowDictionaryWindow()
+    {
+        if (_dictionaryWindow == null)
+        {
+            var service = ((App)Current).Container.Resolve<DictionaryService>();
+            var vm = new ViewModels.DictionaryViewModel(service);
+            
+            _dictionaryWindow = new Window
+            {
+                Title = "Dictionary",
+                Width = 720,
+                Height = 550,
+                MinWidth = 500,
+                MinHeight = 350,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Background = (Brush?)Application.Current.FindResource("MaterialDesignPaper"),
+                Foreground = (Brush?)Application.Current.FindResource("MaterialDesignBody"),
+                ResizeMode = ResizeMode.CanResize,
+                ShowInTaskbar = false,
+                Content = new Controls.DictionaryControl { DataContext = vm }
+            };
+
+            // Окно не закрывается — только скрывается
+            _dictionaryWindow.Closing += (s, e) =>
+            {
+                e.Cancel = true;
+                _dictionaryWindow?.Hide();
+            };
+        }
+        
+        _dictionaryWindow.Owner = Current.MainWindow;
+        _dictionaryWindow.Show();
+        _dictionaryWindow.Activate();
     }
 
     static App()
@@ -42,7 +83,8 @@ public partial class App : PrismApplication
         containerRegistry
             .Register<Player>(FlyleafLoader.CreateFlyleafPlayer)
             .RegisterSingleton<FlyleafManager>()
-            .RegisterSingleton<IDialogService, ExtendedDialogService>();
+            .RegisterSingleton<IDialogService, ExtendedDialogService>()
+            .RegisterSingleton<DictionaryService>();
 
         containerRegistry.RegisterDialogWindow<MyDialogWindow>();
 
