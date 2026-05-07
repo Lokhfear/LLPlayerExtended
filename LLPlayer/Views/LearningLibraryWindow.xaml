@@ -118,10 +118,12 @@
                                         <TextBlock Text="{Binding ContextSentence}" FontStyle="Italic" Opacity="0.65" FontSize="12" TextWrapping="Wrap" Margin="0,3,0,0" Visibility="{Binding ContextSentence, Converter={StaticResource BoolToVis}}"/>
                                         <StackPanel Orientation="Horizontal" Margin="0,4,0,0" Visibility="{Binding Media.HasMedia, Converter={StaticResource BoolToVis}}">
                                             <Button Command="{Binding DataContext.OpenVideoCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignFlatButton}" Padding="4,2" Height="24" FontSize="11">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <md:PackIcon Kind="Play" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                                    <TextBlock><Run Text="{Binding Media.VideoTitle}"/><Run Text=" "/><Run Text="{Binding Media.TimestampDisplay}" Opacity="0.7"/></TextBlock>
-                                                </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <md:PackIcon Kind="Play" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                        <TextBlock Text="{Binding Media.VideoTitle}"/>
+                                                        <TextBlock Text=" "/>
+                                                        <TextBlock Text="{Binding Media.TimestampDisplay}" Opacity="0.7"/>
+                                                    </StackPanel>
                                             </Button>
                                         </StackPanel>
                                     </StackPanel>
