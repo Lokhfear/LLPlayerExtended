@@ -55,39 +55,3 @@ public class ItemTypeLabelConverter : IValueConverter
     public object ConvertBack(object v, Type t, object p, CultureInfo c)
         => throw new NotImplementedException();
 }
-
-/// <summary>
-/// Конвертер null в Visibility.
-/// </summary>
-public class NullToVisibilityConverter : IValueConverter
-{
-    public System.Windows.Visibility NullValue { get; set; } = System.Windows.Visibility.Collapsed;
-
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return value == null ? NullValue : System.Windows.Visibility.Visible;
-    }
-
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
-    }
-}
-
-/// <summary>
-/// Конвертер нуля в Visibility (для empty state).
-/// </summary>
-public class ZeroToVisibilityConverter : IValueConverter
-{
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        if (value is int count)
-            return count == 0 ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
-        return System.Windows.Visibility.Collapsed;
-    }
-
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
-    }
-}
