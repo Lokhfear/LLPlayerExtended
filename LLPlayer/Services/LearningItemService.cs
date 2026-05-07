@@ -42,10 +42,18 @@ public class LearningItemService
             var existing = list.FirstOrDefault(x =>
                 x.DeduplicationKey == item.DeduplicationKey);
 
-            if (existing != null) return (existing, false);
+            if (existing != null) 
+            {
+                // Элемент уже существует — не добавляем дубликат
+                return (existing, false);
+            }
 
             list.Add(item);
             await PersistAsync(list);
+            
+            // Сбросить кэш для следующего запроса
+            _cache = null;
+            
             return (item, true);
         }
         finally { _lock.Release(); }
@@ -63,6 +71,9 @@ public class LearningItemService
             item.UpdatedAt = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             list[idx] = item;
             await PersistAsync(list);
+            
+            // Сбросить кэш для следующего запроса
+            _cache = null;
         }
         finally { _lock.Release(); }
     }
@@ -76,6 +87,9 @@ public class LearningItemService
             var list = await LoadAsync();
             list.RemoveAll(x => x.Id == id);
             await PersistAsync(list);
+            
+            // Сбросить кэш для следующего запроса
+            _cache = null;
         }
         finally { _lock.Release(); }
     }
