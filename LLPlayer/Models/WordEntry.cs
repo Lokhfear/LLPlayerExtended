@@ -1,49 +1,104 @@
 using System;
+using System.Collections.Generic;
 
 namespace LLPlayer.Models;
 
 /// <summary>
-/// Сущность слова в словаре пользователя.
+/// Unified learning item entity - supports words, phrases, and sentences.
+/// Includes media context, learning status, favorites, tags, and review tracking.
 /// </summary>
-public class WordEntry
+public class LearningItem
 {
+    /// <summary>
+    /// Unique identifier for this item
+    /// </summary>
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
     /// <summary>
-    /// Нормализованное слово (lowercase, без знаков препинания по краям)
+    /// Type of this item: word, phrase, or sentence
     /// </summary>
-    public string Word { get; set; } = string.Empty;
+    public ItemType Type { get; set; } = ItemType.Word;
 
     /// <summary>
-    /// Перевод слова (заполняется асинхронно)
+    /// The text content (word/phrase/sentence) to learn
+    /// </summary>
+    public string Text { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Translation of the text (optional, may be filled asynchronously)
     /// </summary>
     public string? Translation { get; set; }
 
     /// <summary>
-    /// Предложение из субтитров, в котором встретилось слово
+    /// Context sentence where this item was found (optional)
     /// </summary>
-    public string Sentence { get; set; } = string.Empty;
+    public string? ContextSentence { get; set; }
 
     /// <summary>
-    /// Перевод предложения (опционально)
+    /// Translation of the context sentence (optional)
     /// </summary>
-    public string? SentenceTranslation { get; set; }
+    public string? ContextSentenceTranslation { get; set; }
 
     /// <summary>
-    /// Timestamp видео в секундах (опционально)
+    /// Media context - video/file reference and timestamp
     /// </summary>
-    public double? Timestamp { get; set; }
+    public MediaContext? Media { get; set; }
 
     /// <summary>
-    /// Путь/URL видео (опционально)
+    /// Current learning status
     /// </summary>
-    public string? VideoId { get; set; }
+    public LearningStatus Status { get; set; } = LearningStatus.New;
 
+    /// <summary>
+    /// Whether this item is marked as favorite
+    /// </summary>
+    public bool IsFavorite { get; set; }
+
+    /// <summary>
+    /// User-defined tags for organization
+    /// </summary>
+    public List<string> Tags { get; set; } = new();
+
+    /// <summary>
+    /// Number of times this item has been reviewed
+    /// </summary>
+    public int ReviewCount { get; set; }
+
+    /// <summary>
+    /// Unix timestamp (ms) of last review
+    /// </summary>
+    public long? LastReviewedAt { get; set; }
+
+    /// <summary>
+    /// Unix timestamp (ms) when this item was created
+    /// </summary>
     public long CreatedAt { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+
+    /// <summary>
+    /// Unix timestamp (ms) when this item was last updated
+    /// </summary>
     public long UpdatedAt { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
     /// <summary>
-    /// Ключ для дедупликации (word + sentence)
+    /// Normalized key for deduplication (lowercase, trimmed punctuation)
     /// </summary>
-    public string DeduplicationKey => $"{Word.ToLowerInvariant()}|{Sentence.Trim()}";
+    public string DeduplicationKey =>
+        Text.Trim().ToLowerInvariant()
+            .Trim('.', ',', '!', '?', ';', ':', '"', '\'');
+
+    /// <summary>
+    /// Whether this item is archived
+    /// </summary>
+    public bool IsArchived => Status == LearningStatus.Archived;
+
+    /// <summary>
+    /// Short type label for UI display (W/P/S)
+    /// </summary>
+    public string TypeLabel => Type switch
+    {
+        ItemType.Word     => "W",
+        ItemType.Phrase   => "P",
+        ItemType.Sentence => "S",
+        _                 => "?"
+    };
 }

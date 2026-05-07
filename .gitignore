@@ -5,57 +5,21 @@ obj/
 *.exe
 *.dll
 *.pdb
-*.nupkg
-*.snupkg
-*.msi
-*.msp
-*.msm
+*.userprefs
 
 # Dependencies
 packages/
 node_modules/
-lib/
-ref/
 
 # Logs
 *.log
 
-# User-specific files
-*.user
-*.userosscache
-*.suo
-*.userprefs
-
-# IDE - VSCode
-.vscode/
-
-# IDE - Visual Studio
-.vs/
-*.VC.db
-*.VC.VC.opendb
-
 # OS generated files
 .DS_Store
 Thumbs.db
-ehthumbs.db
-Icon?
-desktop.ini
 
-# Environment
-.env
-.env.local
-*.env.*
-
-# Testing
-TestResults/
-
-# NuGet
-*.nupkg
-*.snupkg
-nuget.exe
-
-# Backup files
-*.bak
-*.backup
-*.old
+# Visual Studio
+*.user
+*.suo
+.vs/
 ```
