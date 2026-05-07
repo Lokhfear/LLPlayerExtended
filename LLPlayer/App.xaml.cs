@@ -26,6 +26,13 @@ public partial class App : PrismApplication
 
     // Dictionary window singleton
     private static Window? _dictionaryWindow;
+    
+    // Learning Library window singleton
+    private static LearningLibraryWindow? _libraryWindow;
+    
+    // Services for Learning Library
+    public static LearningItemService LearningItemService { get; } = new();
+    public static ImportExportService ImportExportService { get; } = new(LearningItemService);
 
     public App()
     {
@@ -68,6 +75,37 @@ public partial class App : PrismApplication
         _dictionaryWindow.Owner = Current.MainWindow;
         _dictionaryWindow.Show();
         _dictionaryWindow.Activate();
+    }
+    
+    /// <summary>
+    /// Открыть/показать окно библиотеки обучения (синглтон).
+    /// </summary>
+    public static void ShowLibraryWindow()
+    {
+        if (_libraryWindow == null)
+        {
+            var vm = new ViewModels.LearningLibraryViewModel(
+                LearningItemService,
+                ImportExportService);
+            _libraryWindow = new LearningLibraryWindow(vm)
+            {
+                Owner = Current.MainWindow,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            
+            // Инициализация данных
+            _ = vm.InitializeAsync();
+            
+            _libraryWindow.Closing += (s, e) =>
+            {
+                e.Cancel = true;
+                _libraryWindow?.Hide();
+            };
+        }
+        
+        _libraryWindow.Owner = Current.MainWindow;
+        _libraryWindow.Show();
+        _libraryWindow.Activate();
     }
 
     static App()
