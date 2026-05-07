@@ -11,6 +11,7 @@ using FlyleafLib.MediaPlayer;
 using FlyleafLib.MediaPlayer.Translation;
 using FlyleafLib.MediaPlayer.Translation.Services;
 using LLPlayer.Extensions;
+using LLPlayer.Models;
 using LLPlayer.Services;
 
 namespace LLPlayer.Controls;
@@ -448,50 +449,65 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
     }
 
     /// <summary>
-    /// Добавить слово в словарь.
+    /// Добавить слово/фразу/предложение в библиотеку обучения.
     /// </summary>
     private async Task AddWordToDictionaryAsync(string rawWord, string sentence)
     {
-        // 1. Нормализация слова
-        var word = NormalizeWord(rawWord);
-        if (string.IsNullOrWhiteSpace(word)) return;
+        // 1. Нормализация текста
+        var text = NormalizeWord(rawWord);
+        if (string.IsNullOrWhiteSpace(text)) return;
 
-        // 2. Получить timestamp
+        // 2. Определить тип автоматически по количеству слов
+        var wordCount = text.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+        var type = wordCount == 1 ? ItemType.Word
+                 : wordCount <= 5 ? ItemType.Phrase
+                 : ItemType.Sentence;
+
+        // 3. Получить timestamp и информацию о видео
         var timestamp = FL.Player?.CurTime != null
             ? TimeSpan.FromTicks(FL.Player.CurTime).TotalSeconds
             : (double?)null;
 
-        // 3. Создать запись (сразу, без перевода)
-        var entry = new Models.WordEntry
+        var videoPath = FL.Player?.Playlist?.Selected?.Url;
+        var videoTitle = !string.IsNullOrEmpty(videoPath)
+            ? System.IO.Path.GetFileNameWithoutExtension(videoPath)
+            : null;
+
+        // 4. Создать запись с медиа-контекстом
+        var item = new Models.LearningItem
         {
-            Word = word,
-            Sentence = sentence,
-            Timestamp = timestamp,
-            VideoId = FL.Player?.Playlist?.Selected?.Url
+            Type = type,
+            Text = text,
+            ContextSentence = sentence,
+            Media = new Models.MediaContext
+            {
+                VideoTitle = videoTitle,
+                FilePath = videoPath,
+                TimestampSeconds = timestamp
+            }
         };
 
-        // 4. Сохранить немедленно (UI не блокируется)
-        var dictService = ((App)Application.Current).Container.Resolve<DictionaryService>();
-        var (savedEntry, isNew) = await dictService.AddAsync(entry);
-        if (!isNew) return; // уже было в словаре
+        // 5. Сохранить немедленно (UI не блокируется)
+        var (savedItem, isNew) = await App.LearningItemService.AddAsync(item);
+        if (!isNew) return; // уже было в библиотеке
 
-        // 5. Асинхронный перевод — не ждём
+        // 6. Асинхронный перевод — не ждём
         _ = Task.Run(async () =>
         {
             try
             {
-                // Перевод слова (используем существующий механизм)
-                var wordTranslation = await TranslateWordAsync(word);
+                // Перевод текста (слова/фразы)
+                var translation = await TranslateWordAsync(text);
 
-                // Перевод предложения (если sentence не пустой)
+                // Перевод предложения (если есть)
                 string? sentenceTranslation = null;
                 if (!string.IsNullOrWhiteSpace(sentence))
                     sentenceTranslation = await TranslateSentenceAsync(sentence);
 
-                savedEntry.Translation = wordTranslation;
-                savedEntry.SentenceTranslation = sentenceTranslation;
+                savedItem.Translation = translation;
+                savedItem.ContextSentenceTranslation = sentenceTranslation;
 
-                await dictService.UpdateAsync(savedEntry);
+                await App.LearningItemService.UpdateAsync(savedItem);
             }
             catch (Exception ex)
             {
