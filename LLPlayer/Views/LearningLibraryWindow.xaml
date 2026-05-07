@@ -280,7 +280,7 @@
                                                     <TextBlock>
                                                         <Run Text="{Binding Media.VideoTitle}"/>
                                                         <Run Text=" "/>
-                                                        <Run Text="{Binding Media.TimestampDisplay}"
+                                                        <Run Text="{Binding Media.TimestampDisplay, Mode=OneWay}"
                                                              />
                                                     </TextBlock>
                                                 </StackPanel>
