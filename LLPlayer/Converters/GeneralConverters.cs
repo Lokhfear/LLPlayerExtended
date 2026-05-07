@@ -313,3 +313,18 @@ public class ZeroToVisibilityConverter : IValueConverter
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         => throw new NotImplementedException();
 }
+
+/// <summary>
+/// Конвертер: true → Collapsed, false → Visible (обратный BooleanToVisibility)
+/// </summary>
+[ValueConversion(typeof(bool), typeof(Visibility))]
+public class InverseBoolToVisConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return value is true ? Visibility.Collapsed : Visibility.Visible;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => throw new NotImplementedException();
+}
