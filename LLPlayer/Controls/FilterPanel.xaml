@@ -1,0 +1,72 @@
+<UserControl x:Class="LLPlayer.Controls.FilterPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:models="clr-namespace:LLPlayer.Models"
+             xmlns:services="clr-namespace:LLPlayer.Services">
+    
+    <Grid Margin="12,8,12,4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Search Box -->
+        <TextBox Grid.Column="0" 
+                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" 
+                 md:HintAssist.Hint="🔍 Search..." 
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                 md:TextFieldAssist.HasClearButton="True" 
+                 Margin="0,0,8,0"/>
+        
+        <!-- Type Filter -->
+        <ComboBox Grid.Column="1" 
+                  SelectedValue="{Binding FilterType}" 
+                  md:HintAssist.Hint="Type" 
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}" 
+                  Margin="0,0,8,0">
+            <ComboBoxItem Content="All types" Tag="{x:Null}"/>
+            <ComboBoxItem Content="Word" Tag="{x:Static models:ItemType.Word}"/>
+            <ComboBoxItem Content="Phrase" Tag="{x:Static models:ItemType.Phrase}"/>
+            <ComboBoxItem Content="Sentence" Tag="{x:Static models:ItemType.Sentence}"/>
+        </ComboBox>
+        
+        <!-- Status Filter -->
+        <ComboBox Grid.Column="2" 
+                  SelectedValue="{Binding FilterStatus}" 
+                  md:HintAssist.Hint="Status" 
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}" 
+                  Margin="0,0,8,0">
+            <ComboBoxItem Content="All statuses" Tag="{x:Null}"/>
+            <ComboBoxItem Content="New" Tag="{x:Static models:LearningStatus.New}"/>
+            <ComboBoxItem Content="Learning" Tag="{x:Static models:LearningStatus.Learning}"/>
+            <ComboBoxItem Content="Learned" Tag="{x:Static models:LearningStatus.Learned}"/>
+            <ComboBoxItem Content="Ignored" Tag="{x:Static models:LearningStatus.Ignored}"/>
+        </ComboBox>
+        
+        <!-- Sort Mode -->
+        <ComboBox Grid.Column="3" 
+                  SelectedValue="{Binding SortMode}" 
+                  md:HintAssist.Hint="Sort" 
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}" 
+                  Margin="0,0,8,0">
+            <ComboBoxItem Content="Newest" Tag="{x:Static services:SortMode.Newest}"/>
+            <ComboBoxItem Content="Oldest" Tag="{x:Static services:SortMode.Oldest}"/>
+            <ComboBoxItem Content="A → Z" Tag="{x:Static services:SortMode.Alphabetical}"/>
+            <ComboBoxItem Content="Reviewed" Tag="{x:Static services:SortMode.RecentlyReviewed}"/>
+            <ComboBoxItem Content="Most Reviews" Tag="{x:Static services:SortMode.MostReviewed}"/>
+        </ComboBox>
+        
+        <!-- Clear Filters Button -->
+        <Button Grid.Column="4" 
+                Command="{Binding ClearFiltersCommand}" 
+                Style="{StaticResource MaterialDesignIconButton}" 
+                ToolTip="Clear all filters" 
+                VerticalAlignment="Center">
+            <md:PackIcon Kind="FilterRemove" Width="20" Height="20" Opacity="0.6"/>
+        </Button>
+    </Grid>
+</UserControl>
