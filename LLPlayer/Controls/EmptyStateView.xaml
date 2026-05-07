@@ -1,0 +1,43 @@
+<UserControl x:Class="LLPlayer.Controls.EmptyStateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes">
+    
+    <StackPanel VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Margin="40">
+        
+        <!-- Icon -->
+        <TextBlock Text="{Binding Icon, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                   FontSize="64" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,16"/>
+        
+        <!-- Title -->
+        <TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                   FontSize="20" 
+                   FontWeight="SemiBold" 
+                   HorizontalAlignment="Center" 
+                   Opacity="0.8"
+                   TextWrapping="Wrap"
+                   TextAlignment="Center"/>
+        
+        <!-- Description -->
+        <TextBlock Text="{Binding Description, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                   FontSize="14" 
+                   HorizontalAlignment="Center" 
+                   Opacity="0.5" 
+                   Margin="0,8,0,0"
+                   TextWrapping="Wrap"
+                   TextAlignment="Center"
+                   MaxWidth="300"/>
+        
+        <!-- Optional Action Button -->
+        <Button Content="{Binding ActionButtonText, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                Command="{Binding ActionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Margin="0,16,0,0"
+                HorizontalAlignment="Center"
+                Visibility="{Binding ActionButtonText, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource BoolToVis}}"/>
+    </StackPanel>
+</UserControl>
