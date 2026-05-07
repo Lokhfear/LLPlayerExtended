@@ -58,7 +58,8 @@ namespace LLPlayer.Controls.Settings.TransControl {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LLPlayer;component/controls/settings/trans/openaibasetranslatecontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri(("/LLPlayer;V0.2.2.0;component/controls/settings/trans/openaibasetranslatecontrol.x" +
+                    "aml"), System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\Controls\Settings\Trans\OpenAIBaseTranslateControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
