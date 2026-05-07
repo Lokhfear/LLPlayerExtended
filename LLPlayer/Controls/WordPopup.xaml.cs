@@ -448,55 +448,77 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
     }
 
     /// <summary>
-    /// Добавить слово в словарь.
+    /// Добавить слово/фразу/предложение в Learning Library.
     /// </summary>
     private async Task AddWordToDictionaryAsync(string rawWord, string sentence)
     {
-        // 1. Нормализация слова
-        var word = NormalizeWord(rawWord);
-        if (string.IsNullOrWhiteSpace(word)) return;
+        // 1. Нормализация текста
+        var text = NormalizeWord(rawWord);
+        if (string.IsNullOrWhiteSpace(text)) return;
 
-        // 2. Получить timestamp
+        // 2. Определить тип (слово/фраза/предложение)
+        var wordCount = text.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+        var type = wordCount == 1 ? Models.ItemType.Word
+                 : wordCount <= 5 ? Models.ItemType.Phrase
+                 : Models.ItemType.Sentence;
+
+        // 3. Получить media context
         var timestamp = FL.Player?.CurTime != null
             ? TimeSpan.FromTicks(FL.Player.CurTime).TotalSeconds
             : (double?)null;
 
-        // 3. Создать запись (сразу, без перевода)
-        var entry = new Models.WordEntry
+        var videoUrl = FL.Player?.Playlist?.Selected?.Url;
+        var mediaContext = new Models.MediaContext
         {
-            Word = word,
-            Sentence = sentence,
-            Timestamp = timestamp,
-            VideoId = FL.Player?.Playlist?.Selected?.Url
+            VideoTitle = !string.IsNullOrWhiteSpace(videoUrl) 
+                ? System.IO.Path.GetFileNameWithoutExtension(videoUrl) 
+                : null,
+            FilePath = videoUrl,
+            TimestampSeconds = timestamp
         };
 
-        // 4. Сохранить немедленно (UI не блокируется)
-        var dictService = ((App)Application.Current).Container.Resolve<DictionaryService>();
-        var (savedEntry, isNew) = await dictService.AddAsync(entry);
-        if (!isNew) return; // уже было в словаре
+        // 4. Создать LearningItem
+        var item = new Models.LearningItem
+        {
+            Type = type,
+            Text = text,
+            ContextSentence = sentence,
+            Media = mediaContext
+        };
 
-        // 5. Асинхронный перевод — не ждём
+        // 5. Сохранить через новый сервис
+        var learningService = ((App)Application.Current).Container.Resolve<LearningItemService>();
+        var (savedItem, isNew) = await learningService.AddAsync(item);
+        
+        if (!isNew)
+        {
+            // Уже существует — покажем уведомление (опционально)
+            System.Diagnostics.Debug.WriteLine($"[LearningLibrary] Item already exists: {text}");
+            return;
+        }
+
+        // 6. Асинхронный перевод — не ждём UI
         _ = Task.Run(async () =>
         {
             try
             {
-                // Перевод слова (используем существующий механизм)
-                var wordTranslation = await TranslateWordAsync(word);
+                // Перевод текста
+                var translation = await TranslateWordAsync(text);
 
-                // Перевод предложения (если sentence не пустой)
-                string? sentenceTranslation = null;
+                // Перевод контекстного предложения
+                string? contextTranslation = null;
                 if (!string.IsNullOrWhiteSpace(sentence))
-                    sentenceTranslation = await TranslateSentenceAsync(sentence);
+                    contextTranslation = await TranslateSentenceAsync(sentence);
 
-                savedEntry.Translation = wordTranslation;
-                savedEntry.SentenceTranslation = sentenceTranslation;
+                savedItem.Translation = translation;
+                savedItem.ContextSentenceTranslation = contextTranslation;
 
-                await dictService.UpdateAsync(savedEntry);
+                await learningService.UpdateAsync(savedItem);
             }
             catch (Exception ex)
             {
                 // Ошибка перевода — запись остаётся без перевода, не критично
-                System.Diagnostics.Debug.WriteLine($"[Dictionary] Translation failed: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[LearningLibrary] Translation failed: {ex.Message}");
             }
         });
     }

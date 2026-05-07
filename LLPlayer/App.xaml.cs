@@ -24,8 +24,9 @@ public partial class App : PrismApplication
 
     private readonly LogHandler Log;
 
-    // Dictionary window singleton
+    // Window singletons
     private static Window? _dictionaryWindow;
+    private static Window? _libraryWindow;
 
     public App()
     {
@@ -33,7 +34,7 @@ public partial class App : PrismApplication
     }
 
     /// <summary>
-    /// Открыть/показать окно словаря (синглтон).
+    /// Open/show the dictionary window (singleton, legacy).
     /// </summary>
     public static void ShowDictionaryWindow()
     {
@@ -57,7 +58,7 @@ public partial class App : PrismApplication
                 Content = new Controls.DictionaryControl { DataContext = vm }
             };
 
-            // Окно не закрывается — только скрывается
+            // Window doesn't close - just hides
             _dictionaryWindow.Closing += (s, e) =>
             {
                 e.Cancel = true;
@@ -68,6 +69,39 @@ public partial class App : PrismApplication
         _dictionaryWindow.Owner = Current.MainWindow;
         _dictionaryWindow.Show();
         _dictionaryWindow.Activate();
+    }
+
+    /// <summary>
+    /// Open/show the Learning Library window (singleton, new extended version).
+    /// </summary>
+    public static void ShowLearningLibraryWindow()
+    {
+        if (_libraryWindow == null)
+        {
+            var itemService = ((App)Current).Container.Resolve<LearningItemService>();
+            var importExportService = ((App)Current).Container.Resolve<ImportExportService>();
+            
+            var vm = new ViewModels.LearningLibraryViewModel(itemService, importExportService);
+            
+            _libraryWindow = new Views.LearningLibraryWindow(vm)
+            {
+                Owner = Current.MainWindow
+            };
+
+            // Initialize data asynchronously
+            _ = vm.InitializeAsync();
+
+            // Window doesn't close - just hides
+            _libraryWindow.Closing += (s, e) =>
+            {
+                e.Cancel = true;
+                _libraryWindow?.Hide();
+            };
+        }
+        
+        _libraryWindow.Owner = Current.MainWindow;
+        _libraryWindow.Show();
+        _libraryWindow.Activate();
     }
 
     static App()
@@ -85,7 +119,9 @@ public partial class App : PrismApplication
             .Register<Player>(FlyleafLoader.CreateFlyleafPlayer)
             .RegisterSingleton<FlyleafManager>()
             .RegisterSingleton<IDialogService, ExtendedDialogService>()
-            .RegisterSingleton<DictionaryService>();
+            .RegisterSingleton<DictionaryService>()
+            .RegisterSingleton<LearningItemService>()
+            .RegisterSingleton<ImportExportService>();
 
         containerRegistry.RegisterDialogWindow<MyDialogWindow>();
 
