@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlyleafLibTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93522fd35ea8e2c3f025aac9ec918d92545b288a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+768b0051d5a5cec24c2da6efd0ed5c874d099c81")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlyleafLibTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlyleafLibTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
