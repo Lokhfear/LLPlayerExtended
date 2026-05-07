@@ -278,7 +278,7 @@
                                                         <Run Text="{Binding Media.VideoTitle}"/>
                                                         <Run Text=" "/>
                                                         <Run Text="{Binding Media.TimestampDisplay}"
-                                                             Opacity="0.7"/>
+                                                             />
                                                     </TextBlock>
                                                 </StackPanel>
                                             </Button>
