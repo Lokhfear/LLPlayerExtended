@@ -1,34 +1,56 @@
-```
-# Build artifacts
-*.o
-*.obj
-*.exe
-*.dll
-*.so
-*.a
-*.out
+```csharp
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Dd]ebug-[Nn][Ee][Tt]
+[Rr]elease-[Nn][Ee][Tt]
+[Ll]ocal[Cc]ache
+[Tt]emp/
 
-# Dependencies
-packages/
-lib/
-bin/
-obj/
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.lock
+*.csproj.user
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# Editors
-.vscode/
+# IDE specific files
+.vs/
 .idea/
+*.swp
+*.swo
 
 # OS generated files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Log files
+*.log
 
 # Environment
 .env
 .env.local
 *.env.*
+
+# Dependencies
+node_modules/
+packages/
+lib/
+
+# Test results
+[TestRr]esults/
+*.trx
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
 ```

@@ -87,6 +87,7 @@ public class AppActions
             [CustomKeyBindingAction.OpenWindowSubsDownloader] = CmdOpenWindowSubsDownloader.Execute,
             [CustomKeyBindingAction.OpenWindowSubsExporter] = CmdOpenWindowSubsExporter.Execute,
             [CustomKeyBindingAction.OpenWindowCheatSheet] = CmdOpenWindowCheatSheet.Execute,
+            [CustomKeyBindingAction.OpenWindowLearningLibrary] = CmdOpenWindowLearningLibrary.Execute,
 
             [CustomKeyBindingAction.AppNew] = CmdAppNew.Execute,
             [CustomKeyBindingAction.AppClone] = CmdAppClone.Execute,
@@ -474,6 +475,12 @@ public class AppActions
         _dialogService.ShowSingleton(nameof(CheatSheetDialog), true);
     });
 
+    public DelegateCommand CmdOpenWindowLearningLibrary => field ??= new(() =>
+    {
+        _player.Activity.ForceFullActive();
+        App.ShowLearningLibraryWindow();
+    });
+
     public DelegateCommand CmdAppNew => field ??= new(() =>
     {
         string exePath = Process.GetCurrentProcess().MainModule!.FileName;
@@ -729,6 +736,8 @@ public enum CustomKeyBindingAction
     OpenWindowSubsExporter,
     [Description("Open Cheat Sheet Window")]
     OpenWindowCheatSheet,
+    [Description("Open Learning Library Window")]
+    OpenWindowLearningLibrary,
 
     [Description("Launch New Application")]
     AppNew,
