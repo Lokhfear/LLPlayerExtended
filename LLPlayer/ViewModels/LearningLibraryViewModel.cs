@@ -36,6 +36,7 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         ExportCommand         = new RelayCommand(async _ => await OnExport());
         ImportCommand         = new RelayCommand(async _ => await OnImport());
         ClearFiltersCommand   = new RelayCommand(_ => ClearFilters());
+        FavoritesOnlyCommand  = new RelayCommand(_ => ToggleFavoritesOnly());
     }
 
     // ─── Коллекции ─────────────────────────────────────────────────────────
@@ -127,6 +128,7 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
     public ICommand ExportCommand { get; }
     public ICommand ImportCommand { get; }
     public ICommand ClearFiltersCommand { get; }
+    public ICommand FavoritesOnlyCommand { get; }
 
     // ─── Методы ────────────────────────────────────────────────────────────
 
@@ -183,6 +185,16 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         _filterType     = null;         OnPropertyChanged(nameof(FilterType));
         _filterStatus   = null;         OnPropertyChanged(nameof(FilterStatus));
         _hasMediaOnly   = false;        OnPropertyChanged(nameof(HasMediaOnly));
+        _showArchived   = false;        OnPropertyChanged(nameof(ShowArchived));
+        _ = RefreshAsync();
+    }
+
+    private void ToggleFavoritesOnly()
+    {
+        _favoritesOnly = !_favoritesOnly;
+        OnPropertyChanged(nameof(FavoritesOnly));
+        _showArchived = false;
+        OnPropertyChanged(nameof(ShowArchived));
         _ = RefreshAsync();
     }
 
