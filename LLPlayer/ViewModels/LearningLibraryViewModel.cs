@@ -8,9 +8,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using LLPlayer.Extensions;
 using LLPlayer.Models;
 using LLPlayer.Services;
-using LLPlayer.ViewModels;
 using Microsoft.Win32;
 
 namespace LLPlayer.ViewModels;
@@ -29,11 +29,11 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         _service = svc;
         _importExport = ie;
 
-        DeleteCommand         = new RelayCommand<LearningItem>(OnDelete);
-        ToggleFavoriteCommand = new RelayCommand<LearningItem>(OnToggleFavorite);
-        ArchiveCommand        = new RelayCommand<LearningItem>(OnArchive);
-        RestoreCommand        = new RelayCommand<LearningItem>(OnRestore);
-        OpenVideoCommand      = new RelayCommand<LearningItem>(OnOpenVideo);
+        DeleteCommand         = new RelayCommand<LearningItem?>(OnDelete);
+        ToggleFavoriteCommand = new RelayCommand<LearningItem?>(OnToggleFavorite);
+        ArchiveCommand        = new RelayCommand<LearningItem?>(OnArchive);
+        RestoreCommand        = new RelayCommand<LearningItem?>(OnRestore);
+        OpenVideoCommand      = new RelayCommand<LearningItem?>(OnOpenVideo);
         ExportCommand         = new RelayCommand(async _ => await OnExport());
         ImportCommand         = new RelayCommand(async _ => await OnImport());
         ClearFiltersCommand   = new RelayCommand(_ => ClearFilters());
