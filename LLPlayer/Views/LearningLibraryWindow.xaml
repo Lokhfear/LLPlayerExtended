@@ -110,6 +110,7 @@
             <!-- Тип -->
             <ComboBox Grid.Column="1"
                       SelectedValue="{Binding FilterType}"
+                      SelectedValuePath="Tag"
                       md:HintAssist.Hint="Type"
                       Style="{StaticResource MaterialDesignOutlinedComboBox}"
                       Margin="0,0,8,0">
@@ -122,6 +123,7 @@
             <!-- Статус -->
             <ComboBox Grid.Column="2"
                       SelectedValue="{Binding FilterStatus}"
+                      SelectedValuePath="Tag"
                       md:HintAssist.Hint="Status"
                       Style="{StaticResource MaterialDesignOutlinedComboBox}"
                       Margin="0,0,8,0">
@@ -135,6 +137,7 @@
             <!-- Сортировка -->
             <ComboBox Grid.Column="3"
                       SelectedValue="{Binding SortMode}"
+                      SelectedValuePath="Tag"
                       md:HintAssist.Hint="Sort"
                       Style="{StaticResource MaterialDesignOutlinedComboBox}"
                       Margin="0,0,8,0">
@@ -162,13 +165,13 @@
                          VerticalAlignment="Top"
                          Height="2"
                          Visibility="{Binding IsLoading,
-                             Converter={StaticResource BooleanToVisibilityConv}}"/>
+                             Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
             <!-- ПУСТОЙ ЭКРАН -->
             <StackPanel VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Visibility="{Binding IsEmpty,
-                            Converter={StaticResource BooleanToVisibilityConv}}">
+                            Converter={StaticResource BooleanToVisibilityConverter}}">
                 <TextBlock Text="📭" FontSize="48"
                            HorizontalAlignment="Center" Margin="0,0,0,16"/>
                 <TextBlock Text="Nothing here yet"
