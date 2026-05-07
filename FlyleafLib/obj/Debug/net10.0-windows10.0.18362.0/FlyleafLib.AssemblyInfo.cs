@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("SuRGeoNix © 2025")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Media Player .NET Library for WinUI 3/WPF/WinForms (based on FFmpeg/DirectX)")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("3.9.4.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.9.4+0c2bdca9c3457e883e5ce2a4eea296b3ca6c1c5f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.9.4+5d63b50f4ce1592566286b454843eb0761128aec")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlyleafLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlyleafLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("3.9.4.0")]

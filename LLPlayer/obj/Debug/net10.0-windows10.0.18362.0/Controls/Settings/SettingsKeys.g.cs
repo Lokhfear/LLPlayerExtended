@@ -76,7 +76,7 @@ namespace LLPlayer.Controls.Settings {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LLPlayer;component/controls/settings/settingskeys.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LLPlayer;V0.2.2.0;component/controls/settings/settingskeys.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Controls\Settings\SettingsKeys.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

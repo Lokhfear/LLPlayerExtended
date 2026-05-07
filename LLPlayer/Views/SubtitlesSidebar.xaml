@@ -194,6 +194,12 @@
                     Command="{Binding FL.Action.CmdActivateSubsSearch}"
                     Content="{materialDesign:PackIcon Kind=Magnify}" />
 
+            <!-- Dictionary -->
+            <Button Style="{StaticResource IconButton}"
+                    ToolTip="Open Dictionary"
+                    Command="{Binding CmdOpenDictionary}"
+                    Content="{materialDesign:PackIcon Kind=BookOpenVariant}" />
+
         </StackPanel>
 
         <!-- Search Input Row: Shown only when search is active -->
