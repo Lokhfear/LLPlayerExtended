@@ -178,6 +178,11 @@ public partial class FlyleafBar : UserControl
         // this is necessary to keep PopupMenu visible when opened in succession when SeekBarShowOnlyMouseOver
         SetActivity(false);
     }
+
+    private void LibraryButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        App.ShowLibraryWindow();
+    }
 }
 
 public class SliderToolTipBehavior : Behavior<Slider>
