@@ -453,68 +453,96 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
     /// </summary>
     private async Task AddWordToDictionaryAsync(string rawWord, string sentence)
     {
-        // 1. Нормализация текста
-        var text = NormalizeWord(rawWord);
-        if (string.IsNullOrWhiteSpace(text)) return;
-
-        // 2. Определить тип автоматически по количеству слов
-        var wordCount = text.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
-        var type = wordCount == 1 ? ItemType.Word
-                 : wordCount <= 5 ? ItemType.Phrase
-                 : ItemType.Sentence;
-
-        // 3. Получить timestamp и информацию о видео
-        var timestamp = FL.Player?.CurTime != null
-            ? TimeSpan.FromTicks(FL.Player.CurTime).TotalSeconds
-            : (double?)null;
-
-        var videoPath = FL.Player?.Playlist?.Selected?.Url;
-        var videoTitle = !string.IsNullOrEmpty(videoPath)
-            ? System.IO.Path.GetFileNameWithoutExtension(videoPath)
-            : null;
-
-        // 4. Создать запись с медиа-контекстом
-        var item = new Models.LearningItem
+        try
         {
-            Type = type,
-            Text = text,
-            ContextSentence = sentence,
-            Media = new Models.MediaContext
+            System.Diagnostics.Debug.WriteLine($"[Dictionary] Adding: raw='{rawWord}', sentence='{sentence}'");
+
+            // 1. Нормализация текста
+            var text = NormalizeWord(rawWord);
+            if (string.IsNullOrWhiteSpace(text))
             {
-                VideoTitle = videoTitle,
-                FilePath = videoPath,
-                TimestampSeconds = timestamp
+                System.Diagnostics.Debug.WriteLine("[Dictionary] Skipped: empty text after normalization");
+                return;
             }
-        };
 
-        // 5. Сохранить немедленно (UI не блокируется)
-        var (savedItem, isNew) = await App.LearningItemService.AddAsync(item);
-        if (!isNew) return; // уже было в библиотеке
+            // 2. Определить тип автоматически по количеству слов
+            var wordCount = text.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+            var type = wordCount == 1 ? ItemType.Word
+                     : wordCount <= 5 ? ItemType.Phrase
+                     : ItemType.Sentence;
 
-        // 6. Асинхронный перевод — не ждём
-        _ = Task.Run(async () =>
+            // 3. Получить timestamp и информацию о видео
+            var timestamp = FL.Player?.CurTime != null
+                ? TimeSpan.FromTicks(FL.Player.CurTime).TotalSeconds
+                : (double?)null;
+
+            var videoPath = FL.Player?.Playlist?.Selected?.Url;
+            var videoTitle = !string.IsNullOrEmpty(videoPath)
+                ? System.IO.Path.GetFileNameWithoutExtension(videoPath)
+                : null;
+
+            // 4. Создать запись с медиа-контекстом
+            var item = new Models.LearningItem
+            {
+                Type = type,
+                Text = text,
+                ContextSentence = sentence,
+                Media = new Models.MediaContext
+                {
+                    VideoTitle = videoTitle,
+                    FilePath = videoPath,
+                    TimestampSeconds = timestamp
+                }
+            };
+
+            System.Diagnostics.Debug.WriteLine($"[Dictionary] Item created: Type={type}, Text='{text}', Video='{videoTitle}'");
+
+            // 5. Сохранить немедленно (UI не блокируется)
+            var (savedItem, isNew) = await App.LearningItemService.AddAsync(item);
+            
+            System.Diagnostics.Debug.WriteLine($"[Dictionary] Save result: isNew={isNew}, Id={savedItem.Id}");
+
+            if (!isNew)
+            {
+                System.Diagnostics.Debug.WriteLine("[Dictionary] Duplicate detected - item already exists");
+                return; // уже было в библиотеке
+            }
+
+            // Показать уведомление об успешном добавлении (через статус в VM библиотеки)
+            System.Diagnostics.Debug.WriteLine($"[Dictionary] ✓ Successfully added '{text}' to dictionary");
+
+            // 6. Асинхронный перевод — не ждём
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    // Перевод текста (слова/фразы)
+                    var translation = await TranslateWordAsync(text);
+
+                    // Перевод предложения (если есть)
+                    string? sentenceTranslation = null;
+                    if (!string.IsNullOrWhiteSpace(sentence))
+                        sentenceTranslation = await TranslateSentenceAsync(sentence);
+
+                    savedItem.Translation = translation;
+                    savedItem.ContextSentenceTranslation = sentenceTranslation;
+
+                    await App.LearningItemService.UpdateAsync(savedItem);
+                    
+                    System.Diagnostics.Debug.WriteLine($"[Dictionary] Translation completed: '{translation}'");
+                }
+                catch (Exception ex)
+                {
+                    // Ошибка перевода — запись остаётся без перевода, не критично
+                    System.Diagnostics.Debug.WriteLine($"[Dictionary] Translation failed: {ex.Message}");
+                }
+            });
+        }
+        catch (Exception ex)
         {
-            try
-            {
-                // Перевод текста (слова/фразы)
-                var translation = await TranslateWordAsync(text);
-
-                // Перевод предложения (если есть)
-                string? sentenceTranslation = null;
-                if (!string.IsNullOrWhiteSpace(sentence))
-                    sentenceTranslation = await TranslateSentenceAsync(sentence);
-
-                savedItem.Translation = translation;
-                savedItem.ContextSentenceTranslation = sentenceTranslation;
-
-                await App.LearningItemService.UpdateAsync(savedItem);
-            }
-            catch (Exception ex)
-            {
-                // Ошибка перевода — запись остаётся без перевода, не критично
-                System.Diagnostics.Debug.WriteLine($"[Dictionary] Translation failed: {ex.Message}");
-            }
-        });
+            System.Diagnostics.Debug.WriteLine($"[Dictionary] ERROR: {ex}");
+            ErrorDialogHelper.ShowUnknownErrorPopup($"Failed to add to dictionary: {ex.Message}", "Dictionary", ex);
+        }
     }
 
     /// <summary>
