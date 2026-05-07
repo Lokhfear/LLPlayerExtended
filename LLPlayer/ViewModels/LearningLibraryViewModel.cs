@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using LLPlayer.Models;
 using LLPlayer.Services;
+using LLPlayer.ViewModels;
 using Microsoft.Win32;
 
 namespace LLPlayer.ViewModels;

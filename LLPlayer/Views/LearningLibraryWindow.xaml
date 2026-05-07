@@ -162,13 +162,13 @@
                          VerticalAlignment="Top"
                          Height="2"
                          Visibility="{Binding IsLoading,
-                             Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                             Converter={StaticResource BooleanToVisibilityConv}}"/>
 
             <!-- ПУСТОЙ ЭКРАН -->
             <StackPanel VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Visibility="{Binding IsEmpty,
-                            Converter={StaticResource BooleanToVisibilityConverter}}">
+                            Converter={StaticResource BooleanToVisibilityConv}}">
                 <TextBlock Text="📭" FontSize="48"
                            HorizontalAlignment="Center" Margin="0,0,0,16"/>
                 <TextBlock Text="Nothing here yet"
@@ -232,19 +232,19 @@
                                                        Opacity="0.4"
                                                        FontSize="15"
                                                        Visibility="{Binding Translation,
-                                                           Converter={StaticResource NullToCollapsedConverter}}"/>
+                                                           Converter={StaticResource NullToCollapsedConv}}"/>
                                             <TextBlock Text="{Binding Translation}"
                                                        FontSize="15"
                                                        Foreground="{DynamicResource PrimaryHueMidBrush}"
                                                        Visibility="{Binding Translation,
-                                                           Converter={StaticResource NullToCollapsedConverter}}"/>
+                                                           Converter={StaticResource NullToCollapsedConv}}"/>
                                             <!-- Ожидание перевода -->
                                             <ProgressBar IsIndeterminate="True"
                                                          Width="50" Height="3"
                                                          VerticalAlignment="Center"
                                                          Margin="8,0,0,0"
                                                          Visibility="{Binding Translation,
-                                                             Converter={StaticResource NullToVisibleConverter}}"/>
+                                                             Converter={StaticResource NullToVisibleConv}}"/>
                                         </WrapPanel>
 
                                         <!-- Контекстное предложение -->
@@ -255,7 +255,7 @@
                                                    TextWrapping="Wrap"
                                                    Margin="0,3,0,0"
                                                    Visibility="{Binding ContextSentence,
-                                                       Converter={StaticResource NullToCollapsedConverter}}"/>
+                                                       Converter={StaticResource NullToCollapsedConv}}"/>
 
                                         <!-- Медиа-контекст -->
                                         <StackPanel Orientation="Horizontal"
