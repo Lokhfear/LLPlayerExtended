@@ -24,6 +24,7 @@
 
     <!--General Converters-->
     <conv:BooleanToVisibilityMiscConverter x:Key="BooleanToVisibilityConv"/>
+    <conv:BooleanToVisibilityMiscConverter x:Key="BooleanToVisibilityConverter"/>
     <conv:BooleanToVisibilityMiscConverter Invert="True" x:Key="BooleanToVisibilityInvertConv"/>
     <conv:BooleanToVisibilityMiscConverter FalseVisibility="Hidden" x:Key="BooleanToVisibilityHiddenConv"/>
     <conv:DoubleToPercentageConverter x:Key="DoubleToPercentageConv"/>
