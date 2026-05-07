@@ -103,7 +103,8 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <md:Chip Text="{Binding}" 
+                            <!-- ИСПРАВЛЕНО: Text → Content -->
+                            <md:Chip Content="{Binding}" 
                                      Margin="0,0,4,4" 
                                      FontSize="10" 
                                      Height="22"

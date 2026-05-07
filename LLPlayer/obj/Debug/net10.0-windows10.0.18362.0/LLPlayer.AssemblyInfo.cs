@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("umlx5h © 2025")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("The media player for language learning.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.2.2.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.2.2+0c2bdca9c3457e883e5ce2a4eea296b3ca6c1c5f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.2.2+fe71a85743e9b049a906f440c5181af5f2cf1df3")]
 [assembly: System.Reflection.AssemblyProductAttribute("LLPlayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LLPlayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.2.2.0")]

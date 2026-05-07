@@ -89,3 +89,8 @@ D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Views\
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\LLPlayer.dll
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\refint\LLPlayer.dll
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\LLPlayer.pdb
+D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\EmptyStateView.baml
+D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\EmptyStateView.g.cs
+D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\FilterPanel.g.cs
+D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\LearningItemCard.g.cs
+D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Views\LearningLibraryWindow.g.cs
