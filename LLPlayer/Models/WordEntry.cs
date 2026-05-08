@@ -46,4 +46,9 @@ public class WordEntry
     /// Ключ для дедупликации (word + sentence)
     /// </summary>
     public string DeduplicationKey => $"{Word.ToLowerInvariant()}|{Sentence.Trim()}";
+
+    /// <summary>
+    /// Для UI: раскрыта ли карточка
+    /// </summary>
+    public bool IsExpanded { get; set; }
 }

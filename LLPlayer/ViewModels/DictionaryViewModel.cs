@@ -23,6 +23,9 @@ public class DictionaryViewModel : INotifyPropertyChanged
         _service = service;
         DeleteCommand = new RelayCommand<WordEntry>(OnDelete);
         RefreshCommand = new RelayCommand(async _ => await LoadEntriesAsync());
+        ToggleExpandCommand = new RelayCommand<WordEntry>(OnToggleExpand);
+        ExpandAllCommand = new RelayCommand(_ => OnExpandAll());
+        PlayAtTimestampCommand = new RelayCommand<WordEntry>(OnPlayAtTimestamp);
     }
 
     // ─── Свойства ─────────────────────────────────────────────────────────────
@@ -64,6 +67,9 @@ public class DictionaryViewModel : INotifyPropertyChanged
 
     public ICommand DeleteCommand { get; }
     public ICommand RefreshCommand { get; }
+    public ICommand ToggleExpandCommand { get; }
+    public ICommand ExpandAllCommand { get; }
+    public ICommand PlayAtTimestampCommand { get; }
 
     // ─── Методы ───────────────────────────────────────────────────────────────
 
@@ -107,6 +113,35 @@ public class DictionaryViewModel : INotifyPropertyChanged
         await _service.RemoveAsync(entry.Id);
         Entries.Remove(entry);
         TotalCount--;
+    }
+
+    private void OnToggleExpand(WordEntry? entry)
+    {
+        if (entry == null) return;
+        entry.IsExpanded = !entry.IsExpanded;
+        OnPropertyChanged(nameof(Entries));
+    }
+
+    private void OnExpandAll()
+    {
+        foreach (var entry in Entries)
+        {
+            entry.IsExpanded = true;
+        }
+        OnPropertyChanged(nameof(Entries));
+    }
+
+    private void OnPlayAtTimestamp(WordEntry? entry)
+    {
+        if (entry?.Timestamp == null || string.IsNullOrEmpty(entry.VideoId)) return;
+        
+        // TODO: Integrate with FlyleafManager to seek to timestamp
+        // For now, just show a message
+        System.Windows.MessageBox.Show(
+            $"Would play video at {TimeSpan.FromSeconds(entry.Timestamp.Value):hh\\:mm\\:ss}\n\nIntegration with main player needed.",
+            "Play at Timestamp",
+            System.Windows.MessageBoxButton.OK,
+            System.Windows.MessageBoxImage.Information);
     }
 
     // ─── INotifyPropertyChanged ───────────────────────────────────────────────

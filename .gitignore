@@ -1,1 +1,49 @@
-Nothing should be ignored based on the provided file changes. The modified file 'LLPlayer/Views/LearningLibraryWindow.xaml' is a source code file that should be tracked in version control. Since there are no build artifacts, dependencies, or temporary files in the changes, no .gitignore rules are needed.
+```
+# Build artifacts
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.userprefs
+*.cache
+*.compiled
+*.nupkg
+
+# Dependencies
+packages/
+node_modules/
+vendor/
+
+# IDE specific
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.csproj.user
+
+# OS generated
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+._*
+
+# Logs
+*.log
+
+# User-specific
+*.userprefs
+
+# Localized resources
+*.resx
+*.resources
+*.resource
+
+# Configuration
+app.config
+web.config
+*.config
+```
