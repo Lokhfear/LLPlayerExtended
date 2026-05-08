@@ -52,6 +52,10 @@ public class LearningItem
         Text.Trim().ToLowerInvariant()
             .Trim('.', ',', '!', '?', ';', ':', '"', '\'', '(', ')', '[', ']', '«', '»');
 
+    // ─── UI State ──────────────────────────────────────────────────────────
+    /// <summary>Для UI: раскрыта ли карточка</summary>
+    public bool IsExpanded { get; set; }
+
     // ─── Вычисляемые свойства ──────────────────────────────────────────────
     public bool IsArchived => Status == LearningStatus.Archived;
     
