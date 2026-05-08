@@ -9,6 +9,10 @@
 //------------------------------------------------------------------------------
 
 using LLPlayer.Controls;
+using LLPlayer.Converters;
+using MaterialDesignThemes.Wpf;
+using MaterialDesignThemes.Wpf.Converters;
+using MaterialDesignThemes.Wpf.Transitions;
 using System;
 using System.Diagnostics;
 using System.Windows;
