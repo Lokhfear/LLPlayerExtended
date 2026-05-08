@@ -45,6 +45,7 @@
     <conv:InverseBoolToVisConverter x:Key="InverseBoolToVisConverter"/>
     <conv:StatusToBackgroundConverter x:Key="StatusToBackgroundConverter"/>
     <conv:BoolToStarIconConverter x:Key="BoolToStarIconConverter"/>
+    <conv:BoolToArrowIconConverter x:Key="BoolToArrowIconConverter"/>
 
     <!--Subtitle Converters-->
     <conv:WidthPercentageMultiConverter x:Key="WidthPercentageMultiConv"/>
