@@ -36,6 +36,8 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         ExportCommand         = new RelayCommand(async _ => await OnExport());
         ImportCommand         = new RelayCommand(async _ => await OnImport());
         ClearFiltersCommand   = new RelayCommand(_ => ClearFilters());
+        ExpandAllCommand      = new RelayCommand(_ => ExpandAllCards());
+        CollapseAllCommand    = new RelayCommand(_ => CollapseAllCards());
     }
 
     // ─── Properties ─────────────────────────────────────────────────────────────
@@ -141,6 +143,8 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
     public ICommand ExportCommand { get; }
     public ICommand ImportCommand { get; }
     public ICommand ClearFiltersCommand { get; }
+    public ICommand ExpandAllCommand { get; }
+    public ICommand CollapseAllCommand { get; }
 
     // ─── Public Methods ─────────────────────────────────────────────────────────
 
@@ -285,14 +289,11 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
 
         try
         {
-            // Open file with default player
-            Process.Start(new ProcessStartInfo(media.FilePath) 
-            { 
-                UseShellExecute = true 
-            });
+            // Request to open file in main player with timestamp
+            // This uses the AppActions service to communicate with MainWindowVM
+            AppActions.OpenFileWithTimestamp?.Invoke(media.FilePath, media.TimestampSeconds);
             
-            // Note: Seeking to timestamp requires integration with main player
-            // This would be implemented via MainViewModel.OpenFile(media.FilePath, media.TimestampSeconds)
+            StatusMessage = $"Opening: {Path.GetFileName(media.FilePath)} at {media.TimestampDisplay}";
         }
         catch (Exception ex)
         {
@@ -380,4 +381,23 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
     
     protected void OnPropertyChanged([CallerMemberName] string? name = null)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+    // ─── Expand/Collapse All Cards ──────────────────────────────────────────────
+
+    /// <summary>
+    /// Event to notify when expand/collapse all is triggered
+    /// </summary>
+    public event Action<bool>? ExpandAllRequested;
+
+    private void ExpandAllCards()
+    {
+        ExpandAllRequested?.Invoke(true);
+        StatusMessage = "All cards expanded";
+    }
+
+    private void CollapseAllCards()
+    {
+        ExpandAllRequested?.Invoke(false);
+        StatusMessage = "All cards collapsed";
+    }
 }
