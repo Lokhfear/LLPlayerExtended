@@ -26,68 +26,125 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignIconButton}">
-                        <Setter Property="Width" Value="24" />
-                        <Setter Property="Height" Value="24" />
-                        <Setter Property="Margin" Value="6 0 6 0" />
-                        <Setter Property="Background" Value="#01000000" />
-                        <Setter Property="Focusable" Value="False" />
-                        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+                    <!-- Compact icon button for toolbar -->
+                    <Style x:Key="IconButton" TargetType="Button">
+                        <Setter Property="Width" Value="28"/>
+                        <Setter Property="Height" Value="28"/>
+                        <Setter Property="Margin" Value="4,0"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="{StaticResource BrTextSecondary}"/>
+                        <Setter Property="Focusable" Value="False"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="Bd"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="6"
+                                            Width="{TemplateBinding Width}"
+                                            Height="{TemplateBinding Height}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource BrBgHover}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource BrTextPrimary}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
                     </Style>
 
-                    <Style x:Key="ToggleButton" TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignActionToggleButton}">
-                        <Setter Property="Width" Value="24" />
-                        <Setter Property="Height" Value="24" />
-                        <Setter Property="Margin" Value="6 0 6 0" />
-                        <Setter Property="Background" Value="#01000000" />
-                        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+                    <!-- Toggle button for toolbar -->
+                    <Style x:Key="ToggleButton" TargetType="ToggleButton">
+                        <Setter Property="Width" Value="28"/>
+                        <Setter Property="Height" Value="28"/>
+                        <Setter Property="Margin" Value="4,0"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="{StaticResource BrTextSecondary}"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border x:Name="Bd"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="6"
+                                            Width="{TemplateBinding Width}"
+                                            Height="{TemplateBinding Height}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource BrPrimaryMuted}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource BrPrimary}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource BrBgHover}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
                     </Style>
 
-                    <Style x:Key="SubIconButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignIconButton}">
-                        <Setter Property="Width" Value="20" />
-                        <Setter Property="Height" Value="20" />
-                        <Setter Property="Margin" Value="0 0 4 0" />
-                        <Setter Property="Focusable" Value="False" />
-                        <Setter Property="Foreground" Value="{x:Null}" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="{DynamicResource MaterialDesign.Brush.Secondary}" />
-                            </Trigger>
-                        </Style.Triggers>
+                    <!-- Small icon button for subtitle items -->
+                    <Style x:Key="SubIconButton" TargetType="Button">
+                        <Setter Property="Width" Value="24"/>
+                        <Setter Property="Height" Value="24"/>
+                        <Setter Property="Margin" Value="0,0,4,0"/>
+                        <Setter Property="Focusable" Value="False"/>
+                        <Setter Property="Foreground" Value="{StaticResource BrTextTertiary}"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="Bd"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="4"
+                                            Width="{TemplateBinding Width}"
+                                            Height="{TemplateBinding Height}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource BrBgOverlay}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource BrTextPrimary}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
                     </Style>
 
+                    <!-- Play icon button for subtitle items -->
                     <Style x:Key="SubPlayIconButton" TargetType="Button" BasedOn="{StaticResource SubIconButton}">
-                        <Setter Property="ToolTipService.Placement" Value="Left" />
-                        <Setter Property="ToolTipService.HorizontalOffset" Value="-10" />
-
+                        <Setter Property="ToolTipService.Placement" Value="Left"/>
+                        <Setter Property="ToolTipService.HorizontalOffset" Value="-10"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding DataContext.FL.Config.SidebarLeft, ElementName=SubtitleListBox}" Value="True">
-                                <Setter Property="ToolTipService.Placement" Value="Right" />
-                                <Setter Property="ToolTipService.HorizontalOffset" Value="10" />
+                                <Setter Property="ToolTipService.Placement" Value="Right"/>
+                                <Setter Property="ToolTipService.HorizontalOffset" Value="10"/>
                             </DataTrigger>
-
                             <!-- Activate if MouseOver -->
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="{DynamicResource MaterialDesign.Brush.Primary}" />
+                                <Setter Property="Foreground" Value="{StaticResource BrPrimary}"/>
                             </Trigger>
-
                             <!-- Activate if playing -->
                             <DataTrigger Value="True">
                                 <DataTrigger.Binding>
                                     <MultiBinding Converter="{StaticResource SubIsPlayingConv}">
-                                        <Binding Path="Index" />
-                                        <Binding ElementName="SubtitleListBox"
-                                                 Path="DataContext.SubManager.CurrentIndex" />
-                                        <Binding ElementName="SubtitleListBox"
-                                                 Path="DataContext.SubManager.IsDisplaying" />
+                                        <Binding Path="Index"/>
+                                        <Binding ElementName="SubtitleListBox" Path="DataContext.SubManager.CurrentIndex"/>
+                                        <Binding ElementName="SubtitleListBox" Path="DataContext.SubManager.IsDisplaying"/>
                                     </MultiBinding>
                                 </DataTrigger.Binding>
-                                <Setter Property="Foreground" Value="{DynamicResource MaterialDesign.Brush.Primary}" />
+                                <Setter Property="Foreground" Value="{StaticResource BrPrimary}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ResourceDictionary>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -213,11 +270,10 @@
                 Grid.Column="0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                FontSize="14"
+                FontSize="13"
+                Style="{StaticResource SearchBox}"
                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                 ToolTip="Search subtitles..."
-                materialDesign:HintAssist.Hint="Search subtitles"
-                materialDesign:HintAssist.HelperText="{Binding HitCount}"
                 helpers:FocusBehavior.IsFocused="{Binding FL.Config.SidebarSearchActive}">
                 <TextBox.InputBindings>
                     <KeyBinding
@@ -232,13 +288,10 @@
             <Button
                 Grid.Column="1"
                 Style="{StaticResource IconButton}"
-                Margin="2 0 0 0"
+                Margin="4 0 0 0"
                 ToolTip="Clear search (Esc)"
                 Command="{Binding CmdClearSearch}">
-                <materialDesign:PackIcon
-                    Kind="CloseCircle"
-                    Width="18"
-                    Height="18" />
+                <TextBlock Text="&#xE711;" FontFamily="Segoe Fluent Icons" FontSize="16"/>
             </Button>
         </Grid>
 
@@ -276,22 +329,33 @@
             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
             <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                <Style TargetType="ListBoxItem">
                     <!-- Set to non-selectable list -->
                     <Setter Property="Focusable" Value="False" />
                     <!-- Ensure that the right-most icon is aligned to the far right -->
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="materialDesign:RippleAssist.IsDisabled" Value="True" />
-                    <Setter Property="Padding">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Padding" Value="16,10"/>
+                    <Setter Property="Template">
                         <Setter.Value>
-                            <Binding Path="DataContext.FL.Config.SidebarSubPadding" ElementName="SubtitleListBox" />
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border x:Name="Bd"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        CornerRadius="6">
+                                    <ContentPresenter HorizontalAlignment="Stretch"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Bd" Property="Background" Value="{StaticResource BrBgHover}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Bd" Property="Background" Value="{StaticResource BrPrimarySubtle}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
                         </Setter.Value>
                     </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="#444444" />
-                        </Trigger>
-                    </Style.Triggers>
                 </Style>
             </ListBox.ItemContainerStyle>
 
@@ -408,15 +472,17 @@
         </ListBox>
 
         <!-- Spinner (when loading subs / OCR / ASR) -->
-        <ProgressBar
+        <Border
             Grid.Row="3"
             Margin="10"
-            IsIndeterminate="True"
-            Style="{StaticResource MaterialDesignCircularProgressBar}"
-            ToolTip="Loading..."
-            Visibility="{Binding SubManager.IsLoading, Converter={StaticResource BooleanToVisibilityConv}}"
-            Width="20"
-            Height="20"
-            Foreground="#888888" />
+            Visibility="{Binding SubManager.IsLoading, Converter={StaticResource BooleanToVisibilityConv}}">
+            <ProgressBar
+                IsIndeterminate="True"
+                Style="{StaticResource MaterialDesignCircularProgressBar}"
+                ToolTip="Loading..."
+                Width="20"
+                Height="20"
+                Foreground="{StaticResource BrPrimary}" />
+        </Border>
     </Grid>
 </UserControl>

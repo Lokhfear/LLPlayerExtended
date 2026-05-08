@@ -2,15 +2,31 @@
                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                         xmlns:prism="http://prismlibrary.com/"
                         ShutdownMode="OnMainWindowClose"
                         DispatcherUnhandledException="App_OnDispatcherUnhandledException">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!-- WPF-UI Theme (first) -->
+                <ui:ThemesDictionary Theme="Dark" />
+                <ui:ControlsDictionary />
+
+                <!-- MaterialDesign (second) -->
                 <materialDesign:CustomColorTheme BaseTheme="Dark" PrimaryColor="#D23D6F" SecondaryColor="#00B8D4" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
 
+                <!-- Our design system (overrides everything above) -->
+                <ResourceDictionary Source="/Resources/Theme/DesignTokens.xaml"/>
+                <ResourceDictionary Source="/Resources/Theme/Typography.xaml"/>
+                <ResourceDictionary Source="/Resources/Theme/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Resources/Theme/CardStyles.xaml"/>
+                <ResourceDictionary Source="/Resources/Theme/ListStyles.xaml"/>
+                <ResourceDictionary Source="/Resources/Theme/InputStyles.xaml"/>
+                <ResourceDictionary Source="/Resources/Theme/ScrollBarStyle.xaml"/>
+
+                <!-- Legacy resources -->
                 <ResourceDictionary Source="/Resources/MaterialDesignMy.xaml"/>
                 <ResourceDictionary Source="/Resources/Converters.xaml"/>
                 <ResourceDictionary Source="/Resources/PopUpMenu.xaml"/>

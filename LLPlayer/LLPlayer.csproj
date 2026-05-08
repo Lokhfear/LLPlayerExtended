@@ -29,6 +29,7 @@
     <PackageReference Include="Whisper.net.Runtime.NoAvx" Version="1.8.1" />
     <PackageReference Include="Whisper.net.Runtime.OpenVino" Version="1.8.1" />
     <PackageReference Include="Whisper.net.Runtime.Vulkan" Version="1.8.1" />
+    <PackageReference Include="WPF-UI" Version="3.*" />
   </ItemGroup>
 
   <ItemGroup>

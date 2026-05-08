@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  LIST STYLES                            -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <!-- Compact list item for sidebar subtitles -->
+  <Style x:Key="SidebarListItem" TargetType="Border">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Padding" Value="16,10"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{StaticResource BrBgHover}"/>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <!-- Active list item (highlighted) -->
+  <Style x:Key="SidebarListItemActive" TargetType="Border" BasedOn="{StaticResource SidebarListItem}">
+    <Style.Triggers>
+      <DataTrigger Binding="{Binding IsActive}" Value="True">
+        <Setter Property="Background" Value="{StaticResource BrPrimarySubtle}"/>
+      </DataTrigger>
+    </Style.Triggers>
+  </Style>
+
+</ResourceDictionary>

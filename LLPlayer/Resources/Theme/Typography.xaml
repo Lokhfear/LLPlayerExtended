@@ -1,0 +1,90 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  FONT FAMILIES                          -->
+  <!-- ═══════════════════════════════════════ -->
+  <FontFamily x:Key="FontPrimary">Segoe UI Variable Text, Segoe UI, sans-serif</FontFamily>
+  <FontFamily x:Key="FontDisplay">Segoe UI Variable Display, Segoe UI, sans-serif</FontFamily>
+  <FontFamily x:Key="FontMono">Cascadia Code, Consolas, monospace</FontFamily>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  TEXT STYLES                            -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <!-- Display / Large heading -->
+  <Style x:Key="TextDisplay" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource FontDisplay}"/>
+    <Setter Property="FontSize" Value="28"/>
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="Foreground" Value="{StaticResource BrTextPrimary}"/>
+    <Setter Property="LineHeight" Value="36"/>
+  </Style>
+
+  <!-- Section heading -->
+  <Style x:Key="TextHeading" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource FontPrimary}"/>
+    <Setter Property="FontSize" Value="18"/>
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="Foreground" Value="{StaticResource BrTextPrimary}"/>
+    <Setter Property="LineHeight" Value="26"/>
+  </Style>
+
+  <!-- Title / Card title -->
+  <Style x:Key="TextTitle" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource FontPrimary}"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="FontWeight" Value="Medium"/>
+    <Setter Property="Foreground" Value="{StaticResource BrTextPrimary}"/>
+    <Setter Property="LineHeight" Value="20"/>
+  </Style>
+
+  <!-- Body text -->
+  <Style x:Key="TextBody" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource FontPrimary}"/>
+    <Setter Property="FontSize" Value="13"/>
+    <Setter Property="FontWeight" Value="Normal"/>
+    <Setter Property="Foreground" Value="{StaticResource BrTextPrimary}"/>
+    <Setter Property="LineHeight" Value="20"/>
+  </Style>
+
+  <!-- Caption / Small text -->
+  <Style x:Key="TextCaption" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource FontPrimary}"/>
+    <Setter Property="FontSize" Value="11"/>
+    <Setter Property="FontWeight" Value="Normal"/>
+    <Setter Property="Foreground" Value="{StaticResource BrTextSecondary}"/>
+    <Setter Property="LineHeight" Value="16"/>
+  </Style>
+
+  <!-- Muted / Tertiary text -->
+  <Style x:Key="TextMuted" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource FontPrimary}"/>
+    <Setter Property="FontSize" Value="11"/>
+    <Setter Property="FontWeight" Value="Normal"/>
+    <Setter Property="Foreground" Value="{StaticResource BrTextTertiary}"/>
+  </Style>
+
+  <!-- Subtitle overlay styles (for video player) -->
+  <Style x:Key="TextSubtitlePrimary" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource FontPrimary}"/>
+    <Setter Property="FontSize" Value="20"/>
+    <Setter Property="FontWeight" Value="Medium"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="TextWrapping" Value="Wrap"/>
+    <Setter Property="TextAlignment" Value="Center"/>
+    <Setter Property="Effect">
+      <Setter.Value>
+        <DropShadowEffect Color="#000000" ShadowDepth="0" BlurRadius="8" Opacity="0.9"/>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="TextSubtitleSecondary" TargetType="TextBlock"
+         BasedOn="{StaticResource TextSubtitlePrimary}">
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="FontWeight" Value="Normal"/>
+    <Setter Property="Foreground" Value="#DDDDDD"/>
+  </Style>
+
+</ResourceDictionary>
