@@ -1,0 +1,98 @@
+{
+  "Version": "0.2.2",
+  "Subs": {
+    "SubsUseSeparateFonts": true,
+    "SubsFontSize": 38,
+    "SubsFontSize2": 32,
+    "SubsFontFamily": "Segoe UI",
+    "SubsFontStretch": "Normal",
+    "SubsFontWeight": "Bold",
+    "SubsFontStyle": "Normal",
+    "SubsFontColor": "#FFFFFFFF",
+    "SubsFontFamily2": "Segoe UI",
+    "SubsFontStretch2": "Normal",
+    "SubsFontWeight2": "SemiBold",
+    "SubsFontStyle2": "Normal",
+    "SubsFontColor2": "#FFB6A08E",
+    "SubsStrokeColor": "#FF000000",
+    "SubsStrokeThickness": 3.2,
+    "SubsBackgroundColor": "#FF000000",
+    "SubsBackgroundOpacity": 0,
+    "SubsBackgroundOpacity2": 0,
+    "SubsPositionOffset": 2,
+    "SubsFontSizeOffset": 2,
+    "SubsBitmapScaleOffset": 4,
+    "SubsDistanceOffset": 5,
+    "SubsPosition": 85,
+    "SubsPositionAlignment": "Center",
+    "SubsPositionAlignmentWhenDual": "Top",
+    "SubsFixOverflowMargin": 3,
+    "SubsDistance": 16,
+    "SubsSeparatorMaxWidth": 280,
+    "SubsSeparatorOpacity": 0.3,
+    "SubsWidthPercentage": 80,
+    "SubsMaxWidth": 0,
+    "SubsIgnoreLineBreak": false,
+    "SubsExportUTF8WithBom": true,
+    "SubsAutoTextCopy": false,
+    "SubsAutoTextCopyTarget": "Primary",
+    "WordClickActionMethod": "Translation",
+    "WordCopyOnSelected": true,
+    "WordLastSearchOnSelected": true,
+    "WordLastSearchOnSelectedModifier": "Control",
+    "WordMenuActions": [
+      {
+        "TypeName": "ClipboardMenuAction",
+        "Title": "Copy",
+        "ToLower": false,
+        "IsEnabled": true
+      },
+      {
+        "TypeName": "ClipboardAllMenuAction",
+        "Title": "Copy All",
+        "ToLower": false,
+        "IsEnabled": true
+      },
+      {
+        "TypeName": "SearchMenuAction",
+        "Title": "Search Google",
+        "Url": "https://www.google.com/search?q=%w",
+        "IsEnabled": true
+      },
+      {
+        "TypeName": "SearchMenuAction",
+        "Title": "Search Wiktionary",
+        "Url": "https://en.wiktionary.org/wiki/Special:Search?search=%w\u0026go=Look\u002Bup",
+        "IsEnabled": true
+      },
+      {
+        "TypeName": "SearchMenuAction",
+        "Title": "Search Longman",
+        "Url": "https://www.ldoceonline.com/search/english/direct/?q=%w",
+        "IsEnabled": true
+      }
+    ]
+  },
+  "Theme": {
+    "PrimaryColor": "#FFD23D6F",
+    "SecondaryColor": "#FF00B8D4"
+  },
+  "AlwaysOnTop": false,
+  "IsDarkTitlebar": true,
+  "ActivityTimeout": 1200,
+  "ShowSidebar": true,
+  "SeekBarShowOnlyMouseOver": false,
+  "SeekBarFadeInTimeMs": 80,
+  "SeekBarFadeOutTimeMs": 150,
+  "MouseSingleClickToPlay": true,
+  "MouseDoubleClickToFullScreen": false,
+  "MouseWheelToVolumeUpDown": true,
+  "SidebarLeft": false,
+  "SidebarWidth": 300,
+  "SidebarSubPadding": 5,
+  "SidebarShowOriginalText": false,
+  "SidebarTextMask": false,
+  "SidebarFontFamily": "Segoe UI",
+  "SidebarFontSize": 16,
+  "SidebarFontWeight": "Normal"
+}

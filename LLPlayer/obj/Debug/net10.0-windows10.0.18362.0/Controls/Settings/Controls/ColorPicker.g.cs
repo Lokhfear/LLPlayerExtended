@@ -72,7 +72,7 @@ namespace LLPlayer.Controls.Settings.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LLPlayer;component/controls/settings/controls/colorpicker.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LLPlayer;V0.3.0.0;component/controls/settings/controls/colorpicker.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\Controls\Settings\Controls\ColorPicker.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

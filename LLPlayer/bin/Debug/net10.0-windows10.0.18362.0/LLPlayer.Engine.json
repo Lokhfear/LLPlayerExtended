@@ -1,0 +1,16 @@
+{
+  "Version": "0.2.2",
+  "DisableAudio": false,
+  "FFmpegPath": ":FFmpeg",
+  "FFmpegLoadProfile": "Filters",
+  "FFmpegHLSLiveSeek": true,
+  "FFmpegLogLevel": "Warn",
+  "LogOutput": ":debug",
+  "LogLevel": "Debug",
+  "LogAppend": false,
+  "LogCachedLines": 20,
+  "LogDateTimeFormat": "HH.mm.ss.fff",
+  "PluginsPath": ":Plugins\\bin\\Plugins.NET10",
+  "UIRefresh": true,
+  "UIRefreshInterval": 250
+}

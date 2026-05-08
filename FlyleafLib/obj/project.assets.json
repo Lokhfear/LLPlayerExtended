@@ -2,20 +2,20 @@
   "version": 3,
   "targets": {
     "net10.0-windows10.0.18362": {
-      "CliWrap/3.8.2": {
+      "CliWrap/3.10.1": {
         "type": "package",
         "compile": {
-          "lib/net9.0/CliWrap.dll": {
+          "lib/net10.0/CliWrap.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/CliWrap.dll": {
+          "lib/net10.0/CliWrap.dll": {
             "related": ".xml"
           }
         }
       },
-      "DeepL.net/1.15.0": {
+      "DeepL.net/1.21.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http.Polly": "5.0.1"
@@ -40,6 +40,19 @@
           }
         }
       },
+      "Microsoft.Extensions.AI.Abstractions/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.AI.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.AI.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.DependencyInjection/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -56,15 +69,15 @@
           }
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.3": {
         "type": "package",
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "related": ".xml"
           }
         },
@@ -128,18 +141,18 @@
           }
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "Microsoft.Extensions.Logging.Abstractions/10.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.3"
         },
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "related": ".xml"
           }
         },
@@ -206,7 +219,7 @@
           }
         }
       },
-      "SearchPioneer.Lingua/1.0.4": {
+      "SearchPioneer.Lingua/1.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Lingua.dll": {
@@ -2556,18 +2569,18 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "TesseractOCR/5.5.1": {
+      "TesseractOCR/5.5.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.4"
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.3"
         },
         "compile": {
-          "lib/net9.0/TesseractOCR.dll": {
+          "lib/netstandard2.1/TesseractOCR.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/TesseractOCR.dll": {
+          "lib/netstandard2.1/TesseractOCR.dll": {
             "related": ".xml"
           }
         },
@@ -2575,15 +2588,15 @@
           "build/TesseractOCR.targets": {}
         }
       },
-      "UTF.Unknown/2.5.1": {
+      "UTF.Unknown/2.6.0": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.0/UtfUnknown.dll": {
+          "lib/net8.0/UtfUnknown.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netcoreapp3.0/UtfUnknown.dll": {
+          "lib/net8.0/UtfUnknown.dll": {
             "related": ".xml"
           }
         }
@@ -2788,47 +2801,52 @@
           "buildMultiTargeting/Vortice.XAudio2.props": {}
         }
       },
-      "Whisper.net/1.8.1": {
+      "Whisper.net/1.9.0": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.AI.Abstractions": "10.0.0"
+        },
         "compile": {
-          "lib/net9.0/Whisper.net.dll": {}
+          "lib/net10.0/Whisper.net.dll": {}
         },
         "runtime": {
-          "lib/net9.0/Whisper.net.dll": {}
+          "lib/net10.0/Whisper.net.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "CliWrap/3.8.2": {
-      "sha512": "FTfHUYVt69M0wzcCfQQok3JnmaPQzrqKIB8xBiyTwzocGmG7N3MpDbMC9+qeeAvPclRgUDj3EpMvXwJBwY4/mw==",
+    "CliWrap/3.10.1": {
+      "sha512": "C+WzXwzpQsJVNqvuh19ZO/bw/vR43L+DC/CmvK+PATUBkail2AWYE6an17dOGgWaVGzF9sU28YwRwfNfkPrQdg==",
       "type": "package",
-      "path": "cliwrap/3.8.2",
+      "path": "cliwrap/3.10.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "cliwrap.3.8.2.nupkg.sha512",
+        "cliwrap.3.10.1.nupkg.sha512",
         "cliwrap.nuspec",
         "favicon.png",
-        "lib/net8.0/CliWrap.dll",
-        "lib/net8.0/CliWrap.xml",
-        "lib/net9.0/CliWrap.dll",
-        "lib/net9.0/CliWrap.xml",
+        "lib/net10.0/CliWrap.dll",
+        "lib/net10.0/CliWrap.xml",
+        "lib/net6.0/CliWrap.dll",
+        "lib/net6.0/CliWrap.xml",
+        "lib/net7.0/CliWrap.dll",
+        "lib/net7.0/CliWrap.xml",
         "lib/netstandard2.0/CliWrap.dll",
         "lib/netstandard2.0/CliWrap.xml",
         "lib/netstandard2.1/CliWrap.dll",
         "lib/netstandard2.1/CliWrap.xml"
       ]
     },
-    "DeepL.net/1.15.0": {
-      "sha512": "MCRiamT1zl3QsjT33J69ajI7TiUOHxdyjfhxDtcHXszvVgyG3LMCw84p6pop3IiSHSMxCDSK1ntLGhUAeMyMPA==",
+    "DeepL.net/1.21.0": {
+      "sha512": "FZCR2UQ5XEgcI8SANyxFWvyKtN3b1Sg11KOVv9P7/uwHCbHzuFCBAvGNRadc/0qjzKn7LK8YaTmjygfh1xV7aA==",
       "type": "package",
-      "path": "deepl.net/1.15.0",
+      "path": "deepl.net/1.21.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "deepl.net.1.15.0.nupkg.sha512",
+        "deepl.net.1.21.0.nupkg.sha512",
         "deepl.net.nuspec",
         "icon.png",
         "lib/net5.0/DeepL.net.dll",
@@ -2846,6 +2864,29 @@
         "flyleaf.ffmpeg.bindings.nuspec",
         "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll",
         "lib/net8.0/Flyleaf.FFmpeg.Bindings.xml"
+      ]
+    },
+    "Microsoft.Extensions.AI.Abstractions/10.0.0": {
+      "sha512": "PHeuDm2tC6wJPEQvleUr2kNQaIMNqSf3aEbzkIPlZyQ0+0SYI9SwXVLdGD1NPBI+xB+Vb2lxZKhrFlIf9kP9WA==",
+      "type": "package",
+      "path": "microsoft.extensions.ai.abstractions/10.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "README.md",
+        "lib/net10.0/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/net10.0/Microsoft.Extensions.AI.Abstractions.xml",
+        "lib/net462/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.AI.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.AI.Abstractions.xml",
+        "lib/net9.0/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/net9.0/Microsoft.Extensions.AI.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.AI.Abstractions.xml",
+        "microsoft.extensions.ai.abstractions.10.0.0.nupkg.sha512",
+        "microsoft.extensions.ai.abstractions.nuspec"
       ]
     },
     "Microsoft.Extensions.DependencyInjection/5.0.0": {
@@ -2872,21 +2913,22 @@
         "version.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
-      "sha512": "UI0TQPVkS78bFdjkTodmkH0Fe8lXv9LnhGFKgKrsgUJ5a5FVdFRcgjIkBVLbGgdRhxWirxH/8IXUtEyYJx6GQg==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.3": {
+      "sha512": "bwGMrRcAMWx2s/RDgja97p27rxSz2pEQW0+rX5cWAUWVETVJ/eyxGfjAl8vuG5a+lckWmPIE+vcuaZNVB5YDdw==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.4",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
         "buildTransitive/net462/_._",
         "buildTransitive/net8.0/_._",
         "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
@@ -2897,7 +2939,7 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.10.0.3.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2958,15 +3000,14 @@
         "version.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
-      "sha512": "0MXlimU4Dud6t+iNi5NEz3dO2w1HXdhoOLaYFuLPCjAsvlPQGwOT6V2KZRMLEhCAm/stSZt1AUv0XmDdkjvtbw==",
+    "Microsoft.Extensions.Logging.Abstractions/10.0.3": {
+      "sha512": "lxl0WLk7ROgBFAsjcOYjQ8/DVK+VMszxGBzUhgtQmAsTNldLL5pk9NG/cWTsXHq0lUhUEAtZkEE7jOGOA8bGKQ==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/9.0.4",
+      "path": "microsoft.extensions.logging.abstractions/10.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "analyzers/dotnet/roslyn3.11/cs/Microsoft.Extensions.Logging.Generators.dll",
@@ -3016,6 +3057,8 @@
         "buildTransitive/net8.0/Microsoft.Extensions.Logging.Abstractions.targets",
         "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Abstractions.targets",
         "buildTransitive/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/net462/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/net462/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
@@ -3024,7 +3067,7 @@
         "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.10.0.3.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -3103,10 +3146,10 @@
         "polly.extensions.http.nuspec"
       ]
     },
-    "SearchPioneer.Lingua/1.0.4": {
-      "sha512": "o53CQDh+A8W2NDbfcKVvhLdkl7drn8pxmWkkZvAPbx5bLJ2XHGIVCxjkC2WJweKWwI2hNLM8Ekla9beFYSWBxA==",
+    "SearchPioneer.Lingua/1.0.5": {
+      "sha512": "aODACNE/HwAOofPHyJiCUdFvi42Sbxm6L8mY3AOs0APh4/bgdS8SU8tXfKmBznhO0fyEk/0LvIqeMevWEWpJRg==",
       "type": "package",
-      "path": "searchpioneer.lingua/1.0.4",
+      "path": "searchpioneer.lingua/1.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3504,7 +3547,7 @@
         "lib/net9.0/Lingua.pdb",
         "lib/net9.0/Lingua.xml",
         "nuget-icon.png",
-        "searchpioneer.lingua.1.0.4.nupkg.sha512",
+        "searchpioneer.lingua.1.0.5.nupkg.sha512",
         "searchpioneer.lingua.nuspec"
       ]
     },
@@ -3546,32 +3589,24 @@
         "sharpgen.runtime.com.nuspec"
       ]
     },
-    "TesseractOCR/5.5.1": {
-      "sha512": "C/o5EAEqHv/77OVOF4BECACrbo0YcZBMR5AsaowYHPdch71p0w+K8qWXmWbJYSeA1jIJFXT/k9jO9ER7/6pYtQ==",
+    "TesseractOCR/5.5.2": {
+      "sha512": "m/B0uXLq7JvXfsn+KJtB8iiBJaySEUH13P3x0q9hvnXZ5QnN4+9KcFQaLFE5hwVZD1zGOy2KLxN4B9A1HxvtPQ==",
       "type": "package",
-      "path": "tesseractocr/5.5.1",
+      "path": "tesseractocr/5.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "build/TesseractOCR.targets",
         "lib/leptonica-1.85.0.dll",
-        "lib/net461/TesseractOCR.dll",
-        "lib/net461/TesseractOCR.xml",
-        "lib/net48/TesseractOCR.dll",
-        "lib/net48/TesseractOCR.xml",
-        "lib/net6.0/TesseractOCR.dll",
-        "lib/net6.0/TesseractOCR.xml",
-        "lib/net8.0/TesseractOCR.dll",
-        "lib/net8.0/TesseractOCR.xml",
-        "lib/net9.0/TesseractOCR.dll",
-        "lib/net9.0/TesseractOCR.xml",
+        "lib/netstandard2.0/TesseractOCR.dll",
+        "lib/netstandard2.0/TesseractOCR.xml",
         "lib/netstandard2.1/TesseractOCR.dll",
         "lib/netstandard2.1/TesseractOCR.xml",
         "lib/tesseract.exe",
         "lib/tesseract55.dll",
         "ocr.png",
-        "tesseractocr.5.5.1.nupkg.sha512",
+        "tesseractocr.5.5.2.nupkg.sha512",
         "tesseractocr.nuspec",
         "x64/leptonica-1.85.0.dll",
         "x64/tesseract.exe",
@@ -3581,24 +3616,20 @@
         "x86/tesseract55.dll"
       ]
     },
-    "UTF.Unknown/2.5.1": {
-      "sha512": "KhZuBaO55PIu6m4bkij3ZQL8qwVyofwFpNnyguXFjwxJlbfYX+dRn8tGy/PjTK6I4UJm8ujkJFvBLaV7MKltTA==",
+    "UTF.Unknown/2.6.0": {
+      "sha512": "YmmUcR9XKh3twmSjq6l0HD7qm7bj3X+gXCsdkWwpiuiB4wzGDJuCOneOQ3NvwQQEMqNeyVZOPO/EwFD4fuUoOQ==",
       "type": "package",
-      "path": "utf.unknown/2.5.1",
+      "path": "utf.unknown/2.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net40/UtfUnknown.dll",
-        "lib/net40/UtfUnknown.xml",
-        "lib/netcoreapp3.0/UtfUnknown.dll",
-        "lib/netcoreapp3.0/UtfUnknown.xml",
-        "lib/netstandard1.0/UtfUnknown.dll",
-        "lib/netstandard1.0/UtfUnknown.xml",
-        "lib/netstandard1.3/UtfUnknown.dll",
-        "lib/netstandard1.3/UtfUnknown.xml",
+        "lib/net6.0/UtfUnknown.dll",
+        "lib/net6.0/UtfUnknown.xml",
+        "lib/net8.0/UtfUnknown.dll",
+        "lib/net8.0/UtfUnknown.xml",
         "lib/netstandard2.0/UtfUnknown.dll",
         "lib/netstandard2.0/UtfUnknown.xml",
-        "utf.unknown.2.5.1.nupkg.sha512",
+        "utf.unknown.2.6.0.nupkg.sha512",
         "utf.unknown.nuspec"
       ]
     },
@@ -3784,19 +3815,20 @@
         "vortice.xaudio2.nuspec"
       ]
     },
-    "Whisper.net/1.8.1": {
-      "sha512": "NOcPlajorIQ5bIaf21PESirTvhCSb/T4qbUZreoU31jOu2W6kGJRgy+1f/M7PK/atcWXLF5FsXIj2lHi5sym1w==",
+    "Whisper.net/1.9.0": {
+      "sha512": "oIDi3oa+EYQgPdAsGxEZJmheUuyHI8imN4GUE0rA2xme38uiImE8pqJNYvKsseug3+2Dp9dOud38fl159kROIA==",
       "type": "package",
-      "path": "whisper.net/1.8.1",
+      "path": "whisper.net/1.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
-        "lib/net8.0-android34.0/Whisper.net.dll",
-        "lib/net8.0-android34.0/Whisper.net.xml",
-        "lib/net8.0-ios18.0/Whisper.net.dll",
-        "lib/net8.0-maccatalyst18.0/Whisper.net.dll",
-        "lib/net8.0-tvos18.0/Whisper.net.dll",
+        "lib/net10.0-android36.0/Whisper.net.dll",
+        "lib/net10.0-android36.0/Whisper.net.xml",
+        "lib/net10.0-ios26.0/Whisper.net.dll",
+        "lib/net10.0-maccatalyst26.0/Whisper.net.dll",
+        "lib/net10.0-tvos26.0/Whisper.net.dll",
+        "lib/net10.0/Whisper.net.dll",
         "lib/net8.0/Whisper.net.dll",
         "lib/net9.0-android35.0/Whisper.net.dll",
         "lib/net9.0-android35.0/Whisper.net.xml",
@@ -3806,26 +3838,26 @@
         "lib/net9.0/Whisper.net.dll",
         "lib/netstandard2.0/Whisper.net.dll",
         "readme.md",
-        "whisper.net.1.8.1.nupkg.sha512",
+        "whisper.net.1.9.0.nupkg.sha512",
         "whisper.net.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "net10.0-windows10.0.18362": [
-      "CliWrap >= 3.8.2",
-      "DeepL.net >= 1.15.0",
+      "CliWrap >= 3.10.1",
+      "DeepL.net >= 1.21.0",
       "Flyleaf.FFmpeg.Bindings >= 7.1.1",
-      "SearchPioneer.Lingua >= 1.0.4",
-      "TesseractOCR >= 5.5.1",
-      "UTF.Unknown >= 2.5.1",
+      "SearchPioneer.Lingua >= 1.0.5",
+      "TesseractOCR >= 5.5.2",
+      "UTF.Unknown >= 2.6.0",
       "Vortice.D3DCompiler >= 3.7.6-beta",
       "Vortice.Direct3D11 >= 3.7.6-beta",
       "Vortice.DirectComposition >= 3.7.6-beta",
       "Vortice.Mathematics >= 1.9.3",
       "Vortice.MediaFoundation >= 3.7.6-beta",
       "Vortice.XAudio2 >= 3.7.6-beta",
-      "Whisper.net >= 1.8.1"
+      "Whisper.net >= 1.9.0"
     ]
   },
   "packageFolders": {
@@ -3833,7 +3865,7 @@
     "D:\\Programs\\VisualStudio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "3.9.4",
+    "version": "3.10.3",
     "restore": {
       "projectUniqueName": "D:\\Other\\Projects\\LLPlayer\\FlyleafLib\\FlyleafLib.csproj",
       "projectName": "FlyleafLib",
@@ -3881,11 +3913,11 @@
         "dependencies": {
           "CliWrap": {
             "target": "Package",
-            "version": "[3.8.2, )"
+            "version": "[3.10.1, )"
           },
           "DeepL.net": {
             "target": "Package",
-            "version": "[1.15.0, )"
+            "version": "[1.21.0, )"
           },
           "Flyleaf.FFmpeg.Bindings": {
             "target": "Package",
@@ -3893,15 +3925,15 @@
           },
           "SearchPioneer.Lingua": {
             "target": "Package",
-            "version": "[1.0.4, )"
+            "version": "[1.0.5, )"
           },
           "TesseractOCR": {
             "target": "Package",
-            "version": "[5.5.1, )"
+            "version": "[5.5.2, )"
           },
           "UTF.Unknown": {
             "target": "Package",
-            "version": "[2.5.1, )"
+            "version": "[2.6.0, )"
           },
           "Vortice.D3DCompiler": {
             "target": "Package",
@@ -3929,7 +3961,7 @@
           },
           "Whisper.net": {
             "target": "Package",
-            "version": "[1.8.1, )"
+            "version": "[1.9.0, )"
           }
         },
         "imports": [

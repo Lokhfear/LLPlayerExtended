@@ -12,13 +12,13 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("umlx5h")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyCopyrightAttribute("umlx5h © 2025")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute("umlx5h © 2026")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("The media player for language learning.")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("0.2.2.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.2.2+b11dda52c840cdce2e342eb5ff70afc941477d2f")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("0.3.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.3.0+e32968a5ad57bd8da800ba9022d332183fb031d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("LLPlayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LLPlayer")]
-[assembly: System.Reflection.AssemblyVersionAttribute("0.2.2.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("0.3.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows10.0.18362.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows10.0.18362.0")]
 

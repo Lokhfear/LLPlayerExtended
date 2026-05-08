@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)whisper.net.runtime.vulkan\1.8.1\build\Whisper.net.Runtime.Vulkan.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime.vulkan\1.8.1\build\Whisper.net.Runtime.Vulkan.targets')" />
-    <Import Project="$(NuGetPackageRoot)whisper.net.runtime.openvino\1.8.1\build\Whisper.net.Runtime.OpenVino.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime.openvino\1.8.1\build\Whisper.net.Runtime.OpenVino.targets')" />
-    <Import Project="$(NuGetPackageRoot)whisper.net.runtime.noavx\1.8.1\build\Whisper.net.Runtime.NoAvx.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime.noavx\1.8.1\build\Whisper.net.Runtime.NoAvx.targets')" />
-    <Import Project="$(NuGetPackageRoot)whisper.net.runtime.cuda.windows\1.8.1\build\Whisper.net.Runtime.Cuda.Windows.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime.cuda.windows\1.8.1\build\Whisper.net.Runtime.Cuda.Windows.targets')" />
-    <Import Project="$(NuGetPackageRoot)whisper.net.runtime\1.8.1\build\Whisper.net.Runtime.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime\1.8.1\build\Whisper.net.Runtime.targets')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\9.0.4\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\9.0.4\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
+    <Import Project="$(NuGetPackageRoot)whisper.net.runtime.vulkan\1.9.0\build\Whisper.net.Runtime.Vulkan.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime.vulkan\1.9.0\build\Whisper.net.Runtime.Vulkan.targets')" />
+    <Import Project="$(NuGetPackageRoot)whisper.net.runtime.openvino\1.9.0\build\Whisper.net.Runtime.OpenVino.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime.openvino\1.9.0\build\Whisper.net.Runtime.OpenVino.targets')" />
+    <Import Project="$(NuGetPackageRoot)whisper.net.runtime.noavx\1.9.0\build\Whisper.net.Runtime.NoAvx.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime.noavx\1.9.0\build\Whisper.net.Runtime.NoAvx.targets')" />
+    <Import Project="$(NuGetPackageRoot)whisper.net.runtime.metal\1.9.0\build\Whisper.net.Runtime.Metal.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime.metal\1.9.0\build\Whisper.net.Runtime.Metal.targets')" />
+    <Import Project="$(NuGetPackageRoot)whisper.net.runtime.cuda.windows\1.9.0\build\Whisper.net.Runtime.Cuda.Windows.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime.cuda.windows\1.9.0\build\Whisper.net.Runtime.Cuda.Windows.targets')" />
+    <Import Project="$(NuGetPackageRoot)whisper.net.runtime\1.9.0\build\Whisper.net.Runtime.targets" Condition="Exists('$(NuGetPackageRoot)whisper.net.runtime\1.9.0\build\Whisper.net.Runtime.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\10.0.3\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\10.0.3\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
     <Import Project="$(NuGetPackageRoot)prism.events\9.0.537\buildTransitive\Prism.Events.targets" Condition="Exists('$(NuGetPackageRoot)prism.events\9.0.537\buildTransitive\Prism.Events.targets')" />
     <Import Project="$(NuGetPackageRoot)prism.container.abstractions\9.0.106\buildTransitive\Prism.Container.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)prism.container.abstractions\9.0.106\buildTransitive\Prism.Container.Abstractions.targets')" />
     <Import Project="$(NuGetPackageRoot)prism.core\9.0.537\buildTransitive\Prism.Core.targets" Condition="Exists('$(NuGetPackageRoot)prism.core\9.0.537\buildTransitive\Prism.Core.targets')" />
     <Import Project="$(NuGetPackageRoot)prism.container.dryioc\9.0.106\buildTransitive\Prism.Container.DryIoc.targets" Condition="Exists('$(NuGetPackageRoot)prism.container.dryioc\9.0.106\buildTransitive\Prism.Container.DryIoc.targets')" />
     <Import Project="$(NuGetPackageRoot)prism.dryioc\9.0.537\buildTransitive\Prism.DryIoc.targets" Condition="Exists('$(NuGetPackageRoot)prism.dryioc\9.0.537\buildTransitive\Prism.DryIoc.targets')" />
-    <Import Project="$(NuGetPackageRoot)materialdesignthemes\5.2.1\build\MaterialDesignThemes.targets" Condition="Exists('$(NuGetPackageRoot)materialdesignthemes\5.2.1\build\MaterialDesignThemes.targets')" />
+    <Import Project="$(NuGetPackageRoot)materialdesignthemes\5.3.1\build\MaterialDesignThemes.targets" Condition="Exists('$(NuGetPackageRoot)materialdesignthemes\5.3.1\build\MaterialDesignThemes.targets')" />
     <Import Project="$(NuGetPackageRoot)libnmecab.ipadicbin\0.10.0\build\LibNMeCab.IpaDicBin.targets" Condition="Exists('$(NuGetPackageRoot)libnmecab.ipadicbin\0.10.0\build\LibNMeCab.IpaDicBin.targets')" />
   </ImportGroup>
 </Project>

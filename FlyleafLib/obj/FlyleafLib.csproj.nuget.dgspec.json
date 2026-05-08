@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\Other\\Projects\\LLPlayer\\FlyleafLib\\FlyleafLib.csproj": {
-      "version": "3.9.4",
+      "version": "3.10.3",
       "restore": {
         "projectUniqueName": "D:\\Other\\Projects\\LLPlayer\\FlyleafLib\\FlyleafLib.csproj",
         "projectName": "FlyleafLib",
@@ -53,11 +53,11 @@
           "dependencies": {
             "CliWrap": {
               "target": "Package",
-              "version": "[3.8.2, )"
+              "version": "[3.10.1, )"
             },
             "DeepL.net": {
               "target": "Package",
-              "version": "[1.15.0, )"
+              "version": "[1.21.0, )"
             },
             "Flyleaf.FFmpeg.Bindings": {
               "target": "Package",
@@ -65,15 +65,15 @@
             },
             "SearchPioneer.Lingua": {
               "target": "Package",
-              "version": "[1.0.4, )"
+              "version": "[1.0.5, )"
             },
             "TesseractOCR": {
               "target": "Package",
-              "version": "[5.5.1, )"
+              "version": "[5.5.2, )"
             },
             "UTF.Unknown": {
               "target": "Package",
-              "version": "[2.5.1, )"
+              "version": "[2.6.0, )"
             },
             "Vortice.D3DCompiler": {
               "target": "Package",
@@ -101,7 +101,7 @@
             },
             "Whisper.net": {
               "target": "Package",
-              "version": "[1.8.1, )"
+              "version": "[1.9.0, )"
             }
           },
           "imports": [

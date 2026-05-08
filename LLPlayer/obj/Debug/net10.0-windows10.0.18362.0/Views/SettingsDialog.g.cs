@@ -74,7 +74,7 @@ namespace LLPlayer.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LLPlayer;component/views/settingsdialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LLPlayer;V0.3.0.0;component/views/settingsdialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\SettingsDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

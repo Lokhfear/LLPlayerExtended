@@ -8,8 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using FlyleafLib.MediaPlayer.Translation;
+using FlyleafLib.MediaPlayer.Translation.Services;
 using LLPlayer.Controls.Settings;
 using LLPlayer.Controls.Settings.Controls;
+using LLPlayer.Controls.Settings.TransControl;
 using LLPlayer.Extensions;
 using LLPlayer.ViewModels;
 using MaterialDesignThemes.Wpf;
@@ -59,7 +62,7 @@ namespace LLPlayer.Controls.Settings {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LLPlayer;component/controls/settings/settingsthemes.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LLPlayer;V0.3.0.0;component/controls/settings/settingsthemes.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Controls\Settings\SettingsThemes.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

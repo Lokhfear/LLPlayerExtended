@@ -2,20 +2,20 @@
   "version": 3,
   "targets": {
     "net10.0-windows10.0.18362": {
-      "CliWrap/3.8.2": {
+      "CliWrap/3.10.1": {
         "type": "package",
         "compile": {
-          "lib/net9.0/CliWrap.dll": {
+          "lib/net10.0/CliWrap.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/CliWrap.dll": {
+          "lib/net10.0/CliWrap.dll": {
             "related": ".xml"
           }
         }
       },
-      "DeepL.net/1.15.0": {
+      "DeepL.net/1.21.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http.Polly": "5.0.1"
@@ -40,15 +40,15 @@
           }
         }
       },
-      "Flyleaf.FFmpeg.Bindings/8.0.0": {
+      "Flyleaf.FFmpeg.Bindings/8.0.1": {
         "type": "package",
         "compile": {
-          "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll": {
+          "lib/net10.0/Flyleaf.FFmpeg.Bindings.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll": {
+          "lib/net10.0/Flyleaf.FFmpeg.Bindings.dll": {
             "related": ".xml"
           }
         }
@@ -86,37 +86,164 @@
           "buildMultiTargeting/LibNMeCab.IpaDicBin.targets": {}
         }
       },
-      "MaterialDesignColors/5.2.1": {
+      "MaterialDesignColors/5.3.1": {
         "type": "package",
         "compile": {
-          "lib/net8.0/MaterialDesignColors.dll": {
-            "related": ".pdb"
-          }
+          "lib/net10.0-windows7.0/MaterialDesignColors.dll": {}
         },
         "runtime": {
-          "lib/net8.0/MaterialDesignColors.dll": {
-            "related": ".pdb"
-          }
-        }
+          "lib/net10.0-windows7.0/MaterialDesignColors.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       },
-      "MaterialDesignThemes/5.2.1": {
+      "MaterialDesignThemes/5.3.1": {
         "type": "package",
         "dependencies": {
-          "MaterialDesignColors": "5.2.1",
-          "Microsoft.Xaml.Behaviors.Wpf": "1.1.39"
+          "MaterialDesignColors": "5.3.1",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.77"
         },
         "compile": {
-          "lib/net8.0/MaterialDesignThemes.Wpf.dll": {
-            "related": ".pdb;.xml"
+          "lib/net10.0-windows7.0/MaterialDesignThemes.Wpf.dll": {
+            "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/MaterialDesignThemes.Wpf.dll": {
-            "related": ".pdb;.xml"
+          "lib/net10.0-windows7.0/MaterialDesignThemes.Wpf.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ],
+        "contentFiles": {
+          "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-Bold.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-BoldItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-Italic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-Regular.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Black.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-BlackItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Bold.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-BoldItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Italic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Light.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-LightItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Medium.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-MediumItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Regular.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Thin.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-ThinItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Bold.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-BoldItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Italic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Light.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-LightItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Regular.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
           }
         },
         "build": {
           "build/MaterialDesignThemes.targets": {}
+        }
+      },
+      "Microsoft.Extensions.AI.Abstractions/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.AI.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.AI.Abstractions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.Extensions.DependencyInjection/5.0.0": {
@@ -135,15 +262,15 @@
           }
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.3": {
         "type": "package",
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "related": ".xml"
           }
         },
@@ -207,18 +334,18 @@
           }
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "Microsoft.Extensions.Logging.Abstractions/10.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.3"
         },
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "related": ".xml"
           }
         },
@@ -419,7 +546,7 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
-      "SearchPioneer.Lingua/1.0.4": {
+      "SearchPioneer.Lingua/1.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Lingua.dll": {
@@ -488,18 +615,18 @@
           }
         }
       },
-      "TesseractOCR/5.5.1": {
+      "TesseractOCR/5.5.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.4"
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.3"
         },
         "compile": {
-          "lib/net9.0/TesseractOCR.dll": {
+          "lib/netstandard2.1/TesseractOCR.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/TesseractOCR.dll": {
+          "lib/netstandard2.1/TesseractOCR.dll": {
             "related": ".xml"
           }
         },
@@ -507,15 +634,15 @@
           "build/_._": {}
         }
       },
-      "UTF.Unknown/2.5.1": {
+      "UTF.Unknown/2.6.0": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.0/UtfUnknown.dll": {
+          "lib/net8.0/UtfUnknown.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netcoreapp3.0/UtfUnknown.dll": {
+          "lib/net8.0/UtfUnknown.dll": {
             "related": ".xml"
           }
         }
@@ -720,62 +847,74 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Whisper.net/1.8.1": {
+      "Whisper.net/1.9.0": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.AI.Abstractions": "10.0.0"
+        },
         "compile": {
-          "lib/net9.0/Whisper.net.dll": {}
+          "lib/net10.0/Whisper.net.dll": {}
         },
         "runtime": {
-          "lib/net9.0/Whisper.net.dll": {}
+          "lib/net10.0/Whisper.net.dll": {}
         }
       },
-      "Whisper.net.Runtime/1.8.1": {
+      "Whisper.net.Runtime/1.9.0": {
         "type": "package",
+        "dependencies": {
+          "Whisper.net.Runtime.Metal": "1.9.0"
+        },
         "build": {
           "build/Whisper.net.Runtime.targets": {}
         }
       },
-      "Whisper.net.Runtime.Cuda.Windows/1.8.1": {
+      "Whisper.net.Runtime.Cuda.Windows/1.9.0": {
         "type": "package",
         "build": {
           "build/Whisper.net.Runtime.Cuda.Windows.targets": {}
         }
       },
-      "Whisper.net.Runtime.NoAvx/1.8.1": {
+      "Whisper.net.Runtime.Metal/1.9.0": {
+        "type": "package",
+        "build": {
+          "build/Whisper.net.Runtime.Metal.targets": {}
+        }
+      },
+      "Whisper.net.Runtime.NoAvx/1.9.0": {
         "type": "package",
         "build": {
           "build/Whisper.net.Runtime.NoAvx.targets": {}
         }
       },
-      "Whisper.net.Runtime.OpenVino/1.8.1": {
+      "Whisper.net.Runtime.OpenVino/1.9.0": {
         "type": "package",
         "build": {
           "build/Whisper.net.Runtime.OpenVino.targets": {}
         }
       },
-      "Whisper.net.Runtime.Vulkan/1.8.1": {
+      "Whisper.net.Runtime.Vulkan/1.9.0": {
         "type": "package",
         "build": {
           "build/Whisper.net.Runtime.Vulkan.targets": {}
         }
       },
-      "FlyleafLib/3.9.4": {
+      "FlyleafLib/3.10.3": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "CliWrap": "3.8.2",
-          "DeepL.net": "1.15.0",
+          "CliWrap": "3.10.1",
+          "DeepL.net": "1.21.0",
           "Flyleaf.FFmpeg.Bindings": "7.1.1",
-          "SearchPioneer.Lingua": "1.0.4",
-          "TesseractOCR": "5.5.1",
-          "UTF.Unknown": "2.5.1",
+          "SearchPioneer.Lingua": "1.0.5",
+          "TesseractOCR": "5.5.2",
+          "UTF.Unknown": "2.6.0",
           "Vortice.D3DCompiler": "3.7.6-beta",
           "Vortice.Direct3D11": "3.7.6-beta",
           "Vortice.DirectComposition": "3.7.6-beta",
           "Vortice.Mathematics": "1.9.3",
           "Vortice.MediaFoundation": "3.7.6-beta",
           "Vortice.XAudio2": "3.7.6-beta",
-          "Whisper.net": "1.8.1"
+          "Whisper.net": "1.9.0"
         },
         "compile": {
           "bin/placeholder/FlyleafLib.dll": {}
@@ -802,20 +941,20 @@
       }
     },
     "net10.0-windows10.0.18362/win-x64": {
-      "CliWrap/3.8.2": {
+      "CliWrap/3.10.1": {
         "type": "package",
         "compile": {
-          "lib/net9.0/CliWrap.dll": {
+          "lib/net10.0/CliWrap.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/CliWrap.dll": {
+          "lib/net10.0/CliWrap.dll": {
             "related": ".xml"
           }
         }
       },
-      "DeepL.net/1.15.0": {
+      "DeepL.net/1.21.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http.Polly": "5.0.1"
@@ -840,15 +979,15 @@
           }
         }
       },
-      "Flyleaf.FFmpeg.Bindings/8.0.0": {
+      "Flyleaf.FFmpeg.Bindings/8.0.1": {
         "type": "package",
         "compile": {
-          "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll": {
+          "lib/net10.0/Flyleaf.FFmpeg.Bindings.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll": {
+          "lib/net10.0/Flyleaf.FFmpeg.Bindings.dll": {
             "related": ".xml"
           }
         }
@@ -886,37 +1025,164 @@
           "buildMultiTargeting/LibNMeCab.IpaDicBin.targets": {}
         }
       },
-      "MaterialDesignColors/5.2.1": {
+      "MaterialDesignColors/5.3.1": {
         "type": "package",
         "compile": {
-          "lib/net8.0/MaterialDesignColors.dll": {
-            "related": ".pdb"
-          }
+          "lib/net10.0-windows7.0/MaterialDesignColors.dll": {}
         },
         "runtime": {
-          "lib/net8.0/MaterialDesignColors.dll": {
-            "related": ".pdb"
-          }
-        }
+          "lib/net10.0-windows7.0/MaterialDesignColors.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       },
-      "MaterialDesignThemes/5.2.1": {
+      "MaterialDesignThemes/5.3.1": {
         "type": "package",
         "dependencies": {
-          "MaterialDesignColors": "5.2.1",
-          "Microsoft.Xaml.Behaviors.Wpf": "1.1.39"
+          "MaterialDesignColors": "5.3.1",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.77"
         },
         "compile": {
-          "lib/net8.0/MaterialDesignThemes.Wpf.dll": {
-            "related": ".pdb;.xml"
+          "lib/net10.0-windows7.0/MaterialDesignThemes.Wpf.dll": {
+            "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/MaterialDesignThemes.Wpf.dll": {
-            "related": ".pdb;.xml"
+          "lib/net10.0-windows7.0/MaterialDesignThemes.Wpf.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ],
+        "contentFiles": {
+          "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-Bold.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-BoldItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-Italic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-Regular.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Black.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-BlackItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Bold.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-BoldItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Italic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Light.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-LightItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Medium.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-MediumItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Regular.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Thin.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-ThinItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Bold.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-BoldItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Italic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Light.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-LightItalic.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Regular.ttf": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
           }
         },
         "build": {
           "build/MaterialDesignThemes.targets": {}
+        }
+      },
+      "Microsoft.Extensions.AI.Abstractions/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Microsoft.Extensions.AI.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.AI.Abstractions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.Extensions.DependencyInjection/5.0.0": {
@@ -935,15 +1201,15 @@
           }
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.3": {
         "type": "package",
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "related": ".xml"
           }
         },
@@ -1007,18 +1273,18 @@
           }
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "Microsoft.Extensions.Logging.Abstractions/10.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.3"
         },
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+          "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "related": ".xml"
           }
         },
@@ -1219,7 +1485,7 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
-      "SearchPioneer.Lingua/1.0.4": {
+      "SearchPioneer.Lingua/1.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Lingua.dll": {
@@ -1288,18 +1554,18 @@
           }
         }
       },
-      "TesseractOCR/5.5.1": {
+      "TesseractOCR/5.5.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.4"
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.3"
         },
         "compile": {
-          "lib/net9.0/TesseractOCR.dll": {
+          "lib/netstandard2.1/TesseractOCR.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net9.0/TesseractOCR.dll": {
+          "lib/netstandard2.1/TesseractOCR.dll": {
             "related": ".xml"
           }
         },
@@ -1307,15 +1573,15 @@
           "build/_._": {}
         }
       },
-      "UTF.Unknown/2.5.1": {
+      "UTF.Unknown/2.6.0": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.0/UtfUnknown.dll": {
+          "lib/net8.0/UtfUnknown.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netcoreapp3.0/UtfUnknown.dll": {
+          "lib/net8.0/UtfUnknown.dll": {
             "related": ".xml"
           }
         }
@@ -1520,62 +1786,74 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Whisper.net/1.8.1": {
+      "Whisper.net/1.9.0": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.AI.Abstractions": "10.0.0"
+        },
         "compile": {
-          "lib/net9.0/Whisper.net.dll": {}
+          "lib/net10.0/Whisper.net.dll": {}
         },
         "runtime": {
-          "lib/net9.0/Whisper.net.dll": {}
+          "lib/net10.0/Whisper.net.dll": {}
         }
       },
-      "Whisper.net.Runtime/1.8.1": {
+      "Whisper.net.Runtime/1.9.0": {
         "type": "package",
+        "dependencies": {
+          "Whisper.net.Runtime.Metal": "1.9.0"
+        },
         "build": {
           "build/Whisper.net.Runtime.targets": {}
         }
       },
-      "Whisper.net.Runtime.Cuda.Windows/1.8.1": {
+      "Whisper.net.Runtime.Cuda.Windows/1.9.0": {
         "type": "package",
         "build": {
           "build/Whisper.net.Runtime.Cuda.Windows.targets": {}
         }
       },
-      "Whisper.net.Runtime.NoAvx/1.8.1": {
+      "Whisper.net.Runtime.Metal/1.9.0": {
+        "type": "package",
+        "build": {
+          "build/Whisper.net.Runtime.Metal.targets": {}
+        }
+      },
+      "Whisper.net.Runtime.NoAvx/1.9.0": {
         "type": "package",
         "build": {
           "build/Whisper.net.Runtime.NoAvx.targets": {}
         }
       },
-      "Whisper.net.Runtime.OpenVino/1.8.1": {
+      "Whisper.net.Runtime.OpenVino/1.9.0": {
         "type": "package",
         "build": {
           "build/Whisper.net.Runtime.OpenVino.targets": {}
         }
       },
-      "Whisper.net.Runtime.Vulkan/1.8.1": {
+      "Whisper.net.Runtime.Vulkan/1.9.0": {
         "type": "package",
         "build": {
           "build/Whisper.net.Runtime.Vulkan.targets": {}
         }
       },
-      "FlyleafLib/3.9.4": {
+      "FlyleafLib/3.10.3": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "CliWrap": "3.8.2",
-          "DeepL.net": "1.15.0",
+          "CliWrap": "3.10.1",
+          "DeepL.net": "1.21.0",
           "Flyleaf.FFmpeg.Bindings": "7.1.1",
-          "SearchPioneer.Lingua": "1.0.4",
-          "TesseractOCR": "5.5.1",
-          "UTF.Unknown": "2.5.1",
+          "SearchPioneer.Lingua": "1.0.5",
+          "TesseractOCR": "5.5.2",
+          "UTF.Unknown": "2.6.0",
           "Vortice.D3DCompiler": "3.7.6-beta",
           "Vortice.Direct3D11": "3.7.6-beta",
           "Vortice.DirectComposition": "3.7.6-beta",
           "Vortice.Mathematics": "1.9.3",
           "Vortice.MediaFoundation": "3.7.6-beta",
           "Vortice.XAudio2": "3.7.6-beta",
-          "Whisper.net": "1.8.1"
+          "Whisper.net": "1.9.0"
         },
         "compile": {
           "bin/placeholder/FlyleafLib.dll": {}
@@ -1603,35 +1881,37 @@
     }
   },
   "libraries": {
-    "CliWrap/3.8.2": {
-      "sha512": "FTfHUYVt69M0wzcCfQQok3JnmaPQzrqKIB8xBiyTwzocGmG7N3MpDbMC9+qeeAvPclRgUDj3EpMvXwJBwY4/mw==",
+    "CliWrap/3.10.1": {
+      "sha512": "C+WzXwzpQsJVNqvuh19ZO/bw/vR43L+DC/CmvK+PATUBkail2AWYE6an17dOGgWaVGzF9sU28YwRwfNfkPrQdg==",
       "type": "package",
-      "path": "cliwrap/3.8.2",
+      "path": "cliwrap/3.10.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "cliwrap.3.8.2.nupkg.sha512",
+        "cliwrap.3.10.1.nupkg.sha512",
         "cliwrap.nuspec",
         "favicon.png",
-        "lib/net8.0/CliWrap.dll",
-        "lib/net8.0/CliWrap.xml",
-        "lib/net9.0/CliWrap.dll",
-        "lib/net9.0/CliWrap.xml",
+        "lib/net10.0/CliWrap.dll",
+        "lib/net10.0/CliWrap.xml",
+        "lib/net6.0/CliWrap.dll",
+        "lib/net6.0/CliWrap.xml",
+        "lib/net7.0/CliWrap.dll",
+        "lib/net7.0/CliWrap.xml",
         "lib/netstandard2.0/CliWrap.dll",
         "lib/netstandard2.0/CliWrap.xml",
         "lib/netstandard2.1/CliWrap.dll",
         "lib/netstandard2.1/CliWrap.xml"
       ]
     },
-    "DeepL.net/1.15.0": {
-      "sha512": "MCRiamT1zl3QsjT33J69ajI7TiUOHxdyjfhxDtcHXszvVgyG3LMCw84p6pop3IiSHSMxCDSK1ntLGhUAeMyMPA==",
+    "DeepL.net/1.21.0": {
+      "sha512": "FZCR2UQ5XEgcI8SANyxFWvyKtN3b1Sg11KOVv9P7/uwHCbHzuFCBAvGNRadc/0qjzKn7LK8YaTmjygfh1xV7aA==",
       "type": "package",
-      "path": "deepl.net/1.15.0",
+      "path": "deepl.net/1.21.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "deepl.net.1.15.0.nupkg.sha512",
+        "deepl.net.1.21.0.nupkg.sha512",
         "deepl.net.nuspec",
         "icon.png",
         "lib/net5.0/DeepL.net.dll",
@@ -1662,15 +1942,17 @@
         "lib/netstandard2.1/DryIoc.xml"
       ]
     },
-    "Flyleaf.FFmpeg.Bindings/8.0.0": {
-      "sha512": "fW6TpBohR47cLg5x1AZ9mVfX+POXtAHhqfW1TC3LpHw6a95gdZIi4tzvajUw0aq1JwMgKIGHrI90Bs0tMHBRtg==",
+    "Flyleaf.FFmpeg.Bindings/8.0.1": {
+      "sha512": "FAtq+NNWv0HdFPIFcmIO/tGezzwzck0fecuJO7PW0BDxN75EGeNlOF/xCb/piF9Fe0pIqRQv6nwQHljIYwtpAA==",
       "type": "package",
-      "path": "flyleaf.ffmpeg.bindings/8.0.0",
+      "path": "flyleaf.ffmpeg.bindings/8.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "flyleaf.ffmpeg.bindings.8.0.0.nupkg.sha512",
+        "flyleaf.ffmpeg.bindings.8.0.1.nupkg.sha512",
         "flyleaf.ffmpeg.bindings.nuspec",
+        "lib/net10.0/Flyleaf.FFmpeg.Bindings.dll",
+        "lib/net10.0/Flyleaf.FFmpeg.Bindings.xml",
         "lib/net8.0/Flyleaf.FFmpeg.Bindings.dll",
         "lib/net8.0/Flyleaf.FFmpeg.Bindings.xml"
       ]
@@ -1712,33 +1994,32 @@
         "libnmecab.ipadicbin.nuspec"
       ]
     },
-    "MaterialDesignColors/5.2.1": {
-      "sha512": "D0HW6E2/kzsnEWCh1KDG/K09Fpkvs9mR3n91Y8YSOsEAoQmGZbVAj58ssyAxGTiIPj2zB4ZVnwxkizwO35/v8A==",
+    "MaterialDesignColors/5.3.1": {
+      "sha512": "QtVKQnA+3c/tAC2gdBDZcOdGBe/nIsQUVpaea10nmatUwuZRYVoRXMd0VqgwmYHpyxv/5vWy+z6l0HgNgZMs2w==",
       "type": "package",
-      "path": "materialdesigncolors/5.2.1",
+      "path": "materialdesigncolors/5.3.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "docs/README.md",
-        "images/MaterialDesignColors.Icon.png",
+        "MaterialDesign.Icon.png",
+        "README.md",
+        "lib/net10.0-windows7.0/MaterialDesignColors.dll",
         "lib/net462/MaterialDesignColors.dll",
-        "lib/net462/MaterialDesignColors.pdb",
-        "lib/net6.0/MaterialDesignColors.dll",
-        "lib/net6.0/MaterialDesignColors.pdb",
-        "lib/net8.0/MaterialDesignColors.dll",
-        "lib/net8.0/MaterialDesignColors.pdb",
-        "materialdesigncolors.5.2.1.nupkg.sha512",
+        "lib/net8.0-windows7.0/MaterialDesignColors.dll",
+        "materialdesigncolors.5.3.1.nupkg.sha512",
         "materialdesigncolors.nuspec"
       ]
     },
-    "MaterialDesignThemes/5.2.1": {
-      "sha512": "x8JDqNHJcTLLxIoVts3w7AbSq5Zo0FXTw89XqPN7+n0EKqLXFwWsywiUn08HDyTGAmZVJqbQsWKxKWCI8qfWsQ==",
+    "MaterialDesignThemes/5.3.1": {
+      "sha512": "IjsWlh22m2jRQEMwlg5LIDZLsSEgeROyBQU7yMjqOQATx1ls/dZoLxDcLgwjNMbO2LcGPsHAeY1Q9tjKkN45ig==",
       "type": "package",
-      "path": "materialdesignthemes/5.2.1",
+      "path": "materialdesignthemes/5.3.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "MaterialDesign.Icon.png",
+        "README.md",
         "build/MaterialDesignThemes.targets",
         "build/Resources/Roboto/Roboto-Black.ttf",
         "build/Resources/Roboto/Roboto-BlackItalic.ttf",
@@ -1758,20 +2039,126 @@
         "build/Resources/Roboto/RobotoCondensed-Light.ttf",
         "build/Resources/Roboto/RobotoCondensed-LightItalic.ttf",
         "build/Resources/Roboto/RobotoCondensed-Regular.ttf",
-        "docs/README.md",
-        "images/MaterialDesignThemes.Icon.png",
+        "content/Resources/Noto/NotoSans-Bold.ttf",
+        "content/Resources/Noto/NotoSans-BoldItalic.ttf",
+        "content/Resources/Noto/NotoSans-Italic.ttf",
+        "content/Resources/Noto/NotoSans-Regular.ttf",
+        "content/Resources/Roboto/Roboto-Black.ttf",
+        "content/Resources/Roboto/Roboto-BlackItalic.ttf",
+        "content/Resources/Roboto/Roboto-Bold.ttf",
+        "content/Resources/Roboto/Roboto-BoldItalic.ttf",
+        "content/Resources/Roboto/Roboto-Italic.ttf",
+        "content/Resources/Roboto/Roboto-Light.ttf",
+        "content/Resources/Roboto/Roboto-LightItalic.ttf",
+        "content/Resources/Roboto/Roboto-Medium.ttf",
+        "content/Resources/Roboto/Roboto-MediumItalic.ttf",
+        "content/Resources/Roboto/Roboto-Regular.ttf",
+        "content/Resources/Roboto/Roboto-Thin.ttf",
+        "content/Resources/Roboto/Roboto-ThinItalic.ttf",
+        "content/Resources/Roboto/RobotoCondensed-Bold.ttf",
+        "content/Resources/Roboto/RobotoCondensed-BoldItalic.ttf",
+        "content/Resources/Roboto/RobotoCondensed-Italic.ttf",
+        "content/Resources/Roboto/RobotoCondensed-Light.ttf",
+        "content/Resources/Roboto/RobotoCondensed-LightItalic.ttf",
+        "content/Resources/Roboto/RobotoCondensed-Regular.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-Bold.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-BoldItalic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-Italic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Noto/NotoSans-Regular.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Black.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-BlackItalic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Bold.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-BoldItalic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Italic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Light.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-LightItalic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Medium.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-MediumItalic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Regular.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-Thin.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/Roboto-ThinItalic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Bold.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-BoldItalic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Italic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Light.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-LightItalic.ttf",
+        "contentFiles/any/net10.0-windows7.0/Resources/Roboto/RobotoCondensed-Regular.ttf",
+        "contentFiles/any/net462/Resources/Noto/NotoSans-Bold.ttf",
+        "contentFiles/any/net462/Resources/Noto/NotoSans-BoldItalic.ttf",
+        "contentFiles/any/net462/Resources/Noto/NotoSans-Italic.ttf",
+        "contentFiles/any/net462/Resources/Noto/NotoSans-Regular.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-Black.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-BlackItalic.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-Bold.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-BoldItalic.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-Italic.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-Light.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-LightItalic.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-Medium.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-MediumItalic.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-Regular.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-Thin.ttf",
+        "contentFiles/any/net462/Resources/Roboto/Roboto-ThinItalic.ttf",
+        "contentFiles/any/net462/Resources/Roboto/RobotoCondensed-Bold.ttf",
+        "contentFiles/any/net462/Resources/Roboto/RobotoCondensed-BoldItalic.ttf",
+        "contentFiles/any/net462/Resources/Roboto/RobotoCondensed-Italic.ttf",
+        "contentFiles/any/net462/Resources/Roboto/RobotoCondensed-Light.ttf",
+        "contentFiles/any/net462/Resources/Roboto/RobotoCondensed-LightItalic.ttf",
+        "contentFiles/any/net462/Resources/Roboto/RobotoCondensed-Regular.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Noto/NotoSans-Bold.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Noto/NotoSans-BoldItalic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Noto/NotoSans-Italic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Noto/NotoSans-Regular.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-Black.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-BlackItalic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-Bold.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-BoldItalic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-Italic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-Light.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-LightItalic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-Medium.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-MediumItalic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-Regular.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-Thin.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/Roboto-ThinItalic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/RobotoCondensed-Bold.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/RobotoCondensed-BoldItalic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/RobotoCondensed-Italic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/RobotoCondensed-Light.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/RobotoCondensed-LightItalic.ttf",
+        "contentFiles/any/net8.0-windows7.0/Resources/Roboto/RobotoCondensed-Regular.ttf",
+        "lib/net10.0-windows7.0/MaterialDesignThemes.Wpf.dll",
+        "lib/net10.0-windows7.0/MaterialDesignThemes.Wpf.xml",
         "lib/net462/MaterialDesignThemes.Wpf.dll",
-        "lib/net462/MaterialDesignThemes.Wpf.pdb",
         "lib/net462/MaterialDesignThemes.Wpf.xml",
-        "lib/net6.0/MaterialDesignThemes.Wpf.dll",
-        "lib/net6.0/MaterialDesignThemes.Wpf.pdb",
-        "lib/net6.0/MaterialDesignThemes.Wpf.xml",
-        "lib/net8.0/MaterialDesignThemes.Wpf.dll",
-        "lib/net8.0/MaterialDesignThemes.Wpf.pdb",
-        "lib/net8.0/MaterialDesignThemes.Wpf.xml",
-        "materialdesignthemes.5.2.1.nupkg.sha512",
+        "lib/net8.0-windows7.0/MaterialDesignThemes.Wpf.dll",
+        "lib/net8.0-windows7.0/MaterialDesignThemes.Wpf.xml",
+        "materialdesignthemes.5.3.1.nupkg.sha512",
         "materialdesignthemes.nuspec",
         "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Microsoft.Extensions.AI.Abstractions/10.0.0": {
+      "sha512": "PHeuDm2tC6wJPEQvleUr2kNQaIMNqSf3aEbzkIPlZyQ0+0SYI9SwXVLdGD1NPBI+xB+Vb2lxZKhrFlIf9kP9WA==",
+      "type": "package",
+      "path": "microsoft.extensions.ai.abstractions/10.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "README.md",
+        "lib/net10.0/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/net10.0/Microsoft.Extensions.AI.Abstractions.xml",
+        "lib/net462/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.AI.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.AI.Abstractions.xml",
+        "lib/net9.0/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/net9.0/Microsoft.Extensions.AI.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.AI.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.AI.Abstractions.xml",
+        "microsoft.extensions.ai.abstractions.10.0.0.nupkg.sha512",
+        "microsoft.extensions.ai.abstractions.nuspec"
       ]
     },
     "Microsoft.Extensions.DependencyInjection/5.0.0": {
@@ -1798,21 +2185,22 @@
         "version.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
-      "sha512": "UI0TQPVkS78bFdjkTodmkH0Fe8lXv9LnhGFKgKrsgUJ5a5FVdFRcgjIkBVLbGgdRhxWirxH/8IXUtEyYJx6GQg==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.3": {
+      "sha512": "bwGMrRcAMWx2s/RDgja97p27rxSz2pEQW0+rX5cWAUWVETVJ/eyxGfjAl8vuG5a+lckWmPIE+vcuaZNVB5YDdw==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.4",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
         "buildTransitive/net462/_._",
         "buildTransitive/net8.0/_._",
         "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
@@ -1823,7 +2211,7 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.10.0.3.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1884,15 +2272,14 @@
         "version.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
-      "sha512": "0MXlimU4Dud6t+iNi5NEz3dO2w1HXdhoOLaYFuLPCjAsvlPQGwOT6V2KZRMLEhCAm/stSZt1AUv0XmDdkjvtbw==",
+    "Microsoft.Extensions.Logging.Abstractions/10.0.3": {
+      "sha512": "lxl0WLk7ROgBFAsjcOYjQ8/DVK+VMszxGBzUhgtQmAsTNldLL5pk9NG/cWTsXHq0lUhUEAtZkEE7jOGOA8bGKQ==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/9.0.4",
+      "path": "microsoft.extensions.logging.abstractions/10.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "analyzers/dotnet/roslyn3.11/cs/Microsoft.Extensions.Logging.Generators.dll",
@@ -1942,6 +2329,8 @@
         "buildTransitive/net8.0/Microsoft.Extensions.Logging.Abstractions.targets",
         "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Abstractions.targets",
         "buildTransitive/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/net462/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/net462/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
@@ -1950,7 +2339,7 @@
         "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.10.0.3.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2210,10 +2599,10 @@
         "prism.wpf.nuspec"
       ]
     },
-    "SearchPioneer.Lingua/1.0.4": {
-      "sha512": "o53CQDh+A8W2NDbfcKVvhLdkl7drn8pxmWkkZvAPbx5bLJ2XHGIVCxjkC2WJweKWwI2hNLM8Ekla9beFYSWBxA==",
+    "SearchPioneer.Lingua/1.0.5": {
+      "sha512": "aODACNE/HwAOofPHyJiCUdFvi42Sbxm6L8mY3AOs0APh4/bgdS8SU8tXfKmBznhO0fyEk/0LvIqeMevWEWpJRg==",
       "type": "package",
-      "path": "searchpioneer.lingua/1.0.4",
+      "path": "searchpioneer.lingua/1.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2611,7 +3000,7 @@
         "lib/net9.0/Lingua.pdb",
         "lib/net9.0/Lingua.xml",
         "nuget-icon.png",
-        "searchpioneer.lingua.1.0.4.nupkg.sha512",
+        "searchpioneer.lingua.1.0.5.nupkg.sha512",
         "searchpioneer.lingua.nuspec"
       ]
     },
@@ -2675,32 +3064,24 @@
         "squid-box.sevenzipsharp.lite.nuspec"
       ]
     },
-    "TesseractOCR/5.5.1": {
-      "sha512": "C/o5EAEqHv/77OVOF4BECACrbo0YcZBMR5AsaowYHPdch71p0w+K8qWXmWbJYSeA1jIJFXT/k9jO9ER7/6pYtQ==",
+    "TesseractOCR/5.5.2": {
+      "sha512": "m/B0uXLq7JvXfsn+KJtB8iiBJaySEUH13P3x0q9hvnXZ5QnN4+9KcFQaLFE5hwVZD1zGOy2KLxN4B9A1HxvtPQ==",
       "type": "package",
-      "path": "tesseractocr/5.5.1",
+      "path": "tesseractocr/5.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "build/TesseractOCR.targets",
         "lib/leptonica-1.85.0.dll",
-        "lib/net461/TesseractOCR.dll",
-        "lib/net461/TesseractOCR.xml",
-        "lib/net48/TesseractOCR.dll",
-        "lib/net48/TesseractOCR.xml",
-        "lib/net6.0/TesseractOCR.dll",
-        "lib/net6.0/TesseractOCR.xml",
-        "lib/net8.0/TesseractOCR.dll",
-        "lib/net8.0/TesseractOCR.xml",
-        "lib/net9.0/TesseractOCR.dll",
-        "lib/net9.0/TesseractOCR.xml",
+        "lib/netstandard2.0/TesseractOCR.dll",
+        "lib/netstandard2.0/TesseractOCR.xml",
         "lib/netstandard2.1/TesseractOCR.dll",
         "lib/netstandard2.1/TesseractOCR.xml",
         "lib/tesseract.exe",
         "lib/tesseract55.dll",
         "ocr.png",
-        "tesseractocr.5.5.1.nupkg.sha512",
+        "tesseractocr.5.5.2.nupkg.sha512",
         "tesseractocr.nuspec",
         "x64/leptonica-1.85.0.dll",
         "x64/tesseract.exe",
@@ -2710,24 +3091,20 @@
         "x86/tesseract55.dll"
       ]
     },
-    "UTF.Unknown/2.5.1": {
-      "sha512": "KhZuBaO55PIu6m4bkij3ZQL8qwVyofwFpNnyguXFjwxJlbfYX+dRn8tGy/PjTK6I4UJm8ujkJFvBLaV7MKltTA==",
+    "UTF.Unknown/2.6.0": {
+      "sha512": "YmmUcR9XKh3twmSjq6l0HD7qm7bj3X+gXCsdkWwpiuiB4wzGDJuCOneOQ3NvwQQEMqNeyVZOPO/EwFD4fuUoOQ==",
       "type": "package",
-      "path": "utf.unknown/2.5.1",
+      "path": "utf.unknown/2.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net40/UtfUnknown.dll",
-        "lib/net40/UtfUnknown.xml",
-        "lib/netcoreapp3.0/UtfUnknown.dll",
-        "lib/netcoreapp3.0/UtfUnknown.xml",
-        "lib/netstandard1.0/UtfUnknown.dll",
-        "lib/netstandard1.0/UtfUnknown.xml",
-        "lib/netstandard1.3/UtfUnknown.dll",
-        "lib/netstandard1.3/UtfUnknown.xml",
+        "lib/net6.0/UtfUnknown.dll",
+        "lib/net6.0/UtfUnknown.xml",
+        "lib/net8.0/UtfUnknown.dll",
+        "lib/net8.0/UtfUnknown.xml",
         "lib/netstandard2.0/UtfUnknown.dll",
         "lib/netstandard2.0/UtfUnknown.xml",
-        "utf.unknown.2.5.1.nupkg.sha512",
+        "utf.unknown.2.6.0.nupkg.sha512",
         "utf.unknown.nuspec"
       ]
     },
@@ -2913,19 +3290,20 @@
         "vortice.xaudio2.nuspec"
       ]
     },
-    "Whisper.net/1.8.1": {
-      "sha512": "NOcPlajorIQ5bIaf21PESirTvhCSb/T4qbUZreoU31jOu2W6kGJRgy+1f/M7PK/atcWXLF5FsXIj2lHi5sym1w==",
+    "Whisper.net/1.9.0": {
+      "sha512": "oIDi3oa+EYQgPdAsGxEZJmheUuyHI8imN4GUE0rA2xme38uiImE8pqJNYvKsseug3+2Dp9dOud38fl159kROIA==",
       "type": "package",
-      "path": "whisper.net/1.8.1",
+      "path": "whisper.net/1.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
-        "lib/net8.0-android34.0/Whisper.net.dll",
-        "lib/net8.0-android34.0/Whisper.net.xml",
-        "lib/net8.0-ios18.0/Whisper.net.dll",
-        "lib/net8.0-maccatalyst18.0/Whisper.net.dll",
-        "lib/net8.0-tvos18.0/Whisper.net.dll",
+        "lib/net10.0-android36.0/Whisper.net.dll",
+        "lib/net10.0-android36.0/Whisper.net.xml",
+        "lib/net10.0-ios26.0/Whisper.net.dll",
+        "lib/net10.0-maccatalyst26.0/Whisper.net.dll",
+        "lib/net10.0-tvos26.0/Whisper.net.dll",
+        "lib/net10.0/Whisper.net.dll",
         "lib/net8.0/Whisper.net.dll",
         "lib/net9.0-android35.0/Whisper.net.dll",
         "lib/net9.0-android35.0/Whisper.net.xml",
@@ -2935,14 +3313,14 @@
         "lib/net9.0/Whisper.net.dll",
         "lib/netstandard2.0/Whisper.net.dll",
         "readme.md",
-        "whisper.net.1.8.1.nupkg.sha512",
+        "whisper.net.1.9.0.nupkg.sha512",
         "whisper.net.nuspec"
       ]
     },
-    "Whisper.net.Runtime/1.8.1": {
-      "sha512": "DW2JhlBbt0W5W+cIP8Uevt5+7XnjPIsG9b5FyAdeB9taNk9w1WFw9W7TYSNaqgyEbEHHPNOXA6hl+yrmBwOfsQ==",
+    "Whisper.net.Runtime/1.9.0": {
+      "sha512": "Fl+kWm+7/EA+Q0KsYrWZlS42MHOxYVK96VpBZy0yLWMwMFwSSMiXzCxosxSm8vSVhYuqGeBK4IOOLTL9FSTsZg==",
       "type": "package",
-      "path": "whisper.net.runtime/1.8.1",
+      "path": "whisper.net.runtime/1.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2963,18 +3341,17 @@
         "build/browser-wasm/libggml-cpu-whisper.a",
         "build/browser-wasm/libggml-whisper.a",
         "build/browser-wasm/libwhisper.a",
-        "build/ggml-metal.metal",
-        "build/ios-device/libggml-base-whisper.dylib",
-        "build/ios-device/libggml-blas-whisper.dylib",
-        "build/ios-device/libggml-cpu-whisper.dylib",
-        "build/ios-device/libggml-metal-whisper.dylib",
-        "build/ios-device/libggml-whisper.dylib",
-        "build/ios-device/libwhisper.dylib",
-        "build/ios-simulator/libggml-base-whisper.dylib",
-        "build/ios-simulator/libggml-blas-whisper.dylib",
-        "build/ios-simulator/libggml-cpu-whisper.dylib",
-        "build/ios-simulator/libggml-whisper.dylib",
-        "build/ios-simulator/libwhisper.dylib",
+        "build/ios-device/libggml-base-whisper.a",
+        "build/ios-device/libggml-blas-whisper.a",
+        "build/ios-device/libggml-cpu-whisper.a",
+        "build/ios-device/libggml-metal-whisper.a",
+        "build/ios-device/libggml-whisper.a",
+        "build/ios-device/libwhisper.a",
+        "build/ios-simulator/libggml-base-whisper.a",
+        "build/ios-simulator/libggml-blas-whisper.a",
+        "build/ios-simulator/libggml-cpu-whisper.a",
+        "build/ios-simulator/libggml-whisper.a",
+        "build/ios-simulator/libwhisper.a",
         "build/linux-arm/libggml-base-whisper.so",
         "build/linux-arm/libggml-cpu-whisper.so",
         "build/linux-arm/libggml-whisper.so",
@@ -2987,11 +3364,11 @@
         "build/linux-x64/libggml-cpu-whisper.so",
         "build/linux-x64/libggml-whisper.so",
         "build/linux-x64/libwhisper.so",
-        "build/maccatalyst/libggml-base-whisper.dylib",
-        "build/maccatalyst/libggml-blas-whisper.dylib",
-        "build/maccatalyst/libggml-cpu-whisper.dylib",
-        "build/maccatalyst/libggml-whisper.dylib",
-        "build/maccatalyst/libwhisper.dylib",
+        "build/maccatalyst/libggml-base-whisper.a",
+        "build/maccatalyst/libggml-blas-whisper.a",
+        "build/maccatalyst/libggml-cpu-whisper.a",
+        "build/maccatalyst/libggml-whisper.a",
+        "build/maccatalyst/libwhisper.a",
         "build/macos-arm64/libggml-base-whisper.dylib",
         "build/macos-arm64/libggml-blas-whisper.dylib",
         "build/macos-arm64/libggml-cpu-whisper.dylib",
@@ -3003,17 +3380,17 @@
         "build/macos-x64/libggml-cpu-whisper.dylib",
         "build/macos-x64/libggml-whisper.dylib",
         "build/macos-x64/libwhisper.dylib",
-        "build/tvos-device/libggml-base-whisper.dylib",
-        "build/tvos-device/libggml-blas-whisper.dylib",
-        "build/tvos-device/libggml-cpu-whisper.dylib",
-        "build/tvos-device/libggml-metal-whisper.dylib",
-        "build/tvos-device/libggml-whisper.dylib",
-        "build/tvos-device/libwhisper.dylib",
-        "build/tvos-simulator/libggml-base-whisper.dylib",
-        "build/tvos-simulator/libggml-blas-whisper.dylib",
-        "build/tvos-simulator/libggml-cpu-whisper.dylib",
-        "build/tvos-simulator/libggml-whisper.dylib",
-        "build/tvos-simulator/libwhisper.dylib",
+        "build/tvos-device/libggml-base-whisper.a",
+        "build/tvos-device/libggml-blas-whisper.a",
+        "build/tvos-device/libggml-cpu-whisper.a",
+        "build/tvos-device/libggml-metal-whisper.a",
+        "build/tvos-device/libggml-whisper.a",
+        "build/tvos-device/libwhisper.a",
+        "build/tvos-simulator/libggml-base-whisper.a",
+        "build/tvos-simulator/libggml-blas-whisper.a",
+        "build/tvos-simulator/libggml-cpu-whisper.a",
+        "build/tvos-simulator/libggml-whisper.a",
+        "build/tvos-simulator/libwhisper.a",
         "build/win-arm64/ggml-base-whisper.dll",
         "build/win-arm64/ggml-cpu-whisper.dll",
         "build/win-arm64/ggml-whisper.dll",
@@ -3027,14 +3404,14 @@
         "build/win-x86/ggml-whisper.dll",
         "build/win-x86/whisper.dll",
         "content/readme.md",
-        "whisper.net.runtime.1.8.1.nupkg.sha512",
+        "whisper.net.runtime.1.9.0.nupkg.sha512",
         "whisper.net.runtime.nuspec"
       ]
     },
-    "Whisper.net.Runtime.Cuda.Windows/1.8.1": {
-      "sha512": "3ZeuzZw5EUyFf1579LxFtzUQb6/uPhNt+fmWOe9gKYNJnCN1XKHNt2NtMVzrN6WZWaqT35ut+gywG8Gz8rIlbQ==",
+    "Whisper.net.Runtime.Cuda.Windows/1.9.0": {
+      "sha512": "0X+a5+6cg56uzgSl7meDyN5SWhqnDfBH9Gviyy9Tz+a2gfxtJpEYsXnIEK8RtsfYBEaubsKW8cTd67gn+x7AtQ==",
       "type": "package",
-      "path": "whisper.net.runtime.cuda.windows/1.8.1",
+      "path": "whisper.net.runtime.cuda.windows/1.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3045,14 +3422,28 @@
         "build/win-x64/ggml-whisper.dll",
         "build/win-x64/whisper.dll",
         "content/readme.md",
-        "whisper.net.runtime.cuda.windows.1.8.1.nupkg.sha512",
+        "whisper.net.runtime.cuda.windows.1.9.0.nupkg.sha512",
         "whisper.net.runtime.cuda.windows.nuspec"
       ]
     },
-    "Whisper.net.Runtime.NoAvx/1.8.1": {
-      "sha512": "KADZ74RhKi+LlaoNiHgbuTwpdfqFMgpymPn6cfB1C2PZAqCaEc1ICwLsC5R1Dg/8ff/Bmd46GmexnsaulFjcvw==",
+    "Whisper.net.Runtime.Metal/1.9.0": {
+      "sha512": "HO66gX4D+vaElvmxnLaRGkyufuc8pGR6OlTwKinZAmUoN9KWG4AHA4AJHkj9ZQge95jNDZKKmQt6RE8RwAGJmA==",
       "type": "package",
-      "path": "whisper.net.runtime.noavx/1.8.1",
+      "path": "whisper.net.runtime.metal/1.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Whisper.net.Runtime.Metal.targets",
+        "build/ggml-metal.metal",
+        "content/readme.md",
+        "whisper.net.runtime.metal.1.9.0.nupkg.sha512",
+        "whisper.net.runtime.metal.nuspec"
+      ]
+    },
+    "Whisper.net.Runtime.NoAvx/1.9.0": {
+      "sha512": "FQrGKaL4hvI9Kx1qIJ7zVgDCaG8gnnePkY3qk1Um2o2An7u4Mycn7uY3ArZEUOGV4bRVdQogLlYXfoO6a2yWKA==",
+      "type": "package",
+      "path": "whisper.net.runtime.noavx/1.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3070,14 +3461,14 @@
         "build/win-x86/ggml-whisper.dll",
         "build/win-x86/whisper.dll",
         "content/readme.md",
-        "whisper.net.runtime.noavx.1.8.1.nupkg.sha512",
+        "whisper.net.runtime.noavx.1.9.0.nupkg.sha512",
         "whisper.net.runtime.noavx.nuspec"
       ]
     },
-    "Whisper.net.Runtime.OpenVino/1.8.1": {
-      "sha512": "CrewKf9Vv94crvBTQZZw7IDxZqdZC49IQfhC52IzKHPe2vxKDyubwUS2xhQeTIhLChSADa9wRG3OVuEWr7XqrA==",
+    "Whisper.net.Runtime.OpenVino/1.9.0": {
+      "sha512": "u3tTZgTTtNRAGX+IbvjfnI5ly0kIUkch1R+XDR0pTnppUxgEtYX8KNMzeDKtgIz/IqlZk47vFtxJ3tTL1a2/DA==",
       "type": "package",
-      "path": "whisper.net.runtime.openvino/1.8.1",
+      "path": "whisper.net.runtime.openvino/1.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3091,14 +3482,14 @@
         "build/win-x64/ggml-whisper.dll",
         "build/win-x64/whisper.dll",
         "content/readme.md",
-        "whisper.net.runtime.openvino.1.8.1.nupkg.sha512",
+        "whisper.net.runtime.openvino.1.9.0.nupkg.sha512",
         "whisper.net.runtime.openvino.nuspec"
       ]
     },
-    "Whisper.net.Runtime.Vulkan/1.8.1": {
-      "sha512": "hZmqxZZ6foU3WVmrewuFguIrodMkfb/7uyitBBPrZipo55jK16t/xxKUsWMLETYgEgGVwkZ33YNu8i3+4Kbjpg==",
+    "Whisper.net.Runtime.Vulkan/1.9.0": {
+      "sha512": "Jsp3G9lawfE0VYh7PmytkrUMLgPfMq0E+aGPBn0ViKGP0u76lvAAZwjiYYoLJMqDRrMv/OQiAMWNaUWH5b0ANQ==",
       "type": "package",
-      "path": "whisper.net.runtime.vulkan/1.8.1",
+      "path": "whisper.net.runtime.vulkan/1.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3114,11 +3505,11 @@
         "build/win-x64/ggml-whisper.dll",
         "build/win-x64/whisper.dll",
         "content/readme.md",
-        "whisper.net.runtime.vulkan.1.8.1.nupkg.sha512",
+        "whisper.net.runtime.vulkan.1.9.0.nupkg.sha512",
         "whisper.net.runtime.vulkan.nuspec"
       ]
     },
-    "FlyleafLib/3.9.4": {
+    "FlyleafLib/3.10.3": {
       "type": "project",
       "path": "../FlyleafLib/FlyleafLib.csproj",
       "msbuildProject": "../FlyleafLib/FlyleafLib.csproj"
@@ -3131,18 +3522,18 @@
   },
   "projectFileDependencyGroups": {
     "net10.0-windows10.0.18362": [
-      "Flyleaf.FFmpeg.Bindings >= 8.0.0",
-      "FlyleafLib >= 3.9.4",
+      "Flyleaf.FFmpeg.Bindings >= 8.0.1",
+      "FlyleafLib >= 3.10.3",
       "LibNMeCab >= 0.10.2",
       "LibNMeCab.IpaDicBin >= 0.10.0",
-      "MaterialDesignThemes >= 5.2.1",
+      "MaterialDesignThemes >= 5.3.1",
       "Prism.DryIoc >= 9.0.537",
       "Squid-Box.SevenZipSharp.Lite >= 1.6.2.24",
-      "Whisper.net.Runtime >= 1.8.1",
-      "Whisper.net.Runtime.Cuda.Windows >= 1.8.1",
-      "Whisper.net.Runtime.NoAvx >= 1.8.1",
-      "Whisper.net.Runtime.OpenVino >= 1.8.1",
-      "Whisper.net.Runtime.Vulkan >= 1.8.1",
+      "Whisper.net.Runtime >= 1.9.0",
+      "Whisper.net.Runtime.Cuda.Windows >= 1.9.0",
+      "Whisper.net.Runtime.NoAvx >= 1.9.0",
+      "Whisper.net.Runtime.OpenVino >= 1.9.0",
+      "Whisper.net.Runtime.Vulkan >= 1.9.0",
       "WpfColorFontDialog >= 1.0.8"
     ]
   },
@@ -3151,7 +3542,7 @@
     "D:\\Programs\\VisualStudio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "0.2.2",
+    "version": "0.3.0",
     "restore": {
       "projectUniqueName": "D:\\Other\\Projects\\LLPlayer\\LLPlayer\\LLPlayer.csproj",
       "projectName": "LLPlayer",
@@ -3205,7 +3596,7 @@
         "dependencies": {
           "Flyleaf.FFmpeg.Bindings": {
             "target": "Package",
-            "version": "[8.0.0, )"
+            "version": "[8.0.1, )"
           },
           "LibNMeCab": {
             "target": "Package",
@@ -3217,7 +3608,7 @@
           },
           "MaterialDesignThemes": {
             "target": "Package",
-            "version": "[5.2.1, )"
+            "version": "[5.3.1, )"
           },
           "Prism.DryIoc": {
             "target": "Package",
@@ -3229,23 +3620,23 @@
           },
           "Whisper.net.Runtime": {
             "target": "Package",
-            "version": "[1.8.1, )"
+            "version": "[1.9.0, )"
           },
           "Whisper.net.Runtime.Cuda.Windows": {
             "target": "Package",
-            "version": "[1.8.1, )"
+            "version": "[1.9.0, )"
           },
           "Whisper.net.Runtime.NoAvx": {
             "target": "Package",
-            "version": "[1.8.1, )"
+            "version": "[1.9.0, )"
           },
           "Whisper.net.Runtime.OpenVino": {
             "target": "Package",
-            "version": "[1.8.1, )"
+            "version": "[1.9.0, )"
           },
           "Whisper.net.Runtime.Vulkan": {
             "target": "Package",
-            "version": "[1.8.1, )"
+            "version": "[1.9.0, )"
           }
         },
         "imports": [
