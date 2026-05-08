@@ -104,6 +104,44 @@ public partial class App : PrismApplication
         _libraryWindow.Activate();
     }
 
+    /// <summary>
+    /// Opens a video file in the main player and seeks to the specified timestamp.
+    /// Called from Learning Library window via AppActions.OpenFileWithTimestamp event.
+    /// </summary>
+    public static void OpenFileInPlayerWithTimestamp(string filePath, double timestampSeconds)
+    {
+        try
+        {
+            var mainWindow = Current.MainWindow as MainWindow;
+            if (mainWindow?.DataContext is ViewModels.MainWindowVM vm)
+            {
+                // Open the file
+                vm.FL.Player.OpenAsync(filePath);
+                
+                // Seek to timestamp once playback starts
+                // Use a handler that fires once when position is ready
+                EventHandler? handler = null;
+                handler = (s, e) =>
+                {
+                    if (vm.FL.Player.Status == Status.Playing || vm.FL.Player.Status == Status.Paused)
+                    {
+                        vm.FL.Player.Position = timestampSeconds / vm.FL.Player.Duration;
+                        vm.FL.Player.PropertyChanged -= handler;
+                    }
+                };
+                vm.FL.Player.PropertyChanged += handler;
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                $"Failed to open video: {ex.Message}",
+                "Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        }
+    }
+
     static App()
     {
         // Set thread culture to English and error messages to English

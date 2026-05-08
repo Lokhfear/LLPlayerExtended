@@ -24,6 +24,9 @@ public class FlyleafManager
         // Load app configuration at this time
         Config = LoadAppConfig();
         Action = new AppActions(Player, Config, dialogService);
+        
+        // Subscribe to the static event for opening files with timestamp
+        AppActions.OpenFileWithTimestamp += App.OpenFileInPlayerWithTimestamp;
     }
 
     private AppConfig LoadAppConfig()

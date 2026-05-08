@@ -17,6 +17,9 @@ namespace LLPlayer.Services;
 
 public class AppActions
 {
+    // Static event for opening files with timestamp from other windows
+    public static Action<string, double>? OpenFileWithTimestamp;
+    
     private readonly Player _player;
     private readonly AppConfig _config;
     private FlyleafHost? _flyleafHost => _player.Host as FlyleafHost;

@@ -61,39 +61,70 @@
         <!-- TABS & FILTERS - Integrated modern toolbar -->
         <Border Grid.Row="1" Background="{StaticResource BackgroundBrush}" Padding="20,12,20,8">
             <StackPanel>
-                <!-- Tab Navigation -->
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
-                    <RadioButton Content="All Items" IsChecked="True" Style="{StaticResource MaterialDesignTabRadioButton}" 
-                                 Command="{Binding ClearFiltersCommand}" 
-                                 Foreground="{StaticResource TextSecondaryBrush}"
-                                 Margin="0,0,16,0"/>
-                    <RadioButton Content="Favorites" Style="{StaticResource MaterialDesignTabRadioButton}" 
-                                 IsChecked="{Binding FavoritesOnly, Mode=TwoWay}"
-                                 Foreground="{StaticResource TextSecondaryBrush}"
-                                 Margin="0,0,16,0">
-                        <RadioButton.ContentTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <md:PackIcon Kind="Star" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0" 
-                                                 Foreground="{StaticResource WarningBrush}"/>
-                                    <TextBlock Text="Favorites" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </RadioButton.ContentTemplate>
-                    </RadioButton>
-                    <RadioButton Content="Archive" Style="{StaticResource MaterialDesignTabRadioButton}" 
-                                 IsChecked="{Binding ShowArchived, Mode=TwoWay}"
-                                 Foreground="{StaticResource TextSecondaryBrush}">
-                        <RadioButton.ContentTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <md:PackIcon Kind="ArchiveOutline" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                    <TextBlock Text="Archive" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </RadioButton.ContentTemplate>
-                    </RadioButton>
-                </StackPanel>
+                <!-- Tab Navigation + Expand/Collapse Controls -->
+                <Grid Margin="0,0,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Tabs -->
+                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                        <RadioButton Content="All Items" IsChecked="True" Style="{StaticResource MaterialDesignTabRadioButton}" 
+                                     Command="{Binding ClearFiltersCommand}" 
+                                     Foreground="{StaticResource TextSecondaryBrush}"
+                                     Margin="0,0,16,0"/>
+                        <RadioButton Content="Favorites" Style="{StaticResource MaterialDesignTabRadioButton}" 
+                                     IsChecked="{Binding FavoritesOnly, Mode=TwoWay}"
+                                     Foreground="{StaticResource TextSecondaryBrush}"
+                                     Margin="0,0,16,0">
+                            <RadioButton.ContentTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <md:PackIcon Kind="Star" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0" 
+                                                     Foreground="{StaticResource WarningBrush}"/>
+                                        <TextBlock Text="Favorites" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </RadioButton.ContentTemplate>
+                        </RadioButton>
+                        <RadioButton Content="Archive" Style="{StaticResource MaterialDesignTabRadioButton}" 
+                                     IsChecked="{Binding ShowArchived, Mode=TwoWay}"
+                                     Foreground="{StaticResource TextSecondaryBrush}">
+                            <RadioButton.ContentTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <md:PackIcon Kind="ArchiveOutline" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                        <TextBlock Text="Archive" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </RadioButton.ContentTemplate>
+                        </RadioButton>
+                    </StackPanel>
+                    
+                    <!-- Expand/Collapse All Buttons -->
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Button Command="{Binding ExpandAllCommand}" 
+                                Style="{StaticResource ModernTextButton}"
+                                FontSize="11"
+                                Padding="8,4">
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Kind="ChevronDoubleDown" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                <TextBlock Text="Expand All"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding CollapseAllCommand}" 
+                                Style="{StaticResource ModernTextButton}"
+                                FontSize="11"
+                                Padding="8,4"
+                                Margin="8,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Kind="ChevronDoubleUp" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                <TextBlock Text="Collapse All"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
                 
                 <!-- Filter Bar - Compact, inline -->
                 <Grid>
@@ -179,7 +210,8 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" 
                           Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVis}, ConverterParameter=Invert}"
                           Padding="20,0,20,20">
-                <ItemsControl ItemsSource="{Binding Items}" 
+                <ItemsControl x:Name="ItemsControl"
+                              ItemsSource="{Binding Items}" 
                               VirtualizingStackPanel.IsVirtualizing="True" 
                               VirtualizingStackPanel.VirtualizationMode="Recycling" 
                               ScrollViewer.CanContentScroll="True">
