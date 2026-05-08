@@ -5,45 +5,46 @@ obj/
 *.exe
 *.dll
 *.pdb
-*.userprefs
-*.cache
-*.compiled
 *.nupkg
+*.snupkg
+*.msi
+*.msp
+*.msm
 
 # Dependencies
 packages/
 node_modules/
 vendor/
 
-# IDE specific
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Visual Studio
 .vs/
-.vscode/
-.idea/
 *.user
 *.userosscache
 *.suo
 *.csproj.user
 
-# OS generated
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-._*
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
 
-# Logs
-*.log
+# Visual Studio Code
+.vscode/
 
-# User-specific
-*.userprefs
+# Temporary files
+*.tmp
+*.temp
+*.bak
 
-# Localized resources
-*.resx
-*.resources
-*.resource
-
-# Configuration
-app.config
-web.config
-*.config
+# Environment
+.env
+.env.local
+*.env*
 ```

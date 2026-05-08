@@ -25,6 +25,7 @@ public class DictionaryViewModel : INotifyPropertyChanged
         RefreshCommand = new RelayCommand(async _ => await LoadEntriesAsync());
         ToggleExpandCommand = new RelayCommand<WordEntry>(OnToggleExpand);
         ExpandAllCommand = new RelayCommand(_ => OnExpandAll());
+        CollapseAllCommand = new RelayCommand(_ => OnCollapseAll());
         PlayAtTimestampCommand = new RelayCommand<WordEntry>(OnPlayAtTimestamp);
     }
 
@@ -69,6 +70,7 @@ public class DictionaryViewModel : INotifyPropertyChanged
     public ICommand RefreshCommand { get; }
     public ICommand ToggleExpandCommand { get; }
     public ICommand ExpandAllCommand { get; }
+    public ICommand CollapseAllCommand { get; }
     public ICommand PlayAtTimestampCommand { get; }
 
     // ─── Методы ───────────────────────────────────────────────────────────────
@@ -127,6 +129,15 @@ public class DictionaryViewModel : INotifyPropertyChanged
         foreach (var entry in Entries)
         {
             entry.IsExpanded = true;
+        }
+        OnPropertyChanged(nameof(Entries));
+    }
+
+    private void OnCollapseAll()
+    {
+        foreach (var entry in Entries)
+        {
+            entry.IsExpanded = false;
         }
         OnPropertyChanged(nameof(Entries));
     }
