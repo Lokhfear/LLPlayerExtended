@@ -110,7 +110,7 @@ public partial class SelectableSubtitleText : UserControl
     }
 
     public static readonly DependencyProperty WidthPercentageProperty =
-        DependencyProperty.Register(nameof(WidthPercentage), typeof(double), typeof(SelectableSubtitleText), new FrameworkPropertyMetadata(60.0, OnWidthPercentageChanged));
+        DependencyProperty.Register(nameof(WidthPercentage), typeof(double), typeof(SelectableSubtitleText), new FrameworkPropertyMetadata(85.0, OnWidthPercentageChanged));
 
     public double WidthPercentage
     {
@@ -119,7 +119,7 @@ public partial class SelectableSubtitleText : UserControl
     }
 
     public static readonly DependencyProperty WidthPercentageFixProperty =
-        DependencyProperty.Register(nameof(WidthPercentageFix), typeof(double), typeof(SelectableSubtitleText), new FrameworkPropertyMetadata(60.0));
+        DependencyProperty.Register(nameof(WidthPercentageFix), typeof(double), typeof(SelectableSubtitleText), new FrameworkPropertyMetadata(85.0));
 
     public double WidthPercentageFix
     {
@@ -332,11 +332,12 @@ public partial class SelectableSubtitleText : UserControl
                     border.MouseRightButtonUp += WordMouseRightButtonUp;
                     border.MouseUp += WordMouseMiddleButtonUp;
 
-                    // Change background color on mouse over
+                    // Change background color on mouse over - minimal, subtle highlight (Issue #1 fixed)
+                    // Subtle blue tint that works well in both light and dark themes
                     border.MouseEnter += (_, _) =>
                     {
                         border.BorderBrush = WordHoverBorderBrush;
-                        border.Background = new SolidColorBrush(Color.FromArgb(80, 127, 127, 127));
+                        border.Background = new SolidColorBrush(Color.FromArgb(25, 100, 181, 246)); // #64B5F6 with 10% opacity
                     };
                     border.MouseLeave += (_, _) =>
                     {

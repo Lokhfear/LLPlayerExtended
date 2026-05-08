@@ -24,6 +24,7 @@ public class LearningItem
     /// <summary>
     /// Контекстное предложение (для Word/Phrase — предложение из субтитров).
     /// Для Sentence — совпадает с Text.
+    /// Хранится один раз, без дублирования.
     /// </summary>
     public string? ContextSentence { get; set; }
 

@@ -102,37 +102,8 @@
                      Margin="0,0,8,0"
                      FontSize="13"/>
 
-            <!-- Тип -->
+            <!-- Сортировка (перемещено на место фильтра типа) -->
             <ComboBox Grid.Column="1"
-                      SelectedValue="{Binding FilterType}"
-                      SelectedValuePath="Tag"
-                      md:HintAssist.Hint="Type"
-                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                      Margin="0,0,8,0"
-                      FontSize="13">
-                <ComboBoxItem Content="All types" Tag="{x:Null}"/>
-                <ComboBoxItem Content="Word"     Tag="{x:Static models:ItemType.Word}"/>
-                <ComboBoxItem Content="Phrase"   Tag="{x:Static models:ItemType.Phrase}"/>
-                <ComboBoxItem Content="Sentence" Tag="{x:Static models:ItemType.Sentence}"/>
-            </ComboBox>
-
-            <!-- Статус -->
-            <ComboBox Grid.Column="2"
-                      SelectedValue="{Binding FilterStatus}"
-                      SelectedValuePath="Tag"
-                      md:HintAssist.Hint="Status"
-                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                      Margin="0,0,8,0"
-                      FontSize="13">
-                <ComboBoxItem Content="All statuses" Tag="{x:Null}"/>
-                <ComboBoxItem Content="New"      Tag="{x:Static models:LearningStatus.New}"/>
-                <ComboBoxItem Content="Learning" Tag="{x:Static models:LearningStatus.Learning}"/>
-                <ComboBoxItem Content="Learned"  Tag="{x:Static models:LearningStatus.Learned}"/>
-                <ComboBoxItem Content="Ignored"  Tag="{x:Static models:LearningStatus.Ignored}"/>
-            </ComboBox>
-
-            <!-- Сортировка -->
-            <ComboBox Grid.Column="3"
                       SelectedValue="{Binding SortMode}"
                       SelectedValuePath="Tag"
                       md:HintAssist.Hint="Sort by"
@@ -145,8 +116,17 @@
                 <ComboBoxItem Content="Reviewed"  Tag="{x:Static services:SortMode.RecentlyReviewed}"/>
             </ComboBox>
 
+            <!-- Has Media Only toggle (вместо фильтра статуса) -->
+            <CheckBox Grid.Column="2"
+                      IsChecked="{Binding HasMediaOnly}"
+                      Content="🎬 With Video"
+                      Foreground="#B0B0B0"
+                      VerticalAlignment="Center"
+                      Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"
+                      Margin="0,0,8,0"/>
+
             <!-- Сбросить -->
-            <Button Grid.Column="4"
+            <Button Grid.Column="3"
                     Command="{Binding ClearFiltersCommand}"
                     Style="{StaticResource MaterialDesignIconButton}"
                     ToolTip="Clear all filters"
@@ -155,6 +135,23 @@
                 <md:PackIcon Kind="FilterRemove" Width="18" Height="18" Opacity="0.6"/>
             </Button>
         </Grid>
+
+        <!-- ══ EXPAND/COLLAPSE BAR ════════════════════════════════════ -->
+        <Border Grid.Row="2" Margin="16,0,16,8" Grid.ColumnSpan="5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Command="{Binding ExpandAllCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Content="Expand All"
+                        Foreground="#90CAF9"
+                        FontSize="12"
+                        Margin="0,0,8,0"/>
+                <Button Command="{Binding CollapseAllCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Content="Collapse All"
+                        Foreground="#90CAF9"
+                        FontSize="12"/>
+            </StackPanel>
+        </Border>
 
         <!-- ══ СПИСОК ════════════════════════════════════════════════ -->
         <Grid Grid.Row="3">
@@ -207,33 +204,29 @@
                                     </Grid.RowDefinitions>
                                     
                                     <!-- Основная часть (всегда видна) -->
-                                    <Grid Grid.Row="0" Margin="16,12">
+                                    <Grid Grid.Row="0" Margin="12,8">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>  <!-- тип-значок -->
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>  <!-- кнопки -->
                                         </Grid.ColumnDefinitions>
 
-                                        <!-- Тип + статус (скрыто - убран визуал типа) -->
-                                        <!-- Border удален - больше не показываем метки W/P/S -->
-
                                         <!-- Контент -->
                                         <StackPanel Grid.Column="0" VerticalAlignment="Center">
 
-                                            <!-- Слово + перевод -->
+                                            <!-- Слово + перевод + кнопка expand -->
                                             <WrapPanel>
                                                 <TextBlock Text="{Binding Text}"
-                                                           FontSize="18"
+                                                           FontSize="16"
                                                            FontWeight="SemiBold"
                                                            Foreground="#FFFFFF"/>
                                                 <TextBlock Text=" — "
                                                            Opacity="0.4"
-                                                           FontSize="16"
+                                                           FontSize="14"
                                                            Visibility="{Binding Translation,
                                                                Converter={StaticResource NullToCollapsedConv}}"/>
                                                 <TextBlock Text="{Binding Translation}"
-                                                           FontSize="16"
-                                                           Foreground="#90CAF9"
+                                                           FontSize="14"
+                                                           Foreground="#64B5F6"
                                                            FontStyle="Italic"
                                                            Visibility="{Binding Translation,
                                                                Converter={StaticResource NullToCollapsedConv}}"/>
@@ -244,18 +237,31 @@
                                                              Margin="8,0,0,0"
                                                              Visibility="{Binding Translation,
                                                                  Converter={StaticResource NullToVisibleConv}}"/>
+                                                
+                                                <!-- Кнопка Expand/Collapse -->
+                                                <Button Command="{Binding DataContext.ToggleExpandCommand,
+                                                            RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                        CommandParameter="{Binding}"
+                                                        Style="{StaticResource MaterialDesignIconButton}"
+                                                        Width="28" Height="28"
+                                                        ToolTip="{Binding IsExpanded, Converter={StaticResource BoolToStrConverter}, ConverterParameter='Collapse|Expand'}"
+                                                        Margin="8,0,0,0">
+                                                    <md:PackIcon Kind="{Binding IsExpanded, Converter={StaticResource BoolToArrowIconConverter}}"
+                                                                 Width="16" Height="16"/>
+                                                </Button>
                                             </WrapPanel>
 
-                                            <!-- Контекстное предложение (кратко) -->
+                                            <!-- Контекстное предложение (кратко, только если свёрнуто) -->
                                             <TextBlock Text="{Binding ContextSentence}"
                                                        FontStyle="Italic"
-                                                       Opacity="0.6"
-                                                       FontSize="12"
+                                                       Opacity="0.5"
+                                                       FontSize="11"
                                                        TextWrapping="Wrap"
                                                        Margin="0,4,0,0"
                                                        Foreground="#B0B0B0"
-                                                       Visibility="{Binding ContextSentence,
-                                                           Converter={StaticResource NullToCollapsedConv}}"/>
+                                                       Visibility="{Binding IsExpanded, Converter={StaticResource InverseBoolToVisConverter}}"
+                                                       MaxHeight="22"
+                                                       TextTrimming="CharacterEllipsis"/>
                                         </StackPanel>
 
                                         <!-- Кнопки действий -->
@@ -264,45 +270,41 @@
                                             <Button Command="{Binding DataContext.ToggleFavoriteCommand,
                                                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignIconButton}"
-                                                    Width="36" Height="36"
+                                                    Style="{StaticResource LLE.IconButton.Compact}"
                                                     ToolTip="Toggle favorite">
                                                 <md:PackIcon Kind="{Binding IsFavorite,
                                                     Converter={StaticResource BoolToStarIconConverter}}"
-                                                             Width="18" Height="18"/>
+                                                             Width="16" Height="16"/>
                                             </Button>
 
                                             <!-- Архив / Восстановить -->
                                             <Button Command="{Binding DataContext.ArchiveCommand,
                                                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignIconButton}"
-                                                    Width="36" Height="36"
+                                                    Style="{StaticResource LLE.IconButton.Compact}"
                                                     ToolTip="Archive"
                                                     Visibility="{Binding IsArchived,
                                                         Converter={StaticResource InverseBoolToVisConverter}}">
-                                                <md:PackIcon Kind="Archive" Width="16" Height="16" Opacity="0.5"/>
+                                                <md:PackIcon Kind="Archive" Width="14" Height="14" Opacity="0.5"/>
                                             </Button>
 
                                             <Button Command="{Binding DataContext.RestoreCommand,
                                                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignIconButton}"
-                                                    Width="36" Height="36"
+                                                    Style="{StaticResource LLE.IconButton.Compact}"
                                                     ToolTip="Restore from archive"
                                                     Visibility="{Binding IsArchived,
                                                         Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <md:PackIcon Kind="Restore" Width="16" Height="16"/>
+                                                <md:PackIcon Kind="Restore" Width="14" Height="14"/>
                                             </Button>
 
                                             <!-- Удалить -->
                                             <Button Command="{Binding DataContext.DeleteCommand,
                                                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignIconButton}"
-                                                    Width="36" Height="36"
+                                                    Style="{StaticResource LLE.IconButton.Compact}"
                                                     ToolTip="Delete">
-                                                <md:PackIcon Kind="Delete" Width="16" Height="16" Opacity="0.5"/>
+                                                <md:PackIcon Kind="Delete" Width="14" Height="14" Opacity="0.5"/>
                                             </Button>
                                         </StackPanel>
                                     </Grid>
@@ -311,9 +313,10 @@
                                     <Border Grid.Row="1"
                                             BorderThickness="0,1,0,0"
                                             BorderBrush="#2A2A2A"
-                                            Background="#181818">
-                                        <StackPanel Margin="16,12">
-                                            <!-- Полное предложение -->
+                                            Background="#181818"
+                                            Visibility="{Binding IsExpanded, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <StackPanel Margin="12,10">
+                                            <!-- Полное предложение с увеличенной шириной -->
                                             <TextBlock Text="{Binding ContextSentence}"
                                                        FontSize="13"
                                                        Opacity="0.8"

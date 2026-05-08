@@ -26,29 +26,49 @@
     <Color x:Key="LLE.Text.Hint">#9E9E9E</Color>
     <Color x:Key="LLE.Text.Disabled">#757575</Color>
     
+    <!-- Light Theme Overrides -->
+    <Color x:Key="LLE.Light.Background.Primary">#FAFAFA</Color>
+    <Color x:Key="LLE.Light.Background.Secondary">#FFFFFF</Color>
+    <Color x:Key="LLE.Light.Background.Tertiary">#F5F5F5</Color>
+    <Color x:Key="LLE.Light.Text.Primary">#212121</Color>
+    <Color x:Key="LLE.Light.Text.Secondary">#424242</Color>
+    <Color x:Key="LLE.Light.Text.Tertiary">#616161</Color>
+    <Color x:Key="LLE.Light.Text.Hint">#9E9E9E</Color>
+    
     <SolidColorBrush x:Key="LLE.Brush.Text.Primary" Color="{StaticResource LLE.Text.Primary}"/>
     <SolidColorBrush x:Key="LLE.Brush.Text.Secondary" Color="{StaticResource LLE.Text.Secondary}"/>
     <SolidColorBrush x:Key="LLE.Brush.Text.Tertiary" Color="{StaticResource LLE.Text.Tertiary}"/>
     <SolidColorBrush x:Key="LLE.Brush.Text.Hint" Color="{StaticResource LLE.Text.Hint}"/>
     <SolidColorBrush x:Key="LLE.Brush.Text.Disabled" Color="{StaticResource LLE.Text.Disabled}"/>
     
-    <!-- Accent Colors -->
-    <Color x:Key="LLE.Accent.Blue">#90CAF9</Color>
+    <!-- Accent Colors (Muted, not acidic) -->
+    <Color x:Key="LLE.Accent.Blue">#64B5F6</Color>
     <Color x:Key="LLE.Accent.Green">#81C784</Color>
     <Color x:Key="LLE.Accent.Orange">#FFB74D</Color>
     <Color x:Key="LLE.Accent.Red">#E57373</Color>
+    <Color x:Key="LLE.Accent.Purple">#BA68C8</Color>
     
     <SolidColorBrush x:Key="LLE.Brush.Accent.Blue" Color="{StaticResource LLE.Accent.Blue}"/>
     <SolidColorBrush x:Key="LLE.Brush.Accent.Green" Color="{StaticResource LLE.Accent.Green}"/>
     <SolidColorBrush x:Key="LLE.Brush.Accent.Orange" Color="{StaticResource LLE.Accent.Orange}"/>
     <SolidColorBrush x:Key="LLE.Brush.Accent.Red" Color="{StaticResource LLE.Accent.Red}"/>
+    <SolidColorBrush x:Key="LLE.Brush.Accent.Purple" Color="{StaticResource LLE.Accent.Purple}"/>
+    
+    <!-- Selection/Highlight Colors (Subtle) -->
+    <Color x:Key="LLE.Selection.Background">#1A3E5C</Color>
+    <Color x:Key="LLE.Selection.Border">#4FC3F7</Color>
+    
+    <SolidColorBrush x:Key="LLE.Brush.Selection.Background" Color="{StaticResource LLE.Selection.Background}"/>
+    <SolidColorBrush x:Key="LLE.Brush.Selection.Border" Color="{StaticResource LLE.Selection.Border}"/>
     
     <!-- Border Colors -->
     <Color x:Key="LLE.Border.Light">#2A2A2A</Color>
     <Color x:Key="LLE.Border.Medium">#333333</Color>
+    <Color x:Key="LLE.Border.Subtle">#1F1F1F</Color>
     
     <SolidColorBrush x:Key="LLE.Brush.Border.Light" Color="{StaticResource LLE.Border.Light}"/>
     <SolidColorBrush x:Key="LLE.Brush.Border.Medium" Color="{StaticResource LLE.Border.Medium}"/>
+    <SolidColorBrush x:Key="LLE.Brush.Border.Subtle" Color="{StaticResource LLE.Border.Subtle}"/>
 
     <!-- ─── TYPOGRAPHY ────────────────────────────────────────────────────── -->
     <sys:Double x:Key="LLE.FontSize.XSmall" xmlns:sys="clr-namespace:System;assembly=mscorlib">11</sys:Double>

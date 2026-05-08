@@ -38,6 +38,11 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         ImportCommand         = new RelayCommand(async _ => await OnImport());
         ClearFiltersCommand   = new RelayCommand(_ => ClearFilters());
         FavoritesOnlyCommand  = new RelayCommand(_ => ToggleFavoritesOnly());
+        
+        // Expand/Collapse commands
+        ToggleExpandCommand   = new RelayCommand<LearningItem?>(OnToggleExpand);
+        ExpandAllCommand      = new RelayCommand(_ => ExpandAll());
+        CollapseAllCommand    = new RelayCommand(_ => CollapseAll());
     }
 
     // ─── Коллекции ─────────────────────────────────────────────────────────
@@ -80,26 +85,14 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         set { _favoritesOnly = value; OnPropertyChanged(); _ = RefreshAsync(); }
     }
 
-    private ItemType? _filterType;
-    public ItemType? FilterType
-    {
-        get => _filterType;
-        set { _filterType = value; OnPropertyChanged(); _ = RefreshAsync(); }
-    }
-
-    private LearningStatus? _filterStatus;
-    public LearningStatus? FilterStatus
-    {
-        get => _filterStatus;
-        set { _filterStatus = value; OnPropertyChanged(); _ = RefreshAsync(); }
-    }
-
     private bool _hasMediaOnly;
     public bool HasMediaOnly
     {
         get => _hasMediaOnly;
         set { _hasMediaOnly = value; OnPropertyChanged(); _ = RefreshAsync(); }
     }
+
+    // SortMode removed - unified list without type classification
 
     private SortMode _sortMode = SortMode.Newest;
     public SortMode SortMode
@@ -130,6 +123,11 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
     public ICommand ImportCommand { get; }
     public ICommand ClearFiltersCommand { get; }
     public ICommand FavoritesOnlyCommand { get; }
+    
+    // Expand/Collapse commands for cards
+    public ICommand ToggleExpandCommand { get; }
+    public ICommand ExpandAllCommand { get; }
+    public ICommand CollapseAllCommand { get; }
 
     // ─── Методы ────────────────────────────────────────────────────────────
 
@@ -183,11 +181,40 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
     {
         _searchText     = string.Empty; OnPropertyChanged(nameof(SearchText));
         _favoritesOnly  = false;        OnPropertyChanged(nameof(FavoritesOnly));
-        _filterType     = null;         OnPropertyChanged(nameof(FilterType));
-        _filterStatus   = null;         OnPropertyChanged(nameof(FilterStatus));
         _hasMediaOnly   = false;        OnPropertyChanged(nameof(HasMediaOnly));
         _showArchived   = false;        OnPropertyChanged(nameof(ShowArchived));
         _ = RefreshAsync();
+    }
+
+    // Expand/Collapse methods
+    private void OnToggleExpand(LearningItem? item)
+    {
+        if (item == null) return;
+        item.IsExpanded = !item.IsExpanded;
+        var idx = Items.IndexOf(item);
+        if (idx >= 0) 
+        { 
+            Items.RemoveAt(idx); 
+            Items.Insert(idx, item); 
+        }
+    }
+
+    private void ExpandAll()
+    {
+        foreach (var item in Items)
+            item.IsExpanded = true;
+        
+        // Force refresh of collection
+        Items = new ObservableCollection<LearningItem>(Items);
+    }
+
+    private void CollapseAll()
+    {
+        foreach (var item in Items)
+            item.IsExpanded = false;
+        
+        // Force refresh of collection
+        Items = new ObservableCollection<LearningItem>(Items);
     }
 
     private void ToggleFavoritesOnly()
@@ -257,15 +284,30 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
             return;
         }
 
-        // Открыть видео в LLPlayer и перейти к timestamp
-        // Интеграция с FlyleafLib Player
+        // Открыть видео в текущем приложении через FlyleafLib
         try
         {
-            // Вариант: передать путь + timestamp через аргументы
-            // MainViewModel.OpenFile(media.FilePath, media.TimestampSeconds);
-
-            // Временно: просто открыть файл
-            Process.Start(new ProcessStartInfo(media.FilePath) { UseShellExecute = true });
+            // Используем MainWindowVM для открытия файла в плеере
+            if (App.Current.MainWindow is MainWindow mw && mw.DataContext is MainWindowVM mainVm)
+            {
+                // Асинхронно открываем файл и переходим к timestamp
+                Task.Run(async () =>
+                {
+                    await mainVm.OpenFileAsync(media.FilePath);
+                    
+                    // Seek к позиции после загрузки
+                    if (media.TimestampSeconds > 0)
+                    {
+                        await Task.Delay(500); // Ждём загрузки
+                        mainVm.FlyleafManager?.Player?.SeekAccurate(media.TimestampSeconds * 1000);
+                    }
+                });
+            }
+            else
+            {
+                // Fallback: просто открыть внешний плеер
+                Process.Start(new ProcessStartInfo(media.FilePath) { UseShellExecute = true });
+            }
         }
         catch (Exception ex)
         {
