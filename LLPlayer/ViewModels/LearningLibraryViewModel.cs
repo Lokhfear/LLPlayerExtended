@@ -38,6 +38,8 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         ImportCommand         = new RelayCommand(async _ => await OnImport());
         ClearFiltersCommand   = new RelayCommand(_ => ClearFilters());
         FavoritesOnlyCommand  = new RelayCommand(_ => ToggleFavoritesOnly());
+        ExpandAllCommand      = new RelayCommand(_ => ExpandAll());
+        CollapseAllCommand    = new RelayCommand(_ => CollapseAll());
     }
 
     // ─── Коллекции ─────────────────────────────────────────────────────────
@@ -130,6 +132,8 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
     public ICommand ImportCommand { get; }
     public ICommand ClearFiltersCommand { get; }
     public ICommand FavoritesOnlyCommand { get; }
+    public ICommand ExpandAllCommand { get; }
+    public ICommand CollapseAllCommand { get; }
 
     // ─── Методы ────────────────────────────────────────────────────────────
 
@@ -197,6 +201,22 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         _showArchived = false;
         OnPropertyChanged(nameof(ShowArchived));
         _ = RefreshAsync();
+    }
+
+    private void ExpandAll()
+    {
+        foreach (var item in Items)
+        {
+            item.IsExpanded = true;
+        }
+    }
+
+    private void CollapseAll()
+    {
+        foreach (var item in Items)
+        {
+            item.IsExpanded = false;
+        }
     }
 
     private async void OnDelete(LearningItem? item)
