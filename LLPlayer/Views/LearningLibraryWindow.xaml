@@ -7,12 +7,18 @@
         Title="Learning Library"
         Width="950" Height="650"
         MinWidth="600" MinHeight="450"
-        Background="#121212"
-        WindowStyle="SingleBorderWindow"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
         ResizeMode="CanResizeWithGrip"
         ShowInTaskbar="False">
-
-    <Grid>
+    
+    <!-- Outer border for window chrome -->
+    <Border Background="{DynamicResource LLE.Brush.Background.Primary}" 
+            CornerRadius="8" 
+            BorderBrush="{DynamicResource LLE.Brush.Border.Medium}" 
+            BorderThickness="1">
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>  <!-- Toolbar -->
             <RowDefinition Height="Auto"/>  <!-- Tab bar -->
@@ -26,7 +32,6 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
@@ -414,5 +419,6 @@
                            FontSize="{StaticResource LLE.FontSize.XSmall}"/>
             </Grid>
         </Border>
-    </Grid>
+        </Grid>
+    </Border>
 </Window>
