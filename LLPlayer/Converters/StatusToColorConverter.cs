@@ -39,6 +39,18 @@ public class BoolToStarIconConverter : IValueConverter
 }
 
 /// <summary>
+/// Конвертер булева значения (раскрыто) в стрелку.
+/// </summary>
+public class BoolToArrowIconConverter : IValueConverter
+{
+    public object Convert(object value, Type t, object p, CultureInfo c)
+        => value is true ? "ChevronUp" : "ChevronDown";
+
+    public object ConvertBack(object v, Type t, object p, CultureInfo c)
+        => throw new NotImplementedException();
+}
+
+/// <summary>
 /// Конвертер типа элемента в label (W/P/S).
 /// </summary>
 public class ItemTypeLabelConverter : IValueConverter

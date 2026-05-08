@@ -5,20 +5,12 @@
         xmlns:models="clr-namespace:LLPlayer.Models"
         xmlns:services="clr-namespace:LLPlayer.Services"
         Title="Learning Library"
-        Width="900" Height="620"
+        Width="950" Height="650"
         MinWidth="600" MinHeight="450"
-        Background="{DynamicResource MaterialDesignPaper}"
-        Style="{StaticResource MaterialDesignWindow}"
+        Background="#121212"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResizeWithGrip"
         ShowInTaskbar="False">
-
-    <Window.Resources>
-        <!-- Цвета статусов -->
-        <SolidColorBrush x:Key="StatusNew"      Color="#2196F3"/>
-        <SolidColorBrush x:Key="StatusLearning" Color="#FF9800"/>
-        <SolidColorBrush x:Key="StatusLearned"  Color="#4CAF50"/>
-        <SolidColorBrush x:Key="StatusIgnored"  Color="#9E9E9E"/>
-        <SolidColorBrush x:Key="StatusArchived" Color="#795548"/>
-    </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -30,90 +22,94 @@
         </Grid.RowDefinitions>
 
         <!-- ══ TOOLBAR ════════════════════════════════════════════════ -->
-        <Grid Grid.Row="0" Background="{DynamicResource PrimaryHueDarkBrush}"
-              Margin="0,0,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Background="#1E1E1E" Padding="16,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0"
-                       Text="📖 Learning Library"
-                       Foreground="White"
-                       FontSize="15"
-                       FontWeight="Medium"
-                       VerticalAlignment="Center"
-                       Margin="16,10"/>
+                <TextBlock Grid.Column="0"
+                           Text="📖 Learning Library"
+                           Foreground="#FFFFFF"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
 
-            <Button Grid.Column="1"
-                    Command="{Binding ImportCommand}"
-                    Style="{StaticResource MaterialDesignFlatLightButton}"
-                    Foreground="White"
-                    Content="Import"
-                    Margin="0,4,4,4"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Command="{Binding ImportCommand}"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Foreground="#90CAF9"
+                            Content="Import"
+                            Margin="0,0,8,0"/>
 
-            <Button Grid.Column="2"
-                    Command="{Binding ExportCommand}"
-                    Style="{StaticResource MaterialDesignFlatLightButton}"
-                    Foreground="White"
-                    Content="Export"
-                    Margin="0,4,8,4"/>
-        </Grid>
+                    <Button Command="{Binding ExportCommand}"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Foreground="#90CAF9"
+                            Content="Export"/>
+                </StackPanel>
+            </Grid>
+        </Border>
 
         <!-- ══ ВКЛАДКИ ════════════════════════════════════════════════ -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal"
-                    Background="{DynamicResource MaterialDesignToolBarBackground}"
-                    Margin="0,0,0,1">
+        <Border Grid.Row="1" Background="#181818" Padding="8,4">
+            <StackPanel Orientation="Horizontal">
 
-            <RadioButton Content="All"
-                         IsChecked="True"
-                         Style="{StaticResource MaterialDesignTabRadioButton}"
-                         Command="{Binding ClearFiltersCommand}"
-                         Margin="4,0"/>
+                <RadioButton Content="All"
+                             IsChecked="True"
+                             Style="{StaticResource MaterialDesignTabRadioButton}"
+                             Command="{Binding ClearFiltersCommand}"
+                             Margin="4,0"
+                             Foreground="#B0B0B0"/>
 
-            <RadioButton Content="⭐ Favorites"
-                         Style="{StaticResource MaterialDesignTabRadioButton}"
-                         Margin="4,0">
-                <RadioButton.Command>
-                    <Binding Path="FavoritesOnlyCommand"/>
-                </RadioButton.Command>
-            </RadioButton>
+                <RadioButton Content="⭐ Favorites"
+                             Style="{StaticResource MaterialDesignTabRadioButton}"
+                             Margin="4,0"
+                             Foreground="#B0B0B0">
+                    <RadioButton.Command>
+                        <Binding Path="FavoritesOnlyCommand"/>
+                    </RadioButton.Command>
+                </RadioButton>
 
-            <RadioButton Content="🗄 Archive"
-                         Style="{StaticResource MaterialDesignTabRadioButton}"
-                         Margin="4,0">
-                <RadioButton.IsChecked>
-                    <Binding Path="ShowArchived"/>
-                </RadioButton.IsChecked>
-            </RadioButton>
-        </StackPanel>
+                <RadioButton Content="🗄 Archive"
+                             Style="{StaticResource MaterialDesignTabRadioButton}"
+                             Margin="4,0"
+                             Foreground="#B0B0B0">
+                    <RadioButton.IsChecked>
+                        <Binding Path="ShowArchived"/>
+                    </RadioButton.IsChecked>
+                </RadioButton>
+            </StackPanel>
+        </Border>
 
         <!-- ══ FILTER BAR ════════════════════════════════════════════ -->
-        <Grid Grid.Row="2" Margin="12,8,12,4">
+        <Grid Grid.Row="2" Margin="16,12,16,8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <!-- Поиск -->
             <TextBox Grid.Column="0"
                      Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                     md:HintAssist.Hint="🔍  Search text, translation, tags, video..."
-                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     md:HintAssist.Hint="🔍 Search text, translation, tags, video..."
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      md:TextFieldAssist.HasClearButton="True"
-                     Margin="0,0,8,0"/>
+                     Margin="0,0,8,0"
+                     FontSize="13"/>
 
             <!-- Тип -->
             <ComboBox Grid.Column="1"
                       SelectedValue="{Binding FilterType}"
                       SelectedValuePath="Tag"
                       md:HintAssist.Hint="Type"
-                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                      Margin="0,0,8,0">
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      Margin="0,0,8,0"
+                      FontSize="13">
                 <ComboBoxItem Content="All types" Tag="{x:Null}"/>
                 <ComboBoxItem Content="Word"     Tag="{x:Static models:ItemType.Word}"/>
                 <ComboBoxItem Content="Phrase"   Tag="{x:Static models:ItemType.Phrase}"/>
@@ -125,8 +121,9 @@
                       SelectedValue="{Binding FilterStatus}"
                       SelectedValuePath="Tag"
                       md:HintAssist.Hint="Status"
-                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                      Margin="0,0,8,0">
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      Margin="0,0,8,0"
+                      FontSize="13">
                 <ComboBoxItem Content="All statuses" Tag="{x:Null}"/>
                 <ComboBoxItem Content="New"      Tag="{x:Static models:LearningStatus.New}"/>
                 <ComboBoxItem Content="Learning" Tag="{x:Static models:LearningStatus.Learning}"/>
@@ -138,9 +135,10 @@
             <ComboBox Grid.Column="3"
                       SelectedValue="{Binding SortMode}"
                       SelectedValuePath="Tag"
-                      md:HintAssist.Hint="Sort"
-                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                      Margin="0,0,8,0">
+                      md:HintAssist.Hint="Sort by"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      Margin="0,0,8,0"
+                      FontSize="13">
                 <ComboBoxItem Content="Newest"    Tag="{x:Static services:SortMode.Newest}"/>
                 <ComboBoxItem Content="Oldest"    Tag="{x:Static services:SortMode.Oldest}"/>
                 <ComboBoxItem Content="A → Z"     Tag="{x:Static services:SortMode.Alphabetical}"/>
@@ -152,8 +150,9 @@
                     Command="{Binding ClearFiltersCommand}"
                     Style="{StaticResource MaterialDesignIconButton}"
                     ToolTip="Clear all filters"
-                    VerticalAlignment="Center">
-                <md:PackIcon Kind="FilterRemove" Width="20" Height="20" Opacity="0.6"/>
+                    VerticalAlignment="Center"
+                    Width="36" Height="36">
+                <md:PackIcon Kind="FilterRemove" Width="18" Height="18" Opacity="0.6"/>
             </Button>
         </Grid>
 
@@ -200,154 +199,173 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <!-- ── КАРТОЧКА ────────────────────────── -->
-                            <md:Card Margin="0,0,0,6" Padding="0">
-                                <Grid Margin="12,10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>  <!-- тип-значок -->
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>  <!-- кнопки -->
-                                    </Grid.ColumnDefinitions>
+                            <md:Card Margin="8,4" Padding="0" UniformCornerRadius="12" Background="#1E1E1E">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!-- Основная часть (всегда видна) -->
+                                    <Grid Grid.Row="0" Margin="16,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>  <!-- тип-значок -->
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>  <!-- кнопки -->
+                                        </Grid.ColumnDefinitions>
 
-                                    <!-- Тип + статус -->
-                                    <Border Grid.Column="0"
-                                            Width="28" Height="28"
-                                            CornerRadius="4"
-                                            Background="{DynamicResource PrimaryHueLightBrush}"
-                                            VerticalAlignment="Top"
-                                            Margin="0,0,10,0">
-                                        <TextBlock Text="{Binding TypeLabel}"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="11"
-                                                   FontWeight="Bold"
-                                                   Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
-                                    </Border>
+                                        <!-- Тип + статус -->
+                                        <Border Grid.Column="0"
+                                                Width="32" Height="32"
+                                                CornerRadius="6"
+                                                Background="{Binding Status, Converter={StaticResource StatusToBackgroundConverter}}"
+                                                VerticalAlignment="Center"
+                                                Margin="0,0,12,0">
+                                            <TextBlock Text="{Binding TypeLabel}"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="12"
+                                                       FontWeight="Bold"
+                                                       Foreground="White"/>
+                                        </Border>
 
-                                    <!-- Контент -->
-                                    <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                                        <!-- Контент -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
 
-                                        <!-- Слово + перевод -->
-                                        <WrapPanel>
-                                            <TextBlock Text="{Binding Text}"
-                                                       FontSize="15"
-                                                       FontWeight="SemiBold"/>
-                                            <TextBlock Text=" — "
-                                                       Opacity="0.4"
-                                                       FontSize="15"
-                                                       Visibility="{Binding Translation,
+                                            <!-- Слово + перевод -->
+                                            <WrapPanel>
+                                                <TextBlock Text="{Binding Text}"
+                                                           FontSize="18"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="#FFFFFF"/>
+                                                <TextBlock Text=" — "
+                                                           Opacity="0.4"
+                                                           FontSize="16"
+                                                           Visibility="{Binding Translation,
+                                                               Converter={StaticResource NullToCollapsedConv}}"/>
+                                                <TextBlock Text="{Binding Translation}"
+                                                           FontSize="16"
+                                                           Foreground="#90CAF9"
+                                                           FontStyle="Italic"
+                                                           Visibility="{Binding Translation,
+                                                               Converter={StaticResource NullToCollapsedConv}}"/>
+                                                <!-- Ожидание перевода -->
+                                                <ProgressBar IsIndeterminate="True"
+                                                             Width="50" Height="3"
+                                                             VerticalAlignment="Center"
+                                                             Margin="8,0,0,0"
+                                                             Visibility="{Binding Translation,
+                                                                 Converter={StaticResource NullToVisibleConv}}"/>
+                                            </WrapPanel>
+
+                                            <!-- Контекстное предложение (кратко) -->
+                                            <TextBlock Text="{Binding ContextSentence}"
+                                                       FontStyle="Italic"
+                                                       Opacity="0.6"
+                                                       FontSize="12"
+                                                       TextWrapping="Wrap"
+                                                       Margin="0,4,0,0"
+                                                       Foreground="#B0B0B0"
+                                                       Visibility="{Binding ContextSentence,
                                                            Converter={StaticResource NullToCollapsedConv}}"/>
-                                            <TextBlock Text="{Binding Translation}"
-                                                       FontSize="15"
-                                                       Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                                       Visibility="{Binding Translation,
-                                                           Converter={StaticResource NullToCollapsedConv}}"/>
-                                            <!-- Ожидание перевода -->
-                                            <ProgressBar IsIndeterminate="True"
-                                                         Width="50" Height="3"
-                                                         VerticalAlignment="Center"
-                                                         Margin="8,0,0,0"
-                                                         Visibility="{Binding Translation,
-                                                             Converter={StaticResource NullToVisibleConv}}"/>
-                                        </WrapPanel>
+                                        </StackPanel>
 
-                                        <!-- Контекстное предложение -->
-                                        <TextBlock Text="{Binding ContextSentence}"
-                                                   FontStyle="Italic"
-                                                   Opacity="0.65"
-                                                   FontSize="12"
-                                                   TextWrapping="Wrap"
-                                                   Margin="0,3,0,0"
-                                                   Visibility="{Binding ContextSentence,
-                                                       Converter={StaticResource NullToCollapsedConv}}"/>
+                                        <!-- Кнопки действий -->
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                            <!-- Избранное -->
+                                            <Button Command="{Binding DataContext.ToggleFavoriteCommand,
+                                                        RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="36" Height="36"
+                                                    ToolTip="Toggle favorite">
+                                                <md:PackIcon Kind="{Binding IsFavorite,
+                                                    Converter={StaticResource BoolToStarIconConverter}}"
+                                                             Width="18" Height="18"/>
+                                            </Button>
 
-                                        <!-- Медиа-контекст -->
-                                        <StackPanel Orientation="Horizontal"
-                                                    Margin="0,4,0,0"
-                                                    Visibility="{Binding Media.HasMedia,
+                                            <!-- Архив / Восстановить -->
+                                            <Button Command="{Binding DataContext.ArchiveCommand,
+                                                        RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="36" Height="36"
+                                                    ToolTip="Archive"
+                                                    Visibility="{Binding IsArchived,
+                                                        Converter={StaticResource InverseBoolToVisConverter}}">
+                                                <md:PackIcon Kind="Archive" Width="16" Height="16" Opacity="0.5"/>
+                                            </Button>
+
+                                            <Button Command="{Binding DataContext.RestoreCommand,
+                                                        RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="36" Height="36"
+                                                    ToolTip="Restore from archive"
+                                                    Visibility="{Binding IsArchived,
                                                         Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <md:PackIcon Kind="Restore" Width="16" Height="16"/>
+                                            </Button>
+
+                                            <!-- Удалить -->
+                                            <Button Command="{Binding DataContext.DeleteCommand,
+                                                        RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="36" Height="36"
+                                                    ToolTip="Delete">
+                                                <md:PackIcon Kind="Delete" Width="16" Height="16" Opacity="0.5"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+                                    
+                                    <!-- Раскрываемая часть (полное предложение + медиа) -->
+                                    <Border Grid.Row="1"
+                                            BorderThickness="0,1,0,0"
+                                            BorderBrush="#2A2A2A"
+                                            Background="#181818">
+                                        <StackPanel Margin="16,12">
+                                            <!-- Полное предложение -->
+                                            <TextBlock Text="{Binding ContextSentence}"
+                                                       FontSize="13"
+                                                       Opacity="0.8"
+                                                       TextWrapping="Wrap"
+                                                       Foreground="#E0E0E0"
+                                                       Visibility="{Binding ContextSentence,
+                                                           Converter={StaticResource NullToCollapsedConv}}"/>
+                                            
+                                            <!-- Перевод предложения -->
+                                            <TextBlock Text="{Binding ContextSentenceTranslation}"
+                                                       FontSize="12"
+                                                       Opacity="0.5"
+                                                       TextWrapping="Wrap"
+                                                       Margin="0,6,0,0"
+                                                       Foreground="#B0B0B0"
+                                                       Visibility="{Binding ContextSentenceTranslation,
+                                                           Converter={StaticResource NullToCollapsedConv}}"/>
+                                            
+                                            <!-- Медиа-контекст с кнопкой воспроизведения -->
                                             <Button Command="{Binding DataContext.OpenVideoCommand,
                                                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}"
                                                     Style="{StaticResource MaterialDesignFlatButton}"
-                                                    Padding="4,2"
-                                                    Height="24"
-                                                    FontSize="11">
+                                                    Padding="8,4"
+                                                    HorizontalAlignment="Left"
+                                                    Visibility="{Binding Media.HasMedia,
+                                                        Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                    Margin="0,8,0,0">
                                                 <StackPanel Orientation="Horizontal">
-                                                    <md:PackIcon Kind="Play"
-                                                                 Width="14" Height="14"
-                                                                 VerticalAlignment="Center"
-                                                                 Margin="0,0,4,0"/>
-                                                    <TextBlock>
+                                                    <md:PackIcon Kind="PlayCircle" Width="18" Height="18" 
+                                                                 VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                                    <TextBlock FontSize="12">
                                                         <Run Text="{Binding Media.VideoTitle}"/>
                                                         <Run Text=" "/>
-                                                        <Run Text="{Binding Media.TimestampDisplay, Mode=OneWay}"
-                                                             />
+                                                        <Run Text="{Binding Media.TimestampDisplay, Mode=OneWay}"/>
                                                     </TextBlock>
                                                 </StackPanel>
                                             </Button>
                                         </StackPanel>
-
-                                        <!-- Статус -->
-                                        <Border CornerRadius="3"
-                                                Margin="0,4,0,0"
-                                                Padding="6,2"
-                                                HorizontalAlignment="Left">
-                                            <Border.Background>
-                                                <Binding Path="Status"
-                                                         Converter="{StaticResource StatusToBackgroundConverter}"/>
-                                            </Border.Background>
-                                            <TextBlock Text="{Binding Status}"
-                                                       FontSize="10"
-                                                       Foreground="White"/>
-                                        </Border>
-                                    </StackPanel>
-
-                                    <!-- Кнопки действий -->
-                                    <StackPanel Grid.Column="2"
-                                                Orientation="Horizontal"
-                                                VerticalAlignment="Top">
-
-                                        <!-- Избранное -->
-                                        <Button Command="{Binding DataContext.ToggleFavoriteCommand,
-                                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                CommandParameter="{Binding}"
-                                                Style="{StaticResource MaterialDesignIconButton}"
-                                                ToolTip="Toggle favorite">
-                                            <md:PackIcon Kind="{Binding IsFavorite,
-                                                Converter={StaticResource BoolToStarIconConverter}}"
-                                                         Width="18" Height="18"/>
-                                        </Button>
-
-                                        <!-- Архив / Восстановить -->
-                                        <Button Command="{Binding DataContext.ArchiveCommand,
-                                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                CommandParameter="{Binding}"
-                                                Style="{StaticResource MaterialDesignIconButton}"
-                                                ToolTip="Archive"
-                                                Visibility="{Binding IsArchived,
-                                                    Converter={StaticResource InverseBoolToVisConverter}}">
-                                            <md:PackIcon Kind="Archive" Width="16" Height="16" Opacity="0.5"/>
-                                        </Button>
-
-                                        <Button Command="{Binding DataContext.RestoreCommand,
-                                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                CommandParameter="{Binding}"
-                                                Style="{StaticResource MaterialDesignIconButton}"
-                                                ToolTip="Restore from archive"
-                                                Visibility="{Binding IsArchived,
-                                                    Converter={StaticResource BooleanToVisibilityConverter}}">
-                                            <md:PackIcon Kind="Restore" Width="16" Height="16"/>
-                                        </Button>
-
-                                        <!-- Удалить -->
-                                        <Button Command="{Binding DataContext.DeleteCommand,
-                                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                CommandParameter="{Binding}"
-                                                Style="{StaticResource MaterialDesignIconButton}"
-                                                ToolTip="Delete">
-                                            <md:PackIcon Kind="Delete" Width="16" Height="16" Opacity="0.5"/>
-                                        </Button>
-                                    </StackPanel>
+                                    </Border>
                                 </Grid>
                             </md:Card>
                         </DataTemplate>
@@ -358,21 +376,22 @@
 
         <!-- ══ STATUS BAR ════════════════════════════════════════════ -->
         <Border Grid.Row="4"
-                Background="{DynamicResource MaterialDesignToolBarBackground}"
-                Padding="12,5">
+                Background="#1A1A1A"
+                Padding="12,8">
             <Grid>
                 <TextBlock HorizontalAlignment="Left"
-                           Opacity="0.6"
-                           FontSize="12">
+                           Opacity="0.5"
+                           FontSize="11"
+                           Foreground="#9E9E9E">
                     <Run Text="{Binding ShownCount, Mode=OneWay}"/>
-                    <Run Text="shown /"/>
+                    <Run Text="shown / "/>
                     <Run Text="{Binding TotalCount, Mode=OneWay}"/>
                     <Run Text="total"/>
                 </TextBlock>
                 <TextBlock Text="{Binding StatusMessage}"
                            HorizontalAlignment="Right"
                            Foreground="{DynamicResource PrimaryHueMidBrush}"
-                           FontSize="12"/>
+                           FontSize="11"/>
             </Grid>
         </Border>
     </Grid>

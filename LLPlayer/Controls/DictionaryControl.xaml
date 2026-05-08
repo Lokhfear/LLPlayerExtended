@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:DictionaryViewModel}"
              d:Foreground="White"
-             d:Background="#1E1E1E"
+             d:Background="#121212"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -21,26 +21,30 @@
             <converters:NullToVisibilityConverter x:Key="NullToVisibleConv" NullValue="Visible"/>
             <!-- 0 → Visible, иначе → Collapsed -->
             <converters:ZeroToVisibilityConverter x:Key="ZeroToVisibilityConv"/>
+            <converters:InverseBoolToVisConverter x:Key="InverseBoolToVis"/>
             
+            <!-- Modern IconButton Style -->
             <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignIconButton}">
-                <Setter Property="Width" Value="32"/>
-                <Setter Property="Height" Value="32"/>
-                <Setter Property="Margin" Value="4,0"/>
+                <Setter Property="Width" Value="36"/>
+                <Setter Property="Height" Value="36"/>
+                <Setter Property="Margin" Value="2"/>
+                <Setter Property="Padding" Value="0"/>
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid Margin="16">
+    <Grid Margin="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>  <!-- заголовок + поиск -->
+            <RowDefinition Height="Auto"/>  <!-- заголовок + поиск + действия -->
             <RowDefinition Height="Auto"/>  <!-- статистика -->
             <RowDefinition Height="*"/>     <!-- список -->
         </Grid.RowDefinitions>
 
         <!-- ── Шапка ──────────────────────────────────────── -->
-        <Grid Grid.Row="0" Margin="0,0,0,12">
+        <Grid Grid.Row="0" Margin="16,16,16,8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
@@ -48,30 +52,41 @@
             <TextBox Grid.Column="0"
                      Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                      materialDesign:HintAssist.Hint="Search words..."
-                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      VerticalAlignment="Center"
+                     FontSize="14"
                      Margin="0,0,8,0"/>
 
             <!-- Обновить -->
             <Button Grid.Column="1"
                     Command="{Binding RefreshCommand}"
-                    Style="{StaticResource MaterialDesignIconButton}"
+                    Style="{StaticResource IconButton}"
                     ToolTip="Refresh"
                     VerticalAlignment="Center">
                 <materialDesign:PackIcon Kind="Refresh" Width="20" Height="20"/>
             </Button>
+            
+            <!-- Expand All -->
+            <Button Grid.Column="2"
+                    Command="{Binding ExpandAllCommand}"
+                    Style="{StaticResource IconButton}"
+                    ToolTip="Expand All"
+                    VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="ArrowExpandAll" Width="20" Height="20"/>
+            </Button>
         </Grid>
 
         <!-- ── Статистика ────────────────────────────────── -->
-        <TextBlock Grid.Row="1"
-                   Margin="0,0,0,8"
-                   Opacity="0.6"
-                   FontSize="12">
-            <Run Text="{Binding TotalCount, Mode=OneWay}"/>
-            <Run Text="words total ·"/>
-            <Run Text="{Binding Entries.Count, Mode=OneWay}"/>
-            <Run Text="shown"/>
-        </TextBlock>
+        <Border Grid.Row="1" Margin="16,0,16,8">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="12" Opacity="0.6">
+                    <Run Text="{Binding TotalCount, Mode=OneWay}"/>
+                    <Run Text="words total · "/>
+                    <Run Text="{Binding Entries.Count, Mode=OneWay}"/>
+                    <Run Text="shown"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
 
         <!-- ── Список ────────────────────────────────────── -->
         <Grid Grid.Row="2">
@@ -79,85 +94,132 @@
             <ProgressBar IsIndeterminate="True"
                          Visibility="{Binding IsLoading, Converter={StaticResource BoolToVis}}"
                          VerticalAlignment="Top"
-                         Height="3"/>
+                         Height="2"/>
 
             <!-- Пусто -->
-            <TextBlock Text="No words yet. Right-click a word in subtitles → Add to Dictionary."
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Opacity="0.5"
-                       TextWrapping="Wrap"
-                       TextAlignment="Center"
-                       Margin="32"
-                       Visibility="{Binding Entries.Count, Converter={StaticResource ZeroToVisibilityConv}}"/>
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Visibility="{Binding Entries.Count, Converter={StaticResource ZeroToVisibilityConv}}"
+                        Margin="32">
+                <TextBlock Text="📭" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+                <TextBlock Text="No words yet"
+                           FontSize="16" FontWeight="Medium"
+                           HorizontalAlignment="Center" Opacity="0.7"/>
+                <TextBlock Text="Right-click a word in subtitles → Add to Dictionary"
+                           FontSize="12" Opacity="0.5"
+                           HorizontalAlignment="Center"
+                           Margin="0,8,0,0"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"/>
+            </StackPanel>
 
             <!-- Список слов -->
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ItemsControl ItemsSource="{Binding Entries}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card Margin="0,0,0,8" Padding="12">
+                            <!-- ── КАРТОЧКА СЛОВА ────────────────────────── -->
+                            <materialDesign:Card Margin="8,4" Padding="0" 
+                                                 UniformCornerRadius="12"
+                                                 Background="#1E1E1E">
                                 <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
-
-                                    <!-- Слово + перевод -->
-                                    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Word}"
-                                                   FontSize="16"
-                                                   FontWeight="SemiBold"/>
-                                        <TextBlock Text=" — "
-                                                   FontSize="16"
-                                                   Opacity="0.5"
-                                                   Visibility="{Binding Translation, Converter={StaticResource NullToCollapsedConv}}"/>
-                                        <TextBlock Text="{Binding Translation}"
-                                                   FontSize="16"
-                                                   Foreground="{DynamicResource PrimaryHueMidBrush}"
-                                                   Visibility="{Binding Translation, Converter={StaticResource NullToCollapsedConv}}"/>
-                                        <!-- Ожидание перевода -->
-                                        <ProgressBar IsIndeterminate="True"
-                                                     Width="60" Height="4"
-                                                     VerticalAlignment="Center"
-                                                     Margin="8,0,0,0"
-                                                     Visibility="{Binding Translation, Converter={StaticResource NullToVisibleConv}}"/>
-                                    </StackPanel>
-
-                                    <!-- Предложение -->
-                                    <TextBlock Grid.Row="1" Grid.Column="0"
-                                               Text="{Binding Sentence}"
-                                               FontStyle="Italic"
-                                               Opacity="0.7"
-                                               TextWrapping="Wrap"
-                                               Margin="0,4,0,0"/>
-
-                                    <!-- Перевод предложения -->
-                                    <TextBlock Grid.Row="2" Grid.Column="0"
-                                               Text="{Binding SentenceTranslation}"
-                                               Opacity="0.5"
-                                               FontSize="11"
-                                               TextWrapping="Wrap"
-                                               Margin="0,2,0,0"
-                                               Visibility="{Binding SentenceTranslation, Converter={StaticResource NullToCollapsedConv}}"/>
-
-                                    <!-- Кнопка удаления -->
-                                    <Button Grid.Row="0" Grid.Column="1"
-                                            Grid.RowSpan="3"
-                                            Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                            CommandParameter="{Binding}"
-                                            Style="{StaticResource MaterialDesignIconButton}"
-                                            ToolTip="Delete"
-                                            VerticalAlignment="Top">
-                                        <materialDesign:PackIcon Kind="Delete"
-                                                                 Width="18" Height="18"
-                                                                 Opacity="0.6"/>
-                                    </Button>
+                                    
+                                    <!-- Основная часть (всегда видна) -->
+                                    <Grid Grid.Row="0" Margin="16,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <!-- Слово и перевод -->
+                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Word}"
+                                                       FontSize="20"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="#FFFFFF"/>
+                                            <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                                <TextBlock Text="—"
+                                                           FontSize="14"
+                                                           Opacity="0.4"
+                                                           Visibility="{Binding Translation, Converter={StaticResource NullToCollapsedConv}}"/>
+                                                <TextBlock Text="{Binding Translation}"
+                                                           FontSize="14"
+                                                           Foreground="#90CAF9"
+                                                           FontStyle="Italic"
+                                                           Visibility="{Binding Translation, Converter={StaticResource NullToCollapsedConv}}"/>
+                                                <!-- Ожидание перевода -->
+                                                <ProgressBar IsIndeterminate="True"
+                                                             Width="40" Height="3"
+                                                             VerticalAlignment="Center"
+                                                             Margin="8,0,0,0"
+                                                             Visibility="{Binding Translation, Converter={StaticResource NullToVisibleConv}}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        
+                                        <!-- Кнопки действий -->
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                            <!-- Expand/Collapse -->
+                                            <Button Command="{Binding DataContext.ToggleExpandCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource IconButton}"
+                                                    ToolTip="Toggle details">
+                                                <materialDesign:PackIcon Kind="{Binding IsExpanded, Converter={StaticResource BoolToArrowIconConverter}}"
+                                                                         Width="18" Height="18" Opacity="0.7"/>
+                                            </Button>
+                                            
+                                            <!-- Delete -->
+                                            <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource IconButton}"
+                                                    ToolTip="Delete">
+                                                <materialDesign:PackIcon Kind="Delete" Width="18" Height="18" Opacity="0.6"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+                                    
+                                    <!-- Раскрываемая часть (предложение + контекст) -->
+                                    <Border Grid.Row="1"
+                                            Visibility="{Binding IsExpanded, Converter={StaticResource BoolToVis}}"
+                                            BorderThickness="0,1,0,0"
+                                            BorderBrush="#2A2A2A"
+                                            Background="#181818">
+                                        <StackPanel Margin="16,12">
+                                            <!-- Предложение -->
+                                            <TextBlock Text="{Binding Sentence}"
+                                                       FontSize="13"
+                                                       FontStyle="Italic"
+                                                       Opacity="0.8"
+                                                       TextWrapping="Wrap"
+                                                       Foreground="#E0E0E0"/>
+                                            
+                                            <!-- Перевод предложения -->
+                                            <TextBlock Text="{Binding SentenceTranslation}"
+                                                       FontSize="12"
+                                                       Opacity="0.5"
+                                                       TextWrapping="Wrap"
+                                                       Margin="0,6,0,0"
+                                                       Foreground="#B0B0B0"
+                                                       Visibility="{Binding SentenceTranslation, Converter={StaticResource NullToCollapsedConv}}"/>
+                                            
+                                            <!-- Кнопка воспроизведения -->
+                                            <Button Command="{Binding DataContext.PlayAtTimestampCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                                    Padding="8,4"
+                                                    HorizontalAlignment="Left"
+                                                    Visibility="{Binding Timestamp, Converter={StaticResource NullToCollapsedConv}}"
+                                                    Margin="0,8,0,0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <materialDesign:PackIcon Kind="PlayCircle" Width="18" Height="18" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                                    <TextBlock Text="Play at timestamp" FontSize="12"/>
+                                                </StackPanel>
+                                            </Button>
+                                        </StackPanel>
+                                    </Border>
                                 </Grid>
                             </materialDesign:Card>
                         </DataTemplate>
