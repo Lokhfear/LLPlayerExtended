@@ -597,3 +597,4 @@ D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\LLPlay
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\ref\LLPlayer.dll
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Views\LearningLibraryWindow.g.cs
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Views\LearningLibraryWindow.baml
+D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Resources\LLPlayerExtendedStyles.baml
