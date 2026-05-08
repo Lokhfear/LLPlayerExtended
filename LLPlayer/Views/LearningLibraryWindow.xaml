@@ -16,13 +16,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>  <!-- Toolbar -->
             <RowDefinition Height="Auto"/>  <!-- Tab bar -->
-            <RowDefinition Height="Auto"/>  <!-- Filter bar -->
+            <RowDefinition Height="Auto"/>  <!-- Filter bar + Expand/Collapse controls -->
             <RowDefinition Height="*"/>     <!-- Content -->
             <RowDefinition Height="Auto"/>  <!-- Status bar -->
         </Grid.RowDefinitions>
 
         <!-- ══ TOOLBAR ════════════════════════════════════════════════ -->
-        <Border Grid.Row="0" Background="#1E1E1E" Padding="16,12">
+        <Border Grid.Row="0" Background="{DynamicResource LLE.Brush.Background.Secondary}" Padding="16,12">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -32,28 +32,28 @@
 
                 <TextBlock Grid.Column="0"
                            Text="📖 Learning Library"
-                           Foreground="#FFFFFF"
-                           FontSize="18"
-                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource LLE.Brush.Text.Primary}"
+                           FontSize="{StaticResource LLE.FontSize.Headline}"
+                           FontWeight="{StaticResource LLE.FontWeight.Medium}"
                            VerticalAlignment="Center"/>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                     <Button Command="{Binding ImportCommand}"
                             Style="{StaticResource MaterialDesignFlatButton}"
-                            Foreground="#90CAF9"
+                            Foreground="{DynamicResource LLE.Brush.Accent.Blue}"
                             Content="Import"
                             Margin="0,0,8,0"/>
 
                     <Button Command="{Binding ExportCommand}"
                             Style="{StaticResource MaterialDesignFlatButton}"
-                            Foreground="#90CAF9"
+                            Foreground="{DynamicResource LLE.Brush.Accent.Blue}"
                             Content="Export"/>
                 </StackPanel>
             </Grid>
         </Border>
 
         <!-- ══ ВКЛАДКИ ════════════════════════════════════════════════ -->
-        <Border Grid.Row="1" Background="#181818" Padding="8,4">
+        <Border Grid.Row="1" Background="{DynamicResource LLE.Brush.Background.Tertiary}" Padding="8,4">
             <StackPanel Orientation="Horizontal">
 
                 <RadioButton Content="All"
@@ -61,12 +61,12 @@
                              Style="{StaticResource MaterialDesignTabRadioButton}"
                              Command="{Binding ClearFiltersCommand}"
                              Margin="4,0"
-                             Foreground="#B0B0B0"/>
+                             Foreground="{DynamicResource LLE.Brush.Text.Tertiary}"/>
 
                 <RadioButton Content="⭐ Favorites"
                              Style="{StaticResource MaterialDesignTabRadioButton}"
                              Margin="4,0"
-                             Foreground="#B0B0B0">
+                             Foreground="{DynamicResource LLE.Brush.Text.Tertiary}">
                     <RadioButton.Command>
                         <Binding Path="FavoritesOnlyCommand"/>
                     </RadioButton.Command>
@@ -75,7 +75,7 @@
                 <RadioButton Content="🗄 Archive"
                              Style="{StaticResource MaterialDesignTabRadioButton}"
                              Margin="4,0"
-                             Foreground="#B0B0B0">
+                             Foreground="{DynamicResource LLE.Brush.Text.Tertiary}">
                     <RadioButton.IsChecked>
                         <Binding Path="ShowArchived"/>
                     </RadioButton.IsChecked>
@@ -83,13 +83,14 @@
             </StackPanel>
         </Border>
 
-        <!-- ══ FILTER BAR ════════════════════════════════════════════ -->
-        <Grid Grid.Row="2" Margin="16,12,16,8">
+        <!-- ══ FILTER BAR + EXPAND/COLLAPSE CONTROLS ════════════════════ -->
+        <Grid Grid.Row="2" Margin="16,8,16,8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="130"/>
                 <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
@@ -100,16 +101,18 @@
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      md:TextFieldAssist.HasClearButton="True"
                      Margin="0,0,8,0"
-                     FontSize="13"/>
+                     FontSize="{StaticResource LLE.FontSize.Medium}"/>
 
-            <!-- Тип -->
+            <!-- Тип - убрано визуальное разделение на типы -->
+            <!-- Тип больше не отображается, фильтр оставлен для совместимости -->
             <ComboBox Grid.Column="1"
                       SelectedValue="{Binding FilterType}"
                       SelectedValuePath="Tag"
                       md:HintAssist.Hint="Type"
-                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      Style="{StaticResource LLE.FilterComboBox}"
                       Margin="0,0,8,0"
-                      FontSize="13">
+                      FontSize="{StaticResource LLE.FontSize.Medium}"
+                      Visibility="Collapsed">
                 <ComboBoxItem Content="All types" Tag="{x:Null}"/>
                 <ComboBoxItem Content="Word"     Tag="{x:Static models:ItemType.Word}"/>
                 <ComboBoxItem Content="Phrase"   Tag="{x:Static models:ItemType.Phrase}"/>
@@ -121,9 +124,9 @@
                       SelectedValue="{Binding FilterStatus}"
                       SelectedValuePath="Tag"
                       md:HintAssist.Hint="Status"
-                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      Style="{StaticResource LLE.FilterComboBox}"
                       Margin="0,0,8,0"
-                      FontSize="13">
+                      FontSize="{StaticResource LLE.FontSize.Medium}">
                 <ComboBoxItem Content="All statuses" Tag="{x:Null}"/>
                 <ComboBoxItem Content="New"      Tag="{x:Static models:LearningStatus.New}"/>
                 <ComboBoxItem Content="Learning" Tag="{x:Static models:LearningStatus.Learning}"/>
@@ -136,9 +139,9 @@
                       SelectedValue="{Binding SortMode}"
                       SelectedValuePath="Tag"
                       md:HintAssist.Hint="Sort by"
-                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      Style="{StaticResource LLE.FilterComboBox}"
                       Margin="0,0,8,0"
-                      FontSize="13">
+                      FontSize="{StaticResource LLE.FontSize.Medium}">
                 <ComboBoxItem Content="Newest"    Tag="{x:Static services:SortMode.Newest}"/>
                 <ComboBoxItem Content="Oldest"    Tag="{x:Static services:SortMode.Oldest}"/>
                 <ComboBoxItem Content="A → Z"     Tag="{x:Static services:SortMode.Alphabetical}"/>
@@ -148,12 +151,28 @@
             <!-- Сбросить -->
             <Button Grid.Column="4"
                     Command="{Binding ClearFiltersCommand}"
-                    Style="{StaticResource MaterialDesignIconButton}"
+                    Style="{StaticResource LLE.IconButton}"
                     ToolTip="Clear all filters"
                     VerticalAlignment="Center"
-                    Width="36" Height="36">
-                <md:PackIcon Kind="FilterRemove" Width="18" Height="18" Opacity="0.6"/>
+                    Width="32" Height="32">
+                <md:PackIcon Kind="FilterRemove" Width="16" Height="16"/>
             </Button>
+            
+            <!-- Expand/Collapse Controls -->
+            <StackPanel Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0,0,0">
+                <Button Command="{Binding ExpandAllCommand}"
+                        Style="{StaticResource LLE.IconButton.Compact}"
+                        ToolTip="Expand all cards"
+                        Width="28" Height="28">
+                    <md:PackIcon Kind="ArrowExpandDown" Width="14" Height="14"/>
+                </Button>
+                <Button Command="{Binding CollapseAllCommand}"
+                        Style="{StaticResource LLE.IconButton.Compact}"
+                        ToolTip="Collapse all cards"
+                        Width="28" Height="28">
+                    <md:PackIcon Kind="ArrowCollapseUp" Width="14" Height="14"/>
+                </Button>
+            </StackPanel>
         </Grid>
 
         <!-- ══ СПИСОК ════════════════════════════════════════════════ -->
@@ -199,41 +218,36 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <!-- ── КАРТОЧКА ────────────────────────── -->
-                            <md:Card Margin="8,4" Padding="0" UniformCornerRadius="12" Background="#1E1E1E">
+                            <md:Card Margin="8,4" Padding="0" UniformCornerRadius="{StaticResource LLE.CornerRadius.Large}" 
+                                     Background="{DynamicResource LLE.Brush.Background.Secondary}">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     
-                                    <!-- Основная часть (всегда видна) -->
+                                    <!-- Основная часть (всегда видна) - убрано визуальное разделение на типы -->
                                     <Grid Grid.Row="0" Margin="16,12">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>  <!-- тип-значок -->
                                             <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>  <!-- кнопки -->
+                                            <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <!-- Тип + статус (скрыто - убран визуал типа) -->
-                                        <!-- Border удален - больше не показываем метки W/P/S -->
-
-                                        <!-- Контент -->
+                                        <!-- Контент - Слово + перевод -->
                                         <StackPanel Grid.Column="0" VerticalAlignment="Center">
-
-                                            <!-- Слово + перевод -->
                                             <WrapPanel>
                                                 <TextBlock Text="{Binding Text}"
-                                                           FontSize="18"
-                                                           FontWeight="SemiBold"
-                                                           Foreground="#FFFFFF"/>
+                                                           FontSize="{StaticResource LLE.FontSize.Title}"
+                                                           FontWeight="{StaticResource LLE.FontWeight.Medium}"
+                                                           Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
                                                 <TextBlock Text=" — "
                                                            Opacity="0.4"
-                                                           FontSize="16"
+                                                           FontSize="{StaticResource LLE.FontSize.Large}"
                                                            Visibility="{Binding Translation,
                                                                Converter={StaticResource NullToCollapsedConv}}"/>
                                                 <TextBlock Text="{Binding Translation}"
-                                                           FontSize="16"
-                                                           Foreground="#90CAF9"
+                                                           FontSize="{StaticResource LLE.FontSize.Large}"
+                                                           Foreground="{DynamicResource LLE.Brush.Accent.Blue}"
                                                            FontStyle="Italic"
                                                            Visibility="{Binding Translation,
                                                                Converter={StaticResource NullToCollapsedConv}}"/>
@@ -246,14 +260,15 @@
                                                                  Converter={StaticResource NullToVisibleConv}}"/>
                                             </WrapPanel>
 
-                                            <!-- Контекстное предложение (кратко) -->
+                                            <!-- Контекстное предложение (кратко) - улучшенный line wrapping -->
                                             <TextBlock Text="{Binding ContextSentence}"
                                                        FontStyle="Italic"
                                                        Opacity="0.6"
-                                                       FontSize="12"
+                                                       FontSize="{StaticResource LLE.FontSize.Small}"
                                                        TextWrapping="Wrap"
-                                                       Margin="0,4,0,0"
-                                                       Foreground="#B0B0B0"
+                                                       MaxWidth="800"
+                                                       Margin="0,6,0,0"
+                                                       Foreground="{DynamicResource LLE.Brush.Text.Tertiary}"
                                                        Visibility="{Binding ContextSentence,
                                                            Converter={StaticResource NullToCollapsedConv}}"/>
                                         </StackPanel>
@@ -264,96 +279,114 @@
                                             <Button Command="{Binding DataContext.ToggleFavoriteCommand,
                                                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignIconButton}"
-                                                    Width="36" Height="36"
+                                                    Style="{StaticResource LLE.IconButton.Compact}"
+                                                    Width="28" Height="28"
                                                     ToolTip="Toggle favorite">
                                                 <md:PackIcon Kind="{Binding IsFavorite,
                                                     Converter={StaticResource BoolToStarIconConverter}}"
-                                                             Width="18" Height="18"/>
+                                                             Width="14" Height="14"/>
                                             </Button>
 
                                             <!-- Архив / Восстановить -->
                                             <Button Command="{Binding DataContext.ArchiveCommand,
                                                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignIconButton}"
-                                                    Width="36" Height="36"
+                                                    Style="{StaticResource LLE.IconButton.Compact}"
+                                                    Width="28" Height="28"
                                                     ToolTip="Archive"
                                                     Visibility="{Binding IsArchived,
                                                         Converter={StaticResource InverseBoolToVisConverter}}">
-                                                <md:PackIcon Kind="Archive" Width="16" Height="16" Opacity="0.5"/>
+                                                <md:PackIcon Kind="Archive" Width="14" Height="14" Opacity="0.5"/>
                                             </Button>
 
                                             <Button Command="{Binding DataContext.RestoreCommand,
                                                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignIconButton}"
-                                                    Width="36" Height="36"
+                                                    Style="{StaticResource LLE.IconButton.Compact}"
+                                                    Width="28" Height="28"
                                                     ToolTip="Restore from archive"
                                                     Visibility="{Binding IsArchived,
                                                         Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <md:PackIcon Kind="Restore" Width="16" Height="16"/>
+                                                <md:PackIcon Kind="Restore" Width="14" Height="14"/>
                                             </Button>
 
                                             <!-- Удалить -->
                                             <Button Command="{Binding DataContext.DeleteCommand,
                                                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignIconButton}"
-                                                    Width="36" Height="36"
+                                                    Style="{StaticResource LLE.IconButton.Compact}"
+                                                    Width="28" Height="28"
                                                     ToolTip="Delete">
-                                                <md:PackIcon Kind="Delete" Width="16" Height="16" Opacity="0.5"/>
+                                                <md:PackIcon Kind="Delete" Width="14" Height="14" Opacity="0.5"/>
                                             </Button>
+                                            
+                                            <!-- Expand/Collapse toggle for individual card -->
+                                            <ToggleButton Style="{StaticResource LLE.ExpandToggleButton}"
+                                                          Width="28" Height="28"
+                                                          IsChecked="{Binding IsExpanded, Mode=TwoWay}"
+                                                          ToolTip="Expand/Collapse card">
+                                                <md:PackIcon Kind="ChevronDown" Width="16" Height="16"
+                                                             RenderTransformOrigin="0.5,0.5">
+                                                    <md:PackIcon.RenderTransform>
+                                                        <RotateTransform Angle="{Binding IsExpanded, Converter={StaticResource BoolToRotationConverter}, FallbackValue=0}"/>
+                                                    </md:PackIcon.RenderTransform>
+                                                </md:PackIcon>
+                                            </ToggleButton>
                                         </StackPanel>
                                     </Grid>
                                     
-                                    <!-- Раскрываемая часть (полное предложение + медиа) -->
-                                    <Border Grid.Row="1"
-                                            BorderThickness="0,1,0,0"
-                                            BorderBrush="#2A2A2A"
-                                            Background="#181818">
-                                        <StackPanel Margin="16,12">
-                                            <!-- Полное предложение -->
-                                            <TextBlock Text="{Binding ContextSentence}"
-                                                       FontSize="13"
-                                                       Opacity="0.8"
-                                                       TextWrapping="Wrap"
-                                                       Foreground="#E0E0E0"
-                                                       Visibility="{Binding ContextSentence,
-                                                           Converter={StaticResource NullToCollapsedConv}}"/>
-                                            
-                                            <!-- Перевод предложения -->
-                                            <TextBlock Text="{Binding ContextSentenceTranslation}"
-                                                       FontSize="12"
-                                                       Opacity="0.5"
-                                                       TextWrapping="Wrap"
-                                                       Margin="0,6,0,0"
-                                                       Foreground="#B0B0B0"
-                                                       Visibility="{Binding ContextSentenceTranslation,
-                                                           Converter={StaticResource NullToCollapsedConv}}"/>
-                                            
-                                            <!-- Медиа-контекст с кнопкой воспроизведения -->
-                                            <Button Command="{Binding DataContext.OpenVideoCommand,
-                                                        RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                    CommandParameter="{Binding}"
-                                                    Style="{StaticResource MaterialDesignFlatButton}"
-                                                    Padding="8,4"
-                                                    HorizontalAlignment="Left"
-                                                    Visibility="{Binding Media.HasMedia,
-                                                        Converter={StaticResource BooleanToVisibilityConverter}}"
-                                                    Margin="0,8,0,0">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <md:PackIcon Kind="PlayCircle" Width="18" Height="18" 
-                                                                 VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                                    <TextBlock FontSize="12">
-                                                        <Run Text="{Binding Media.VideoTitle}"/>
-                                                        <Run Text=" "/>
-                                                        <Run Text="{Binding Media.TimestampDisplay, Mode=OneWay}"/>
-                                                    </TextBlock>
-                                                </StackPanel>
-                                            </Button>
-                                        </StackPanel>
-                                    </Border>
+                                    <!-- Раскрываемая часть (полное предложение + медиа) с анимацией -->
+                                    <ContentControl Grid.Row="1"
+                                                    Visibility="{Binding IsExpanded, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                    Focusable="False">
+                                        <Border BorderThickness="0,1,0,0"
+                                                BorderBrush="{DynamicResource LLE.Brush.Border.Light}"
+                                                Background="{DynamicResource LLE.Brush.Background.Tertiary}">
+                                            <StackPanel Margin="16,12">
+                                                <!-- Полное предложение - увеличенная ширина для лучшего wrapping -->
+                                                <TextBlock Text="{Binding ContextSentence}"
+                                                           FontSize="{StaticResource LLE.FontSize.Medium}"
+                                                           Opacity="0.8"
+                                                           TextWrapping="Wrap"
+                                                           MaxWidth="900"
+                                                           Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
+                                                           Visibility="{Binding ContextSentence,
+                                                               Converter={StaticResource NullToCollapsedConv}}"/>
+                                                
+                                                <!-- Перевод предложения -->
+                                                <TextBlock Text="{Binding ContextSentenceTranslation}"
+                                                           FontSize="{StaticResource LLE.FontSize.Small}"
+                                                           Opacity="0.5"
+                                                           TextWrapping="Wrap"
+                                                           MaxWidth="900"
+                                                           Margin="0,6,0,0"
+                                                           Foreground="{DynamicResource LLE.Brush.Text.Tertiary}"
+                                                           Visibility="{Binding ContextSentenceTranslation,
+                                                               Converter={StaticResource NullToCollapsedConv}}"/>
+                                                
+                                                <!-- Медиа-контекст с кнопкой воспроизведения -->
+                                                <Button Command="{Binding DataContext.OpenVideoCommand,
+                                                            RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                        CommandParameter="{Binding}"
+                                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                                        Padding="8,4"
+                                                        HorizontalAlignment="Left"
+                                                        Visibility="{Binding Media.HasMedia,
+                                                            Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                        Margin="0,8,0,0">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <md:PackIcon Kind="PlayCircle" Width="18" Height="18" 
+                                                                     VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                                        <TextBlock FontSize="{StaticResource LLE.FontSize.Small}">
+                                                            <Run Text="{Binding Media.VideoTitle}"/>
+                                                            <Run Text=" "/>
+                                                            <Run Text="{Binding Media.TimestampDisplay, Mode=OneWay}"/>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </Button>
+                                            </StackPanel>
+                                        </Border>
+                                    </ContentControl>
                                 </Grid>
                             </md:Card>
                         </DataTemplate>
@@ -364,13 +397,12 @@
 
         <!-- ══ STATUS BAR ════════════════════════════════════════════ -->
         <Border Grid.Row="4"
-                Background="#1A1A1A"
+                Background="{DynamicResource LLE.Brush.Background.Quaternary}"
                 Padding="12,8">
             <Grid>
                 <TextBlock HorizontalAlignment="Left"
-                           Opacity="0.5"
-                           FontSize="11"
-                           Foreground="#9E9E9E">
+                           FontSize="{StaticResource LLE.FontSize.XSmall}"
+                           Foreground="{DynamicResource LLE.Brush.Text.Hint}">
                     <Run Text="{Binding ShownCount, Mode=OneWay}"/>
                     <Run Text="shown / "/>
                     <Run Text="{Binding TotalCount, Mode=OneWay}"/>
@@ -378,8 +410,8 @@
                 </TextBlock>
                 <TextBlock Text="{Binding StatusMessage}"
                            HorizontalAlignment="Right"
-                           Foreground="{DynamicResource PrimaryHueMidBrush}"
-                           FontSize="11"/>
+                           Foreground="{DynamicResource LLE.Brush.Accent.Blue}"
+                           FontSize="{StaticResource LLE.FontSize.XSmall}"/>
             </Grid>
         </Border>
     </Grid>
