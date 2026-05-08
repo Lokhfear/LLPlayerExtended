@@ -5,93 +5,184 @@
         xmlns:models="clr-namespace:LLPlayer.Models"
         xmlns:services="clr-namespace:LLPlayer.Services"
         xmlns:converters="clr-namespace:LLPlayer.Converters"
+        xmlns:controls="clr-namespace:LLPlayer.Controls"
         Title="Learning Library"
-        Width="900" Height="620"
-        MinWidth="600" MinHeight="450"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Width="1000" Height="700"
+        MinWidth="700" MinHeight="500"
+        Background="{StaticResource BackgroundBrush}"
         Style="{StaticResource MaterialDesignWindow}"
-        ShowInTaskbar="False">
-
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner">
+    
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         <converters:StatusToColorConverter x:Key="StatusToBackgroundConverter"/>
         <converters:BoolToStarIconConverter x:Key="BoolToStarIconConverter"/>
     </Window.Resources>
-
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- TOOLBAR -->
-        <Grid Grid.Row="0" Background="{DynamicResource PrimaryHueDarkBrush}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="📖 Learning Library" Foreground="White" FontSize="15" FontWeight="Medium" VerticalAlignment="Center" Margin="16,10"/>
-            <Button Grid.Column="1" Command="{Binding ImportCommand}" Style="{StaticResource MaterialDesignFlatLightButton}" Foreground="White" Content="Import" Margin="0,4,4,4"/>
-            <Button Grid.Column="2" Command="{Binding ExportCommand}" Style="{StaticResource MaterialDesignFlatLightButton}" Foreground="White" Content="Export" Margin="0,4,8,4"/>
-        </Grid>
+        <!-- MODERN HEADER - Clean, minimal -->
+        <Border Grid.Row="0" Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+            <Grid Margin="20,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Learning Library" FontSize="24" FontWeight="Light" Foreground="{StaticResource TextPrimaryBrush}"/>
+                    <TextBlock Text="Your personal vocabulary collection" FontSize="13" Foreground="{StaticResource TextTertiaryBrush}" Margin="0,4,0,0"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Command="{Binding ImportCommand}" Style="{StaticResource ModernOutlinedButton}" Margin="0,0,8,0">
+                        <StackPanel Orientation="Horizontal">
+                            <md:PackIcon Kind="Import" Width="18" Height="18" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                            <TextBlock Text="Import" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding ExportCommand}" Style="{StaticResource ModernOutlinedButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <md:PackIcon Kind="Export" Width="18" Height="18" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                            <TextBlock Text="Export" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
 
-        <!-- TABS -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Background="{DynamicResource MaterialDesignToolBarBackground}">
-            <RadioButton Content="All" IsChecked="True" Style="{StaticResource MaterialDesignTabRadioButton}" Command="{Binding ClearFiltersCommand}" Margin="4,0"/>
-            <RadioButton Content="⭐ Favorites" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4,0" IsChecked="{Binding FavoritesOnly, Mode=TwoWay}"/>
-            <RadioButton Content="🗄 Archive" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4,0" IsChecked="{Binding ShowArchived, Mode=TwoWay}"/>
-        </StackPanel>
+        <!-- TABS & FILTERS - Integrated modern toolbar -->
+        <Border Grid.Row="1" Background="{StaticResource BackgroundBrush}" Padding="20,12,20,8">
+            <StackPanel>
+                <!-- Tab Navigation -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                    <RadioButton Content="All Items" IsChecked="True" Style="{StaticResource MaterialDesignTabRadioButton}" 
+                                 Command="{Binding ClearFiltersCommand}" 
+                                 Foreground="{StaticResource TextSecondaryBrush}"
+                                 Margin="0,0,16,0"/>
+                    <RadioButton Content="Favorites" Style="{StaticResource MaterialDesignTabRadioButton}" 
+                                 IsChecked="{Binding FavoritesOnly, Mode=TwoWay}"
+                                 Foreground="{StaticResource TextSecondaryBrush}"
+                                 Margin="0,0,16,0">
+                        <RadioButton.ContentTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <md:PackIcon Kind="Star" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0" 
+                                                 Foreground="{StaticResource WarningBrush}"/>
+                                    <TextBlock Text="Favorites" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </RadioButton.ContentTemplate>
+                    </RadioButton>
+                    <RadioButton Content="Archive" Style="{StaticResource MaterialDesignTabRadioButton}" 
+                                 IsChecked="{Binding ShowArchived, Mode=TwoWay}"
+                                 Foreground="{StaticResource TextSecondaryBrush}">
+                        <RadioButton.ContentTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <md:PackIcon Kind="ArchiveOutline" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                    <TextBlock Text="Archive" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </RadioButton.ContentTemplate>
+                    </RadioButton>
+                </StackPanel>
+                
+                <!-- Filter Bar - Compact, inline -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBox Grid.Column="0" 
+                             Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" 
+                             md:HintAssist.Hint="Search your library..." 
+                             Style="{StaticResource ModernOutlinedTextBox}" 
+                             md:TextFieldAssist.HasClearButton="True"/>
+                    
+                    <ComboBox Grid.Column="1" SelectedValue="{Binding FilterType}" 
+                              md:HintAssist.Hint="Type" 
+                              Style="{StaticResource ModernOutlinedTextBox}" 
+                              Margin="12,0,8,0">
+                        <ComboBoxItem Content="All Types" Tag="{x:Null}"/>
+                        <ComboBoxItem Content="Words" Tag="{x:Static models:ItemType.Word}"/>
+                        <ComboBoxItem Content="Phrases" Tag="{x:Static models:ItemType.Phrase}"/>
+                        <ComboBoxItem Content="Sentences" Tag="{x:Static models:ItemType.Sentence}"/>
+                    </ComboBox>
+                    
+                    <ComboBox Grid.Column="2" SelectedValue="{Binding FilterStatus}" 
+                              md:HintAssist.Hint="Status" 
+                              Style="{StaticResource ModernOutlinedTextBox}"
+                              Margin="0,0,8,0">
+                        <ComboBoxItem Content="All Statuses" Tag="{x:Null}"/>
+                        <ComboBoxItem Content="New" Tag="{x:Static models:LearningStatus.New}"/>
+                        <ComboBoxItem Content="Learning" Tag="{x:Static models:LearningStatus.Learning}"/>
+                        <ComboBoxItem Content="Learned" Tag="{x:Static models:LearningStatus.Learned}"/>
+                        <ComboBoxItem Content="Ignored" Tag="{x:Static models:LearningStatus.Ignored}"/>
+                    </ComboBox>
+                    
+                    <ComboBox Grid.Column="3" SelectedValue="{Binding SortMode}" 
+                              md:HintAssist.Hint="Sort By" 
+                              Style="{StaticResource ModernOutlinedTextBox}"
+                              Margin="0,0,8,0">
+                        <ComboBoxItem Content="Newest First" Tag="{x:Static services:SortMode.Newest}"/>
+                        <ComboBoxItem Content="Oldest First" Tag="{x:Static services:SortMode.Oldest}"/>
+                        <ComboBoxItem Content="A → Z" Tag="{x:Static services:SortMode.Alphabetical}"/>
+                        <ComboBoxItem Content="Recently Reviewed" Tag="{x:Static services:SortMode.RecentlyReviewed}"/>
+                    </ComboBox>
+                    
+                    <Button Grid.Column="4" Command="{Binding ClearFiltersCommand}" 
+                            Style="{StaticResource ModernIconButtonSmall}" 
+                            ToolTip="Clear all filters"
+                            Margin="0,0,0,0">
+                        <md:PackIcon Kind="FilterRemoveOutline" Width="16" Height="16"/>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Border>
 
-        <!-- FILTER BAR -->
-        <Grid Grid.Row="2" Margin="12,8,12,4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" md:HintAssist.Hint="🔍 Search..." Style="{StaticResource MaterialDesignOutlinedTextBox}" md:TextFieldAssist.HasClearButton="True" Margin="0,0,8,0"/>
-            <ComboBox Grid.Column="1" SelectedValue="{Binding FilterType}" md:HintAssist.Hint="Type" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="0,0,8,0">
-                <ComboBoxItem Content="All types" Tag="{x:Null}"/>
-                <ComboBoxItem Content="Word" Tag="{x:Static models:ItemType.Word}"/>
-                <ComboBoxItem Content="Phrase" Tag="{x:Static models:ItemType.Phrase}"/>
-                <ComboBoxItem Content="Sentence" Tag="{x:Static models:ItemType.Sentence}"/>
-            </ComboBox>
-            <ComboBox Grid.Column="2" SelectedValue="{Binding FilterStatus}" md:HintAssist.Hint="Status" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="0,0,8,0">
-                <ComboBoxItem Content="All statuses" Tag="{x:Null}"/>
-                <ComboBoxItem Content="New" Tag="{x:Static models:LearningStatus.New}"/>
-                <ComboBoxItem Content="Learning" Tag="{x:Static models:LearningStatus.Learning}"/>
-                <ComboBoxItem Content="Learned" Tag="{x:Static models:LearningStatus.Learned}"/>
-                <ComboBoxItem Content="Ignored" Tag="{x:Static models:LearningStatus.Ignored}"/>
-            </ComboBox>
-            <ComboBox Grid.Column="3" SelectedValue="{Binding SortMode}" md:HintAssist.Hint="Sort" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="0,0,8,0">
-                <ComboBoxItem Content="Newest" Tag="{x:Static services:SortMode.Newest}"/>
-                <ComboBoxItem Content="Oldest" Tag="{x:Static services:SortMode.Oldest}"/>
-                <ComboBoxItem Content="A → Z" Tag="{x:Static services:SortMode.Alphabetical}"/>
-                <ComboBoxItem Content="Reviewed" Tag="{x:Static services:SortMode.RecentlyReviewed}"/>
-            </ComboBox>
-            <Button Grid.Column="4" Command="{Binding ClearFiltersCommand}" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Clear filters" VerticalAlignment="Center">
-                <md:PackIcon Kind="FilterRemove" Width="20" Height="20" Opacity="0.6"/>
-            </Button>
-        </Grid>
-
-        <!-- CONTENT -->
-        <Grid Grid.Row="3">
-            <ProgressBar IsIndeterminate="True" VerticalAlignment="Top" Height="2" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVis}}"/>
+        <!-- CONTENT AREA -->
+        <Grid Grid.Row="2">
+            <!-- Loading Indicator -->
+            <ProgressBar IsIndeterminate="True" 
+                         VerticalAlignment="Top" 
+                         Height="2" 
+                         Visibility="{Binding IsLoading, Converter={StaticResource BoolToVis}}"
+                         Foreground="{StaticResource PrimaryBrush}"/>
             
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVis}}">
-                <TextBlock Text="📭" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,16"/>
-                <TextBlock Text="Nothing here yet" FontSize="18" FontWeight="Medium" HorizontalAlignment="Center" Opacity="0.7"/>
-                <TextBlock Text="Right-click a word in subtitles → Add to Dictionary" FontSize="13" Opacity="0.5" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+            <!-- Empty State -->
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" 
+                        Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVis}}"
+                        Margin="40">
+                <md:PackIcon Kind="BookOpenPageOutline" Width="64" Height="64" 
+                             Foreground="{StaticResource TextTertiaryBrush}" 
+                             HorizontalAlignment="Center" Margin="0,0,0,20" Opacity="0.5"/>
+                <TextBlock Text="Your library is empty" FontSize="18" FontWeight="Medium" 
+                           HorizontalAlignment="Center" Foreground="{StaticResource TextPrimaryBrush}"/>
+                <TextBlock Text="Right-click on any word in the subtitles and select Add to Dictionary" 
+                           FontSize="13" Foreground="{StaticResource TextTertiaryBrush}" 
+                           HorizontalAlignment="Center" Margin="0,8,0,0" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="350"/>
             </StackPanel>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVis}, ConverterParameter=Invert}">
-                <ItemsControl ItemsSource="{Binding Items}" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" ScrollViewer.CanContentScroll="True" Margin="12,4,12,12">
+            <!-- Items List -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                          Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVis}, ConverterParameter=Invert}"
+                          Padding="20,0,20,20">
+                <ItemsControl ItemsSource="{Binding Items}" 
+                              VirtualizingStackPanel.IsVirtualizing="True" 
+                              VirtualizingStackPanel.VirtualizationMode="Recycling" 
+                              ScrollViewer.CanContentScroll="True">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel/>
@@ -99,61 +190,24 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <md:Card Margin="0,0,0,6" Padding="0">
-                                <Grid Margin="12,10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Border Grid.Column="0" Width="28" Height="28" CornerRadius="4" Background="{Binding Status, Converter={StaticResource StatusToBackgroundConverter}}" VerticalAlignment="Top" Margin="0,0,10,0">
-                                        <TextBlock Text="{Binding TypeLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="11" FontWeight="Bold" Foreground="White"/>
-                                    </Border>
-                                    <StackPanel Grid.Column="1" VerticalAlignment="Top">
-                                        <WrapPanel>
-                                            <TextBlock Text="{Binding Text}" FontSize="15" FontWeight="SemiBold"/>
-                                            <TextBlock Text=" — " Opacity="0.4" FontSize="15" Visibility="{Binding Translation, Converter={StaticResource BoolToVis}}"/>
-                                            <TextBlock Text="{Binding Translation}" FontSize="15" Foreground="{DynamicResource PrimaryHueMidBrush}" Visibility="{Binding Translation, Converter={StaticResource BoolToVis}}"/>
-                                        </WrapPanel>
-                                        <TextBlock Text="{Binding ContextSentence}" FontStyle="Italic" Opacity="0.65" FontSize="12" TextWrapping="Wrap" Margin="0,3,0,0" Visibility="{Binding ContextSentence, Converter={StaticResource BoolToVis}}"/>
-                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0" Visibility="{Binding Media.HasMedia, Converter={StaticResource BoolToVis}}">
-                                            <Button Command="{Binding DataContext.OpenVideoCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignFlatButton}" Padding="4,2" Height="24" FontSize="11">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <md:PackIcon Kind="Play" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                                    <TextBlock><Run Text="{Binding Media.VideoTitle}"/><Run Text=" "/><Run Text="{Binding Media.TimestampDisplay}"/></TextBlock>
-                                                </StackPanel>
-                                            </Button>
-                                        </StackPanel>
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Top">
-                                        <Button Command="{Binding DataContext.ToggleFavoriteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Favorite">
-                                            <md:PackIcon Kind="{Binding IsFavorite, Converter={StaticResource BoolToStarIconConverter}}" Width="18" Height="18"/>
-                                        </Button>
-                                        <Button Command="{Binding DataContext.ArchiveCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Archive" Visibility="{Binding IsArchived, Converter={StaticResource BoolToVis}, ConverterParameter=Invert}">
-                                            <md:PackIcon Kind="Archive" Width="16" Height="16" Opacity="0.5"/>
-                                        </Button>
-                                        <Button Command="{Binding DataContext.RestoreCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Restore" Visibility="{Binding IsArchived, Converter={StaticResource BoolToVis}}">
-                                            <md:PackIcon Kind="Restore" Width="16" Height="16"/>
-                                        </Button>
-                                        <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Delete">
-                                            <md:PackIcon Kind="Delete" Width="16" Height="16" Opacity="0.5"/>
-                                        </Button>
-                                    </StackPanel>
-                                </Grid>
-                            </md:Card>
+                            <controls:LearningItemCard DataContext="{Binding}"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
         </Grid>
 
-        <!-- STATUS BAR -->
-        <Border Grid.Row="4" Background="{DynamicResource MaterialDesignToolBarBackground}" Padding="12,5">
+        <!-- STATUS BAR - Minimal footer -->
+        <Border Grid.Row="3" Background="{StaticResource SurfaceBrush}" Padding="20,10" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
             <Grid>
-                <TextBlock HorizontalAlignment="Left" Opacity="0.6" FontSize="12">
-                    <Run Text="{Binding ShownCount, Mode=OneWay}"/><Run Text="shown /"/><Run Text="{Binding TotalCount, Mode=OneWay}"/><Run Text="total"/>
+                <TextBlock HorizontalAlignment="Left" Foreground="{StaticResource TextTertiaryBrush}" FontSize="12">
+                    <Run Text="{Binding ShownCount, Mode=OneWay}"/><Run Text=" of "/><Run Text="{Binding TotalCount, Mode=OneWay}"/><Run Text=" items shown"/>
                 </TextBlock>
-                <TextBlock Text="{Binding StatusMessage}" HorizontalAlignment="Right" Foreground="{DynamicResource PrimaryHueMidBrush}" FontSize="12"/>
+                <TextBlock Text="{Binding StatusMessage}" 
+                           HorizontalAlignment="Right" 
+                           Foreground="{StaticResource PrimaryLightBrush}" 
+                           FontSize="12"
+                           FontStyle="Italic"/>
             </Grid>
         </Border>
     </Grid>
