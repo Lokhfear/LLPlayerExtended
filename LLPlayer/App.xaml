@@ -11,6 +11,10 @@
                 <materialDesign:CustomColorTheme BaseTheme="Dark" PrimaryColor="#D23D6F" SecondaryColor="#00B8D4" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
 
+                <!-- Modern Design System -->
+                <ResourceDictionary Source="/Styles/ModernStyles.xaml"/>
+                
+                <!-- Custom overrides -->
                 <ResourceDictionary Source="/Resources/MaterialDesignMy.xaml"/>
                 <ResourceDictionary Source="/Resources/Converters.xaml"/>
                 <ResourceDictionary Source="/Resources/PopUpMenu.xaml"/>

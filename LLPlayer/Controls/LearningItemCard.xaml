@@ -9,93 +9,97 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </UserControl.Resources>
     
-    <md:Card Margin="0,0,0,6" Padding="0" UniformCornerRadius="8">
-        <Grid Margin="12,10">
+    <!-- Modern Card Layout - Cleaner, lighter, more spacious -->
+    <Border x:Name="CardBorder"
+            Background="{StaticResource SurfaceBrush}"
+            BorderBrush="{StaticResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="{StaticResource CornerMd}"
+            Padding="14,12"
+            Margin="0,3">
+        
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
-            <!-- Type Badge -->
+            <!-- Status Badge - Smaller, pill-shaped -->
             <Border Grid.Column="0" 
-                    Width="32" Height="32" 
-                    CornerRadius="6" 
+                    CornerRadius="{StaticResource CornerFull}" 
                     Background="{Binding Status, Converter={StaticResource StatusToBackgroundConverter}}" 
                     VerticalAlignment="Top" 
-                    Margin="0,0,12,0"
-                    ToolTip="{Binding Status}">
+                    Margin="0,2,12,0"
+                    ToolTip="{Binding Status}"
+                    Padding="8,4"
+                    MinWidth="48">
                 <TextBlock Text="{Binding TypeLabel}" 
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center" 
-                           FontSize="12" 
-                           FontWeight="Bold" 
-                           Foreground="White"/>
+                           FontSize="10" 
+                           FontWeight="SemiBold" 
+                           Foreground="White"
+                           CharacterSpacing="25"/>
             </Border>
             
-            <!-- Content -->
+            <!-- Content Stack -->
             <StackPanel Grid.Column="1" VerticalAlignment="Top">
-                <!-- Main Text + Translation -->
-                <WrapPanel>
+                <!-- Main Text + Translation - Cleaner hierarchy -->
+                <StackPanel>
                     <TextBlock Text="{Binding Text}" 
                                FontSize="15" 
-                               FontWeight="SemiBold"
-                               TextWrapping="Wrap"/>
-                    <TextBlock Text=" — " 
-                               Opacity="0.4" 
-                               FontSize="15" 
-                               Visibility="{Binding Translation, Converter={StaticResource BoolToVis}}"/>
+                               FontWeight="Medium"
+                               TextWrapping="Wrap"
+                               Foreground="{StaticResource TextPrimaryBrush}"/>
+                    
                     <TextBlock Text="{Binding Translation}" 
-                               FontSize="15" 
-                               Foreground="{DynamicResource PrimaryHueMidBrush}" 
+                               FontSize="14" 
+                               Foreground="{StaticResource PrimaryLightBrush}" 
                                Visibility="{Binding Translation, Converter={StaticResource BoolToVis}}"
-                               TextWrapping="Wrap"/>
-                </WrapPanel>
+                               TextWrapping="Wrap"
+                               Margin="0,2,0,0"/>
+                </StackPanel>
                 
-                <!-- Context Sentence -->
+                <!-- Context Sentence - More subtle -->
                 <TextBlock Text="{Binding ContextSentence}" 
-                           FontStyle="Italic" 
-                           Opacity="0.65" 
-                           FontSize="12" 
-                           TextWrapping="Wrap" 
-                           Margin="0,4,0,0" 
-                           Visibility="{Binding ContextSentence, Converter={StaticResource BoolToVis}}"/>
-                
-                <!-- Context Translation -->
-                <TextBlock Text="{Binding ContextSentenceTranslation}" 
                            FontStyle="Italic" 
                            Opacity="0.5" 
                            FontSize="12" 
-                           Foreground="{DynamicResource PrimaryHueMidBrush}"
                            TextWrapping="Wrap" 
-                           Margin="0,2,0,0" 
-                           Visibility="{Binding ContextSentenceTranslation, Converter={StaticResource BoolToVis}}"/>
+                           Margin="0,6,0,0" 
+                           Visibility="{Binding ContextSentence, Converter={StaticResource BoolToVis}}"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
                 
-                <!-- Media Context -->
-                <StackPanel Orientation="Horizontal" 
-                            Margin="0,6,0,0" 
-                            Visibility="{Binding Media.HasMedia, Converter={StaticResource BoolToVis}}">
-                    <Button Command="{Binding OpenVideoCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                            CommandParameter="{Binding}" 
-                            Style="{StaticResource MaterialDesignFlatButton}" 
-                            Padding="6,4" 
-                            Height="28" 
-                            FontSize="11"
-                            ToolTip="Open video at timestamp">
-                        <StackPanel Orientation="Horizontal">
-                            <md:PackIcon Kind="PlayCircle" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Media.VideoTitle}" FontWeight="Medium"/>
-                                <TextBlock Text="{Binding Media.TimestampDisplay}" Opacity="0.7" FontSize="10"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
+                <!-- Media Context - Compact inline style -->
+                <Button Command="{Binding OpenVideoCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                        CommandParameter="{Binding}" 
+                        Style="{StaticResource ModernTextButton}"
+                        Padding="0"
+                        Height="24"
+                        FontSize="11"
+                        Visibility="{Binding Media.HasMedia, Converter={StaticResource BoolToVis}}"
+                        Margin="0,4,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <md:PackIcon Kind="PlayCircleOutline" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,4,0"
+                                     Foreground="{StaticResource TextSecondaryBrush}"/>
+                        <TextBlock Text="{Binding Media.VideoTitle}" 
+                                   FontWeight="Medium"
+                                   Foreground="{StaticResource TextSecondaryBrush}"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Text=" • " 
+                                   Foreground="{StaticResource TextTertiaryBrush}"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Media.TimestampDisplay}" 
+                                   Foreground="{StaticResource TextTertiaryBrush}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
                 
-                <!-- Tags -->
+                <!-- Tags - Smaller chips -->
                 <ItemsControl ItemsSource="{Binding Tags}" 
                               Visibility="{Binding Tags.Count, Converter={StaticResource BoolToVis}}"
-                              Margin="0,4,0,0">
+                              Margin="0,6,0,0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel/>
@@ -103,62 +107,79 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <!-- ИСПРАВЛЕНО: Text → Content -->
-                            <md:Chip Content="{Binding}" 
-                                     Margin="0,0,4,4" 
-                                     FontSize="10" 
-                                     Height="22"
-                                     IsDeletable="False"/>
+                            <Border Background="{StaticResource SurfaceBrightBrush}"
+                                    CornerRadius="{StaticResource CornerFull}"
+                                    Padding="6,3"
+                                    Margin="0,0,4,4">
+                                <TextBlock Text="{Binding}" FontSize="10" Foreground="{StaticResource TextSecondaryBrush}"/>
+                            </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </StackPanel>
             
-            <!-- Action Buttons -->
-            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Top">
+            <!-- Action Buttons - Compact vertical stack -->
+            <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Top" Spacing="2">
                 <Button Command="{Binding ToggleFavoriteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                         CommandParameter="{Binding}" 
-                        Style="{StaticResource MaterialDesignIconButton}" 
-                        ToolTip="Toggle Favorite"
-                        Width="36" Height="36">
+                        Style="{StaticResource ModernIconButtonSmall}"
+                        ToolTip="Toggle Favorite">
                     <md:PackIcon Kind="{Binding IsFavorite, Converter={StaticResource BoolToStarIconConverter}}" 
-                                 Width="18" Height="18"/>
+                                 Width="16" Height="16"
+                                 Foreground="{Binding IsFavorite, Converter={StaticResource BoolToVisibilityConv}, FallbackValue={StaticResource TextTertiaryBrush}}"/>
                 </Button>
                 
                 <Button Command="{Binding ArchiveCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                         CommandParameter="{Binding}" 
-                        Style="{StaticResource MaterialDesignIconButton}" 
-                        ToolTip="Archive" 
-                        Visibility="{Binding IsArchived, Converter={StaticResource BoolToVis}, ConverterParameter=Invert}"
-                        Width="36" Height="36">
-                    <md:PackIcon Kind="Archive" Width="16" Height="16" Opacity="0.5"/>
+                        Style="{StaticResource ModernIconButtonSmall}"
+                        ToolTip="Archive"
+                        Visibility="{Binding IsArchived, Converter={StaticResource BoolToVis}, ConverterParameter=Invert}">
+                    <md:PackIcon Kind="ArchiveOutline" Width="15" Height="15" Opacity="0.6"/>
                 </Button>
                 
                 <Button Command="{Binding RestoreCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                         CommandParameter="{Binding}" 
-                        Style="{StaticResource MaterialDesignIconButton}" 
-                        ToolTip="Restore" 
-                        Visibility="{Binding IsArchived, Converter={StaticResource BoolToVis}}"
-                        Width="36" Height="36">
-                    <md:PackIcon Kind="Restore" Width="16" Height="16"/>
+                        Style="{StaticResource ModernIconButtonSmall}"
+                        ToolTip="Restore"
+                        Visibility="{Binding IsArchived, Converter={StaticResource BoolToVis}}">
+                    <md:PackIcon Kind="Restore" Width="15" Height="15"/>
                 </Button>
                 
                 <Button Command="{Binding EditCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                         CommandParameter="{Binding}" 
-                        Style="{StaticResource MaterialDesignIconButton}" 
-                        ToolTip="Edit"
-                        Width="36" Height="36">
-                    <md:PackIcon Kind="Pencil" Width="16" Height="16" Opacity="0.5"/>
+                        Style="{StaticResource ModernIconButtonSmall}"
+                        ToolTip="Edit">
+                    <md:PackIcon Kind="PencilOutline" Width="15" Height="15" Opacity="0.6"/>
                 </Button>
                 
                 <Button Command="{Binding DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                         CommandParameter="{Binding}" 
-                        Style="{StaticResource MaterialDesignIconButton}" 
-                        ToolTip="Delete"
-                        Width="36" Height="36">
-                    <md:PackIcon Kind="Delete" Width="16" Height="16" Opacity="0.5"/>
+                        Style="{StaticResource ModernIconButtonSmall}"
+                        ToolTip="Delete">
+                    <md:PackIcon Kind="DeleteOutline" Width="15" Height="15" Opacity="0.6"/>
                 </Button>
             </StackPanel>
         </Grid>
-    </md:Card>
+        
+        <!-- Hover effect overlay -->
+        <Border.Background>
+            <SolidColorBrush Color="{StaticResource SurfaceColor}"/>
+        </Border.Background>
+        
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Cursor" Value="Arrow"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{StaticResource SurfaceLightColor}"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="BorderBrush" Value="{StaticResource BorderLightBrush}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+    </Border>
 </UserControl>
