@@ -46,6 +46,7 @@
     <conv:StatusToBackgroundConverter x:Key="StatusToBackgroundConverter"/>
     <conv:BoolToStarIconConverter x:Key="BoolToStarIconConverter"/>
     <conv:BoolToArrowIconConverter x:Key="BoolToArrowIconConverter"/>
+    <conv:HalfConverter x:Key="HalfConv" />
 
     <!--Subtitle Converters-->
     <conv:WidthPercentageMultiConverter x:Key="WidthPercentageMultiConv"/>

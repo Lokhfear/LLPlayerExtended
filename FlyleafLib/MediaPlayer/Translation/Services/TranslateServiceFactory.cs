@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace FlyleafLib.MediaPlayer.Translation.Services;
+﻿namespace FlyleafLib.MediaPlayer.Translation.Services;
 
 public class TranslateServiceFactory
 {
@@ -25,6 +23,12 @@ public class TranslateServiceFactory
         {
             case TranslateServiceType.GoogleV1:
                 return new GoogleV1TranslateService((GoogleV1TranslateSettings)_config.TranslateServiceSettings.GetValueOrDefault(serviceType, new GoogleV1TranslateSettings()));
+
+            case TranslateServiceType.Bing:
+                return new BingTranslateService((BingTranslateSettings)_config.TranslateServiceSettings.GetValueOrDefault(serviceType, new BingTranslateSettings()));
+
+            case TranslateServiceType.Azure:
+                return new AzureTranslateService((AzureTranslateSettings)_config.TranslateServiceSettings.GetValueOrDefault(serviceType, new AzureTranslateSettings()));
 
             case TranslateServiceType.DeepL:
                 return new DeepLTranslateService((DeepLTranslateSettings)_config.TranslateServiceSettings.GetValueOrDefault(serviceType, new DeepLTranslateSettings()));

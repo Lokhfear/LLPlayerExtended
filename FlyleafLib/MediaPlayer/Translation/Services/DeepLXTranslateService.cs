@@ -1,9 +1,6 @@
 ﻿using System.Net.Http;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace FlyleafLib.MediaPlayer.Translation.Services;
 
@@ -50,12 +47,12 @@ public class DeepLXTranslateService : ITranslateService
         _targetLang = ToTargetCode(target);
     }
 
-    private string ToSourceCode(string iso6391)
+    private static string ToSourceCode(string iso6391)
     {
         return DeepLTranslateService.ToSourceCode(iso6391);
     }
 
-    private string ToTargetCode(TargetLanguage target)
+    private static string ToTargetCode(TargetLanguage target)
     {
         return DeepLTranslateService.ToTargetCode(target);
     }

@@ -332,6 +332,7 @@ public class KeysConfig
         Add(Key.Down,               KeyBindingAction.VolumeDown);
 
         Add(Key.D0,                 KeyBindingAction.ResetAll);
+        Add(Key.D1,                 KeyBindingAction.ResetSpeed);
 
         Add(Key.Escape,             KeyBindingAction.NormalScreen);
         Add(Key.Q,                  KeyBindingAction.Stop, ctrl: true);
@@ -349,53 +350,53 @@ public class KeysConfig
                 return player.Activity.ForceFullActive;
 
             case KeyBindingAction.AudioDelayAdd:
-                return player.Audio.DelayAdd;
+                return player.Config.Audio.DelayAdd;
             case KeyBindingAction.AudioDelayRemove:
-                return player.Audio.DelayRemove;
+                return player.Config.Audio.DelayRemove;
             case KeyBindingAction.AudioDelayAdd2:
-                return player.Audio.DelayAdd2;
+                return player.Config.Audio.DelayAdd2;
             case KeyBindingAction.AudioDelayRemove2:
-                return player.Audio.DelayRemove2;
+                return player.Config.Audio.DelayRemove2;
             case KeyBindingAction.ToggleAudio:
-                return player.Audio.Toggle;
+                return player.Config.Audio.Toggle;
             case KeyBindingAction.ToggleMute:
-                return player.Audio.ToggleMute;
+                return player.Config.Audio.ToggleMute;
             case KeyBindingAction.VolumeUp:
-                return player.Audio.VolumeUp;
+                return player.Config.Audio.VolumeUp;
             case KeyBindingAction.VolumeDown:
-                return player.Audio.VolumeDown;
+                return player.Config.Audio.VolumeDown;
 
             case KeyBindingAction.ToggleVideo:
-                return player.Video.Toggle;
+                return player.Config.Video.Toggle;
             case KeyBindingAction.ToggleKeepRatio:
-                return player.Video.ToggleKeepRatio;
+                return player.Config.Video.ToggleKeepRatio;
             case KeyBindingAction.ToggleVideoAcceleration:
-                return player.Video.ToggleVideoAcceleration;
+                return player.Config.Video.ToggleVideoAcceleration;
 
             case KeyBindingAction.SubsDelayAddPrimary:
-                return player.Subtitles.DelayAddPrimary;
+                return player.Config.Subtitles[0].DelayAdd;
             case KeyBindingAction.SubsDelayRemovePrimary:
-                return player.Subtitles.DelayRemovePrimary;
+                return player.Config.Subtitles[0].DelayRemove;
             case KeyBindingAction.SubsDelayAdd2Primary:
-                return player.Subtitles.DelayAdd2Primary;
+                return player.Config.Subtitles[0].DelayAdd2;
             case KeyBindingAction.SubsDelayRemove2Primary:
-                return player.Subtitles.DelayRemove2Primary;
+                return player.Config.Subtitles[0].DelayRemove2;
 
             case KeyBindingAction.SubsDelayAddSecondary:
-                return player.Subtitles.DelayAddSecondary;
+                return player.Config.Subtitles[1].DelayAdd;
             case KeyBindingAction.SubsDelayRemoveSecondary:
-                return player.Subtitles.DelayRemoveSecondary;
+                return player.Config.Subtitles[1].DelayRemove;
             case KeyBindingAction.SubsDelayAdd2Secondary:
-                return player.Subtitles.DelayAdd2Secondary;
+                return player.Config.Subtitles[1].DelayAdd2;
             case KeyBindingAction.SubsDelayRemove2Secondary:
-                return player.Subtitles.DelayRemove2Secondary;
+                return player.Config.Subtitles[1].DelayRemove2;
 
             case KeyBindingAction.ToggleSubtitlesVisibility:
-                return player.Subtitles.ToggleVisibility;
+                return player.Config.Subtitles.ToggleVisible;
             case KeyBindingAction.ToggleSubtitlesVisibilityPrimary:
-                return player.Subtitles.ToggleVisibilityPrimary;
+                return player.Config.Subtitles[0].ToggleVisible;
             case KeyBindingAction.ToggleSubtitlesVisibilitySecondary:
-                return player.Subtitles.ToggleVisibilitySecondary;
+                return player.Config.Subtitles[1].ToggleVisible;
 
             case KeyBindingAction.OpenFromClipboard:
                 return player.OpenFromClipboard;
@@ -521,16 +522,19 @@ public class KeysConfig
                 return player.ShowFrameNext;
 
             case KeyBindingAction.ZoomIn:
-                return player.ZoomIn;
+                return player.Config.Video.ZoomIn;
 
             case KeyBindingAction.ZoomOut:
-                return player.ZoomOut;
+                return player.Config.Video.ZoomOut;
 
             case KeyBindingAction.ResetAll:
                 return player.ResetAll;
 
             case KeyBindingAction.ResetSpeed:
                 return player.ResetSpeed;
+
+            case KeyBindingAction.ResetDelay:
+                return player.ResetDelay;
 
             case KeyBindingAction.ResetRotation:
                 return player.ResetRotation;
@@ -579,6 +583,7 @@ public class KeysConfig
         { KeyBindingAction.SpeedRemove },
         { KeyBindingAction.SpeedRemove2 },
         { KeyBindingAction.ResetAll },
+        { KeyBindingAction.ResetDelay },
         { KeyBindingAction.ResetSpeed },
         { KeyBindingAction.ResetRotation },
         { KeyBindingAction.ResetZoom },
@@ -779,10 +784,12 @@ public enum KeyBindingAction
     [Description("Show Previous Frame")]
     ShowPrevFrame,
 
-    [Description("Reset Zoom / Rotation / Speed")]
+    [Description("Reset Zoom / Rotation / Speed / Delay")]
     ResetAll,
     [Description("Reset Speed")]
     ResetSpeed,
+    [Description("Reset Audio / Subtitles Delay")]
+    ResetDelay,
     [Description("Reset Rotation")]
     ResetRotation,
     [Description("Reset Zoom")]

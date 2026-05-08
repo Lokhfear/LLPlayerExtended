@@ -245,7 +245,7 @@ AncestorType={x:Type MenuItem}}}">
                   Command="{Binding FL.Player.Commands.SubtitlesOff}"
                   CommandParameter="0"/>
 
-        <Separator />
+        <Separator Margin="0,6" />
 
         <MenuItem Header="Auto-Translate"
                   IsCheckable="True"
@@ -279,7 +279,7 @@ AncestorType={x:Type MenuItem}}}">
                   Command="{Binding FL.Player.Commands.SubtitlesOff}"
                   CommandParameter="1"/>
 
-        <Separator />
+        <Separator Margin="0,6" />
 
         <MenuItem Header="Auto-Translate"
                   IsCheckable="True"
@@ -313,7 +313,7 @@ AncestorType={x:Type MenuItem}}}">
         <MenuItem Header="Open File" Command="{Binding FL.Player.Commands.OpenFromFileDialog}" Icon="{materialDesign:PackIcon FolderOutline}" />
 
         <MenuItem x:Name="MenuPasteUrl" Header="Paste URL" Command="{Binding FL.Player.Commands.OpenFromClipboard}" Icon="{materialDesign:PackIcon ContentPaste}" />
-        <Separator />
+        <Separator Margin="0,6" />
 
         <MenuItem ItemsSource="{Binding FL.Player.Playlist.Items}" Icon="{materialDesign:PackIcon ViewList}">
             <MenuItem.Header>
@@ -334,18 +334,18 @@ AncestorType={x:Type MenuItem}}}">
             </MenuItem.ItemContainerStyle>
         </MenuItem>
 
-        <Separator />
+        <Separator Margin="0,6" />
 
         <MenuItem Header="Audio" Icon="{materialDesign:PackIcon Kind=MusicBoxOutline}">
             <MenuItem Header="Enabled" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Audio.Enabled}"/>
             <MenuItem Header="{Binding FL.PlayerConfig.Audio.Delay, Converter={StaticResource TicksToMilliSecondsConv}}" HeaderStringFormat="Delay ({0})">
                 <MenuItem Header="Reset..." CommandParameter="0" Command="{Binding FL.Player.Commands.AudioDelaySet}"/>
-                <Separator />
+                <Separator Margin="0,6" />
                 <MenuItem Header="-   10"   CommandParameter="-10"      Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
                 <MenuItem Header="-  100"   CommandParameter="-100"     Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
                 <MenuItem Header="- 1000"   CommandParameter="-1000"    Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
                 <MenuItem Header="-10000"   CommandParameter="-10000"   Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
-                <Separator />
+                <Separator Margin="0,6" />
                 <MenuItem Header="+10000"   CommandParameter="10000"    Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
                 <MenuItem Header="+ 1000"   CommandParameter="1000"     Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
                 <MenuItem Header="+  100"   CommandParameter="100"      Command="{Binding FL.Player.Commands.AudioDelaySet2}"/>
@@ -377,12 +377,12 @@ AncestorType={x:Type MenuItem}}}">
                 <MenuItem Header="From 2nd"
                           CommandParameter="{Binding FL.Player.Config.Subtitles[1].Delay, Converter={StaticResource TicksToMilliSecondsConv}}"
                           Command="{Binding FL.Player.Commands.SubtitlesDelaySetPrimary}"/>
-                <Separator />
+                <Separator Margin="0,6" />
                 <MenuItem Header="-   10"   CommandParameter="-10"      Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Primary}"/>
                 <MenuItem Header="-  100"   CommandParameter="-100"     Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Primary}"/>
                 <MenuItem Header="- 1000"   CommandParameter="-1000"    Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Primary}"/>
                 <MenuItem Header="-10000"   CommandParameter="-10000"   Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Primary}"/>
-                <Separator />
+                <Separator Margin="0,6" />
                 <MenuItem Header="+10000"   CommandParameter="10000"    Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Primary}"/>
                 <MenuItem Header="+ 1000"   CommandParameter="1000"     Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Primary}"/>
                 <MenuItem Header="+  100"   CommandParameter="100"      Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Primary}"/>
@@ -393,12 +393,12 @@ AncestorType={x:Type MenuItem}}}">
                 <MenuItem Header="From 1st"
                           CommandParameter="{Binding FL.Player.Config.Subtitles[0].Delay, Converter={StaticResource TicksToMilliSecondsConv}}"
                           Command="{Binding FL.Player.Commands.SubtitlesDelaySetSecondary}"/>
-                <Separator />
+                <Separator Margin="0,6" />
                 <MenuItem Header="-   10"   CommandParameter="-10"      Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Secondary}"/>
                 <MenuItem Header="-  100"   CommandParameter="-100"     Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Secondary}"/>
                 <MenuItem Header="- 1000"   CommandParameter="-1000"    Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Secondary}"/>
                 <MenuItem Header="-10000"   CommandParameter="-10000"   Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Secondary}"/>
-                <Separator />
+                <Separator Margin="0,6" />
                 <MenuItem Header="+10000"   CommandParameter="10000"    Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Secondary}"/>
                 <MenuItem Header="+ 1000"   CommandParameter="1000"     Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Secondary}"/>
                 <MenuItem Header="+  100"   CommandParameter="100"      Command="{Binding FL.Player.Commands.SubtitlesDelaySet2Secondary}"/>
@@ -407,7 +407,7 @@ AncestorType={x:Type MenuItem}}}">
 
             <MenuItem Header="{Binding FL.Config.Subs.SubsPosition}" HeaderStringFormat="Position ({0})">
                 <MenuItem Header="Reset..." Command="{Binding FL.Action.CmdResetSubsPosition}" Icon="{materialDesign:PackIcon Kind=BackupRestore}"/>
-                <Separator />
+                <Separator Margin="0,6" />
                 <MenuItem Header="Up"   Command="{Binding FL.Action.CmdSubsPositionUp}"   Icon="{materialDesign:PackIcon Kind=ArrowUp}"/>
                 <MenuItem Header="Down" Command="{Binding FL.Action.CmdSubsPositionDown}" Icon="{materialDesign:PackIcon Kind=ArrowDown}"/>
             </MenuItem>
@@ -540,7 +540,7 @@ AncestorType={x:Type MenuItem}}}">
             </MenuItem>
             <MenuItem Header="HW Acceleration" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.VideoAcceleration}"/>
             <MenuItem Header="Record" IsCheckable="True" IsChecked="{Binding FL.Player.IsRecording, Mode=OneWay}" Command="{Binding FL.Player.Commands.ToggleRecording}"/>
-            <MenuItem Header="{Binding FL.Player.Rotation}" HeaderStringFormat="Rotation ({0}°)">
+            <MenuItem Header="{Binding FL.PlayerConfig.Video.Rotation}" HeaderStringFormat="Rotation ({0}°)">
                 <MenuItem Header="0°"       CommandParameter="0"    Command="{Binding FL.Player.Commands.RotationSet}"/>
                 <MenuItem Header="90°"      CommandParameter="90"   Command="{Binding FL.Player.Commands.RotationSet}"/>
                 <MenuItem Header="180°"     CommandParameter="180"  Command="{Binding FL.Player.Commands.RotationSet}"/>
@@ -548,8 +548,8 @@ AncestorType={x:Type MenuItem}}}">
             </MenuItem>
 
             <MenuItem Header="Flip">
-                <MenuItem Header="Horizontal Flip" IsCheckable="True" IsChecked="{Binding FL.Player.renderer.HFlip}"/>
-                <MenuItem Header="Vertical Flip" IsCheckable="True" IsChecked="{Binding FL.Player.renderer.VFlip}"/>
+                <MenuItem Header="Horizontal Flip" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.HFlip}"/>
+                <MenuItem Header="Vertical Flip" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.VFlip}"/>
             </MenuItem>
 
             <MenuItem Header="Reverse Playback" IsCheckable="True" IsChecked="{Binding FL.Player.ReversePlayback}"/>
@@ -569,7 +569,7 @@ AncestorType={x:Type MenuItem}}}">
 
             <MenuItem Header="Take a Snapshot" Command="{Binding FL.Player.Commands.TakeSnapshot}" Icon="{materialDesign:PackIcon Kind=PhotoCamera}"/>
             <MenuItem Header="V.Sync" IsCheckable="True" IsChecked="{Binding FL.PlayerConfig.Video.VSync}"/>
-            <MenuItem Header="{Binding FL.Player.Zoom}" HeaderStringFormat="Zoom ({0}%)">
+            <MenuItem Header="{Binding FL.PlayerConfig.Video.Zoom}" HeaderStringFormat="Zoom ({0}%)">
                 <MenuItem Header="Reset ..." Command="{Binding FL.Player.Commands.ResetAll}"/>
                 <MenuItem Header="Zoom In"   Command="{Binding FL.Player.Commands.ZoomIn}" Icon="{materialDesign:PackIcon Kind=ZoomIn}"/>
                 <MenuItem Header="Zoom out"  Command="{Binding FL.Player.Commands.ZoomOut}" Icon="{materialDesign:PackIcon Kind=ZoomOut}"/>
@@ -581,11 +581,11 @@ AncestorType={x:Type MenuItem}}}">
             <MenuItem Header="Clone App" Command="{Binding FL.Action.CmdAppClone}" Icon="{materialDesign:PackIcon Kind=ContentCopy}"/>
             <MenuItem Header="Restart App" Command="{Binding FL.Action.CmdAppRestart}" Icon="{materialDesign:PackIcon Kind=Restart}"/>
             <MenuItem Header="Exit App" Command="{Binding FL.Action.CmdAppExit}" Icon="{materialDesign:PackIcon Kind=ExitToApp}"/>
-            <Separator />
+            <Separator Margin="0,6" />
             <MenuItem Header="Always On Top" IsCheckable="True" IsChecked="{Binding FL.Config.AlwaysOnTop}"/>
         </MenuItem>
 
-        <Separator />
+        <Separator Margin="0,6" />
         <MenuItem Header="Show Debug" IsCheckable="True" IsChecked="{Binding FL.Config.ShowDebug}"/>
         <MenuItem Header="Cheat Sheet" Command="{Binding FL.Action.CmdOpenWindowCheatSheet}" Icon="{materialDesign:PackIcon Kind=Help}" />
     </ContextMenu>

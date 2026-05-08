@@ -1,23 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using FlyleafLib.MediaFramework.MediaDecoder;
 using FlyleafLib.MediaFramework.MediaDemuxer;
 using FlyleafLib.MediaFramework.MediaFrame;
-using FlyleafLib.MediaFramework.MediaRenderer;
 using FlyleafLib.MediaFramework.MediaStream;
 using FlyleafLib.MediaPlayer.Translation;
-using static FlyleafLib.Logger;
 
 namespace FlyleafLib.MediaPlayer;
 
@@ -133,7 +126,7 @@ public class SubManager : INotifyPropertyChanged
     private readonly SubTranslator _subTranslator;
     private readonly LogHandler Log;
 
-    public SubManager(Config config, int subIndex, bool enableSync = true)
+    public SubManager(Config config, int subIndex)
     {
         _config = config;
         _subIndex = subIndex;
@@ -141,14 +134,11 @@ public class SubManager : INotifyPropertyChanged
         _subTranslator = new SubTranslator(this, config.Subtitles, subIndex);
         Log = new LogHandler(("[#1]").PadRight(8, ' ') + $" [SubManager{subIndex + 1}   ] ");
 
-        if (enableSync)
+        // Enable binding to ItemsControl
+        UIInvokeIfRequired(() =>
         {
-            // Enable binding to ItemsControl
-            Utils.UIInvokeIfRequired(() =>
-            {
-                BindingOperations.EnableCollectionSynchronization(Subs, _subsLocker);
-            });
-        }
+            BindingOperations.EnableCollectionSynchronization(Subs, _subsLocker);
+        });
     }
 
     public enum PositionState
@@ -166,7 +156,7 @@ public class SubManager : INotifyPropertyChanged
     {
         // NOTE: If it is not executed in the main thread, the following error occurs.
         // System.NotSupportedException: 'This type of CollectionView does not support'
-        Utils.UI(() =>
+        UI(() =>
         {
             CollectionViewSource.GetDefaultView(Subs).Refresh();
             OnPropertyChanged(nameof(CurrentIndex)); // required for translating current sub
@@ -603,13 +593,12 @@ public unsafe class SubtitleReader : IDisposable
 
         _decoder = new SubtitlesDecoder(_config, _subIndex + 1);
         _decoder.Log.Prefix = _decoder.Log.Prefix.Replace("Decoder: ", "DecoderS:");
-        error = _decoder.Open(_stream);
 
-        if (error != null)
+        if (!_decoder.Open(_stream))
         {
             token.ThrowIfCancellationRequested(); // if canceled
 
-            throw new InvalidOperationException($"decoder open error: {error}");
+            throw new InvalidOperationException($"decoder open error");
         }
     }
 
@@ -696,19 +685,19 @@ public unsafe class SubtitleReader : IDisposable
                 continue;
             }
 
-            long pts = AV_NOPTS_VALUE; // 0.1us
-            if (sub.pts != AV_NOPTS_VALUE)
+            long pts = NoTs; // 0.1us
+            if (sub.pts != NoTs)
             {
                 pts = sub.pts /*us*/ * 10;
             }
-            else if (_packet->pts != AV_NOPTS_VALUE)
+            else if (_packet->pts != NoTs)
             {
                 pts = (long)(_packet->pts * _stream.Timebase);
             }
 
             av_packet_unref(_packet);
 
-            if (pts == AV_NOPTS_VALUE)
+            if (pts == NoTs)
             {
                 continue;
             }
@@ -763,7 +752,7 @@ public unsafe class SubtitleReader : IDisposable
             switch (sub.rects[0]->type)
             {
                 case AVSubtitleType.Text:
-                    subData.Text = Utils.BytePtrToStringUTF8(sub.rects[0]->text).Trim();
+                    subData.Text = BytePtrToStringUTF8(sub.rects[0]->text).Trim();
                     avsubtitle_free(&sub);
 
                     if (string.IsNullOrEmpty(subData.Text))
@@ -773,7 +762,7 @@ public unsafe class SubtitleReader : IDisposable
 
                     break;
                 case AVSubtitleType.Ass:
-                    string text = Utils.BytePtrToStringUTF8(sub.rects[0]->ass).Trim();
+                    string text = BytePtrToStringUTF8(sub.rects[0]->ass).Trim();
                     avsubtitle_free(&sub);
 
                     subData.Text = ParseSubtitles.SSAtoSubStyles(text, out var subStyles).Trim();
@@ -865,22 +854,7 @@ public class SubtitleBitmapData : IDisposable
     public WriteableBitmap SubToWritableBitmap(bool isGrey)
     {
         (byte[] data, AVSubtitleRect rect) = SubToBitmap(isGrey);
-
-        WriteableBitmap wb = new(
-            rect.w, rect.h,
-            Utils.NativeMethods.DpiXSource, Utils.NativeMethods.DpiYSource,
-            PixelFormats.Bgra32, null
-        );
-        Int32Rect dirtyRect = new(0, 0, rect.w, rect.h);
-        wb.Lock();
-
-        Marshal.Copy(data, 0, wb.BackBuffer, data.Length);
-
-        wb.AddDirtyRect(dirtyRect);
-        wb.Unlock();
-        wb.Freeze();
-
-        return wb;
+        return SubsBitmap.CreateWritableBitmap(data, rect.w, rect.h);
     }
 
     public unsafe (byte[] data, AVSubtitleRect rect) SubToBitmap(bool isGrey)
@@ -894,7 +868,7 @@ public class SubtitleBitmapData : IDisposable
             _rwLock.EnterReadLock();
 
             AVSubtitleRect rect = *Sub.rects[0];
-            byte[] data = Renderer.ConvertBitmapSub(Sub, isGrey);
+            byte[] data = SubtitlesDecoder.ConvertBitmapSub(Sub, isGrey);
 
             return (data, rect);
         }

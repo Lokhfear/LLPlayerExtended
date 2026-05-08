@@ -3,20 +3,36 @@ using FlyleafLib.MediaFramework.MediaStream;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using static FlyleafLib.Utils;
 
 namespace FlyleafLib.MediaPlayer;
 
 public class SubsBitmap
 {
     public WriteableBitmap Source { get; set; }
+    // retain for recreating WritableBitmap when dpi change
+    internal byte[] Data { get; set; }
     public int X { get; set; }
     public int Y { get; set; }
     public int Width { get; set; }
     public int Height { get; set; }
+
+    internal static WriteableBitmap CreateWritableBitmap(byte[] data, int width, int height)
+    {
+        WriteableBitmap wb = new(
+            width, height,
+            NativeMethods.DpiXSource, NativeMethods.DpiYSource,
+            PixelFormats.Bgra32, null
+        );
+
+        wb.WritePixels(new Int32Rect(0, 0, width, height), data, width * 4, 0);
+        // Note that you will get a UI thread error if you don't call
+        wb.Freeze();
+
+        return wb;
+    }
 }
 
 public class SubsBitmapPosition : NotifyPropertyChanged
@@ -109,9 +125,10 @@ public class SubsBitmapPosition : NotifyPropertyChanged
         }
 
         SubsBitmap bitmap = _player.Subtitles[_subIndex].Data.Bitmap;
+        var viewport = _player.Renderer.Viewport;
 
         // Calculate the ratio of the current width of the window to the width of the video
-        double renderWidth = _player.VideoDecoder.Renderer.GetViewport.Width;
+        double renderWidth = viewport.Width;
         double videoWidth = _player.SubtitlesDecoders[_subIndex].Width;
         if (videoWidth == 0)
         {
@@ -120,7 +137,7 @@ public class SubsBitmapPosition : NotifyPropertyChanged
         }
 
         // double videoHeight_ = (int)(videoWidth / Player.VideoDemuxer.VideoStream.AspectRatio.Value);
-        double renderHeight = _player.VideoDecoder.Renderer.GetViewport.Height;
+        double renderHeight = viewport.Height;
         double videoHeight = _player.SubtitlesDecoders[_subIndex].Height;
         if (videoHeight == 0)
         {
@@ -129,8 +146,8 @@ public class SubsBitmapPosition : NotifyPropertyChanged
 
         // In aspect ratio like a movie, a black background may be added to the top and bottom.
         // In this case, the subtitles should be placed based on the video display area, so the offset from the image rendering area excluding the black background should be taken into consideration.
-        double yOffset = _player.renderer.GetViewport.Y;
-        double xOffset = _player.renderer.GetViewport.X;
+        double xOffset = viewport.X;
+        double yOffset = Math.Max(_player.Renderer.ControlHeight - (viewport.Y + viewport.Height), 0);
 
         double scaleFactorX = renderWidth / videoWidth;
         // double scaleFactorY = renderHeight / videoHeight;
@@ -176,7 +193,7 @@ public class SubsBitmapPosition : NotifyPropertyChanged
             scaleY *= ConfScale;
         }
 
-        Margin = new Thickness(x, y, 0, 0);
+        Margin = new Thickness(x / NativeMethods.DpiX, y / NativeMethods.DpiY, 0, 0);
         ScaleX = scaleX;
         ScaleY = scaleY;
     }
@@ -285,6 +302,22 @@ public class SubsData : NotifyPropertyChanged
     /// Bind target Used for switching Visibility
     /// </summary>
     public bool IsVisible => Config.Subtitles[_subIndex].Visible;
+
+    internal void RefreshBitmap()
+    {
+        if (Bitmap == null)
+            return;
+
+        Bitmap = new SubsBitmap
+        {
+            X = Bitmap.X,
+            Y = Bitmap.Y,
+            Width = Bitmap.Width,
+            Height = Bitmap.Height,
+            Data = Bitmap.Data,
+            Source = SubsBitmap.CreateWritableBitmap(Bitmap.Data, Bitmap.Width, Bitmap.Height),
+        };
+    }
 
     /// <summary>
     /// Subtitles Text (updates dynamically while playing based on the duration that it should be displayed)
@@ -565,11 +598,11 @@ public class Subtitle : NotifyPropertyChanged
         _player.SubtitlesOCR.Reset(_subIndex);
         _player.SubtitlesManager[_subIndex].Reset();
 
-        if (_player.renderer != null)
+        if (_player.Renderer != null)
         {
             // Adjust bitmap subtitle size when resizing screen
-            _player.renderer.ViewportChanged -= RendererOnViewportChanged;
-            _player.renderer.ViewportChanged += RendererOnViewportChanged;
+            _player.Renderer.ViewportChanged -= RendererOnViewportChanged;
+            _player.Renderer.ViewportChanged += RendererOnViewportChanged;
         }
 
         UpdateUI();
@@ -630,12 +663,15 @@ public class Subtitle : NotifyPropertyChanged
 
         // TODO: L: For some reason, there is a problem with subtitles temporarily not being
         // displayed, waiting for about 10 seconds will fix it.
-        Decoder.OpenSuggestedSubtitles(_subIndex);
+        if (_subIndex == 0) // currently only primary sub is opened automatically
+        {
+            Decoder.OpenSuggestedSubtitles();
+            _player.ReSync(Decoder.SubtitlesStreams[_subIndex], (int)(_player.CurTime / 10000), true);
 
-        _player.ReSync(Decoder.SubtitlesStreams[_subIndex], (int)(_player.CurTime / 10000), true);
-
-        Refresh();
-        UpdateUI();
+            // disabled because this is called in Decoder.OpenSuggestedSubtitles()
+            // Refresh();
+            UpdateUI();
+        }
     }
     internal void Disable()
     {
@@ -745,6 +781,11 @@ public class Subtitles
         {
             this[i].Disable();
         }
+
+        // Reset global state
+        SubtitlesSelectedHelper.CurIndex = 0;
+        SubtitlesSelectedHelper.PrimaryMethod = SelectSubMethod.Original;
+        SubtitlesSelectedHelper.SecondaryMethod = SelectSubMethod.Original;
     }
 
     internal void Reset()
@@ -753,6 +794,11 @@ public class Subtitles
         {
             this[i].Reset();
         }
+
+        // Reset global state
+        SubtitlesSelectedHelper.CurIndex = 0;
+        SubtitlesSelectedHelper.PrimaryMethod = SelectSubMethod.Original;
+        SubtitlesSelectedHelper.SecondaryMethod = SelectSubMethod.Original;
     }
 
     internal void Refresh()
@@ -763,32 +809,12 @@ public class Subtitles
         }
     }
 
-    // TODO: L: refactor
-    public void DelayRemovePrimary()   => Config.Subtitles[0].Delay -= Config.Player.SubtitlesDelayOffset;
-    public void DelayAddPrimary()      => Config.Subtitles[0].Delay += Config.Player.SubtitlesDelayOffset;
-    public void DelayRemove2Primary()  => Config.Subtitles[0].Delay -= Config.Player.SubtitlesDelayOffset2;
-    public void DelayAdd2Primary()     => Config.Subtitles[0].Delay += Config.Player.SubtitlesDelayOffset2;
-
-    public void DelayRemoveSecondary()   => Config.Subtitles[1].Delay -= Config.Player.SubtitlesDelayOffset;
-    public void DelayAddSecondary()      => Config.Subtitles[1].Delay += Config.Player.SubtitlesDelayOffset;
-    public void DelayRemove2Secondary()  => Config.Subtitles[1].Delay -= Config.Player.SubtitlesDelayOffset2;
-    public void DelayAdd2Secondary()     => Config.Subtitles[1].Delay += Config.Player.SubtitlesDelayOffset2;
-
-    public void ToggleEnabled()        => Config.Subtitles.Enabled = !Config.Subtitles.Enabled;
-
-    public void ToggleVisibility()
+    internal void RefreshBitmap()
     {
-        Config.Subtitles[0].Visible = !Config.Subtitles[0].Visible;
-        Config.Subtitles[1].Visible = Config.Subtitles[0].Visible;
-    }
-    public void ToggleVisibilityPrimary()
-    {
-        Config.Subtitles[0].Visible = !Config.Subtitles[0].Visible;
-    }
-
-    public void ToggleVisibilitySecondary()
-    {
-        Config.Subtitles[1].Visible = !Config.Subtitles[1].Visible;
+        for (int i = 0; i < subNum; i++)
+        {
+            this[i].Data.RefreshBitmap();
+        }
     }
 
     private bool _prevSeek(int subIndex)

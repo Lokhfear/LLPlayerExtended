@@ -55,7 +55,7 @@ public class Video : NotifyPropertyChanged
     /// DWM Total Frames Dropped (requires Config.Player.Stats and Engine.Config.UIRefresh)
     /// Notes: For better count accuracy should avoid Alt+Tab and Minimize (resets per input or seek)
     /// </summary>
-    public uint         FramesDropped   { get => _FramesDropped;     internal set => Set(ref _FramesDropped, value); }
+    public uint         FramesDropped   { get => _FramesDropped;    internal set => Set(ref _FramesDropped, value); }
     internal uint   _FramesDropped;
 
     /// <summary>
@@ -141,7 +141,7 @@ public class Video : NotifyPropertyChanged
         if (decoder.VideoStream == null) { Reset(); return; }
 
         streamIndex = decoder.VideoStream.StreamIndex;
-        codec       = decoder.VideoStream.Codec;
+        codec       = player.VideoDecoder.CurCodecSpec.Name;
         fps         = decoder.VideoStream.FPS;
         pixelFormat = decoder.VideoStream.PixelFormatStr;
         framesTotal = decoder.VideoStream.TotalFrames;
@@ -225,14 +225,4 @@ public class Video : NotifyPropertyChanged
         if (wasPlaying || Config.Player.AutoPlay)
             player.Play();
     }
-
-    public void Toggle() => Config.Video.Enabled = !Config.Video.Enabled;
-    public void ToggleKeepRatio()
-    {
-        if (Config.Video.AspectRatio == AspectRatio.Keep)
-            Config.Video.AspectRatio = AspectRatio.Fill;
-        else if (Config.Video.AspectRatio == AspectRatio.Fill)
-            Config.Video.AspectRatio = AspectRatio.Keep;
-    }
-    public void ToggleVideoAcceleration() => Config.Video.VideoAcceleration = !Config.Video.VideoAcceleration;
 }

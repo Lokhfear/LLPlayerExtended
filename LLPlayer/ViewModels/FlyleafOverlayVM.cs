@@ -230,7 +230,7 @@ public class FlyleafOverlayVM : Bindable
         // CTRL + Wheel  : Zoom in / out
         // SHIFT + Wheel : Subtitles Up / Down
         // CTRL + SHIFT + Wheel : Subtitles Size Increase / Decrease
-        if (e.Delta == 0)
+        if (e.Delta == 0 || e.Handled)
         {
             return;
         }
@@ -239,6 +239,8 @@ public class FlyleafOverlayVM : Bindable
 
         bool ctrlDown = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
         bool shiftDown = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
+
+        bool actionDone = false;
 
         if (ctrlDown && shiftDown)
         {
@@ -250,6 +252,7 @@ public class FlyleafOverlayVM : Bindable
             {
                 FL.Action.CmdSubsSizeDecrease.Execute();
             }
+            actionDone = true;
         }
         else if (ctrlDown)
         {
@@ -257,12 +260,13 @@ public class FlyleafOverlayVM : Bindable
             Point curDpi = new(cur.X * DpiX, cur.Y * DpiY);
             if (e.Delta > 0)
             {
-                FL.Player.ZoomIn(curDpi);
+                FL.PlayerConfig.Video.ZoomIn(curDpi);
             }
             else
             {
-                FL.Player.ZoomOut(curDpi);
+                FL.PlayerConfig.Video.ZoomOut(curDpi);
             }
+            actionDone = true;
         }
         else if (shiftDown)
         {
@@ -274,6 +278,7 @@ public class FlyleafOverlayVM : Bindable
             {
                 FL.Action.CmdSubsPositionDown.Execute();
             }
+            actionDone = true;
         }
         else
         {
@@ -281,16 +286,20 @@ public class FlyleafOverlayVM : Bindable
             {
                 if (e.Delta > 0)
                 {
-                    FL.Player.Audio.VolumeUp();
+                    FL.PlayerConfig.Audio.VolumeUp();
                 }
                 else
                 {
-                    FL.Player.Audio.VolumeDown();
+                    FL.PlayerConfig.Audio.VolumeDown();
                 }
+                actionDone = true;
             }
         }
 
-        e.Handled = true;
+        if (actionDone)
+        {
+            e.Handled = true;
+        }
     }
     #endregion
 
@@ -312,14 +321,8 @@ public class FlyleafOverlayVM : Bindable
                 case nameof(player.LoopPlayback):
                     OSDMessage = $"Loop Playback {(player.LoopPlayback ? "On" : "Off")}";
                     break;
-                case nameof(player.Rotation):
-                    OSDMessage = $"Rotation {player.Rotation}°";
-                    break;
                 case nameof(player.Speed):
                     OSDMessage = $"Speed x{player.Speed}";
-                    break;
-                case nameof(player.Zoom):
-                    OSDMessage = $"Zoom {player.Zoom}%";
                     break;
                 case nameof(player.Status):
                     // Change only Play and Pause to icon
@@ -377,6 +380,12 @@ public class FlyleafOverlayVM : Bindable
         {
             switch (e.PropertyName)
             {
+                case nameof(player.Config.Video.Rotation):
+                    OSDMessage = $"Rotation {player.Config.Video.Rotation}°";
+                    break;
+                case nameof(player.Config.Video.Zoom):
+                    OSDMessage = $"Zoom {player.Config.Video.Zoom}%";
+                    break;
                 case nameof(player.Config.Video.Enabled):
                     OSDMessage = $"Video {(player.Config.Video.Enabled ? "Enabled" : "Disabled")}";
                     break;
