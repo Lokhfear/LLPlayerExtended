@@ -5,31 +5,42 @@ obj/
 *.exe
 *.dll
 *.pdb
-*.userprefs
+*.nupkg
+*.snupkg
+*.msi
+*.appx
+*.msix
 
 # Dependencies
 packages/
 node_modules/
-lib/
+venv/
+.venv/
+.env
+.env.local
+*.env.*
 
-# Logs
-*.log
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Visual Studio
+# IDE files
 .vs/
+.vscode/
+.idea/
+*.userprefs
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
-# Rider
-.idea/
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+Icon?
+apidoc/
 
-# Temp files
-*.tmp
-*~
+# Logs
+*.log
+
+# Testing
+TestResults/
 ```
