@@ -47,6 +47,12 @@
     <conv:BoolToStarIconConverter x:Key="BoolToStarIconConverter"/>
     <conv:BoolToArrowIconConverter x:Key="BoolToArrowIconConverter"/>
     <conv:HalfConverter x:Key="HalfConv" />
+    
+    <!-- FIX #9: Additional converters for DictionaryControl -->
+    <conv:NullOrEmptyToHiddenConverter x:Key="NullOrEmptyToHiddenConverter"/>
+    <conv:BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    <conv:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVis"/>
+    <conv:InverseBooleanConverter x:Key="InverseBool"/>
 
     <!--Subtitle Converters-->
     <conv:WidthPercentageMultiConverter x:Key="WidthPercentageMultiConv"/>
