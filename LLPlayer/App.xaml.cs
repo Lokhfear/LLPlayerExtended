@@ -41,6 +41,7 @@ public partial class App : PrismApplication
 
     /// <summary>
     /// Открыть/показать окно словаря (синглтон).
+    /// Вызывается при нажатии кнопки "Learning Library".
     /// </summary>
     public static void ShowDictionaryWindow()
     {
@@ -64,11 +65,11 @@ public partial class App : PrismApplication
                 Content = new Controls.DictionaryControl { DataContext = vm }
             };
 
-            // Окно не закрывается — только скрывается
-            _dictionaryWindow.Closing += (s, e) =>
+            // Окно закрывается штатно — больше не блокируем закрытие
+            // Просто очищаем ссылку при закрытии
+            _dictionaryWindow.Closed += (s, e) =>
             {
-                e.Cancel = true;
-                _dictionaryWindow?.Hide();
+                _dictionaryWindow = null;
             };
         }
         

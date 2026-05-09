@@ -146,8 +146,24 @@ public class DictionaryViewModel : INotifyPropertyChanged
     {
         if (entry?.Timestamp == null || string.IsNullOrEmpty(entry.VideoId)) return;
         
-        // TODO: Integrate with FlyleafManager to seek to timestamp
-        // For now, just show a message
+        // Попытка получить доступ к плееру через FlyleafManager
+        try
+        {
+            var flManager = ((App)App.Current).Container.Resolve<FlyleafManager>();
+            if (flManager?.Player != null)
+            {
+                // Конвертируем секунды в тики (1 секунда = 10,000,000 тиков)
+                long ticks = (long)(entry.Timestamp.Value * 10_000_000);
+                flManager.Player.CurTime = ticks;
+                return;
+            }
+        }
+        catch
+        {
+            // Игнорируем ошибки доступа к плееру
+        }
+        
+        // Если не удалось выполнить seek — показываем информационное сообщение
         System.Windows.MessageBox.Show(
             $"Would play video at {TimeSpan.FromSeconds(entry.Timestamp.Value):hh\\:mm\\:ss}\n\nIntegration with main player needed.",
             "Play at Timestamp",
