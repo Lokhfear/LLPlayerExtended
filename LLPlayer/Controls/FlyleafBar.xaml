@@ -98,10 +98,11 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- 📖 Learning Library Button -->
-                <Button Grid.Column="0" 
+                <!-- 📖 Learning Library Button (перемещён в конец панели, FIX #5) -->
+                <Button Grid.Column="13" 
                         Click="LibraryButton_OnClick"
                         Content="{materialDesign:PackIcon Kind=BookOpenPageVariant}" 
                         ToolTip="Learning Library"
