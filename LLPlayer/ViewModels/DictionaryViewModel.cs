@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using LLPlayer.Models;
 using LLPlayer.Services;
@@ -23,9 +24,6 @@ public class DictionaryViewModel : INotifyPropertyChanged
         _service = service;
         DeleteCommand = new RelayCommand<WordEntry>(OnDelete);
         RefreshCommand = new RelayCommand(async _ => await LoadEntriesAsync());
-        ToggleExpandCommand = new RelayCommand<WordEntry>(OnToggleExpand);
-        ExpandAllCommand = new RelayCommand(_ => OnExpandAll());
-        CollapseAllCommand = new RelayCommand(_ => OnCollapseAll());
         PlayAtTimestampCommand = new RelayCommand<WordEntry>(OnPlayAtTimestamp);
     }
 
@@ -68,9 +66,6 @@ public class DictionaryViewModel : INotifyPropertyChanged
 
     public ICommand DeleteCommand { get; }
     public ICommand RefreshCommand { get; }
-    public ICommand ToggleExpandCommand { get; }
-    public ICommand ExpandAllCommand { get; }
-    public ICommand CollapseAllCommand { get; }
     public ICommand PlayAtTimestampCommand { get; }
 
     // ─── Методы ───────────────────────────────────────────────────────────────
@@ -112,34 +107,20 @@ public class DictionaryViewModel : INotifyPropertyChanged
     private async void OnDelete(WordEntry? entry)
     {
         if (entry == null) return;
+        
+        // Show confirmation dialog
+        var result = MessageBox.Show(
+            $"Are you sure you want to delete \"{entry.Word}\"?",
+            "Confirm Delete",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question,
+            MessageBoxResult.No);
+        
+        if (result != MessageBoxResult.Yes) return;
+        
         await _service.RemoveAsync(entry.Id);
         Entries.Remove(entry);
         TotalCount--;
-    }
-
-    private void OnToggleExpand(WordEntry? entry)
-    {
-        if (entry == null) return;
-        entry.IsExpanded = !entry.IsExpanded;
-        OnPropertyChanged(nameof(Entries));
-    }
-
-    private void OnExpandAll()
-    {
-        foreach (var entry in Entries)
-        {
-            entry.IsExpanded = true;
-        }
-        OnPropertyChanged(nameof(Entries));
-    }
-
-    private void OnCollapseAll()
-    {
-        foreach (var entry in Entries)
-        {
-            entry.IsExpanded = false;
-        }
-        OnPropertyChanged(nameof(Entries));
     }
 
     private void OnPlayAtTimestamp(WordEntry? entry)
@@ -164,11 +145,11 @@ public class DictionaryViewModel : INotifyPropertyChanged
         }
         
         // Если не удалось выполнить seek — показываем информационное сообщение
-        System.Windows.MessageBox.Show(
+        MessageBox.Show(
             $"Would play video at {TimeSpan.FromSeconds(entry.Timestamp.Value):hh\\:mm\\:ss}\n\nIntegration with main player needed.",
             "Play at Timestamp",
-            System.Windows.MessageBoxButton.OK,
-            System.Windows.MessageBoxImage.Information);
+            MessageBoxButton.OK,
+            MessageBoxImage.Information);
     }
 
     // ─── INotifyPropertyChanged ───────────────────────────────────────────────
