@@ -38,21 +38,12 @@
     <conv:FileSizeHumanConverter x:Key="FileSizeHumanConv"/>
     <conv:NullableIntConverter x:Key="NullableIntConv" />
     
-    <!-- Dictionary Converters -->
+    <!-- Learning Library Converters -->
     <conv:NullToVisibilityConverter NullValue="Collapsed" x:Key="NullToCollapsedConv"/>
     <conv:NullToVisibilityConverter NullValue="Visible" x:Key="NullToVisibleConv"/>
     <conv:ZeroToVisibilityConverter x:Key="ZeroToVisibilityConv"/>
     <conv:InverseBoolToVisConverter x:Key="InverseBoolToVisConverter"/>
-    <conv:StatusToBackgroundConverter x:Key="StatusToBackgroundConverter"/>
     <conv:BoolToStarIconConverter x:Key="BoolToStarIconConverter"/>
-    <conv:BoolToArrowIconConverter x:Key="BoolToArrowIconConverter"/>
-    <conv:HalfConverter x:Key="HalfConv" />
-    
-    <!-- FIX #9: Additional converters for DictionaryControl -->
-    <conv:NullOrEmptyToHiddenConverter x:Key="NullOrEmptyToHiddenConverter"/>
-    <conv:BooleanToVisibilityConverter x:Key="BoolToVis"/>
-    <conv:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVis"/>
-    <conv:InverseBooleanConverter x:Key="InverseBool"/>
 
     <!--Subtitle Converters-->
     <conv:WidthPercentageMultiConverter x:Key="WidthPercentageMultiConv"/>

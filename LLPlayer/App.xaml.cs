@@ -24,9 +24,6 @@ public partial class App : PrismApplication
 
     private readonly LogHandler Log;
 
-    // Dictionary window singleton
-    private static Window? _dictionaryWindow;
-    
     // Learning Library window singleton
     private static LearningLibraryWindow? _libraryWindow;
     
@@ -40,46 +37,8 @@ public partial class App : PrismApplication
     }
 
     /// <summary>
-    /// Открыть/показать окно словаря (синглтон).
-    /// Вызывается при нажатии кнопки "Learning Library".
-    /// </summary>
-    public static void ShowDictionaryWindow()
-    {
-        if (_dictionaryWindow == null)
-        {
-            var service = ((App)Current).Container.Resolve<DictionaryService>();
-            var vm = new ViewModels.DictionaryViewModel(service);
-            
-            _dictionaryWindow = new Window
-            {
-                Title = "Dictionary",
-                Width = 720,
-                Height = 550,
-                MinWidth = 500,
-                MinHeight = 350,
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                Background = Application.Current.TryFindResource("MaterialDesignPaper") as Brush,
-                Foreground = Application.Current.TryFindResource("MaterialDesignBody") as Brush,
-                ResizeMode = ResizeMode.CanResize,
-                ShowInTaskbar = false,
-                Content = new Controls.DictionaryControl { DataContext = vm }
-            };
-
-            // Окно закрывается штатно — больше не блокируем закрытие
-            // Просто очищаем ссылку при закрытии
-            _dictionaryWindow.Closed += (s, e) =>
-            {
-                _dictionaryWindow = null;
-            };
-        }
-        
-        _dictionaryWindow.Owner = Current.MainWindow;
-        _dictionaryWindow.Show();
-        _dictionaryWindow.Activate();
-    }
-    
-    /// <summary>
     /// Открыть/показать окно библиотеки обучения (синглтон).
+    /// Вызывается при нажатии кнопки "Learning Library".
     /// </summary>
     public static void ShowLibraryWindow()
     {
@@ -123,8 +82,7 @@ public partial class App : PrismApplication
         containerRegistry
             .Register<Player>(FlyleafLoader.CreateFlyleafPlayer)
             .RegisterSingleton<FlyleafManager>()
-            .RegisterSingleton<IDialogService, ExtendedDialogService>()
-            .RegisterSingleton<DictionaryService>();
+            .RegisterSingleton<IDialogService, ExtendedDialogService>();
 
         containerRegistry.RegisterDialogWindow<MyDialogWindow>();
 
