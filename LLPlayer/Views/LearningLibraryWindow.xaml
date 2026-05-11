@@ -360,16 +360,12 @@
                     BorderThickness="0,0.5,0,0"
                     Padding="12,8">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" 
+                    <TextBlock 
                                FontSize="11"
                                Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
                                VerticalAlignment="Center">
                         <Run Text="Shown: "/>
-                        <Run Text="{Binding Entries.Count}"/>
+                        <Run Text="{Binding DisplayedCount}"/>
                         <Run Text=" / Total: "/>
                         <Run Text="{Binding TotalCount}"/>
                     </TextBlock>
