@@ -78,7 +78,7 @@
                                   Background="Transparent"
                                   BorderThickness="0"
                                   ToolTip="Pin to left side">
-                        <md:PackIcon Kind="SidebarLeftCollapse"
+                        <md:PackIcon Kind="DockLeft"
                                      Width="14"
                                      Height="14"
                                      Foreground="#7c6af7"/>
