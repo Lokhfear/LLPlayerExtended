@@ -10,7 +10,7 @@
              d:DataContext="{d:DesignInstance vm:DictionaryViewModel}"
              d:Foreground="White"
              d:Background="{StaticResource LLE.Brush.Background.Primary}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="680">
     <UserControl.Resources>
         <ResourceDictionary>
             <BooleanToVisibilityConverter x:Key="BoolToVis"/>
@@ -28,171 +28,386 @@
 
     <Grid Background="{StaticResource LLE.Brush.Background.Primary}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>  <!-- заголовок + поиск + действия -->
-            <RowDefinition Height="Auto"/>  <!-- статистика -->
-            <RowDefinition Height="*"/>     <!-- список -->
+            <RowDefinition Height="Auto"/>  <!-- Titlebar -->
+            <RowDefinition Height="Auto"/>  <!-- Pin hint -->
+            <RowDefinition Height="Auto"/>  <!-- Toolbar (search + sort) -->
+            <RowDefinition Height="*"/>     <!-- Cards list -->
+            <RowDefinition Height="Auto"/>  <!-- Statusbar -->
         </Grid.RowDefinitions>
 
-        <!-- ── Шапка ──────────────────────────────────────── -->
-        <Grid Grid.Row="0" Margin="16,16,16,8">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <!-- ── TITLEBAR ──────────────────────────────────────── -->
+        <Border Grid.Row="0" 
+                Background="#2D2D2D" 
+                MouseLeftButtonDown="TitleBar_MouseLeftButtonDown"
+                Height="36">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Поиск -->
-            <TextBox Grid.Column="0"
-                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                     materialDesign:HintAssist.Hint="Search words..."
-                     Style="{StaticResource LLE.FilterTextBox}"
-                     VerticalAlignment="Center"/>
+                <!-- Icon -->
+                <materialDesign:PackIcon Grid.Column="0" 
+                                         Kind="BookOpenPageVariant" 
+                                         Width="16" 
+                                         Height="16" 
+                                         Margin="10,0,0,0"
+                                         Foreground="#AAAAAA"
+                                         VerticalAlignment="Center"/>
 
-            <!-- Обновить -->
-            <Button Grid.Column="1"
-                    Command="{Binding RefreshCommand}"
-                    Style="{StaticResource LLE.IconButton}"
-                    ToolTip="Refresh"
-                    VerticalAlignment="Center">
-                <materialDesign:PackIcon Kind="Refresh" Width="20" Height="20"/>
-            </Button>
-            
-            <!-- Кнопка закрытия (в интерфейсе) -->
-            <Button Grid.Column="2"
-                    Click="CloseButton_Click"
-                    Style="{StaticResource LLE.IconButton}"
-                    ToolTip="Close"
-                    VerticalAlignment="Center">
-                <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
-            </Button>
-        </Grid>
+                <!-- Title -->
+                <TextBlock Grid.Column="1" 
+                           Text="Learning Library" 
+                           FontSize="12" 
+                           Foreground="#CCCCCC"
+                           VerticalAlignment="Center"
+                           Margin="8,0,0,0"/>
 
-        <!-- ── Статистика ────────────────────────────────── -->
-        <Border Grid.Row="1" Margin="16,0,16,8">
-            <TextBlock Style="{StaticResource LLE.Text.Stat}">
-                <Run Text="{Binding TotalCount, Mode=OneWay}"/>
-                <Run Text="words total · "/>
-                <Run Text="{Binding Entries.Count, Mode=OneWay}"/>
-                <Run Text="shown"/>
-            </TextBlock>
+                <!-- Count -->
+                <TextBlock Grid.Column="2" 
+                           Text="{Binding TotalCount, StringFormat={}{0} words}" 
+                           FontSize="11" 
+                           Foreground="#777777"
+                           VerticalAlignment="Center"
+                           Margin="8,0,8,0"/>
+
+                <!-- Pin Button -->
+                <ToggleButton Grid.Column="3" 
+                              IsChecked="{Binding IsPinned, Mode=TwoWay}"
+                              Width="28" 
+                              Height="28" 
+                              Margin="0,0,4,0"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              ToolTip="Pin to left side">
+                    <ToggleButton.Style>
+                        <Style TargetType="ToggleButton">
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Foreground" Value="#7c6af7"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="#3a3060"/>
+                                    <Setter Property="Foreground" Value="#a78bfa"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ToggleButton.Style>
+                    <materialDesign:PackIcon Kind="SidebarLeftCollapse" 
+                                             Width="14" 
+                                             Height="14"
+                                             VerticalAlignment="Center"/>
+                </ToggleButton>
+
+                <!-- Minimize Button -->
+                <Button Grid.Column="4" 
+                        Click="MinimizeButton_Click"
+                        Width="28" 
+                        Height="28" 
+                        Margin="0,0,4,0"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        ToolTip="Minimize"
+                        Cursor="Hand"
+                        Foreground="#AAAAAA">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#444444"/>
+                                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <materialDesign:PackIcon Kind="Minus" 
+                                             Width="14" 
+                                             Height="14"
+                                             VerticalAlignment="Center"/>
+                </Button>
+
+                <!-- Close Button -->
+                <Button Grid.Column="5" 
+                        Click="CloseButton_Click"
+                        Width="28" 
+                        Height="28" 
+                        Margin="0,0,10,0"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        ToolTip="Close"
+                        Cursor="Hand"
+                        Foreground="#AAAAAA">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#c0392b"/>
+                                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <materialDesign:PackIcon Kind="Close" 
+                                             Width="14" 
+                                             Height="14"
+                                             VerticalAlignment="Center"/>
+                </Button>
+            </Grid>
         </Border>
 
-        <!-- ── Список ────────────────────────────────────── -->
-        <Grid Grid.Row="2">
-            <!-- Индикатор загрузки -->
-            <ProgressBar IsIndeterminate="True"
-                         Visibility="{Binding IsLoading, Converter={StaticResource BoolToVis}}"
-                         VerticalAlignment="Top"
-                         Height="2"/>
-
-            <!-- Пусто -->
-            <StackPanel VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Visibility="{Binding Entries.Count, Converter={StaticResource ZeroToVisibilityConv}}"
-                        Margin="32">
-                <TextBlock Text="📭" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,16"/>
-                <TextBlock Text="No words yet"
-                           FontSize="16" FontWeight="Medium"
-                           HorizontalAlignment="Center" 
-                           Foreground="{StaticResource LLE.Brush.Text.Tertiary}"/>
-                <TextBlock Text="Right-click a word in subtitles → Add to Dictionary"
-                           FontSize="12" 
-                           HorizontalAlignment="Center"
-                           Margin="0,8,0,0"
-                           TextWrapping="Wrap"
-                           TextAlignment="Center"
-                           Foreground="{StaticResource LLE.Brush.Text.Hint}"/>
+        <!-- ── PIN HINT ──────────────────────────────────────── -->
+        <Border Grid.Row="1" 
+                Visibility="{Binding IsPinned, Converter={StaticResource BoolToVis}}"
+                Background="{StaticResource LLE.Brush.Background.Secondary}"
+                BorderBrush="{StaticResource LLE.Brush.Border.Light}"
+                BorderThickness="0,0.5,0,0.5"
+                Padding="10,6">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="PushPin" 
+                                         Width="12" 
+                                         Height="12" 
+                                         Foreground="#7c6af7"
+                                         Margin="0,0,6,0"/>
+                <TextBlock Text="Pinned: hides in fullscreen · shows on pause" 
+                           FontSize="11" 
+                           Foreground="{StaticResource LLE.Brush.Text.Secondary}"
+                           VerticalAlignment="Center"/>
+                <Border Background="#3a3060" 
+                        CornerRadius="3" 
+                        Padding="6,2" 
+                        Margin="10,0,0,0">
+                    <TextBlock Text="Pinned" 
+                               FontSize="10" 
+                               FontWeight="Medium"
+                               Foreground="#a78bfa"
+                               LetterSpacing="0.3"/>
+                </Border>
             </StackPanel>
+        </Border>
 
-            <!-- Список слов -->
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ItemsControl ItemsSource="{Binding Entries}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <materialDesign:Card Margin="8,4" Padding="0" 
-                                                 UniformCornerRadius="12"
-                                                 Background="{StaticResource LLE.Brush.Background.Secondary}">
-                                <Grid>
-                                    <!-- Горизонтальный layout: предложение слева, перевод справа -->
-                                    <Grid Margin="16,12">
+        <!-- ── TOOLBAR (Search + Sort) ──────────────────────────────────────── -->
+        <Border Grid.Row="2" 
+                Background="{StaticResource LLE.Brush.Background.Secondary}"
+                BorderBrush="{StaticResource LLE.Brush.Border.Light}"
+                BorderThickness="0,0,0,0.5"
+                Padding="10,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Search Box -->
+                <TextBox Grid.Column="0" 
+                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                         materialDesign:HintAssist.Hint="&#xf002; Search words..."
+                         Style="{StaticResource LLE.FilterTextBox}"
+                         VerticalAlignment="Center"
+                         Height="28"
+                         FontSize="12"/>
+
+                <!-- Sort ComboBox -->
+                <ComboBox Grid.Column="1" 
+                          SelectedValue="{Binding SortMode}"
+                          SelectedValuePath="Tag"
+                          VerticalAlignment="Center"
+                          Height="28"
+                          Width="120"
+                          Margin="8,0,0,0"
+                          FontSize="12">
+                    <ComboBoxItem Content="By date ↓" Tag="Newest"/>
+                    <ComboBoxItem Content="A — Z" Tag="Alphabetical"/>
+                </ComboBox>
+            </Grid>
+        </Border>
+
+        <!-- ── CARDS LIST ──────────────────────────────────────── -->
+        <Border Grid.Row="3" 
+                Background="{StaticResource LLE.Brush.Background.Tertiary}"
+                Padding="6,8">
+            <Grid>
+                <!-- Loading Indicator -->
+                <ProgressBar IsIndeterminate="True"
+                             Visibility="{Binding IsLoading, Converter={StaticResource BoolToVis}}"
+                             VerticalAlignment="Top"
+                             Height="2"/>
+
+                <!-- Empty State -->
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Visibility="{Binding Entries.Count, Converter={StaticResource ZeroToVisibilityConv}}"
+                            Margin="32">
+                    <TextBlock Text="📭" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+                    <TextBlock Text="No words yet"
+                               FontSize="16" FontWeight="Medium"
+                               HorizontalAlignment="Center" 
+                               Foreground="{StaticResource LLE.Brush.Text.Tertiary}"/>
+                    <TextBlock Text="Right-click a word in subtitles → Add to Dictionary"
+                               FontSize="12" 
+                               HorizontalAlignment="Center"
+                               Margin="0,8,0,0"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Foreground="{StaticResource LLE.Brush.Text.Hint}"/>
+                </StackPanel>
+
+                <!-- Cards List -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              Visibility="{Binding Entries.Count, Converter={StaticResource NullToVisibleConv}}">
+                    <ItemsControl ItemsSource="{Binding Entries}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <!-- Card -->
+                                <Border Margin="0,0,0,5"
+                                        Background="{StaticResource LLE.Brush.Background.Primary}"
+                                        BorderBrush="{StaticResource LLE.Brush.Border.Light}"
+                                        BorderThickness="0.5"
+                                        CornerRadius="6"
+                                        MinHeight="52">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="BorderBrush" Value="{StaticResource LLE.Brush.Border.Medium}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="1"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        
-                                        <!-- Левая часть: слово и перевод -->
-                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+
+                                        <!-- Left: Word + Sentence -->
+                                        <StackPanel Grid.Column="0" 
+                                                    VerticalAlignment="Center" 
+                                                    Margin="12,8">
                                             <TextBlock Text="{Binding Word}"
-                                                       FontSize="18"
-                                                       FontWeight="SemiBold"
-                                                       Foreground="{StaticResource LLE.Brush.Text.Primary}"/>
-                                            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
-                                                <TextBlock Text="—"
-                                                           FontSize="13"
-                                                           Foreground="{StaticResource LLE.Brush.Text.Hint}"
-                                                           Visibility="{Binding Translation, Converter={StaticResource NullToCollapsedConv}}"/>
-                                                <TextBlock Text="{Binding Translation}"
-                                                           FontSize="13"
-                                                           Foreground="{StaticResource LLE.Brush.Accent.Blue}"
-                                                           FontStyle="Italic"
-                                                           Visibility="{Binding Translation, Converter={StaticResource NullToCollapsedConv}}"/>
-                                                <!-- Ожидание перевода -->
-                                                <ProgressBar IsIndeterminate="True"
-                                                             Width="40" Height="3"
-                                                             VerticalAlignment="Center"
-                                                             Margin="8,0,0,0"
-                                                             Visibility="{Binding Translation, Converter={StaticResource NullToVisibleConv}}"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                        
-                                        <!-- Центральная часть: кнопки действий -->
-                                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0">
-                                            <!-- Delete -->
-                                            <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                    CommandParameter="{Binding}"
-                                                    Style="{StaticResource LLE.IconButton}"
-                                                    ToolTip="Delete">
-                                                <materialDesign:PackIcon Kind="Delete" Width="18" Height="18"/>
-                                            </Button>
-                                        </StackPanel>
-                                        
-                                        <!-- Правая часть: предложение-контекст -->
-                                        <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Sentence}"
                                                        FontSize="13"
-                                                       FontStyle="Italic"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="#7c6af7"
+                                                       TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding Sentence}"
+                                                       FontSize="11"
                                                        Foreground="{StaticResource LLE.Brush.Text.Secondary}"
-                                                       TextWrapping="Wrap"
-                                                       MaxWidth="300"/>
+                                                       Margin="0,2,0,0"
+                                                       TextTrimming="CharacterEllipsis"/>
+                                        </StackPanel>
+
+                                        <!-- Divider -->
+                                        <Rectangle Grid.Column="1" 
+                                                   Fill="{StaticResource LLE.Brush.Border.Light}"
+                                                   Width="1"
+                                                   Margin="0,4"/>
+
+                                        <!-- Right: Translation + Translation Sentence -->
+                                        <StackPanel Grid.Column="2" 
+                                                    VerticalAlignment="Center" 
+                                                    Margin="12,8">
+                                            <TextBlock Text="{Binding Translation}"
+                                                       FontSize="13"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="{StaticResource LLE.Brush.Text.Primary}"
+                                                       TextTrimming="CharacterEllipsis"/>
                                             <TextBlock Text="{Binding SentenceTranslation}"
-                                                       FontSize="12"
-                                                       TextWrapping="Wrap"
-                                                       Margin="0,4,0,0"
-                                                       Foreground="{StaticResource LLE.Brush.Text.Tertiary}"
+                                                       FontSize="11"
+                                                       Foreground="{StaticResource LLE.Brush.Text.Secondary}"
+                                                       Margin="0,2,0,0"
+                                                       TextTrimming="CharacterEllipsis"
                                                        Visibility="{Binding SentenceTranslation, Converter={StaticResource NullToCollapsedConv}}"/>
                                         </StackPanel>
+
+                                        <!-- Actions -->
+                                        <StackPanel Grid.Column="3" 
+                                                    VerticalAlignment="Center" 
+                                                    Margin="4,0">
+                                            <!-- Play Button -->
+                                            <Button Command="{Binding DataContext.PlayAtTimestampCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Width="22"
+                                                    Height="22"
+                                                    Margin="0,0,0,2"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    ToolTip="Play at timestamp"
+                                                    Visibility="{Binding Timestamp, Converter={StaticResource NullToCollapsedConv}}">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                        <Setter Property="Foreground" Value="{StaticResource LLE.Brush.Text.Secondary}"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Background" Value="{StaticResource LLE.Brush.Background.Secondary}"/>
+                                                                <Setter Property="Foreground" Value="{StaticResource LLE.Brush.Text.Primary}"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                                <materialDesign:PackIcon Kind="Play" Width="12" Height="12"/>
+                                            </Button>
+                                            
+                                            <!-- Delete Button -->
+                                            <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Width="22"
+                                                    Height="22"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    ToolTip="Delete">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                        <Setter Property="Foreground" Value="{StaticResource LLE.Brush.Text.Secondary}"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Background" Value="{StaticResource LLE.Brush.Background.Secondary}"/>
+                                                                <Setter Property="Foreground" Value="#e24b4a"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                                <materialDesign:PackIcon Kind="TrashCanOutline" Width="12" Height="12"/>
+                                            </Button>
+                                        </StackPanel>
                                     </Grid>
-                                    
-                                    <!-- Кнопка воспроизведения внизу карточки -->
-                                    <Border VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="16,0,0,8">
-                                        <Button Command="{Binding DataContext.PlayAtTimestampCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                CommandParameter="{Binding}"
-                                                Style="{StaticResource MaterialDesignFlatButton}"
-                                                Padding="8,4"
-                                                Visibility="{Binding Timestamp, Converter={StaticResource NullToCollapsedConv}}">
-                                            <StackPanel Orientation="Horizontal">
-                                                <materialDesign:PackIcon Kind="PlayCircle" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                                <TextBlock Text="Play at timestamp" FontSize="11"/>
-                                            </StackPanel>
-                                        </Button>
-                                    </Border>
-                                </Grid>
-                            </materialDesign:Card>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </ScrollViewer>
-        </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
+        <!-- ── STATUSBAR ──────────────────────────────────────── -->
+        <Border Grid.Row="4"
+                Background="{StaticResource LLE.Brush.Background.Secondary}"
+                BorderBrush="{StaticResource LLE.Brush.Border.Light}"
+                BorderThickness="0,0.5,0,0"
+                Padding="12,5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           FontSize="11"
+                           Foreground="{StaticResource LLE.Brush.Text.Secondary}">
+                    <Run Text="Shown: "/>
+                    <Run Text="{Binding Entries.Count}"/>
+                    <Run Text=" / Total: "/>
+                    <Run Text="{Binding TotalCount}"/>
+                </TextBlock>
+                <TextBlock Grid.Column="1"
+                           FontSize="11"
+                           Foreground="{StaticResource LLE.Brush.Text.Secondary}"
+                           Text="Ctrl+Click on subtitle — add word"/>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

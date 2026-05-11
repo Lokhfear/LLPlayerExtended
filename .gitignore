@@ -6,41 +6,32 @@ obj/
 *.dll
 *.pdb
 *.nupkg
-*.snupkg
-*.msi
-*.appx
-*.msix
+*.userprefs
 
 # Dependencies
 packages/
 node_modules/
-venv/
-.venv/
-.env
-.env.local
-*.env.*
-
-# IDE files
-.vs/
-.vscode/
-.idea/
-*.userprefs
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
-ehthumbs.db
-Icon?
-apidoc/
+vendor/
 
 # Logs
 *.log
 
-# Testing
-TestResults/
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+.vs/
+.idea/
+*.user
+*.userosscache
+*.suo
+
+# Configuration files
+app.config
+web.config
+
+# Temp files
+*.tmp
+*.temp
 ```
