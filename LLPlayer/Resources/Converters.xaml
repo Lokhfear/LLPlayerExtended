@@ -44,6 +44,9 @@
     <conv:ZeroToVisibilityConverter x:Key="ZeroToVisibilityConv"/>
     <conv:InverseBoolToVisConverter x:Key="InverseBoolToVisConverter"/>
     <conv:BoolToStarIconConverter x:Key="BoolToStarIconConverter"/>
+    
+    <!-- General Converters (continued) -->
+    <conv:HalfConverter x:Key="HalfConv"/>
 
     <!--Subtitle Converters-->
     <conv:WidthPercentageMultiConverter x:Key="WidthPercentageMultiConv"/>
