@@ -135,7 +135,7 @@
                     BorderThickness="0,0.5,0,0.5"
                     Padding="10,6">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <md:PackIcon Kind="PushPin"
+                    <md:PackIcon Kind="PinOutline"
                                  Width="12"
                                  Height="12"
                                  Foreground="#7c6af7"
@@ -358,24 +358,26 @@
                     Background="{DynamicResource LLE.Brush.Background.Secondary}"
                     BorderBrush="{DynamicResource LLE.Brush.Border.Tertiary}"
                     BorderThickness="0,0.5,0,0"
-                    Padding="12,5">
+                    Padding="12,8">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               FontSize="11"
-                               Foreground="{DynamicResource LLE.Brush.Text.Secondary}">
-                        <Run Text="Shown: "/>
-                        <Run Text="{Binding Entries.Count}"/>
-                        <Run Text=" / Total: "/>
-                        <Run Text="{Binding TotalCount}"/>
-                    </TextBlock>
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontSize="11"
+                                   Foreground="{DynamicResource LLE.Brush.Text.Secondary}">
+                            <Run Text="Shown: "/>
+                            <Run Text="{Binding Entries.Count}"/>
+                            <Run Text=" / Total: "/>
+                            <Run Text="{Binding TotalCount}"/>
+                        </TextBlock>
+                    </StackPanel>
                     <TextBlock Grid.Column="1"
                                FontSize="11"
                                Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
-                               Text="Ctrl+Click on subtitle — add word"/>
+                               Text="Ctrl+Click on subtitle — add word"
+                               VerticalAlignment="Center"/>
                 </Grid>
             </Border>
         </Grid>
