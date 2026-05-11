@@ -114,14 +114,14 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
             // Convert LearningItem to WordEntry for the new UI
             var entries = results.Select(item => new WordEntry
             {
-                Id = item.Id,
+                Id = Guid.Parse(item.Id),
                 Word = item.Text,
                 Translation = item.Translation,
                 Sentence = item.ContextSentence,
                 SentenceTranslation = item.ContextSentenceTranslation,
                 Timestamp = item.Media?.TimestampSeconds > 0 ? item.Media.TimestampSeconds : null,
                 VideoId = item.Media?.FilePath,
-                CreatedAtDateTime = item.CreatedAt
+                CreatedAtDateTime = DateTimeOffset.FromUnixTimeMilliseconds(item.CreatedAt).DateTime
             }).ToList();
 
             Entries = new ObservableCollection<WordEntry>(entries);
@@ -137,8 +137,8 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         SearchText = SearchText,
         SortBy = SortMode switch
         {
-            "Alphabetical" => SortMode.Alphabetical,
-            _ => SortMode.Newest
+            "Alphabetical" => Services.SortMode.Alphabetical,
+            _ => Services.SortMode.Newest
         }
     };
 
@@ -177,7 +177,7 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         if (result != MessageBoxResult.Yes) return;
 
         await _service.RemoveAsync(item.Id);
-        Entries.Remove(Entries.FirstOrDefault(e => e.Id == item.Id));
+        Entries.Remove(Entries.FirstOrDefault(e => e.Id.ToString() == item.Id));
         TotalCount--;
     }
 
