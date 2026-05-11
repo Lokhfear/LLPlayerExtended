@@ -8,7 +8,7 @@ namespace LLPlayer.Models;
 public class WordEntry
 {
     public string Id { get; set; } = Guid.NewGuid().ToString();
-
+    
     /// <summary>
     /// Нормализованное слово (lowercase, без знаков препинания по краям)
     /// </summary>
@@ -51,4 +51,9 @@ public class WordEntry
     /// Для UI: раскрыта ли карточка
     /// </summary>
     public bool IsExpanded { get; set; }
+
+    /// <summary>
+    /// Дата создания (для сортировки)
+    /// </summary>
+    public DateTime CreatedAtDateTime => DateTimeOffset.FromUnixTimeMilliseconds(CreatedAt).DateTime;
 }

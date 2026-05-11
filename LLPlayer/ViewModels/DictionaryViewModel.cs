@@ -62,6 +62,25 @@ public class DictionaryViewModel : INotifyPropertyChanged
         set { _totalCount = value; OnPropertyChanged(); }
     }
 
+    private bool _isPinned;
+    public bool IsPinned
+    {
+        get => _isPinned;
+        set { _isPinned = value; OnPropertyChanged(); }
+    }
+
+    private string _sortMode = "Newest";
+    public string SortMode
+    {
+        get => _sortMode;
+        set 
+        { 
+            _sortMode = value; 
+            OnPropertyChanged();
+            OnSortModeChanged();
+        }
+    }
+
     // ─── Команды ──────────────────────────────────────────────────────────────
 
     public ICommand DeleteCommand { get; }
@@ -78,9 +97,17 @@ public class DictionaryViewModel : INotifyPropertyChanged
             var all = await _service.ListAsync();
             TotalCount = all.Count;
 
+            // Apply search filter
             var filtered = string.IsNullOrWhiteSpace(SearchText)
                 ? all
                 : all.Where(e => e.Word.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
+
+            // Apply sort
+            filtered = SortMode switch
+            {
+                "Alphabetical" => filtered.OrderBy(e => e.Word),
+                _ => filtered.OrderByDescending(e => e.CreatedAtDateTime) // Newest by default
+            };
 
             Entries = new ObservableCollection<WordEntry>(filtered);
         }
@@ -102,6 +129,12 @@ public class DictionaryViewModel : INotifyPropertyChanged
             if (!t.IsCanceled)
                 App.Current.Dispatcher.Invoke(async () => await LoadEntriesAsync());
         }, TaskScheduler.Default);
+    }
+
+    private void OnSortModeChanged()
+    {
+        // Reload entries with new sort order
+        _ = LoadEntriesAsync();
     }
 
     private async void OnDelete(WordEntry? entry)
