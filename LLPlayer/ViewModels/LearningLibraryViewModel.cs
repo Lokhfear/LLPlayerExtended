@@ -88,6 +88,10 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         }
     }
 
+    // Computed properties for UI visibility (avoid binding to read-only Count)
+    public bool HasEntries => Entries.Count > 0;
+    public bool HasNoEntries => Entries.Count == 0;
+
     // ─── Команды ───────────────────────────────────────────────────────────
 
     public ICommand DeleteCommand { get; }
@@ -125,6 +129,10 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
             }).ToList();
 
             Entries = new ObservableCollection<WordEntry>(entries);
+            
+            // Notify UI about visibility changes
+            OnPropertyChanged(nameof(HasEntries));
+            OnPropertyChanged(nameof(HasNoEntries));
         }
         finally
         {
@@ -179,6 +187,10 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         await _service.RemoveAsync(item.Id);
         Entries.Remove(Entries.FirstOrDefault(e => e.Id.ToString() == item.Id));
         TotalCount--;
+        
+        // Notify UI about visibility changes
+        OnPropertyChanged(nameof(HasEntries));
+        OnPropertyChanged(nameof(HasNoEntries));
     }
 
     private void OnPlayAtTimestamp(LearningItem? item)

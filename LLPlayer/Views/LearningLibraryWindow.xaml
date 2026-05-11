@@ -207,7 +207,7 @@
                     <!-- Empty State -->
                     <StackPanel VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
-                                Visibility="{Binding Entries.Count, Converter={StaticResource ZeroToVisibilityConv}}"
+                                Visibility="{Binding HasNoEntries, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Margin="32">
                         <TextBlock Text="📭" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,16"/>
                         <TextBlock Text="No words yet"
@@ -225,7 +225,7 @@
 
                     <!-- Cards List -->
                     <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                  Visibility="{Binding Entries.Count, Converter={StaticResource NullToVisibleConv}}">
+                                  Visibility="{Binding HasEntries, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <ItemsControl ItemsSource="{Binding Entries}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -361,23 +361,18 @@
                     Padding="12,8">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                        <TextBlock FontSize="11"
-                                   Foreground="{DynamicResource LLE.Brush.Text.Secondary}">
-                            <Run Text="Shown: "/>
-                            <Run Text="{Binding Entries.Count}"/>
-                            <Run Text=" / Total: "/>
-                            <Run Text="{Binding TotalCount}"/>
-                        </TextBlock>
-                    </StackPanel>
-                    <TextBlock Grid.Column="1"
+                    <TextBlock Grid.Column="0" 
                                FontSize="11"
                                Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
-                               Text="Ctrl+Click on subtitle — add word"
-                               VerticalAlignment="Center"/>
+                               VerticalAlignment="Center">
+                        <Run Text="Shown: "/>
+                        <Run Text="{Binding Entries.Count}"/>
+                        <Run Text=" / Total: "/>
+                        <Run Text="{Binding TotalCount}"/>
+                    </TextBlock>
                 </Grid>
             </Border>
         </Grid>
