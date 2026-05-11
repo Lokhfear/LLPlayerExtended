@@ -114,7 +114,7 @@ public class SubtitlesSidebarVM : Bindable, IDisposable
 
     public DelegateCommand CmdOpenDictionary => field ??= new(() =>
     {
-        App.ShowDictionaryWindow();
+        App.ShowLibraryWindow();
     });
 
     public DelegateCommand<int?> CmdSubPlay => field ??= new((index) =>

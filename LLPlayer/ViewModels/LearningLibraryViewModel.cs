@@ -1,139 +1,98 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using LLPlayer.Extensions;
 using LLPlayer.Models;
 using LLPlayer.Services;
-using Microsoft.Win32;
 
 namespace LLPlayer.ViewModels;
 
 /// <summary>
-/// Главный ViewModel окна библиотеки обучения.
+/// ViewModel для окна Learning Library (редизайн в стиле DictionaryControl).
 /// </summary>
 public class LearningLibraryViewModel : INotifyPropertyChanged
 {
     private readonly LearningItemService _service;
     private readonly ImportExportService _importExport;
-    private CancellationTokenSource? _searchDebounce;
 
-    public LearningLibraryViewModel(LearningItemService svc, ImportExportService ie)
+    // Debounce для поиска
+    private CancellationTokenSource? _searchCts;
+
+    public LearningLibraryViewModel(LearningItemService service, ImportExportService ie)
     {
-        _service = svc;
+        _service = service;
         _importExport = ie;
-
-        DeleteCommand         = new RelayCommand<LearningItem?>(OnDelete);
-        ToggleFavoriteCommand = new RelayCommand<LearningItem?>(OnToggleFavorite);
-        ArchiveCommand        = new RelayCommand<LearningItem?>(OnArchive);
-        RestoreCommand        = new RelayCommand<LearningItem?>(OnRestore);
-        OpenVideoCommand      = new RelayCommand<LearningItem?>(OnOpenVideo);
-        ExportCommand         = new RelayCommand(async _ => await OnExport());
-        ImportCommand         = new RelayCommand(async _ => await OnImport());
-        ClearFiltersCommand   = new RelayCommand(_ => ClearFilters());
-        FavoritesOnlyCommand  = new RelayCommand(_ => ToggleFavoritesOnly());
-        ExpandAllCommand      = new RelayCommand(_ => ExpandAll());
-        CollapseAllCommand    = new RelayCommand(_ => CollapseAll());
+        DeleteCommand = new RelayCommand<LearningItem>(OnDelete);
+        PlayAtTimestampCommand = new RelayCommand<LearningItem>(OnPlayAtTimestamp);
+        RefreshCommand = new RelayCommand(async _ => await LoadEntriesAsync());
     }
 
     // ─── Коллекции ─────────────────────────────────────────────────────────
 
-    private ObservableCollection<LearningItem> _items = new();
-    public ObservableCollection<LearningItem> Items
+    private ObservableCollection<WordEntry> _entries = new();
+    public ObservableCollection<WordEntry> Entries
     {
-        get => _items;
-        private set { _items = value; OnPropertyChanged(); }
+        get => _entries;
+        private set { _entries = value; OnPropertyChanged(); }
     }
 
-    // ─── Счётчики ──────────────────────────────────────────────────────────
-
-    private int _totalCount;
-    public int TotalCount { get => _totalCount; set { _totalCount = value; OnPropertyChanged(); } }
-
-    private int _shownCount;
-    public int ShownCount { get => _shownCount; set { _shownCount = value; OnPropertyChanged(); } }
-
-    // ─── Фильтры ───────────────────────────────────────────────────────────
+    // ─── Свойства ──────────────────────────────────────────────────────────
 
     private string _searchText = string.Empty;
     public string SearchText
     {
         get => _searchText;
-        set { _searchText = value; OnPropertyChanged(); OnSearchTextChanged(); }
+        set
+        {
+            _searchText = value;
+            OnPropertyChanged();
+            OnSearchChanged();
+        }
     }
-
-    private bool _showArchived;
-    public bool ShowArchived
-    {
-        get => _showArchived;
-        set { _showArchived = value; OnPropertyChanged(); _ = RefreshAsync(); }
-    }
-
-    private bool _favoritesOnly;
-    public bool FavoritesOnly
-    {
-        get => _favoritesOnly;
-        set { _favoritesOnly = value; OnPropertyChanged(); _ = RefreshAsync(); }
-    }
-
-    private ItemType? _filterType;
-    public ItemType? FilterType
-    {
-        get => _filterType;
-        set { _filterType = value; OnPropertyChanged(); _ = RefreshAsync(); }
-    }
-
-    private LearningStatus? _filterStatus;
-    public LearningStatus? FilterStatus
-    {
-        get => _filterStatus;
-        set { _filterStatus = value; OnPropertyChanged(); _ = RefreshAsync(); }
-    }
-
-    private bool _hasMediaOnly;
-    public bool HasMediaOnly
-    {
-        get => _hasMediaOnly;
-        set { _hasMediaOnly = value; OnPropertyChanged(); _ = RefreshAsync(); }
-    }
-
-    private SortMode _sortMode = SortMode.Newest;
-    public SortMode SortMode
-    {
-        get => _sortMode;
-        set { _sortMode = value; OnPropertyChanged(); _ = RefreshAsync(); }
-    }
-
-    // ─── Состояния UI ──────────────────────────────────────────────────────
 
     private bool _isLoading;
-    public bool IsLoading { get => _isLoading; set { _isLoading = value; OnPropertyChanged(); } }
+    public bool IsLoading
+    {
+        get => _isLoading;
+        set { _isLoading = value; OnPropertyChanged(); }
+    }
 
-    private bool _isEmpty;
-    public bool IsEmpty { get => _isEmpty; set { _isEmpty = value; OnPropertyChanged(); } }
+    private int _totalCount;
+    public int TotalCount
+    {
+        get => _totalCount;
+        set { _totalCount = value; OnPropertyChanged(); }
+    }
 
-    private string? _statusMessage;
-    public string? StatusMessage { get => _statusMessage; set { _statusMessage = value; OnPropertyChanged(); } }
+    private bool _isPinned;
+    public bool IsPinned
+    {
+        get => _isPinned;
+        set { _isPinned = value; OnPropertyChanged(); }
+    }
+
+    private string _sortMode = "Newest";
+    public string SortMode
+    {
+        get => _sortMode;
+        set
+        {
+            _sortMode = value;
+            OnPropertyChanged();
+            OnSortModeChanged();
+        }
+    }
 
     // ─── Команды ───────────────────────────────────────────────────────────
 
     public ICommand DeleteCommand { get; }
-    public ICommand ToggleFavoriteCommand { get; }
-    public ICommand ArchiveCommand { get; }
-    public ICommand RestoreCommand { get; }
-    public ICommand OpenVideoCommand { get; }
-    public ICommand ExportCommand { get; }
-    public ICommand ImportCommand { get; }
-    public ICommand ClearFiltersCommand { get; }
-    public ICommand FavoritesOnlyCommand { get; }
-    public ICommand ExpandAllCommand { get; }
-    public ICommand CollapseAllCommand { get; }
+    public ICommand PlayAtTimestampCommand { get; }
+    public ICommand RefreshCommand { get; }
 
     // ─── Методы ────────────────────────────────────────────────────────────
 
@@ -141,10 +100,10 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
     {
         var all = await _service.GetAllAsync();
         TotalCount = all.Count;
-        await RefreshAsync();
+        await LoadEntriesAsync();
     }
 
-    public async Task RefreshAsync()
+    public async Task LoadEntriesAsync()
     {
         IsLoading = true;
         try
@@ -152,210 +111,166 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
             var filter = BuildFilter();
             var results = await _service.QueryAsync(filter);
 
-            App.Current.Dispatcher.Invoke(() =>
+            // Convert LearningItem to WordEntry for the new UI
+            var entries = results.Select(item => new WordEntry
             {
-                Items = new ObservableCollection<LearningItem>(results);
-                ShownCount = results.Count;
-                IsEmpty = results.Count == 0;
-            });
+                Id = item.Id,
+                Word = item.Text,
+                Translation = item.Translation,
+                Sentence = item.ContextSentence,
+                SentenceTranslation = item.ContextSentenceTranslation,
+                Timestamp = item.Media?.TimestampSeconds > 0 ? item.Media.TimestampSeconds : null,
+                VideoId = item.Media?.FilePath,
+                CreatedAtDateTime = item.CreatedAt
+            }).ToList();
+
+            Entries = new ObservableCollection<WordEntry>(entries);
         }
-        finally { IsLoading = false; }
+        finally
+        {
+            IsLoading = false;
+        }
     }
 
     private LibraryFilter BuildFilter() => new()
     {
-        SearchText    = SearchText,
-        ShowArchived  = ShowArchived,
-        FavoritesOnly = FavoritesOnly,
-        Type          = FilterType,
-        Status        = FilterStatus,
-        HasMediaOnly  = HasMediaOnly,
-        SortBy        = SortMode
+        SearchText = SearchText,
+        SortBy = SortMode switch
+        {
+            "Alphabetical" => SortMode.Alphabetical,
+            _ => SortMode.Newest
+        }
     };
 
-    private void OnSearchTextChanged()
+    private void OnSearchChanged()
     {
-        _searchDebounce?.Cancel();
-        _searchDebounce = new CancellationTokenSource();
-        var token = _searchDebounce.Token;
-        Task.Delay(300, token)
-            .ContinueWith(t => { if (!t.IsCanceled) _ = RefreshAsync(); },
-                TaskScheduler.Default);
-    }
+        // Debounce 300 мс
+        _searchCts?.Cancel();
+        _searchCts = new CancellationTokenSource();
+        var token = _searchCts.Token;
 
-    private void ClearFilters()
-    {
-        _searchText     = string.Empty; OnPropertyChanged(nameof(SearchText));
-        _favoritesOnly  = false;        OnPropertyChanged(nameof(FavoritesOnly));
-        _filterType     = null;         OnPropertyChanged(nameof(FilterType));
-        _filterStatus   = null;         OnPropertyChanged(nameof(FilterStatus));
-        _hasMediaOnly   = false;        OnPropertyChanged(nameof(HasMediaOnly));
-        _showArchived   = false;        OnPropertyChanged(nameof(ShowArchived));
-        _ = RefreshAsync();
-    }
-
-    private void ToggleFavoritesOnly()
-    {
-        _favoritesOnly = !_favoritesOnly;
-        OnPropertyChanged(nameof(FavoritesOnly));
-        _showArchived = false;
-        OnPropertyChanged(nameof(ShowArchived));
-        _ = RefreshAsync();
-    }
-
-    private void ExpandAll()
-    {
-        foreach (var item in Items)
+        Task.Delay(300, token).ContinueWith(t =>
         {
-            item.IsExpanded = true;
-        }
+            if (!t.IsCanceled)
+                App.Current.Dispatcher.Invoke(async () => await LoadEntriesAsync());
+        }, TaskScheduler.Default);
     }
 
-    private void CollapseAll()
+    private void OnSortModeChanged()
     {
-        foreach (var item in Items)
-        {
-            item.IsExpanded = false;
-        }
+        // Reload entries with new sort order
+        _ = LoadEntriesAsync();
     }
 
     private async void OnDelete(LearningItem? item)
     {
         if (item == null) return;
-        var r = MessageBox.Show($"Delete \"{item.Text}\"?", "Confirm",
-            MessageBoxButton.YesNo, MessageBoxImage.Question);
-        if (r != MessageBoxResult.Yes) return;
-        await _service.RemoveAsync(item.Id);
-        Items.Remove(item);
-        TotalCount--;
-        ShownCount--;
-        IsEmpty = Items.Count == 0;
-    }
 
-    private async void OnToggleFavorite(LearningItem? item)
-    {
-        if (item == null) return;
-        item.IsFavorite = !item.IsFavorite;
-        await _service.UpdateAsync(item);
-        // Обновить только этот элемент в списке (без полной перезагрузки)
-        var idx = Items.IndexOf(item);
-        if (idx >= 0) { Items.RemoveAt(idx); Items.Insert(idx, item); }
-    }
-
-    private async void OnArchive(LearningItem? item)
-    {
-        if (item == null) return;
-        item.Status = LearningStatus.Archived;
-        await _service.UpdateAsync(item);
-        Items.Remove(item);
-        ShownCount--;
-        IsEmpty = Items.Count == 0;
-    }
-
-    private async void OnRestore(LearningItem? item)
-    {
-        if (item == null) return;
-        item.Status = LearningStatus.New;
-        await _service.UpdateAsync(item);
-        await RefreshAsync();
-        var all = await _service.GetAllAsync();
-        TotalCount = all.Count;
-    }
-
-    private void OnOpenVideo(LearningItem? item)
-    {
-        var media = item?.Media;
-        if (media?.HasMedia != true) return;
-
-        if (!File.Exists(media.FilePath))
-        {
-            MessageBox.Show(
-                $"Video file not found:\n{media.FilePath}",
-                "File Not Found",
-                MessageBoxButton.OK,
-                MessageBoxImage.Warning);
-            return;
-        }
-
-        // Открыть видео в LLPlayer и перейти к timestamp
-        // Интеграция с FlyleafLib Player
-        try
-        {
-            // Вариант: передать путь + timestamp через аргументы
-            // MainViewModel.OpenFile(media.FilePath, media.TimestampSeconds);
-
-            // Временно: просто открыть файл
-            Process.Start(new ProcessStartInfo(media.FilePath) { UseShellExecute = true });
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show($"Cannot open video: {ex.Message}",
-                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-    }
-
-    private async Task OnExport()
-    {
-        var dlg = new SaveFileDialog
-        {
-            Filter = "JSON files (*.json)|*.json",
-            FileName = $"llplayer_dictionary_{DateTime.Now:yyyyMMdd}.json",
-            Title = "Export dictionary"
-        };
-        if (dlg.ShowDialog() != true) return;
-
-        try
-        {
-            await _importExport.ExportAsync(dlg.FileName);
-            StatusMessage = $"✓ Exported to {Path.GetFileName(dlg.FileName)}";
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show($"Export failed: {ex.Message}", "Export Error",
-                MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-    }
-
-    private async Task OnImport()
-    {
-        var dlg = new OpenFileDialog
-        {
-            Filter = "JSON files (*.json)|*.json",
-            Title = "Import dictionary"
-        };
-        if (dlg.ShowDialog() != true) return;
-
-        // Спросить режим
-        var overwrite = MessageBox.Show(
-            "Overwrite existing items with the same text?\n\n" +
-            "Yes = Overwrite\nNo = Skip duplicates",
-            "Import Mode",
+        // Show confirmation dialog
+        var result = MessageBox.Show(
+            $"Are you sure you want to delete \"{item.Text}\"?",
+            "Confirm Delete",
             MessageBoxButton.YesNo,
-            MessageBoxImage.Question);
+            MessageBoxImage.Question,
+            MessageBoxResult.No);
 
-        var mode = overwrite == MessageBoxResult.Yes
-            ? ImportMode.Overwrite
-            : ImportMode.Skip;
+        if (result != MessageBoxResult.Yes) return;
 
-        var result = await _importExport.ImportAsync(dlg.FileName, mode);
+        await _service.RemoveAsync(item.Id);
+        Entries.Remove(Entries.FirstOrDefault(e => e.Id == item.Id));
+        TotalCount--;
+    }
 
-        if (!result.Success)
+    private void OnPlayAtTimestamp(LearningItem? item)
+    {
+        if (item?.Media?.TimestampSeconds == null || string.IsNullOrEmpty(item.Media.FilePath)) return;
+
+        // Попытка получить доступ к плееру через FlyleafManager
+        try
         {
-            MessageBox.Show($"Import failed:\n{result.Error}", "Import Error",
-                MessageBoxButton.OK, MessageBoxImage.Error);
-            return;
+            var flManager = ((App)App.Current).Container.Resolve<FlyleafManager>();
+            if (flManager?.Player != null)
+            {
+                // Конвертируем секунды в тики (1 секунда = 10,000,000 тиков)
+                long ticks = (long)(item.Media.TimestampSeconds * 10_000_000);
+                flManager.Player.CurTime = ticks;
+                return;
+            }
+        }
+        catch
+        {
+            // Игнорируем ошибки доступа к плееру
         }
 
-        MessageBox.Show(result.Summary, "Import Complete",
-            MessageBoxButton.OK, MessageBoxImage.Information);
-
-        await RefreshAsync();
-        var all = await _service.GetAllAsync();
-        TotalCount = all.Count;
+        // Если не удалось выполнить seek — показываем информационное сообщение
+        MessageBox.Show(
+            $"Would play video at {TimeSpan.FromSeconds(item.Media.TimestampSeconds.Value):hh\\:mm\\:ss}\n\nIntegration with main player needed.",
+            "Play at Timestamp",
+            MessageBoxButton.OK,
+            MessageBoxImage.Information);
     }
 
     // ─── INotifyPropertyChanged ────────────────────────────────────────────
+
     public event PropertyChangedEventHandler? PropertyChanged;
-    protected void OnPropertyChanged([CallerMemberName] string? n = null)
-        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(n));
+    protected void OnPropertyChanged([CallerMemberName] string? name = null)
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+}
+
+/// <summary>
+/// Модель записи словаря для отображения в Learning Library.
+/// </summary>
+public class WordEntry
+{
+    public Guid Id { get; set; }
+    public string Word { get; set; } = string.Empty;
+    public string? Translation { get; set; }
+    public string? Sentence { get; set; }
+    public string? SentenceTranslation { get; set; }
+    public double? Timestamp { get; set; }
+    public string? VideoId { get; set; }
+    public DateTime CreatedAtDateTime { get; set; }
+}
+
+/// <summary>
+/// Простая реализация ICommand
+/// </summary>
+public class RelayCommand<T> : ICommand
+{
+    private readonly Action<T?> _execute;
+    private readonly Predicate<T?>? _canExecute;
+
+    public RelayCommand(Action<T?> execute, Predicate<T?>? canExecute = null)
+    {
+        _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+        _canExecute = canExecute;
+    }
+
+    public bool CanExecute(object? parameter) => _canExecute == null || _canExecute((T?)parameter);
+    public void Execute(object? parameter) => _execute((T?)parameter);
+    public event EventHandler? CanExecuteChanged
+    {
+        add => CommandManager.RequerySuggested += value;
+        remove => CommandManager.RequerySuggested -= value;
+    }
+}
+
+public class RelayCommand : ICommand
+{
+    private readonly Action<object?> _execute;
+    private readonly Predicate<object?>? _canExecute;
+
+    public RelayCommand(Action<object?> execute, Predicate<object?>? canExecute = null)
+    {
+        _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+        _canExecute = canExecute;
+    }
+
+    public bool CanExecute(object? parameter) => _canExecute == null || _canExecute(parameter);
+    public void Execute(object? parameter) => _execute(parameter);
+    public event EventHandler? CanExecuteChanged
+    {
+        add => CommandManager.RequerySuggested += value;
+        remove => CommandManager.RequerySuggested -= value;
+    }
 }

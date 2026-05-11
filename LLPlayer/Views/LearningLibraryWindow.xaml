@@ -6,10 +6,10 @@
         xmlns:models="clr-namespace:LLPlayer.Models"
         xmlns:services="clr-namespace:LLPlayer.Services"
         Title="Learning Library"
-        Width="980"
-        Height="720"
-        MinWidth="700"
-        MinHeight="500"
+        Width="680"
+        Height="600"
+        MinWidth="500"
+        MinHeight="400"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
@@ -17,646 +17,368 @@
         ShowInTaskbar="False">
 
     <Border Background="{DynamicResource LLE.Brush.Background.Primary}"
-            BorderBrush="{DynamicResource LLE.Brush.Border.Medium}"
-            BorderThickness="1"
-            CornerRadius="10">
+            BorderBrush="{DynamicResource LLE.Brush.Border.Secondary}"
+            BorderThickness="0.5"
+            CornerRadius="8">
 
         <Grid>
-
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="36"/>      <!-- Titlebar -->
+                <RowDefinition Height="Auto"/>    <!-- Pin hint -->
+                <RowDefinition Height="Auto"/>    <!-- Toolbar -->
+                <RowDefinition Height="*"/>       <!-- Cards list -->
+                <RowDefinition Height="Auto"/>    <!-- Statusbar -->
             </Grid.RowDefinitions>
 
-            <!-- HEADER -->
-
+            <!-- ══ TITLEBAR ═══════════════════════════════════ -->
             <Border Grid.Row="0"
-                    Padding="18,14"
-                    Background="{DynamicResource LLE.Brush.Background.Secondary}"
-                    BorderBrush="{DynamicResource LLE.Brush.Border.Light}"
-                    BorderThickness="0,0,0,1">
-
+                    Background="#2D2D2D"
+                    MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
                 <Grid>
-
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0">
+                    <!-- Icon -->
+                    <md:PackIcon Grid.Column="0"
+                                 Kind="BookOpenPageVariant"
+                                 Width="14"
+                                 Height="14"
+                                 Margin="10,0,0,0"
+                                 Foreground="#AAAAAA"
+                                 VerticalAlignment="Center"/>
 
-                        <TextBlock Text="Learning Library"
-                                   FontSize="24"
-                                   FontWeight="SemiBold"
-                                   Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
+                    <!-- Title -->
+                    <TextBlock Grid.Column="1"
+                               Text="Learning Library"
+                               FontSize="12"
+                               Foreground="#CCCCCC"
+                               VerticalAlignment="Center"
+                               Margin="8,0,0,0"/>
 
-                        <TextBlock Text="Saved words, translations and subtitle context"
-                                   Margin="0,4,0,0"
-                                   FontSize="13"
-                                   Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
-                                   Opacity="0.85"/>
+                    <!-- Count -->
+                    <TextBlock Grid.Column="2"
+                               Text="{Binding TotalCount, StringFormat={}{0} words}"
+                               FontSize="11"
+                               Foreground="#777777"
+                               VerticalAlignment="Center"
+                               Margin="8,0,8,0"/>
 
-                    </StackPanel>
+                    <!-- Pin Button -->
+                    <ToggleButton Grid.Column="3"
+                                  IsChecked="{Binding IsPinned, Mode=TwoWay}"
+                                  Width="28"
+                                  Height="28"
+                                  Margin="0,0,4,0"
+                                  Background="Transparent"
+                                  BorderThickness="0"
+                                  ToolTip="Pin to left side"
+                                  Style="{StaticResource MaterialDesignFlatButton}">
+                        <md:PackIcon Kind="SidebarLeftCollapse"
+                                     Width="14"
+                                     Height="14"
+                                     Foreground="#7c6af7"/>
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Setter Property="Background" Value="#3a3060"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
 
-                    <StackPanel Grid.Column="1"
-                                Orientation="Horizontal"
-                                VerticalAlignment="Center">
+                    <!-- Minimize Button -->
+                    <Button Grid.Column="4"
+                            Click="MinimizeButton_Click"
+                            Width="28"
+                            Height="28"
+                            Margin="0,0,4,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            ToolTip="Minimize"
+                            Style="{StaticResource MaterialDesignFlatButton}">
+                        <md:PackIcon Kind="Minus"
+                                     Width="14"
+                                     Height="14"
+                                     Foreground="#AAAAAA"/>
+                    </Button>
 
-                        <Button Command="{Binding ImportCommand}"
-                                Margin="0,0,8,0"
-                                Padding="14,7"
-                                Style="{StaticResource MaterialDesignFlatButton}">
-
-                            <StackPanel Orientation="Horizontal">
-
-                                <md:PackIcon Kind="Import"
-                                             Width="16"
-                                             Height="16"
-                                             Margin="0,0,6,0"
-                                             Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
-
-                                <TextBlock Text="Import"
-                                           Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
-
-                            </StackPanel>
-
-                        </Button>
-
-                        <Button Command="{Binding ExportCommand}"
-                                Padding="14,7"
-                                Style="{StaticResource MaterialDesignFlatButton}">
-
-                            <StackPanel Orientation="Horizontal">
-
-                                <md:PackIcon Kind="Export"
-                                             Width="16"
-                                             Height="16"
-                                             Margin="0,0,6,0"
-                                             Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
-
-                                <TextBlock Text="Export"
-                                           Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
-
-                            </StackPanel>
-
-                        </Button>
-
-                    </StackPanel>
-
+                    <!-- Close Button -->
+                    <Button Grid.Column="5"
+                            Click="CloseButton_Click"
+                            Width="28"
+                            Height="28"
+                            Margin="0,0,10,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            ToolTip="Close"
+                            Style="{StaticResource MaterialDesignFlatButton}">
+                        <md:PackIcon Kind="Close"
+                                     Width="14"
+                                     Height="14"
+                                     Foreground="#AAAAAA"/>
+                    </Button>
                 </Grid>
-
             </Border>
 
-            <!-- FILTERS -->
-
+            <!-- ══ PIN HINT ═══════════════════════════════════ -->
             <Border Grid.Row="1"
-                    Padding="16,12"
-                    Background="{DynamicResource LLE.Brush.Background.Tertiary}"
-                    BorderBrush="{DynamicResource LLE.Brush.Border.Light}"
-                    BorderThickness="0,0,0,1">
+                    Visibility="{Binding IsPinned, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Background="{DynamicResource LLE.Brush.Background.Secondary}"
+                    BorderBrush="{DynamicResource LLE.Brush.Border.Tertiary}"
+                    BorderThickness="0,0.5,0,0.5"
+                    Padding="10,6">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <md:PackIcon Kind="PushPin"
+                                 Width="12"
+                                 Height="12"
+                                 Foreground="#7c6af7"
+                                 Margin="0,0,6,0"/>
+                    <TextBlock Text="Pinned: hides in fullscreen · shows on pause"
+                               FontSize="11"
+                               Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
+                               VerticalAlignment="Center"/>
+                    <Border Background="#3a3060"
+                            CornerRadius="3"
+                            Padding="6,2"
+                            Margin="10,0,0,0">
+                        <TextBlock Text="Pinned"
+                                   FontSize="10"
+                                   FontWeight="Medium"
+                                   Foreground="#a78bfa"/>
+                    </Border>
+                </StackPanel>
+            </Border>
 
+            <!-- ══ TOOLBAR (Search + Sort) ═══════════════════ -->
+            <Border Grid.Row="2"
+                    Background="{DynamicResource LLE.Brush.Background.Secondary}"
+                    BorderBrush="{DynamicResource LLE.Brush.Border.Tertiary}"
+                    BorderThickness="0,0,0,0.5"
+                    Padding="10,8">
                 <Grid>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- SEARCH -->
-
+                    <!-- Search Box -->
                     <TextBox Grid.Column="0"
-                             Margin="0,0,10,0"
                              Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             md:HintAssist.Hint="Search word, translation, sentence or video..."
-                             md:TextFieldAssist.HasClearButton="True"
-                             FontSize="14"
-                             Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
+                             md:HintAssist.Hint=" Search words..."
+                             Style="{StaticResource LLE.FilterTextBox}"
+                             VerticalAlignment="Center"
+                             Height="28"
+                             FontSize="12"/>
 
-                    <!-- STATUS -->
-
+                    <!-- Sort ComboBox -->
                     <ComboBox Grid.Column="1"
-                              Margin="0,0,10,0"
-                              SelectedValue="{Binding FilterStatus}"
-                              SelectedValuePath="Tag"
-                              Style="{StaticResource LLE.FilterComboBox}"
-                              md:HintAssist.Hint="Status">
-
-                        <ComboBoxItem Content="All"
-                                      Tag="{x:Null}"/>
-
-                        <ComboBoxItem Content="New"
-                                      Tag="{x:Static models:LearningStatus.New}"/>
-
-                        <ComboBoxItem Content="Learning"
-                                      Tag="{x:Static models:LearningStatus.Learning}"/>
-
-                        <ComboBoxItem Content="Learned"
-                                      Tag="{x:Static models:LearningStatus.Learned}"/>
-
-                        <ComboBoxItem Content="Ignored"
-                                      Tag="{x:Static models:LearningStatus.Ignored}"/>
-
-                    </ComboBox>
-
-                    <!-- SORT -->
-
-                    <ComboBox Grid.Column="2"
                               SelectedValue="{Binding SortMode}"
                               SelectedValuePath="Tag"
-                              Style="{StaticResource LLE.FilterComboBox}"
-                              md:HintAssist.Hint="Sort">
-
-                        <ComboBoxItem Content="Newest"
-                                      Tag="{x:Static services:SortMode.Newest}"/>
-
-                        <ComboBoxItem Content="Oldest"
-                                      Tag="{x:Static services:SortMode.Oldest}"/>
-
-                        <ComboBoxItem Content="A → Z"
-                                      Tag="{x:Static services:SortMode.Alphabetical}"/>
-
-                        <ComboBoxItem Content="Recently reviewed"
-                                      Tag="{x:Static services:SortMode.RecentlyReviewed}"/>
-
+                              VerticalAlignment="Center"
+                              Height="28"
+                              Width="120"
+                              Margin="8,0,0,0"
+                              FontSize="12"
+                              Style="{StaticResource LLE.FilterComboBox}">
+                        <ComboBoxItem Content="By date ↓" Tag="Newest"/>
+                        <ComboBoxItem Content="A — Z" Tag="Alphabetical"/>
                     </ComboBox>
-
-                    <!-- ACTIONS -->
-
-                    <StackPanel Grid.Column="3"
-                                Margin="14,0,0,0"
-                                Orientation="Horizontal"
-                                VerticalAlignment="Center">
-
-                        <ToggleButton IsChecked="{Binding FavoritesOnly}"
-                                      Margin="0,0,6,0"
-                                      Width="34"
-                                      Height="34"
-                                      Background="Transparent"
-                                      BorderThickness="0"
-                                      ToolTip="Favorites only">
-
-                            <md:PackIcon Kind="StarOutline"
-                                         Width="18"
-                                         Height="18"
-                                         Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
-
-                        </ToggleButton>
-
-                        <ToggleButton IsChecked="{Binding ShowArchived}"
-                                      Margin="0,0,6,0"
-                                      Width="34"
-                                      Height="34"
-                                      Background="Transparent"
-                                      BorderThickness="0"
-                                      ToolTip="Archived">
-
-                            <md:PackIcon Kind="ArchiveOutline"
-                                         Width="18"
-                                         Height="18"
-                                         Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
-
-                        </ToggleButton>
-
-                        <Button Command="{Binding ExpandAllCommand}"
-                                Width="34"
-                                Height="34"
-                                Margin="0,0,6,0"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                ToolTip="Expand all">
-
-                            <md:PackIcon Kind="ArrowExpandVertical"
-                                         Width="18"
-                                         Height="18"
-                                         Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
-
-                        </Button>
-
-                        <Button Command="{Binding CollapseAllCommand}"
-                                Width="34"
-                                Height="34"
-                                Margin="0,0,6,0"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                ToolTip="Collapse all">
-
-                            <md:PackIcon Kind="ArrowCollapseVertical"
-                                         Width="18"
-                                         Height="18"
-                                         Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
-
-                        </Button>
-
-                        <Button Command="{Binding ClearFiltersCommand}"
-                                Width="34"
-                                Height="34"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                ToolTip="Clear filters">
-
-                            <md:PackIcon Kind="FilterRemoveOutline"
-                                         Width="18"
-                                         Height="18"
-                                         Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
-
-                        </Button>
-
-                    </StackPanel>
-
                 </Grid>
-
             </Border>
 
-            <!-- CONTENT -->
+            <!-- ══ CARDS LIST ═══════════════════════════════ -->
+            <Border Grid.Row="3"
+                    Background="{DynamicResource LLE.Brush.Background.Tertiary}"
+                    Padding="6,8">
+                <Grid>
+                    <!-- Loading Indicator -->
+                    <ProgressBar IsIndeterminate="True"
+                                 Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                 VerticalAlignment="Top"
+                                 Height="2"/>
 
-            <Grid Grid.Row="2">
-
-                <!-- LOADING -->
-
-                <ProgressBar IsIndeterminate="True"
-                             Height="2"
-                             VerticalAlignment="Top"
-                             Visibility="{Binding IsLoading,
-                                Converter={StaticResource BooleanToVisibilityConverter}}"/>
-
-                <!-- EMPTY -->
-
-                <Grid Visibility="{Binding IsEmpty,
-                    Converter={StaticResource BooleanToVisibilityConverter}}">
-
-                    <StackPanel HorizontalAlignment="Center"
-                                VerticalAlignment="Center">
-
-                        <TextBlock Text="📚"
-                                   FontSize="48"
-                                   HorizontalAlignment="Center"/>
-
-                        <TextBlock Text="Your library is empty"
-                                   Margin="0,14,0,0"
-                                   FontSize="20"
-                                   FontWeight="SemiBold"
+                    <!-- Empty State -->
+                    <StackPanel VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Visibility="{Binding Entries.Count, Converter={StaticResource ZeroToVisibilityConv}}"
+                                Margin="32">
+                        <TextBlock Text="📭" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+                        <TextBlock Text="No words yet"
+                                   FontSize="16" FontWeight="Medium"
                                    HorizontalAlignment="Center"
-                                   Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
-
-                        <TextBlock Text="Add words from subtitles to start learning"
+                                   Foreground="{DynamicResource LLE.Brush.Text.Tertiary}"/>
+                        <TextBlock Text="Right-click a word in subtitles → Add to Dictionary"
+                                   FontSize="12"
+                                   HorizontalAlignment="Center"
                                    Margin="0,8,0,0"
-                                   FontSize="14"
-                                   HorizontalAlignment="Center"
-                                   Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
-
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Foreground="{DynamicResource LLE.Brush.Text.Hint}"/>
                     </StackPanel>
 
-                </Grid>
-
-                <!-- LIST -->
-
-                <ListBox ItemsSource="{Binding Items}"
-                         BorderThickness="0"
-                         Background="Transparent"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         ScrollViewer.VerticalScrollBarVisibility="Auto"
-                         VirtualizingPanel.IsVirtualizing="True"
-                         VirtualizingPanel.VirtualizationMode="Recycling"
-                         Visibility="{Binding IsEmpty,
-                            Converter={StaticResource InverseBoolToVisConverter}}"
-                         Margin="10">
-
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-
-                            <Setter Property="Padding"
-                                    Value="0"/>
-
-                            <Setter Property="Margin"
-                                    Value="0"/>
-
-                            <Setter Property="BorderThickness"
-                                    Value="0"/>
-
-                            <Setter Property="Background"
-                                    Value="Transparent"/>
-
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Stretch"/>
-
-                            <Setter Property="Focusable"
-                                    Value="False"/>
-
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-
-                    <ListBox.ItemTemplate>
-
-                        <DataTemplate>
-
-                            <Border Margin="0,0,0,10"
-                                    CornerRadius="10"
-                                    Background="{DynamicResource LLE.Brush.Background.Secondary}"
-                                    BorderBrush="{DynamicResource LLE.Brush.Border.Light}"
-                                    BorderThickness="1">
-
-                                <Grid>
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <!-- HEADER -->
-
-                                    <Grid Grid.Row="0"
-                                          Margin="16,14">
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <!-- TEXT -->
-
-                                        <StackPanel Grid.Column="0">
-
-                                            <WrapPanel>
-
-                                                <TextBlock Text="{Binding Text}"
-                                                           FontSize="21"
-                                                           FontWeight="SemiBold"
-                                                           Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
-
-                                                <TextBlock Text="  —  "
-                                                           Margin="8,0"
-                                                           Foreground="{DynamicResource LLE.Brush.Text.Hint}"
-                                                           Visibility="{Binding Translation,
-                                                               Converter={StaticResource NullToCollapsedConv}}"/>
-
-                                                <TextBlock Text="{Binding Translation}"
-                                                           FontSize="19"
-                                                           Foreground="{DynamicResource LLE.Brush.Accent.Blue}"
-                                                           Opacity="0.9"
-                                                           Visibility="{Binding Translation,
-                                                               Converter={StaticResource NullToCollapsedConv}}"/>
-
-                                            </WrapPanel>
-
-                                            <TextBlock Text="{Binding ContextSentence}"
-                                                       Margin="0,10,0,0"
-                                                       TextWrapping="Wrap"
-                                                       FontSize="14"
-                                                       LineHeight="22"
-                                                       Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
-                                                       Opacity="0.88"/>
-
-                                        </StackPanel>
-
-                                        <!-- BUTTONS -->
-
-                                        <Grid Grid.Column="1"
-                                              Margin="12,0,0,0">
-
+                    <!-- Cards List -->
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  Visibility="{Binding Entries.Count, Converter={StaticResource NullToVisibleConv}}">
+                        <ItemsControl ItemsSource="{Binding Entries}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <!-- Card -->
+                                    <Border Margin="0,0,0,5"
+                                            Background="{DynamicResource LLE.Brush.Background.Primary}"
+                                            BorderBrush="{DynamicResource LLE.Brush.Border.Tertiary}"
+                                            BorderThickness="0.5"
+                                            CornerRadius="6"
+                                            MinHeight="52">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="BorderBrush" Value="{DynamicResource LLE.Brush.Border.Secondary}"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="1"/>
+                                                <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <!-- FAVORITE -->
+                                            <!-- Left: Word + Sentence -->
+                                            <StackPanel Grid.Column="0"
+                                                        VerticalAlignment="Center"
+                                                        Margin="12,8">
+                                                <TextBlock Text="{Binding Word}"
+                                                           FontSize="13"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="#7c6af7"
+                                                           TextTrimming="CharacterEllipsis"/>
+                                                <TextBlock Text="{Binding Sentence}"
+                                                           FontSize="11"
+                                                           Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
+                                                           Margin="0,2,0,0"
+                                                           TextTrimming="CharacterEllipsis"/>
+                                            </StackPanel>
 
-                                            <Button Grid.Column="0"
-                                                    Width="32"
-                                                    Height="32"
-                                                    Margin="2"
-                                                    Padding="0"
-                                                    Background="Transparent"
-                                                    BorderThickness="0"
-                                                    Command="{Binding DataContext.ToggleFavoriteCommand,
-                                                        RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                                    CommandParameter="{Binding}">
+                                            <!-- Divider -->
+                                            <Rectangle Grid.Column="1"
+                                                       Fill="{DynamicResource LLE.Brush.Border.Tertiary}"
+                                                       Width="1"
+                                                       Margin="0,8"/>
 
-                                                <md:PackIcon Kind="{Binding IsFavorite,
-                                                    Converter={StaticResource BoolToStarIconConverter}}"
-                                                             Width="17"
-                                                             Height="17"
-                                                             Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
+                                            <!-- Right: Translation + Sentence Translation -->
+                                            <StackPanel Grid.Column="2"
+                                                        VerticalAlignment="Center"
+                                                        Margin="12,8">
+                                                <TextBlock Text="{Binding Translation}"
+                                                           FontSize="13"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource LLE.Brush.Text.Primary}"
+                                                           TextTrimming="CharacterEllipsis"/>
+                                                <TextBlock Text="{Binding SentenceTranslation}"
+                                                           FontSize="11"
+                                                           Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
+                                                           Margin="0,2,0,0"
+                                                           TextTrimming="CharacterEllipsis"
+                                                           Visibility="{Binding SentenceTranslation, Converter={StaticResource NullToCollapsedConv}}"/>
+                                            </StackPanel>
 
-                                            </Button>
+                                            <!-- Actions -->
+                                            <StackPanel Grid.Column="3"
+                                                        VerticalAlignment="Center"
+                                                        Margin="4,0">
+                                                <!-- Play Button -->
+                                                <Button Command="{Binding DataContext.PlayAtTimestampCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                        CommandParameter="{Binding}"
+                                                        Width="22"
+                                                        Height="22"
+                                                        Margin="0,0,0,2"
+                                                        Background="Transparent"
+                                                        BorderThickness="0"
+                                                        ToolTip="Play at timestamp"
+                                                        Visibility="{Binding Timestamp, Converter={StaticResource NullToCollapsedConv}}">
+                                                    <Button.Style>
+                                                        <Style TargetType="Button">
+                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                            <Setter Property="Foreground" Value="{DynamicResource LLE.Brush.Text.Secondary}"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Background" Value="{DynamicResource LLE.Brush.Background.Secondary}"/>
+                                                                    <Setter Property="Foreground" Value="{DynamicResource LLE.Brush.Text.Primary}"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Button.Style>
+                                                    <md:PackIcon Kind="Play" Width="12" Height="12"/>
+                                                </Button>
 
-                                            <!-- ARCHIVE -->
-
-                                            <Button Grid.Column="1"
-                                                    Width="32"
-                                                    Height="32"
-                                                    Margin="2"
-                                                    Padding="0"
-                                                    Background="Transparent"
-                                                    BorderThickness="0"
-                                                    Visibility="{Binding IsArchived,
-                                                        Converter={StaticResource InverseBoolToVisConverter}}"
-                                                    Command="{Binding DataContext.ArchiveCommand,
-                                                        RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                                    CommandParameter="{Binding}">
-
-                                                <md:PackIcon Kind="ArchiveOutline"
-                                                             Width="17"
-                                                             Height="17"
-                                                             Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
-
-                                            </Button>
-
-                                            <!-- RESTORE -->
-
-                                            <Button Grid.Column="2"
-                                                    Width="32"
-                                                    Height="32"
-                                                    Margin="2"
-                                                    Padding="0"
-                                                    Background="Transparent"
-                                                    BorderThickness="0"
-                                                    Visibility="{Binding IsArchived,
-                                                        Converter={StaticResource BooleanToVisibilityConverter}}"
-                                                    Command="{Binding DataContext.RestoreCommand,
-                                                        RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                                    CommandParameter="{Binding}">
-
-                                                <md:PackIcon Kind="Restore"
-                                                             Width="17"
-                                                             Height="17"
-                                                             Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
-
-                                            </Button>
-
-                                            <!-- DELETE -->
-
-                                            <Button Grid.Column="3"
-                                                    Width="32"
-                                                    Height="32"
-                                                    Margin="2"
-                                                    Padding="0"
-                                                    Background="Transparent"
-                                                    BorderThickness="0"
-                                                    Command="{Binding DataContext.DeleteCommand,
-                                                        RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                                    CommandParameter="{Binding}">
-
-                                                <md:PackIcon Kind="DeleteOutline"
-                                                             Width="17"
-                                                             Height="17"
-                                                             Foreground="{DynamicResource LLE.Brush.Text.Secondary}"/>
-
-                                            </Button>
-
-                                            <!-- EXPAND -->
-
-<ToggleButton Grid.Column="4"
-              Width="32"
-              Height="32"
-              Margin="2"
-              Background="Transparent"
-              BorderThickness="0"
-              IsChecked="{Binding IsExpanded, Mode=TwoWay}">
-
-    <Grid>
-
-        <md:PackIcon Kind="ChevronDown"
-                     Width="18"
-                     Height="18"
-                     Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
-                     Visibility="{Binding IsExpanded,
-                        Converter={StaticResource InverseBoolToVisConverter}}"/>
-
-        <md:PackIcon Kind="ChevronUp"
-                     Width="18"
-                     Height="18"
-                     Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
-                     Visibility="{Binding IsExpanded,
-                        Converter={StaticResource BooleanToVisibilityConverter}}"/>
-
-    </Grid>
-
-</ToggleButton>
-
-
-
+                                                <!-- Delete Button -->
+                                                <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                        CommandParameter="{Binding}"
+                                                        Width="22"
+                                                        Height="22"
+                                                        Background="Transparent"
+                                                        BorderThickness="0"
+                                                        ToolTip="Delete">
+                                                    <Button.Style>
+                                                        <Style TargetType="Button">
+                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                            <Setter Property="Foreground" Value="{DynamicResource LLE.Brush.Text.Secondary}"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Background" Value="{DynamicResource LLE.Brush.Background.Secondary}"/>
+                                                                    <Setter Property="Foreground" Value="#e24b4a"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Button.Style>
+                                                    <md:PackIcon Kind="TrashCanOutline" Width="12" Height="12"/>
+                                                </Button>
+                                            </StackPanel>
                                         </Grid>
-
-                                    </Grid>
-
-                                    <!-- EXPANDED -->
-
-                                    <Border Grid.Row="1"
-                                            Padding="16,14"
-                                            Background="{DynamicResource LLE.Brush.Background.Tertiary}"
-                                            BorderBrush="{DynamicResource LLE.Brush.Border.Light}"
-                                            BorderThickness="0,1,0,0"
-                                            Visibility="{Binding IsExpanded,
-                                                Converter={StaticResource BooleanToVisibilityConverter}}">
-
-                                        <StackPanel>
-
-                                            <TextBlock Text="{Binding ContextSentence}"
-                                                       TextWrapping="Wrap"
-                                                       FontSize="15"
-                                                       LineHeight="24"
-                                                       Foreground="{DynamicResource LLE.Brush.Text.Primary}"
-                                                       Opacity="0.96"/>
-
-                                            <TextBlock Text="{Binding ContextSentenceTranslation}"
-                                                       Margin="0,10,0,0"
-                                                       TextWrapping="Wrap"
-                                                       FontSize="14"
-                                                       LineHeight="22"
-                                                       Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
-                                                       Visibility="{Binding ContextSentenceTranslation,
-                                                           Converter={StaticResource NullToCollapsedConv}}"/>
-
-                                            <!-- VIDEO -->
-
-                                            <Button Margin="0,14,0,0"
-                                                    Padding="12,8"
-                                                    HorizontalAlignment="Left"
-                                                    Background="{DynamicResource LLE.Brush.Background.Secondary}"
-                                                    BorderBrush="{DynamicResource LLE.Brush.Border.Light}"
-                                                    BorderThickness="1"
-                                                    Visibility="{Binding Media.HasMedia,
-                                                        Converter={StaticResource BooleanToVisibilityConverter}}"
-                                                    Command="{Binding DataContext.OpenVideoCommand,
-                                                        RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                                    CommandParameter="{Binding}">
-
-                                                <StackPanel Orientation="Horizontal">
-
-                                                    <md:PackIcon Kind="PlayCircleOutline"
-                                                                 Width="18"
-                                                                 Height="18"
-                                                                 Margin="0,0,8,0"
-                                                                 Foreground="{DynamicResource LLE.Brush.Text.Primary}"/>
-
-                                                    <TextBlock FontSize="13"
-                                                               Foreground="{DynamicResource LLE.Brush.Text.Primary}">
-
-                                                        <Run Text="{Binding Media.VideoTitle}"/>
-                                                        <Run Text=" "/>
-                                                       <Run Text="{Binding Media.TimestampDisplay, Mode=OneWay}"/>
-                                                    </TextBlock>
-
-                                                </StackPanel>
-
-                                            </Button>
-
-                                        </StackPanel>
-
                                     </Border>
-
-                                </Grid>
-
-                            </Border>
-
-                        </DataTemplate>
-
-                    </ListBox.ItemTemplate>
-
-                </ListBox>
-
-            </Grid>
-
-            <!-- STATUS -->
-
-            <Border Grid.Row="3"
-                    Padding="12,8"
-                    Background="{DynamicResource LLE.Brush.Background.Quaternary}"
-                    BorderBrush="{DynamicResource LLE.Brush.Border.Light}"
-                    BorderThickness="0,1,0,0">
-
-                <Grid>
-
-                    <TextBlock HorizontalAlignment="Left"
-                               FontSize="12"
-                               Foreground="{DynamicResource LLE.Brush.Text.Hint}">
-
-                        <Run Text="{Binding ShownCount}"/>
-                        <Run Text=" shown / "/>
-                        <Run Text="{Binding TotalCount}"/>
-                        <Run Text=" total"/>
-
-                    </TextBlock>
-
-                    <TextBlock Text="{Binding StatusMessage}"
-                               HorizontalAlignment="Right"
-                               FontSize="12"
-                               Foreground="{DynamicResource LLE.Brush.Accent.Blue}"/>
-
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
                 </Grid>
-
             </Border>
 
+            <!-- ══ STATUSBAR ═══════════════════════════════ -->
+            <Border Grid.Row="4"
+                    Background="{DynamicResource LLE.Brush.Background.Secondary}"
+                    BorderBrush="{DynamicResource LLE.Brush.Border.Tertiary}"
+                    BorderThickness="0,0.5,0,0"
+                    Padding="12,5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                               FontSize="11"
+                               Foreground="{DynamicResource LLE.Brush.Text.Secondary}">
+                        <Run Text="Shown: "/>
+                        <Run Text="{Binding Entries.Count}"/>
+                        <Run Text=" / Total: "/>
+                        <Run Text="{Binding TotalCount}"/>
+                    </TextBlock>
+                    <TextBlock Grid.Column="1"
+                               FontSize="11"
+                               Foreground="{DynamicResource LLE.Brush.Text.Secondary}"
+                               Text="Ctrl+Click on subtitle — add word"/>
+                </Grid>
+            </Border>
         </Grid>
-
     </Border>
-
 </Window>
