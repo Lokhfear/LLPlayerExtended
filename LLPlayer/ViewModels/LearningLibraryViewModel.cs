@@ -69,6 +69,13 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         set { _totalCount = value; OnPropertyChanged(); }
     }
 
+    private int _displayedCount;
+    public int DisplayedCount
+    {
+        get => _displayedCount;
+        set { _displayedCount = value; OnPropertyChanged(); }
+    }
+
     private bool _isPinned;
     public bool IsPinned
     {
@@ -129,6 +136,7 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
             }).ToList();
 
             Entries = new ObservableCollection<WordEntry>(entries);
+            DisplayedCount = entries.Count;
             
             // Notify UI about visibility changes
             OnPropertyChanged(nameof(HasEntries));
@@ -187,6 +195,7 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         await _service.RemoveAsync(item.Id);
         Entries.Remove(Entries.FirstOrDefault(e => e.Id.ToString() == item.Id));
         TotalCount--;
+        DisplayedCount = Entries.Count;
         
         // Notify UI about visibility changes
         OnPropertyChanged(nameof(HasEntries));
