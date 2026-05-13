@@ -27,8 +27,8 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
     {
         _service = service;
         _importExport = ie;
-        DeleteCommand = new RelayCommand<LearningItem>(OnDelete);
-        PlayAtTimestampCommand = new RelayCommand<LearningItem>(OnPlayAtTimestamp);
+        DeleteCommand = new RelayCommand<WordEntry>(OnDelete);
+        PlayAtTimestampCommand = new RelayCommand<WordEntry>(OnPlayAtTimestamp);
         RefreshCommand = new RelayCommand(async _ => await LoadEntriesAsync());
     }
 
@@ -178,8 +178,12 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         _ = LoadEntriesAsync();
     }
 
-    private async void OnDelete(LearningItem? item)
+    private async void OnDelete(WordEntry? entry)
     {
+        if (entry == null) return;
+
+        // Find the corresponding LearningItem
+        var item = await _service.GetByIdAsync(entry.Id.ToString());
         if (item == null) return;
 
         // Show confirmation dialog
@@ -193,18 +197,27 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
         if (result != MessageBoxResult.Yes) return;
 
         await _service.RemoveAsync(item.Id);
-        Entries.Remove(Entries.FirstOrDefault(e => e.Id.ToString() == item.Id));
-        TotalCount--;
-        DisplayedCount = Entries.Count;
         
-        // Notify UI about visibility changes
-        OnPropertyChanged(nameof(HasEntries));
-        OnPropertyChanged(nameof(HasNoEntries));
+        // Remove from collection on UI thread
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            var entryToRemove = Entries.FirstOrDefault(e => e.Id == entry.Id);
+            if (entryToRemove != null)
+            {
+                Entries.Remove(entryToRemove);
+                TotalCount--;
+                DisplayedCount = Entries.Count;
+                
+                // Notify UI about visibility changes
+                OnPropertyChanged(nameof(HasEntries));
+                OnPropertyChanged(nameof(HasNoEntries));
+            }
+        });
     }
 
-    private void OnPlayAtTimestamp(LearningItem? item)
+    private void OnPlayAtTimestamp(WordEntry? entry)
     {
-        if (item?.Media?.TimestampSeconds == null || string.IsNullOrEmpty(item.Media.FilePath)) return;
+        if (entry?.Timestamp == null || string.IsNullOrEmpty(entry.VideoId)) return;
 
         // Попытка получить доступ к плееру через FlyleafManager
         try
@@ -213,8 +226,16 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
             if (flManager?.Player != null)
             {
                 // Конвертируем секунды в тики (1 секунда = 10,000,000 тиков)
-                long ticks = (long)(item.Media.TimestampSeconds * 10_000_000);
+                long ticks = (long)(entry.Timestamp.Value * 10_000_000);
                 flManager.Player.CurTime = ticks;
+                
+                // Also try to load the video file if it's different
+                if (!string.IsNullOrEmpty(entry.VideoId) && 
+                    flManager.Player.MediaPath != entry.VideoId)
+                {
+                    flManager.OpenFile(entry.VideoId);
+                }
+                
                 return;
             }
         }
@@ -225,7 +246,7 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
 
         // Если не удалось выполнить seek — показываем информационное сообщение
         MessageBox.Show(
-            $"Would play video at {TimeSpan.FromSeconds(item.Media.TimestampSeconds.Value):hh\\:mm\\:ss}\n\nIntegration with main player needed.",
+            $"Would play video at {TimeSpan.FromSeconds(entry.Timestamp.Value):hh\\:mm\\:ss}\n\nIntegration with main player needed.",
             "Play at Timestamp",
             MessageBoxButton.OK,
             MessageBoxImage.Information);

@@ -1,31 +1,107 @@
 ```
-# Build artifacts
+# Compiled and build artifacts
 *.obj
 *.exe
 *.dll
-*.so
-*.a
-*.out
+*.pdb
+*.userprefs
+*.useroptions
+*.suo
+*.user
+*.aps
+*.ncb
+*.ilk
+*.idb
+*.ipch
+*.iobj
+*.ipdb
+*.tlog
+*.log
+*.nupkg
+*.snupkg
+*.cache
+*.compiled
+*.dll.config
+*.exe.config
+*.xml.bin
+*.xml.config
+*.xml.lock
+*.xml.user
+*.xml.cache
+*.xml.compiled
+*.xml.dll
+*.xml.exe
+*.xml.pdb
+*.xml.so
+*.xml.a
+*.xml.o
+*.xml.obj
+*.xml.out
 
 # Dependencies
 packages/
 bin/
 obj/
+Debug/
+Release/
+x64/
+x86/
+build/
+dist/
+node_modules/
+.nuget/
+.nuget.packages/
+packages.lock.json
+.project
+.sln
+.csproj
+.vcxproj
+.vcxproj.filters
+.csproj.user
+.vcxproj.user
 
-# Logs
+# Logs and temp files
 *.log
-
-# Temporary files
 *.tmp
 *.temp
+*.cache
+*.swp
+*.swo
 
-# Visual Studio Code
+# Environment
+.env
+.env.local
+.env.*
+
+# Editors
+.vs/
 .vscode/
+.idea/
+*.userprefs
+*.useroptions
+*.suo
+*.user
+Thumbs.db
+.DS_Store
+desktop.ini
 
-# Visual Studio/MSBuild
-**/[Dd]ebug/
-**/[Rr]elease/
-**/[Bb]uild/
-**/bin/
-**/obj/
+# Testing
+TestResults/
+test-results/
+coverage/
+htmlcov/
+.coverage
+*.coverage
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Thumbs.db:encryptable
+*:*
+*~
 ```
