@@ -14,8 +14,8 @@
     <Border
         DataContext="{Binding ElementName=Root}"
         ContextMenu="{Binding PopupContextMenu}"
-        Background="#333333"
-        BorderBrush="{DynamicResource MaterialDesignDivider}"
+        Background="#2D2D2D"
+        BorderBrush="#444444"
         BorderThickness="1"
         CornerRadius="8"
         Padding="10 15">
@@ -42,7 +42,7 @@
                     Cursor="Hand"
                     MouseLeftButtonUp="SourceText_OnMouseLeftButtonUp"
                     FontWeight="Bold"
-                    Foreground="{DynamicResource MaterialDesign.Brush.Secondary.Light}"
+                    Foreground="#90CAF9"
                     FontSize="16"
                     />
 
@@ -56,7 +56,7 @@
                     PreviewMouseLeftButtonUp="CloseButton_OnMouseLeftButtonUp">
                     <materialDesign:PackIcon
                         Kind="Close"
-                        Foreground="{DynamicResource MaterialDesignBody}"
+                        Foreground="#E0E0E0"
                         Width="16" Height="16"/>
                 </Button>
             </Grid>
@@ -70,7 +70,7 @@
                 Width="20"
                 Height="20"
                 Style="{StaticResource MaterialDesignCircularProgressBar}"
-                Foreground="{DynamicResource MaterialDesign.Brush.Secondary}"
+                Foreground="#7c6af7"
                 Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConv}}" />
 
             <TextBox
@@ -82,7 +82,7 @@
                 BorderThickness="0"
                 Grid.Row="1"
                 FontSize="20"
-                Foreground="White"
+                Foreground="#FFFFFF"
                 />
         </Grid>
     </Border>
