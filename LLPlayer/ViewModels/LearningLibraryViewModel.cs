@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -38,7 +39,31 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
     public ObservableCollection<WordEntry> Entries
     {
         get => _entries;
-        private set { _entries = value; OnPropertyChanged(); }
+        private set 
+        { 
+            if (_entries != null)
+                _entries.CollectionChanged -= Entries_CollectionChanged;
+            
+            _entries = value; 
+            
+            if (_entries != null)
+                _entries.CollectionChanged += Entries_CollectionChanged;
+            
+            OnPropertyChanged(); 
+            UpdateCountProperties();
+        }
+    }
+
+    private void Entries_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        UpdateCountProperties();
+    }
+
+    private void UpdateCountProperties()
+    {
+        OnPropertyChanged(nameof(HasEntries));
+        OnPropertyChanged(nameof(HasNoEntries));
+        DisplayedCount = Entries.Count;
     }
 
     // ─── Свойства ──────────────────────────────────────────────────────────
@@ -136,11 +161,8 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
             }).ToList();
 
             Entries = new ObservableCollection<WordEntry>(entries);
-            DisplayedCount = entries.Count;
-            
-            // Notify UI about visibility changes
-            OnPropertyChanged(nameof(HasEntries));
-            OnPropertyChanged(nameof(HasNoEntries));
+            TotalCount = entries.Count;
+            // DisplayedCount and visibility properties are updated via CollectionChanged handler
         }
         finally
         {
@@ -198,7 +220,7 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
 
         await _service.RemoveAsync(item.Id);
         
-        // Remove from collection on UI thread
+        // Remove from collection on UI thread (CollectionChanged will update counts)
         Application.Current.Dispatcher.Invoke(() =>
         {
             var entryToRemove = Entries.FirstOrDefault(e => e.Id == entry.Id);
@@ -206,11 +228,6 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
             {
                 Entries.Remove(entryToRemove);
                 TotalCount--;
-                DisplayedCount = Entries.Count;
-                
-                // Notify UI about visibility changes
-                OnPropertyChanged(nameof(HasEntries));
-                OnPropertyChanged(nameof(HasNoEntries));
             }
         });
     }

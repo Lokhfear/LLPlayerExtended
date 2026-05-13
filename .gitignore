@@ -3,105 +3,40 @@
 *.obj
 *.exe
 *.dll
-*.pdb
-*.userprefs
-*.useroptions
-*.suo
-*.user
-*.aps
-*.ncb
-*.ilk
-*.idb
-*.ipch
-*.iobj
-*.ipdb
-*.tlog
-*.log
-*.nupkg
-*.snupkg
-*.cache
-*.compiled
-*.dll.config
-*.exe.config
-*.xml.bin
-*.xml.config
-*.xml.lock
-*.xml.user
-*.xml.cache
-*.xml.compiled
-*.xml.dll
-*.xml.exe
-*.xml.pdb
-*.xml.so
-*.xml.a
-*.xml.o
-*.xml.obj
-*.xml.out
+*.so
+*.a
+*.out
+*.pyc
+*.class
+*.o
 
 # Dependencies
-packages/
-bin/
-obj/
-Debug/
-Release/
-x64/
-x86/
-build/
-dist/
 node_modules/
-.nuget/
-.nuget.packages/
-packages.lock.json
-.project
-.sln
-.csproj
-.vcxproj
-.vcxproj.filters
-.csproj.user
-.vcxproj.user
+venv/
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+target/
+.gradle/
 
 # Logs and temp files
 *.log
 *.tmp
-*.temp
-*.cache
 *.swp
-*.swo
 
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
 # Editors
-.vs/
 .vscode/
 .idea/
-*.userprefs
-*.useroptions
-*.suo
-*.user
-Thumbs.db
-.DS_Store
-desktop.ini
 
-# Testing
-TestResults/
-test-results/
+# Build outputs
+dist/
+build/
 coverage/
 htmlcov/
-.coverage
-*.coverage
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-Thumbs.db:encryptable
-*:*
-*~
 ```
