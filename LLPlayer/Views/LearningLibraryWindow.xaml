@@ -32,7 +32,7 @@
 
             <!-- ══ TITLEBAR ═══════════════════════════════════ -->
             <Border Grid.Row="0"
-                    Background="#2D2D2D"
+                    Background="#1E1E1E"
                     MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -50,14 +50,14 @@
                                  Width="14"
                                  Height="14"
                                  Margin="10,0,0,0"
-                                 Foreground="#AAAAAA"
+                                 Foreground="#E0E0E0"
                                  VerticalAlignment="Center"/>
 
                     <!-- Title -->
                     <TextBlock Grid.Column="1"
                                Text="Learning Library"
                                FontSize="12"
-                               Foreground="#CCCCCC"
+                               Foreground="#FFFFFF"
                                VerticalAlignment="Center"
                                Margin="8,0,0,0"/>
 
@@ -65,7 +65,7 @@
                     <TextBlock Grid.Column="2"
                                Text="{Binding TotalCount, StringFormat={}{0} words}"
                                FontSize="11"
-                               Foreground="#777777"
+                               Foreground="#B0B0B0"
                                VerticalAlignment="Center"
                                Margin="8,0,8,0"/>
 
@@ -81,7 +81,7 @@
                         <md:PackIcon Kind="DockLeft"
                                      Width="14"
                                      Height="14"
-                                     Foreground="#7c6af7"/>
+                                     Foreground="#a78bfa"/>
                         <ToggleButton.Style>
                             <Style TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignFlatButton}">
                                 <Style.Triggers>
@@ -103,10 +103,21 @@
                             BorderThickness="0"
                             ToolTip="Minimize"
                             Style="{StaticResource MaterialDesignFlatButton}">
-                        <md:PackIcon Kind="Minus"
-                                     Width="14"
-                                     Height="14"
-                                     Foreground="#AAAAAA"/>
+                        <Button.Content>
+                            <md:PackIcon Kind="Minus"
+                                         Width="14"
+                                         Height="14"
+                                         Foreground="#FFFFFF"/>
+                        </Button.Content>
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#3A3A3A"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
                     </Button>
 
                     <!-- Close Button -->
@@ -119,10 +130,21 @@
                             BorderThickness="0"
                             ToolTip="Close"
                             Style="{StaticResource MaterialDesignFlatButton}">
-                        <md:PackIcon Kind="Close"
-                                     Width="14"
-                                     Height="14"
-                                     Foreground="#AAAAAA"/>
+                        <Button.Content>
+                            <md:PackIcon Kind="Close"
+                                         Width="14"
+                                         Height="14"
+                                         Foreground="#FFFFFF"/>
+                        </Button.Content>
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#e24b4a"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
                     </Button>
                 </Grid>
             </Border>
@@ -156,7 +178,7 @@
                 </StackPanel>
             </Border>
 
-            <!-- ══ TOOLBAR (Search + Sort) ═══════════════════ -->
+            <!-- ══ TOOLBAR (Search + Sort + Refresh) ═══════════════════ -->
             <Border Grid.Row="2"
                     Background="{DynamicResource LLE.Brush.Background.Secondary}"
                     BorderBrush="{DynamicResource LLE.Brush.Border.Tertiary}"
@@ -165,6 +187,7 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
@@ -177,14 +200,24 @@
                              Height="28"
                              FontSize="12"/>
 
+                    <!-- Refresh Button -->
+                    <Button Grid.Column="1"
+                            Command="{Binding RefreshCommand}"
+                            Width="36"
+                            Height="28"
+                            Margin="8,0,4,0"
+                            ToolTip="Refresh list"
+                            Style="{StaticResource LLE.IconButton.Compact}">
+                        <md:PackIcon Kind="Refresh" Width="14" Height="14"/>
+                    </Button>
+
                     <!-- Sort ComboBox -->
-                    <ComboBox Grid.Column="1"
+                    <ComboBox Grid.Column="2"
                               SelectedValue="{Binding SortMode}"
                               SelectedValuePath="Tag"
                               VerticalAlignment="Center"
                               Height="28"
                               Width="120"
-                              Margin="8,0,0,0"
                               FontSize="12"
                               Style="{StaticResource LLE.FilterComboBox}">
                         <ComboBoxItem Content="By date ↓" Tag="Newest"/>
@@ -295,53 +328,36 @@
                                             <!-- Actions -->
                                             <StackPanel Grid.Column="3"
                                                         VerticalAlignment="Center"
-                                                        Margin="4,0">
+                                                        Margin="8,0">
                                                 <!-- Play Button -->
                                                 <Button Command="{Binding DataContext.PlayAtTimestampCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                         CommandParameter="{Binding}"
-                                                        Width="22"
-                                                        Height="22"
-                                                        Margin="0,0,0,2"
-                                                        Background="Transparent"
-                                                        BorderThickness="0"
+                                                        Width="28"
+                                                        Height="28"
+                                                        Margin="0,0,0,4"
                                                         ToolTip="Play at timestamp"
-                                                        Visibility="{Binding Timestamp, Converter={StaticResource NullToCollapsedConv}}">
-                                                    <Button.Style>
-                                                        <Style TargetType="Button">
-                                                            <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="Foreground" Value="{DynamicResource LLE.Brush.Text.Secondary}"/>
-                                                            <Style.Triggers>
-                                                                <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Background" Value="{DynamicResource LLE.Brush.Background.Secondary}"/>
-                                                                    <Setter Property="Foreground" Value="{DynamicResource LLE.Brush.Text.Primary}"/>
-                                                                </Trigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Button.Style>
-                                                    <md:PackIcon Kind="Play" Width="12" Height="12"/>
+                                                        Visibility="{Binding Timestamp, Converter={StaticResource NullToCollapsedConv}}"
+                                                        Style="{StaticResource LLE.IconButton.Compact}">
+                                                    <md:PackIcon Kind="Play" Width="14" Height="14"/>
                                                 </Button>
 
                                                 <!-- Delete Button -->
                                                 <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                         CommandParameter="{Binding}"
-                                                        Width="22"
-                                                        Height="22"
-                                                        Background="Transparent"
-                                                        BorderThickness="0"
-                                                        ToolTip="Delete">
+                                                        Width="28"
+                                                        Height="28"
+                                                        ToolTip="Delete"
+                                                        Style="{StaticResource LLE.IconButton.Compact}">
                                                     <Button.Style>
-                                                        <Style TargetType="Button">
-                                                            <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="Foreground" Value="{DynamicResource LLE.Brush.Text.Secondary}"/>
+                                                        <Style TargetType="Button" BasedOn="{StaticResource LLE.IconButton.Compact}">
                                                             <Style.Triggers>
                                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Background" Value="{DynamicResource LLE.Brush.Background.Secondary}"/>
                                                                     <Setter Property="Foreground" Value="#e24b4a"/>
                                                                 </Trigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </Button.Style>
-                                                    <md:PackIcon Kind="TrashCanOutline" Width="12" Height="12"/>
+                                                    <md:PackIcon Kind="TrashCanOutline" Width="14" Height="14"/>
                                                 </Button>
                                             </StackPanel>
                                         </Grid>
