@@ -250,7 +250,7 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
                 if (!string.IsNullOrEmpty(entry.VideoId))
                 {
                     // Check if we need to open a new file
-                    var currentPath = flManager.Player.Clip?.Url?.LocalPath;
+                    var currentPath = flManager.Player.VideoDemuxer?.Url;
                     if (string.IsNullOrEmpty(currentPath) || currentPath != entry.VideoId)
                     {
                         flManager.Player.OpenAsync(entry.VideoId);
