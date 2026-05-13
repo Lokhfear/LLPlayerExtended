@@ -101,8 +101,7 @@
                             Margin="0,0,4,0"
                             Background="Transparent"
                             BorderThickness="0"
-                            ToolTip="Minimize"
-                            Style="{StaticResource MaterialDesignFlatButton}">
+                            ToolTip="Minimize">
                         <Button.Content>
                             <md:PackIcon Kind="Minus"
                                          Width="14"
@@ -128,8 +127,7 @@
                             Margin="0,0,10,0"
                             Background="Transparent"
                             BorderThickness="0"
-                            ToolTip="Close"
-                            Style="{StaticResource MaterialDesignFlatButton}">
+                            ToolTip="Close">
                         <Button.Content>
                             <md:PackIcon Kind="Close"
                                          Width="14"
