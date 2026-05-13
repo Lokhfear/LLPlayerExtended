@@ -247,10 +247,14 @@ public class LearningLibraryViewModel : INotifyPropertyChanged
                 flManager.Player.CurTime = ticks;
                 
                 // Also try to load the video file if it's different
-                if (!string.IsNullOrEmpty(entry.VideoId) && 
-                    flManager.Player.MediaPath != entry.VideoId)
+                if (!string.IsNullOrEmpty(entry.VideoId))
                 {
-                    flManager.OpenFile(entry.VideoId);
+                    // Check if we need to open a new file
+                    var currentPath = flManager.Player.Clip?.Url?.LocalPath;
+                    if (string.IsNullOrEmpty(currentPath) || currentPath != entry.VideoId)
+                    {
+                        flManager.Player.OpenAsync(entry.VideoId);
+                    }
                 }
                 
                 return;

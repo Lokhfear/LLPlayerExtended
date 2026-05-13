@@ -78,6 +78,13 @@ public class LearningItemService
         finally { _lock.Release(); }
     }
 
+    /// <summary>Получить элемент по Id.</summary>
+    public async Task<LearningItem?> GetByIdAsync(string id)
+    {
+        var all = await GetAllAsync();
+        return all.FirstOrDefault(x => x.Id == id);
+    }
+
     /// <summary>Удалить элемент по Id.</summary>
     public async Task RemoveAsync(string id)
     {
