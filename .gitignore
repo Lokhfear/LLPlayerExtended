@@ -1,5 +1,5 @@
-# Compiled and build artifacts
-*.o
+```
+# Build artifacts
 *.obj
 *.exe
 *.dll
@@ -8,59 +8,24 @@
 *.out
 
 # Dependencies
-node_modules/
-venv/
-.venv/
-__pycache__/
-.mypy_cache/
-.pytest_cache/
-target/
-.gradle/
+packages/
+bin/
+obj/
 
-# Logs and temp files
+# Logs
 *.log
+
+# Temporary files
 *.tmp
-*.swp
-*.swo
+*.temp
 
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
+# Visual Studio Code
 .vscode/
-.idea/
 
-# System files
-.DS_Store
-Thumbs.db
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Compressed files
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+# Visual Studio/MSBuild
+**/[Dd]ebug/
+**/[Rr]elease/
+**/[Bb]uild/
+**/bin/
+**/obj/
+```

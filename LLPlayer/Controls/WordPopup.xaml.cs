@@ -505,10 +505,19 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
             if (!isNew)
             {
                 System.Diagnostics.Debug.WriteLine("[Dictionary] Duplicate detected - item already exists");
+                // Показать уведомление о дубликате
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show(
+                        $"The word \"{text}\" is already in your dictionary.",
+                        "Duplicate Word",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                });
                 return; // уже было в библиотеке
             }
 
-            // Показать уведомление об успешном добавлении (через статус в VM библиотеки)
+            // Показать уведомление об успешном добавлении
             System.Diagnostics.Debug.WriteLine($"[Dictionary] ✓ Successfully added '{text}' to dictionary");
 
             // 6. Асинхронный перевод — не ждём
@@ -530,6 +539,12 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
                     await App.LearningItemService.UpdateAsync(savedItem);
                     
                     System.Diagnostics.Debug.WriteLine($"[Dictionary] Translation completed: '{translation}'");
+                    
+                    // Обновить UI библиотеки после получения перевода
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        NotifyLibraryRefresh();
+                    });
                 }
                 catch (Exception ex)
                 {
@@ -537,11 +552,42 @@ public partial class WordPopup : UserControl, INotifyPropertyChanged
                     System.Diagnostics.Debug.WriteLine($"[Dictionary] Translation failed: {ex.Message}");
                 }
             });
+            
+            // 7. Немедленно обновить UI библиотеки (показать новое слово)
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                NotifyLibraryRefresh();
+            });
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"[Dictionary] ERROR: {ex}");
             ErrorDialogHelper.ShowUnknownErrorPopup($"Failed to add to dictionary: {ex.Message}", "Dictionary", ex);
+        }
+    }
+
+    /// <summary>
+    /// Уведомить окно библиотеки обучения о необходимости обновления.
+    /// </summary>
+    private void NotifyLibraryRefresh()
+    {
+        try
+        {
+            // Найти окно библиотеки обучения и вызвать обновление
+            var libraryWindow = Application.Current.Windows
+                .OfType<Views.LearningLibraryWindow>()
+                .FirstOrDefault();
+            
+            if (libraryWindow?.DataContext is ViewModels.LearningLibraryViewModel vm)
+            {
+                // Перезагрузить записи
+                _ = vm.LoadEntriesAsync();
+                System.Diagnostics.Debug.WriteLine("[Dictionary] Library refresh triggered");
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[Dictionary] Failed to notify library: {ex.Message}");
         }
     }
 
