@@ -344,8 +344,7 @@
                                                         CommandParameter="{Binding}"
                                                         Width="28"
                                                         Height="28"
-                                                        ToolTip="Delete"
-                                                        Style="{StaticResource LLE.IconButton.Compact}">
+                                                        ToolTip="Delete">
                                                     <Button.Style>
                                                         <Style TargetType="Button" BasedOn="{StaticResource LLE.IconButton.Compact}">
                                                             <Style.Triggers>
