@@ -109,7 +109,7 @@
                         Style="{StaticResource IconButton}"/>
 
                 <!-- Play / Pause Button -->
-                <Button Grid.Column="1" Command="{Binding FL.Player.Commands.TogglePlayPause}" ToolTip="Play / Pause">
+                <Button Grid.Column="0" Command="{Binding FL.Player.Commands.TogglePlayPause}" ToolTip="Play / Pause">
                     <Button.Style>
                         <Style TargetType="Button" BasedOn="{StaticResource IconButton}">
                             <Setter Property="Content" Value="{materialDesign:PackIcon Kind=Play}"/>

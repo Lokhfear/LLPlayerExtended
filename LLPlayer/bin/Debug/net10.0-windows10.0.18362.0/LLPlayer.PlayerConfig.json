@@ -1,5 +1,5 @@
 {
-  "Version": "0.2.2",
+  "Version": "0.3.0",
   "Player": {
     "AutoPlay": true,
     "MinBufferDuration": 5000000,
@@ -551,13 +551,7 @@
     "Stats": false,
     "ThreadPriority": "AboveNormal",
     "UICurTime": "PerFrameSecond",
-    "VolumeMax": 150,
-    "VolumeDefault": 75,
     "Usage": "AVS",
-    "AudioDelayOffset": 1000000,
-    "AudioDelayOffset2": 10000000,
-    "SubtitlesDelayOffset": 1000000,
-    "SubtitlesDelayOffset2": 10000000,
     "SeekOffset": 10000000,
     "SeekOffset2": 50000000,
     "SeekOffset3": 150000000,
@@ -567,9 +561,7 @@
     "SeekOffsetAccurate3": false,
     "SeekOffsetAccurate4": false,
     "SpeedOffset": 0.1,
-    "SpeedOffset2": 0.25,
-    "ZoomOffset": 10,
-    "VolumeOffset": 5
+    "SpeedOffset2": 0.25
   },
   "Demuxer": {
     "AllowFindStreamInfo": true,
@@ -631,13 +623,13 @@
   "Decoder": {
     "VideoThreads": 16,
     "MaxVideoFrames": 4,
+    "MaxVideoFramesPrev": 0,
     "MaxAudioFrames": 5,
     "MaxSubsFrames": 1,
     "MaxDataFrames": 100,
     "MaxErrors": 200,
     "AllowProfileMismatch": true,
     "ShowCorrupted": false,
-    "KeyFrameValidation": false,
     "LowDelay": false,
     "AllowDropFrames": false,
     "AudioCodecOpt": {},
@@ -645,73 +637,24 @@
     "SubtitlesCodecOpt": {}
   },
   "Video": {
-    "GPUAdapter": "",
-    "AspectRatio": {
-      "Num": -1,
-      "Den": 1,
-      "Value": -1,
-      "ValueStr": "Keep"
-    },
-    "CustomAspectRatio": {
-      "Num": 16,
-      "Den": 9,
-      "Value": 1.7777777777777777,
-      "ValueStr": "16:9"
-    },
-    "BackgroundColor": "#FF000000",
-    "ClearScreen": true,
     "Enabled": true,
+    "GPUAdapter": "",
+    "SplitFrameAlphaPosition": "None",
+    "ClearScreen": true,
     "MaxOutputFps": 60,
-    "MaxFrameLatency": 1,
     "MaxVerticalResolutionCustom": 0,
     "SuperResolution": false,
     "SwsForce": false,
     "VideoAcceleration": true,
     "VideoProcessor": "Auto",
-    "VSync": 1,
     "DeInterlace": "Auto",
     "DoubleRate": true,
     "HDRtoSDRMethod": "Hable",
     "SDRDisplayNitsCustom": 0,
-    "Swap10Bit": false,
-    "SwapBuffers": 2,
-    "SwapForceR8G8B8A8": false,
     "Use2DGraphics": false,
+    "BitmapSubsScaleQuality": "Bilinear, Bitexact",
     "SyncVPFilters": true,
-    "Filters": {
-      "Brightness": {
-        "Filter": "Brightness",
-        "Minimum": -100,
-        "Maximum": 100,
-        "Step": 1,
-        "Default": 0,
-        "Value": 0
-      },
-      "Contrast": {
-        "Filter": "Contrast",
-        "Minimum": -100,
-        "Maximum": 100,
-        "Step": 1,
-        "Default": 0,
-        "Value": 0
-      },
-      "Hue": {
-        "Filter": "Hue",
-        "Minimum": -180,
-        "Maximum": 180,
-        "Step": 1,
-        "Default": 0,
-        "Value": 0
-      },
-      "Saturation": {
-        "Filter": "Saturation",
-        "Minimum": -100,
-        "Maximum": 100,
-        "Step": 1,
-        "Default": 0,
-        "Value": 0
-      }
-    },
+    "FLFilters": {},
     "D3Filters": {
       "Brightness": {
         "Filter": "Brightness",
@@ -777,11 +720,37 @@
         "Default": 0,
         "Value": 0
       }
-    }
+    },
+    "CornerRadius": {
+      "TopLeft": 0,
+      "TopRight": 0,
+      "BottomRight": 0,
+      "BottomLeft": 0
+    },
+    "SwapChainFormat": "BGRA",
+    "VSync": 1,
+    "BackColor": "#FF000000",
+    "AspectRatio": {
+      "Num": -1,
+      "Den": 1,
+      "Value": -1,
+      "ValueStr": "Keep"
+    },
+    "AspectRatioCustom": {
+      "Num": 16,
+      "Den": 9,
+      "Value": 1.7777777777777777,
+      "ValueStr": "16:9"
+    },
+    "ZoomOffset": 10
   },
   "Audio": {
-    "Delay": 0,
     "Enabled": true,
+    "DelayOffset": 1000000,
+    "DelayOffset2": 10000000,
+    "VolumeOffset": 5,
+    "VolumeMax": 150,
+    "VolumeDefault": 75,
     "FiltersEnabled": true,
     "Languages": [
       {
@@ -795,15 +764,15 @@
   "Subtitles": {
     "SubConfigs": [
       {
-        "Delay": 0,
         "OCREngine": "Tesseract"
       },
       {
-        "Delay": 0,
         "OCREngine": "Tesseract"
       }
     ],
     "Enabled": true,
+    "DelayOffset": 1000000,
+    "DelayOffset2": 10000000,
     "Max": 2,
     "EnabledCached": true,
     "OpenAutomaticSubs": false,

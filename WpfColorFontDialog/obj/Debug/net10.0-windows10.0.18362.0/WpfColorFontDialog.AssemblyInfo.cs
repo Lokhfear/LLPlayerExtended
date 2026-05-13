@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright ©  2015")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("A wpf color and font picker.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.8.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.8.0+e32968a5ad57bd8da800ba9022d332183fb031d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.8.0+75eca3cb38cc7b5c11962866931774fbb3617ceb")]
 [assembly: System.Reflection.AssemblyProductAttribute("WpfColorFontDialog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WpfColorFontDialog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.8.0")]

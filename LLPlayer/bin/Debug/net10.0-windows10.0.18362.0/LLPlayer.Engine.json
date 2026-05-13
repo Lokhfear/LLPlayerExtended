@@ -1,5 +1,5 @@
 {
-  "Version": "0.2.2",
+  "Version": "0.3.0",
   "DisableAudio": false,
   "FFmpegPath": ":FFmpeg",
   "FFmpegLoadProfile": "Filters",
@@ -9,8 +9,11 @@
   "LogLevel": "Debug",
   "LogAppend": false,
   "LogCachedLines": 20,
+  "LogRollMaxFileSize": 10485760,
+  "LogRollMaxFiles": 0,
   "LogDateTimeFormat": "HH.mm.ss.fff",
   "PluginsPath": ":Plugins\\bin\\Plugins.NET10",
   "UIRefresh": true,
-  "UIRefreshInterval": 250
+  "UIRefreshInterval": 250,
+  "KeepDisplayActive": true
 }

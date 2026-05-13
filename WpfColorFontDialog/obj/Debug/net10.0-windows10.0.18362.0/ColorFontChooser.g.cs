@@ -118,7 +118,7 @@ namespace WpfColorFontDialog {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfColorFontDialog;V1.0.8.0;component/colorfontchooser.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfColorFontDialog;component/colorfontchooser.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ColorFontChooser.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

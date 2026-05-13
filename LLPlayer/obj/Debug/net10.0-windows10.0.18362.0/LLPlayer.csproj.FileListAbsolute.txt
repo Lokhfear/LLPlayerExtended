@@ -4,8 +4,6 @@ D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Resour
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Resources\Slider.baml
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Themes\Generic.baml
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\App.baml
-D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\DictionaryControl.g.cs
-D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\DictionaryPanel.g.cs
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\FlyleafBar.g.cs
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\SelectableSubtitleText.g.cs
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\Settings\Controls\ColorPicker.g.cs
@@ -48,7 +46,6 @@ D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\LLPlay
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\GeneratedInternalTypeHelper.g.cs
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\LLPlayer_MarkupCompile.cache
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\LLPlayer_MarkupCompile.lref
-D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\DictionaryControl.baml
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\FlyleafBar.baml
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\SelectableSubtitleText.baml
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\Settings\Controls\ColorPicker.baml
@@ -585,7 +582,6 @@ D:\Other\Projects\LLPlayer\LLPlayer\bin\Debug\net10.0-windows10.0.18362.0\Flylea
 D:\Other\Projects\LLPlayer\LLPlayer\bin\Debug\net10.0-windows10.0.18362.0\WpfColorFontDialog.dll
 D:\Other\Projects\LLPlayer\LLPlayer\bin\Debug\net10.0-windows10.0.18362.0\FlyleafLib.pdb
 D:\Other\Projects\LLPlayer\LLPlayer\bin\Debug\net10.0-windows10.0.18362.0\WpfColorFontDialog.pdb
-D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Controls\DictionaryPanel.baml
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\LLPlayer.g.resources
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\LLPlayer.GeneratedMSBuildEditorConfig.editorconfig
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\LLPlayer.AssemblyInfoInputs.cache
@@ -598,3 +594,5 @@ D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\ref\LL
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Views\LearningLibraryWindow.g.cs
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Views\LearningLibraryWindow.baml
 D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Resources\LLPlayerExtendedStyles.baml
+D:\Other\Projects\LLPlayer\LLPlayer\obj\Debug\net10.0-windows10.0.18362.0\Resources\Slider.g.cs
+D:\Other\Projects\LLPlayer\LLPlayer\bin\Debug\net10.0-windows10.0.18362.0\Microsoft.Extensions.AI.Abstractions.dll

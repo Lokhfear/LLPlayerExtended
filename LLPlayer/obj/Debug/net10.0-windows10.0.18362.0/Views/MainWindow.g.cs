@@ -9,8 +9,13 @@
 //------------------------------------------------------------------------------
 
 using FlyleafLib.Controls.WPF;
+using LLPlayer.Models;
+using LLPlayer.Services;
 using LLPlayer.ViewModels;
 using LLPlayer.Views;
+using MaterialDesignThemes.Wpf;
+using MaterialDesignThemes.Wpf.Converters;
+using MaterialDesignThemes.Wpf.Transitions;
 using Microsoft.Xaml.Behaviors;
 using Microsoft.Xaml.Behaviors.Core;
 using Microsoft.Xaml.Behaviors.Input;
@@ -67,7 +72,7 @@ namespace LLPlayer.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LLPlayer;V0.3.0.0;component/views/mainwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LLPlayer;component/views/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

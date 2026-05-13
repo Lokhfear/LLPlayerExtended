@@ -64,7 +64,7 @@ namespace LLPlayer.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LLPlayer;V0.3.0.0;component/views/errordialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LLPlayer;component/views/errordialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\ErrorDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

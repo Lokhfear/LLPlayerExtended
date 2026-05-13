@@ -1,5 +1,5 @@
 ﻿WpfColorFontDialog
-1.0.8.0
+
 
 library
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS10_0_18362_0;NET5_0_OR_GREATER
 
 5-303100652
 
-12-3130190
+10-708190978
 2082072541445
 ColorFontChooser.xaml;ColorFontDialog.xaml;ColorPicker.xaml;I18n\en-US.xaml;I18n\zh-CN.xaml;
 
-True
+False
 

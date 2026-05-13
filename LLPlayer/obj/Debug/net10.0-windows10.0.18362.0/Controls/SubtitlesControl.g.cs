@@ -85,7 +85,7 @@ namespace LLPlayer.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LLPlayer;V0.3.0.0;component/controls/subtitlescontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LLPlayer;component/controls/subtitlescontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\SubtitlesControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

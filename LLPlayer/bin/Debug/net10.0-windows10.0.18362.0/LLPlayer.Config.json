@@ -1,5 +1,5 @@
 {
-  "Version": "0.2.2",
+  "Version": "0.3.0",
   "Subs": {
     "SubsUseSeparateFonts": true,
     "SubsFontSize": 38,
@@ -84,6 +84,9 @@
   "SeekBarShowOnlyMouseOver": false,
   "SeekBarFadeInTimeMs": 80,
   "SeekBarFadeOutTimeMs": 150,
+  "SeekBarHeight": 5,
+  "SeekBarTrackHeight": 20,
+  "SeekBarThumbHeight": 12,
   "MouseSingleClickToPlay": true,
   "MouseDoubleClickToFullScreen": false,
   "MouseWheelToVolumeUpDown": true,
